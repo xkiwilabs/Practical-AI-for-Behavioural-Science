@@ -9,13 +9,9 @@ This document outlines the structure, conventions, and workflow for building out
 ```
 Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 ├── README.md                      # Course overview + weekly links table
-├── DEVELOPMENT_GUIDE.md           # This file — development conventions
 ├── .gitignore                     # Excludes .pptx, __pycache__, .DS_Store, etc.
 ├── setup/
 │   └── getting-started.md         # Student setup guide (Python, Jupyter, VS Code)
-├── _templates/
-│   ├── lecture-week.md            # Template for lecture companion readings
-│   └── challenge-lab.md           # Template for challenge lab briefs
 ├── weeks/
 │   ├── week-01-lecture/           # Lecture weeks
 │   │   ├── README.md              # Companion reading
@@ -31,7 +27,12 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │   └── week-13-discussion/        # Discussion prompts + reflection
 ├── data/                          # Shared datasets (used across weeks)
 ├── iLearnMaterials/               # HTML files for iLearn LMS (not weekly content)
-└── .archive/                      # Archived drafts and earlier versions
+└── dev/                           # Development files (not student-facing)
+    ├── DEVELOPMENT_GUIDE.md       # This file — development conventions
+    ├── _templates/                # Templates for new weeks
+    │   ├── lecture-week.md
+    │   └── challenge-lab.md
+    └── .archive/                  # Archived drafts and earlier versions
 ```
 
 ---
@@ -76,7 +77,7 @@ Each class session is **2 hours** (Mondays 3–5pm), but content does not fill t
 
 ## Building a Lecture Week
 
-Use `_templates/lecture-week.md` as the starting point for `weeks/week-NN-lecture/README.md`.
+Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-lecture/README.md`.
 
 ### Checklist
 
@@ -107,7 +108,7 @@ Use `_templates/lecture-week.md` as the starting point for `weeks/week-NN-lectur
 
 ## Building a Challenge Lab Week
 
-Use `_templates/challenge-lab.md` as the starting point for `weeks/week-NN-lab/README.md`.
+Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-lab/README.md`.
 
 ### Checklist
 
