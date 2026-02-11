@@ -26,6 +26,10 @@ Think of it like this: **AI** is the whole field, **ML** is the approach of lear
 
 There's a useful analogy from psychology here. Humans learn from examples too — a child doesn't memorise a rule book for recognising dogs; they see enough dogs and gradually learn the pattern. ML formalises this same idea mathematically.
 
+But here's a striking difference: a child learns to recognise dogs from maybe 3–5 examples. A typical image classification model needs thousands or millions. Why are humans so much more data-efficient? We bring a lifetime of embodied experience, prior concepts, and structured knowledge to every new learning task. This efficiency gap is one of the deepest open questions in cognitive science and AI — and it tells us that whatever humans are doing when they learn, it's not the same thing current ML models are doing.
+
+> **Think about it:** Why do you think a toddler can learn "dog" from a few examples while an ML model needs thousands? What does the human bring to the task that the model doesn't?
+
 The key distinction from traditional programming: in conventional software, a programmer writes explicit rules that a computer follows. In machine learning, the programmer provides *data and a goal*, and the computer discovers the rules. This shift is what makes ML so powerful for research — it can find patterns in data that humans might never think to look for.
 
 ### A Brief History
@@ -71,6 +75,10 @@ The second prompt tells the AI exactly what data to use, what type of plot you w
 - **Ask for explanations** — add "and explain each line of code" to learn as you go
 - **State constraints** — "Use only pandas and matplotlib" prevents the AI from suggesting unfamiliar tools
 
+The need for all this careful prompting is itself revealing. If you told a human colleague "make me a graph of the sleep data," they'd ask a clarifying question or make a reasonable guess — drawing on shared context, theory of mind, and common sense. An AI can't do that. It doesn't know what you've been working on, what matters to you, or what "good" looks like in your field. It needs you to provide all of that explicitly.
+
+> **Think about it:** What does the need for prompt engineering tell us about the difference between human understanding and what AI systems do? What would an AI need to be able to do to *not* need detailed prompts?
+
 ### The LLM Problem-Solving Loop
 
 This is the core workflow you'll use all semester. It has two nested loops — an outer loop for your research process, and an inner loop for working with the AI.
@@ -99,11 +107,19 @@ So why should psychologists care about machine learning? Here's the short answer
 
 Psychology has traditionally focused on **explanation** — understanding *why* things happen through controlled experiments and statistical inference. Machine learning adds a complementary focus on **prediction** — building models that can accurately forecast outcomes from data. As Yarkoni and Westfall (2017) argued in an influential paper, psychology's almost exclusive focus on explanation has come at the cost of prediction, and the two approaches actually strengthen each other.
 
+But there's a tension worth sitting with. ML can predict depression from smartphone data without knowing anything about mood, motivation, or lived experience. It finds statistical patterns that work — reduced movement predicts depressive episodes — but it has no understanding of *why*. Humans, by contrast, can predict a friend's mood from a single text message because they understand the person. One approach scales; the other has depth.
+
+> **Think about it:** An ML model can predict depression risk from phone data, but it doesn't "understand" depression. A clinician might be less accurate but understands the patient. When is prediction without understanding enough? When is it not?
+
 Here are four recent examples of how AI and ML are being used in psychological and cognitive science research:
 
 **1. Mental health — Digital phenotyping.** Researchers are using smartphone sensor data — GPS movement patterns, screen time, sleep duration, typing speed — combined with ML models to predict mental health episodes before they happen. Multiple studies in 2024–2025 have demonstrated that passive smartphone data can identify depression risk with meaningful accuracy, opening the door to early intervention systems that don't rely on people self-reporting their symptoms.
 
 **2. Cognitive science — LLMs as cognitive models.** Hagendorff, Fabi, and Kosinski (2023) tested large language models on classic cognitive psychology tasks — the kinds of semantic illusions and reasoning biases from Kahneman's "Thinking, Fast and Slow" that you may have studied. They found that as models grew larger, they developed human-like intuitive thinking and cognitive biases. But these biases disappeared in ChatGPT, which could engage in more deliberate "System 2" reasoning. This raises fascinating questions about what these models are actually learning. Published in *Nature Computational Science*.
+
+But here's what makes this so interesting for cognitive scientists: the LLMs are exhibiting the *same behavioural patterns* as humans, but through entirely different mechanisms. Human biases are shaped by evolution, emotion, and embodied experience. LLM biases emerge from statistical regularities in text. When two very different systems produce similar outputs, can we conclude they're using similar processes? This is a version of one of the oldest questions in cognitive science.
+
+> **Think about it:** If an LLM shows the same reasoning bias as a human on a classic cognitive psychology task, does that mean it's "thinking" the same way? What evidence would you need to make that claim?
 
 **3. AI personas as synthetic participants.** Argyle et al. (2023) showed that LLMs can be conditioned with demographic backstories to simulate human survey responses with surprising accuracy — what they call "algorithmic fidelity." They created "silicon samples" that reproduced real survey distributions across sociodemographic groups. This opens up possibilities for rapid pilot testing of experiments and studying hard-to-reach populations, while raising important ethical questions about synthetic data in research.
 
