@@ -1,0 +1,29 @@
+# Slides (develop locally, distribute via iLearn)
+*.pptx
+*.ppt
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+psyc4411-env/
+.old_materials/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude
+.claude/
