@@ -16,12 +16,10 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │   ├── week-01-lecture/           # Lecture weeks
 │   │   ├── README.md              # Companion reading
 │   │   ├── readings.md            # Optional/suggested readings
-│   │   ├── examples/              # Code examples, notebooks, plots
-│   │   ├── scripts/               # Figure generation scripts (optional)
 │   │   └── slides/                # reveal.js slide deck
 │   │       ├── index.html         # The slide deck (HTML)
-│   │       ├── css/mq-theme.css   # Shared MQ theme (copy per week)
-│   │       └── figures/           # Generated + placeholder images
+│   │       ├── css/mq-theme.css   # Shared MQ theme (copy from Week 1)
+│   │       └── figures/           # Placeholder images for manual screenshots
 │   ├── week-02-lab/               # Challenge lab weeks
 │   │   ├── README.md              # Challenge brief
 │   │   ├── starter.ipynb          # Starter notebook with scaffolding
@@ -89,7 +87,7 @@ Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-le
    - Overview (2-3 sentences: what and why)
    - Key Concepts (explained with psychology-relevant examples)
    - **"Think about it" discussion prompts** — 3-4 per lecture week (see below)
-   - Worked Examples (reference notebooks in `examples/`)
+   - Research examples with DOI-linked references
    - Common Misconceptions
    - Connections to Psychology
    - Link to `readings.md`
@@ -97,18 +95,15 @@ Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-le
 2. **readings.md** — Suggested and optional readings
    - 1-2 suggested readings (accessible, foundational)
    - 2-4 optional readings (deeper dives, applied examples)
-   - Use APA format, include DOI links where available
+   - Use APA format, include DOI links
+   - Note open access availability (PMC, arXiv, author site)
 
-3. **examples/** — Code examples shown or referenced in lecture
-   - Jupyter notebooks (.ipynb) or Python scripts (.py)
-   - Each example should be self-contained and runnable
-   - Include clear comments explaining each step
-   - Name descriptively: `01_train_test_split_demo.ipynb`
+3. **slides/** — reveal.js HTML slide deck (see "Building Slide Decks" below)
+   - `index.html` — all slides in one HTML file
+   - `css/mq-theme.css` — MQ-branded theme (copy from Week 1, do not modify)
+   - `figures/` — placeholder images for screenshots/photos to be added manually
 
-4. **slides/** — reveal.js HTML slide deck (see "Building Slide Decks" below)
-   - `index.html` — the slide content
-   - `css/mq-theme.css` — shared MQ-branded theme
-   - `figures/` — generated PNGs + placeholder images
+**Note:** There is no `examples/` or `scripts/` folder for lecture weeks. All diagrams (flow charts, hierarchies, timelines, Venn diagrams, comparisons) are built as HTML/CSS directly in the slides — not generated as PNGs. This keeps diagrams editable, animatable with fragments, and consistent with the theme.
 
 ### "Think About It" Discussion Prompts
 
@@ -172,13 +167,16 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
 
 ## Building Slide Decks
 
-Slides are built as **reveal.js HTML decks** — no PowerPoint, no build step. Each lecture week has a self-contained `slides/` folder with an `index.html`, a shared CSS theme, and a `figures/` directory.
+Slides are built as **reveal.js HTML decks** — no PowerPoint, no build step, no Python figure scripts. Each lecture week has a self-contained `slides/` folder with an `index.html`, a shared CSS theme, and a `figures/` directory for placeholder images only.
 
-### Workflow: README First, Then Slides, Then Iterate
+All diagrams (flow charts, hierarchies, timelines, Venn diagrams, comparisons) are built as **HTML/CSS directly in the slides**, not generated as PNG images. This means diagrams can be animated with `fragment` classes, styled consistently with the theme, and edited without re-running scripts.
 
-1. **Write the README.md first.** The companion reading defines the content, structure, and "Think about it" prompts. The slide deck is a visual presentation of this content — not the other way around.
-2. **Build the slide deck** from the README. Each major section of the reading maps to a section in the slides. Add fragment animations, diagrams, and examples.
-3. **Iterate.** Open `index.html` in a browser, step through the slides, adjust text density, timing, and visuals. Refine both the slides and the README together.
+### Workflow: README → Readings → Slides → Iterate
+
+1. **Write the README.md first.** The companion reading defines the content, structure, research examples, and "Think about it" prompts. The slide deck is a visual presentation of this content — not the other way around.
+2. **Write readings.md.** Verify all references via web search, confirm DOIs resolve, check for open access versions. Every paper cited in the slides must also appear in readings.md.
+3. **Build the slide deck** from the README. Each major section of the reading maps to a section in the slides. Convert diagrams to HTML/CSS, add fragment animations, and link all cited papers to their DOIs.
+4. **Iterate.** Open `index.html` in a browser, step through every slide and fragment, adjust text density, timing, and visuals. Refine both the slides and the README together.
 
 ### Slide Deck Structure
 
@@ -188,11 +186,12 @@ Every lecture deck follows this template structure:
 slides/
 ├── index.html          # The deck — all slides in one file
 ├── css/
-│   └── mq-theme.css    # MQ-branded theme (copy from Week 1)
+│   └── mq-theme.css    # MQ-branded theme (copy from Week 1, do not modify)
 └── figures/
-    ├── *.png           # Generated figures (from scripts/)
-    └── slide##_fig##_placeholder.png  # Placeholders for manual images
+    └── slide##_fig##_placeholder.png  # Placeholders for manual screenshots/photos
 ```
+
+**No `scripts/` or `examples/` folders** are needed for lecture weeks. If a future week requires a live code demo, use a Jupyter notebook in the lab week instead.
 
 ### index.html Template
 
@@ -387,11 +386,12 @@ Use `class="fragment"` on any element to reveal it on click/keypress. Use `data-
 
 ### Placeholder Images
 
-For images that need to be added manually later (screenshots, photos), create a placeholder:
+The only PNGs in `slides/figures/` should be **placeholders for screenshots and photos** that need to be added manually (e.g., app screenshots, research figure reproductions, photos). All diagrams are HTML/CSS.
 
 - File name: `slide##_fig##_placeholder.png` (e.g., `slide19_fig01_placeholder.png`)
-- Generate a simple grey rectangle with matplotlib or use any 800×600 grey image
+- Use any 800×600 grey rectangle image as the placeholder
 - Reference in HTML with a descriptive `alt` tag and a `<p class="small">Replace with: description</p>` caption
+- Once real images are available, replace the placeholder file and remove the caption
 
 ### Citing References in Slides
 
@@ -443,22 +443,29 @@ Each major topic in the lecture follows this pattern in the HTML:
 
 These include section dividers, think-about-it slides, and the assessment/homework slides. Some slides advance quickly (section dividers); others need 2–3 minutes of discussion.
 
-### Checklist: New Slide Deck
+### Checklist: New Lecture Week (end-to-end)
 
-- [ ] Copy `slides/` folder structure from Week 1
-- [ ] Copy `css/mq-theme.css` unchanged (shared theme)
-- [ ] Copy the full `<script>` block from Week 1 (config + nav bar + clock)
+**Content first:**
+- [ ] Write `README.md` — companion reading with key concepts, research examples, "Think about it" prompts
+- [ ] Write `readings.md` — verify all DOIs, check open access, APA 7th format
+- [ ] Ensure every paper cited in the README has a DOI hyperlink
+
+**Build the slide deck:**
+- [ ] Create `slides/` folder: copy `css/mq-theme.css` unchanged from Week 1
+- [ ] Create `index.html` — copy the HTML template and full `<script>` block from Week 1 (config + nav bar + clock)
 - [ ] Update `<title>` to "Week N: Title — PSYC4411"
 - [ ] Update the title slide (week number, subtitle, keep instructor info)
-- [ ] Build section dividers for each major topic
+- [ ] Build section dividers for each major topic from the README
 - [ ] Build content slides from the README sections
+- [ ] Build all diagrams as HTML/CSS (not PNG images) — flow charts, hierarchies, timelines, Venn diagrams, comparisons
 - [ ] Add "Think about it" slides matching the README discussion prompts
 - [ ] Add fragment animations to all bullet points and diagram elements
-- [ ] Prefer HTML/CSS diagrams over static images where possible
-- [ ] Add placeholder images for screenshots/photos not yet available
+- [ ] Link all cited papers to their DOIs with `target="_blank"`
+- [ ] Add placeholder images only for screenshots/photos not yet available
 - [ ] Test: open in browser, step through every slide and fragment
 - [ ] Check text density: slides should feel full (not cramped, not empty)
 - [ ] Australian English throughout (behaviour, generalisation, colour, etc.)
+- [ ] No `scripts/` or `examples/` folders needed for lecture weeks
 
 ---
 
