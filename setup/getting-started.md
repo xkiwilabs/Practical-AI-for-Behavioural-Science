@@ -161,7 +161,21 @@ Extensions add extra features to VS Code. You need three (and one optional but h
 
 For each one: type the name in the search bar, find the one by the correct publisher, and click **Install**.
 
-**GitHub Copilot** will ask you to sign in with your GitHub account. If your Student Developer Pack hasn't been approved yet, Copilot won't activate — that's fine, come back to it later.
+### Sign In to GitHub from VS Code
+
+This step connects VS Code to your GitHub account. It enables Copilot, syncs your settings across devices, and lets you access repositories from within VS Code.
+
+1. Click the **Accounts** icon in the bottom-left corner of VS Code (it looks like a person silhouette)
+2. Click **Sign in with GitHub to use GitHub Copilot** (or **Turn on Cloud Changes** — either works to start the sign-in flow)
+3. A browser window will open asking you to authorise VS Code to access your GitHub account — click **Authorize**
+4. You'll be redirected back to VS Code. You should now see your GitHub username in the bottom-left corner.
+
+Once signed in, three things happen automatically:
+- **GitHub Copilot** activates (if your Student Developer Pack has been approved — you'll see a small Copilot icon in the bottom status bar)
+- **Settings Sync** turns on, so your VS Code setup (extensions, themes, keybindings) is backed up to your GitHub account and follows you across devices
+- **Git integration** connects, so you can push/pull code to GitHub directly from VS Code later in the course
+
+If your Student Developer Pack hasn't been approved yet, Copilot won't activate — that's fine, everything else still works. Come back to check once you get the approval email.
 
 ---
 
