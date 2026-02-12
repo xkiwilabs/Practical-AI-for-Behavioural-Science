@@ -1,8 +1,22 @@
 # PSYC4411: Current Advances in Psychological Methods and Analyses (2026)
 
-A companion repository for the PSYC4411 course at Macquarie University. This repo contains weekly companion readings, code examples, challenge lab briefs, starter notebooks, and datasets.
+### Machine Learning and AI for Research
 
-**No technical or mathematical background is assumed.** This course teaches you to use modern ML/AI tools — including LLM coding assistants — for psychological and cognitive science research.
+This unit introduces modern computational methods now shaping psychological and cognitive science research, with a focus on machine learning and contemporary AI tools, including large language models (LLMs). Students learn how to frame research questions for supervised and unsupervised learning, evaluate models responsibly, and use LLM-based assistants to support coding, analysis, visualisation, and research workflows.
+
+**No technical or mathematical background is assumed.** Emphasis is placed on practical, student-guided experimentation and sound scientific interpretation. Students will learn to use modern LLM tools (e.g., ChatGPT, Claude, Gemini, GitHub Copilot) as coding assistants and problem-solving partners throughout the course.
+
+**Learning Objectives** — By the end of this course, students will be able to:
+
+1. **Frame research questions** appropriately for supervised and unsupervised machine learning
+2. **Build and evaluate** regression, classification, clustering, and simple neural network models
+3. **Use LLM coding assistants** effectively to write, debug, refactor, and document code
+4. **Interpret model outputs** with appropriate uncertainty and connect findings to psychological constructs
+5. **Identify common pitfalls** including overfitting, data leakage, and spurious structure
+6. **Communicate findings** clearly, distinguishing prediction from explanation and acknowledging limitations
+7. **Evaluate ethical implications** of ML-based categorisation and prediction in psychological research
+
+This is a companion repository containing weekly companion readings, code examples, challenge lab briefs, starter notebooks, and datasets.
 
 ---
 
