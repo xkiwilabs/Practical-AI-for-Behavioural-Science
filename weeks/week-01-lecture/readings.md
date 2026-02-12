@@ -50,6 +50,22 @@ These go deeper into specific topics from the lecture. Read them if something fr
 
 *Why read this:* An early and influential paper on digital phenotyping — using passive smartphone sensor data to understand and predict mental health. Raises key questions about privacy, ethics, and the potential of ML in clinical settings. **Open access** via [PubMed Central](https://pmc.ncbi.nlm.nih.gov/articles/PMC4869063/).
 
+### 11. Kelso, J. A. S. (1995). *Dynamic patterns: The self-organization of brain and behavior.* MIT Press.
+
+*Why read this:* The foundational text on how brains and behaviour exhibit features of complex dynamical systems — multistability, phase transitions, and self-organisation. Directly relevant to the Week 1 discussion about whether ML models can predict human behaviour because behaviour is more structured and deterministic than it appears.
+
+### 12. Thelen, E., & Smith, L. B. (1994). *A dynamic systems approach to the development of cognition and action.* MIT Press. https://doi.org/10.7551/mitpress/2524.001.0001
+
+*Why read this:* A landmark book showing that development — reaching, walking, learning — follows complex dynamical principles rather than pre-programmed stages. Changed how developmental and cognitive scientists think about where behaviour comes from.
+
+### 13. Van Orden, G. C., Holden, J. G., & Turvey, M. T. (2003). Self-organization of cognitive performance. *Journal of Experimental Psychology: General, 132*(3), 331–350. https://doi.org/10.1037/0096-3445.132.3.331
+
+*Why read this:* Found fractal patterns in cognitive performance — reaction times, reading, categorisation — suggesting that cognition itself is a self-organising process rather than a sequence of discrete stages. A key paper in the complex systems approach to psychology.
+
+### 14. Warren, W. H. (2006). The dynamics of perception and action. *Psychological Review, 113*(2), 358–389. https://doi.org/10.1037/0033-295X.113.2.358
+
+*Why read this:* Shows that perception and action are coupled dynamical systems, with behaviour emerging from the continuous interaction between body, brain, and environment. A clear, well-written argument for why psychology needs dynamical systems thinking.
+
 ---
 
 ## Recommended Books

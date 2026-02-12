@@ -735,10 +735,83 @@
 </section>
 
 <!-- ============================================================
-     SECTION 5: PROMPT ENGINEERING  (Slides 29–38)
+     SECTION 4B: WHAT IS AN LLM?  (Slides 29–31)
      ============================================================ -->
 
-<!-- Slide 29: Section Divider -->
+<!-- Slide 29: Section Divider — What Is an LLM? -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-brain"></i></div>
+  <h2>What Is an LLM &amp;<br>How Does It Work?</h2>
+  <p>Understanding the tools makes you better at using them</p>
+</section>
+
+<!-- Slide 30: Under the Hood -->
+<section>
+  <h2>Under the Hood</h2>
+  <div class="spacer"></div>
+  <div class="info-box">
+    <p>Most modern AI tools — ChatGPT, Claude, Gemini, Copilot — run on <strong>large language models</strong> (LLMs). We'll cover this in much more detail in Weeks 9–11, but here's what you need to know now.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment">An LLM is a <strong>neural network</strong> trained on enormous amounts of text — books, articles, websites, code, conversations</li>
+    <li class="fragment">During training, it learns <strong>statistical patterns</strong> in language: which words follow which, how sentences work, what kinds of answers follow what kinds of questions</li>
+    <li class="fragment">The result: a system that generates remarkably fluent text — even though it has <strong>no understanding</strong> of what the words mean</li>
+    <li class="fragment">At its core, an LLM is a <strong>next-token prediction machine</strong></li>
+  </ul>
+</section>
+
+<!-- Slide 31: Tokens and Embeddings -->
+<section>
+  <h2>Tokens &amp; Embeddings</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3 style="font-size: 0.95em;"><i class="ph ph-text-aa"></i> Tokens</h3>
+      <ul>
+        <li class="fragment">The basic unit of text for an LLM — roughly a word or word-fragment</li>
+        <li class="fragment">"psychology" → 1 token<br>"unbelievable" → "un" + "believ" + "able"</li>
+        <li class="fragment">You type a prompt → model converts to tokens → generates response <strong>one token at a time</strong></li>
+        <li class="fragment">Each token is the model's best prediction of what comes next</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="font-size: 0.95em;"><i class="ph ph-vector-three"></i> Embeddings</h3>
+      <ul>
+        <li class="fragment">Each token is converted to a long list of numbers — an <strong>embedding</strong></li>
+        <li class="fragment">Embeddings capture <em>relationships</em> between words</li>
+        <li class="fragment">"Happy" &amp; "joyful" → close together<br>"Happy" &amp; "refrigerator" → far apart</li>
+        <li class="fragment">Meaning represented through <strong>patterns of similarity</strong>, not definitions</li>
+      </ul>
+    </div>
+  </div>
+  <div class="key-insight fragment" style="margin-top: 16px;">
+    <p>We'll explore embeddings in depth in Week 11 — they turn out to be extraordinarily powerful for analysing text and meaning at scale.</p>
+  </div>
+</section>
+
+<!-- Slide 32: Why This Matters Now -->
+<section>
+  <h2>Why This Matters for You Now</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>An LLM doesn't "know" things the way you do — it has learned statistical patterns from text.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><i class="ph ph-warning" style="color: var(--mq-orange);"></i> It can be <strong>confident and wrong</strong> — plausible-sounding nonsense is always possible</li>
+    <li class="fragment"><i class="ph ph-brain" style="color: var(--mq-purple);"></i> It doesn't <strong>remember</strong> previous conversations (unless you're in the same session)</li>
+    <li class="fragment"><i class="ph ph-chat-text" style="color: var(--mq-blue);"></i> It responds to <strong>exactly what you give it</strong> — the clearer your prompt, the better the output</li>
+  </ul>
+  <div class="spacer"></div>
+  <p class="fragment" style="text-align: center;">That's why the next section — <strong>prompt engineering</strong> — matters so much.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 5: PROMPT ENGINEERING  (Slides 33–42)
+     ============================================================ -->
+
+<!-- Slide 33: Section Divider -->
 <section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
   <div class="section-icon"><i class="ph-bold ph-chat-centered-text"></i></div>
   <h2>Prompt Engineering &amp;<br>Context Engineering</h2>
@@ -1362,24 +1435,24 @@
   <div class="spacer"></div>
   <p>Or does it reveal something deeper: that human behaviour, even when it <em>feels</em> spontaneous, is far more <strong>structured and deterministic</strong> than we realise?</p>
   <div class="spacer"></div>
-  <p class="small" style="opacity: 0.7;">Complex systems appear noisy on the surface but are governed by deterministic dynamics underneath — multistability, phase transitions, self-organisation.<br>
-  <span style="opacity: 0.6;">— <a href="https://mitpress.mit.edu/9780262611312/dynamic-patterns/" target="_blank" style="color: rgba(255,255,255,0.6);">Kelso (1995). <em>Dynamic Patterns.</em> MIT Press.</a></span></p>
+  <p class="small" style="opacity: 0.7;">Complex systems appear noisy on the surface but are governed by deterministic dynamics — from brain and behaviour (<a href="https://mitpress.mit.edu/9780262611312/dynamic-patterns/" target="_blank" style="color: rgba(255,255,255,0.6);">Kelso, 1995</a>), to development (<a href="https://doi.org/10.7551/mitpress/2524.001.0001" target="_blank" style="color: rgba(255,255,255,0.6);">Thelen &amp; Smith, 1994</a>), to cognition (<a href="https://doi.org/10.1037/0096-3445.132.3.331" target="_blank" style="color: rgba(255,255,255,0.6);">Van Orden et al., 2003</a>), to perception-action (<a href="https://doi.org/10.1037/0033-295X.113.2.358" target="_blank" style="color: rgba(255,255,255,0.6);">Warren, 2006</a>).</p>
 </section>
 
-<!-- Slide 53: A Word of Caution -->
+<!-- Slide: A Word of Caution -->
 <section>
-  <h2>A Word of Caution <i class="ph ph-warning"></i></h2>
+  <h2>Tools, Not Magic <i class="ph ph-warning"></i></h2>
   <div class="spacer"></div>
   <div class="highlight-box">
-    <p>These are <strong>tools, not magic</strong>. Good research questions, careful experimental design, and critical thinking are more important than ever.</p>
+    <p>These examples show ML and AI are reshaping how we study mind, behaviour, and brain. But as those discussion prompts suggest — these tools raise as many questions as they answer.</p>
   </div>
   <div class="spacer"></div>
   <ul>
+    <li class="fragment">None of these tools <strong>understand psychology</strong> — they find patterns. <em>You</em> decide which patterns matter.</li>
     <li class="fragment">ML can find patterns in noisy data — <strong>including patterns that aren't real</strong>
       <ul><li>Spurious correlations, overfitting, p-hacking with more variables</li></ul>
     </li>
     <li class="fragment">Models can inherit and amplify <strong>biases</strong> from their training data
-      <ul><li>An AI trained on biased clinical data will produce biased clinical predictions</li></ul>
+      <ul><li>Even the most impressive AI outputs are built on borrowed human intelligence and next-token prediction — not understanding</li></ul>
     </li>
     <li class="fragment">Throughout this course, we'll spend as much time learning to <strong>evaluate and question</strong> ML results as we will building models</li>
   </ul>
