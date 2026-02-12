@@ -516,7 +516,8 @@
     </li>
     <li class="fragment"><strong>"Vibe coding"</strong> — describe what you want in plain English, AI writes the code
       <ul><li>Term coined by Andrej Karpathy (OpenAI founding member), February 2025</li>
-      <li><strong>This is how you'll code in this course</strong></li></ul>
+      <li>But pure vibe coding is <strong>passive</strong> — copy-paste and hope for the best</li>
+      <li>In this course, we want something more deliberate: <strong>AI as active collaborator</strong></li></ul>
     </li>
     <li class="fragment"><strong>CLI coding agents</strong> — AI that works directly in your terminal, reading your codebase and editing files autonomously
       <ul><li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code</a> (Anthropic), <a href="https://github.com/openai/codex" target="_blank">Codex CLI</a> (OpenAI), <a href="https://github.com/google-gemini/gemini-cli" target="_blank">Gemini CLI</a> (Google, open source)</li></ul>
@@ -524,6 +525,76 @@
   </ul>
   <div class="highlight-box fragment">
     <p>25% of Y Combinator Winter 2025 startups had <strong>95% AI-generated</strong> codebases. This is already mainstream.</p>
+  </div>
+</section>
+
+<!-- Slide: Active Collaboration, Not Passive Coding -->
+<section>
+  <h2><i class="ph ph-handshake"></i> AI as Collaborator, Not Autopilot</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box fragment" style="border-left-color: var(--mq-orange);">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-x-circle"></i> Passive (Vibe Coding)</h4>
+        <ul class="small">
+          <li>Describe what you want</li>
+          <li>Copy-paste whatever the AI gives you</li>
+          <li>Hope it works</li>
+          <li>No understanding of the code</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="info-box fragment" style="border-left-color: var(--mq-green);">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-check-circle"></i> Active (This Course)</h4>
+        <ul class="small">
+          <li><strong>Read</strong> the code the AI generates</li>
+          <li><strong>Understand</strong> what it does and why</li>
+          <li><strong>Ask questions</strong> when something doesn't make sense</li>
+          <li><strong>Develop judgement</strong> about when output is good vs not</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight fragment" style="text-align: center;">
+    <p>You're not accepting whatever the AI produces — you're <strong>working with it</strong>, steering the process, and learning along the way.</p>
+  </div>
+  <p class="fragment small" style="text-align: center;">We'll formalise this into the <strong>LLM Problem-Solving Loop</strong> later in this lecture.</p>
+</section>
+
+<!-- Slide: Open-Source Models & Local AI -->
+<section>
+  <h2><i class="ph ph-desktop-tower"></i> Open-Source Models &amp; Local AI</h2>
+  <div class="spacer"></div>
+  <p class="fragment">Not all AI has to live in the cloud. <strong>Open-source models</strong> can be downloaded and run entirely on your own computer.</p>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3 style="font-size: 0.85em;">Leading Open-Source Models</h3>
+      <ul>
+        <li class="fragment"><strong>Llama 4</strong> (Meta) — Scout &amp; Maverick variants, MoE architecture</li>
+        <li class="fragment"><strong>Mistral Large 3</strong> (Mistral AI) — 675B parameters, Apache 2.0 licence</li>
+        <li class="fragment"><strong>Gemma 3</strong> (Google) — smaller, efficient, designed for local use</li>
+      </ul>
+      <div class="spacer"></div>
+      <h3 style="font-size: 0.85em;">Tools to Run Them</h3>
+      <ul>
+        <li class="fragment"><a href="https://ollama.com" target="_blank"><strong>Ollama</strong></a> — open-source, command-line, lightweight</li>
+        <li class="fragment"><a href="https://lmstudio.ai" target="_blank"><strong>LM Studio</strong></a> — graphical interface, beginner-friendly</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="info-box fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-cpu"></i> Hardware Has Caught Up</h4>
+        <p class="small">Apple M4 Max/Ultra: up to 192GB unified memory. NVIDIA/AMD GPU systems with high VRAM. A well-configured MacBook Pro or desktop can run useful AI models entirely offline.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="key-insight fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-shield-check"></i> Why Run Locally?</h4>
+        <p class="small"><strong>Data privacy.</strong> Your data never leaves your machine. No API calls, no external logs. Essential for sensitive clinical data, patient records, or proprietary datasets where ethics approvals restrict external processing.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -925,11 +996,37 @@
   </div>
   <div class="spacer"></div>
   <ul>
-    <li class="fragment"><strong>ENGINEER:</strong> Be specific, provide context (your data, libraries, constraints), state your goal clearly</li>
+    <li class="fragment"><strong>ENGINEER:</strong> Be specific, provide context (your data, libraries, constraints), state your goal clearly. Context can include uploading documents, pasting errors, or asking the AI to search the web first.</li>
     <li class="fragment"><strong>PROMPT:</strong> Send it — don't overthink the first attempt, you'll iterate</li>
-    <li class="fragment"><strong>VERIFY:</strong> Run the code. Does it work? Does the output look right? Check it against what you know</li>
+    <li class="fragment"><strong>VERIFY:</strong> <strong>Read the code first</strong> — understand what it's doing. Then run it. Does it execute? Does the output make sense given what you know about your data?</li>
     <li class="fragment"><strong>REFINE:</strong> What went wrong? Add more context, correct misunderstandings, try a different angle</li>
   </ul>
+</section>
+
+<!-- Slide: Strategies for Working with AI -->
+<section>
+  <h2><i class="ph ph-strategy"></i> Strategies That Work</h2>
+  <div class="spacer"></div>
+  <p class="small">The inner loop typically runs 2–5 times. Here's how to make each iteration count:</p>
+  <div class="spacer"></div>
+  <div class="tool-grid">
+    <div class="tool-card fragment" style="border-left-color: var(--mq-blue);">
+      <h4><i class="ph ph-list-checks"></i> Ask the AI to Plan First</h4>
+      <p>Before writing code, ask it to outline its approach. Review the plan. Redirect if needed — <em>before</em> any code is written.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-puzzle-piece"></i> Break It Into Pieces</h4>
+      <p>Work step by step — load data, explore, then build one thing at a time. Smaller, focused prompts produce better results.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-file-text"></i> Provide Rich Context</h4>
+      <p>Paste column names, upload data dictionaries, share error tracebacks, point to documentation. Some tools can search the web — use that.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-orange);">
+      <h4><i class="ph ph-target"></i> Be Specific About Problems</h4>
+      <p><em>"This didn't work"</em> → weak. <em>"The plot shows all points in one colour, but I wanted them coloured by Gender"</em> → strong.</p>
+    </div>
+  </div>
 </section>
 
 <!-- Slide 41: The Nested View — HTML Diagram -->
