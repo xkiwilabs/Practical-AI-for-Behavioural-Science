@@ -1,4 +1,4 @@
-# Week 1: From Mind to Model — Why ML Belongs in Psychological Science
+# Week 1: Why ML and AI Belongs in Psychological Science
 
 > Companion reading for the Week 1 lecture. Read this before or after the lecture — it covers the same ideas in more detail and at your own pace.
 
