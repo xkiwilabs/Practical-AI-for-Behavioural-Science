@@ -439,7 +439,45 @@
   </div>
 </section>
 
-<!-- Slide 22: Multimodal LLMs — NEW -->
+<!-- Slide 22: Foundation Models & Model Sizes — NEW -->
+<section>
+  <h2><i class="ph ph-cube"></i> Foundation Models &amp; Model Sizes</h2>
+  <div class="spacer"></div>
+  <p class="fragment">These tools are powered by <strong>foundation models</strong> — large neural networks trained on massive data that can be adapted to many tasks.</p>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;">OpenAI</h3>
+      <p class="small"><strong>GPT-5</strong> (Aug 2025)<br>GPT-5.2 (Dec 2025)<br>Models: GPT-4o mini → GPT-5</p>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;">Google</h3>
+      <p class="small"><strong>Gemini 3</strong> (Nov 2025)<br>Gemini 3 Deep Think<br>Models: Flash → Pro → Ultra</p>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;">Anthropic</h3>
+      <p class="small"><strong>Claude Opus 4.6</strong> (Feb 2026)<br>Sonnet 4.5, Haiku 4.5<br>Models: Haiku → Sonnet → Opus</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-gauge"></i> Model "Flavours"</h4>
+        <p class="small">Each company offers <strong>different sizes</strong>. Larger models reason more carefully but are slower and cost more. Smaller models are faster and cheaper. A practical tradeoff you'll encounter.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="info-box fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-lightning"></i> Training vs Inference</h4>
+        <p class="small"><strong>Training</strong> = building the model (months, millions of dollars). <strong>Inference</strong> = using the model to generate a response (seconds, fractions of a cent). We'll cover this in Weeks 9–10.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fragment small"><strong>Mixture of experts (MoE):</strong> Rather than activating the entire network for every input, MoE models route to specialised sub-networks — large capacity, fast inference. Used in GPT-5, Gemini 3. More in later weeks.</p>
+</section>
+
+<!-- Slide 23: Multimodal LLMs -->
 <section>
   <h2><i class="ph ph-eye"></i> Multimodal AI</h2>
   <div class="spacer"></div>
@@ -462,32 +500,30 @@
     </div>
   </div>
   <div class="spacer"></div>
-  <p class="fragment small"><strong>Examples:</strong> GPT-4o (text + image + audio), Gemini 2.0 (natively multimodal), Claude (text + image + documents). These can process research papers, analyse figures, transcribe interviews, and more — all in one conversation.</p>
+  <p class="fragment small"><strong>Examples:</strong> GPT-5 (text + image + audio), Gemini 3 (natively multimodal), Claude (text + image + documents). These can process research papers, analyse figures, transcribe interviews, and more — all in one conversation.</p>
 </section>
 
 <!-- Slide 23: Coding Assistance & Vibe Coding -->
 <section>
   <h2><i class="ph ph-code"></i> Coding Assistance &amp; Vibe Coding</h2>
   <div class="spacer"></div>
-  <div class="two-col-wide-left">
-    <div class="col">
-      <ul>
-        <li class="fragment"><strong>GitHub Copilot</strong> (<a href="https://github.com/features/copilot" target="_blank">github.com/features/copilot</a>) — AI inside your code editor, suggests code as you type, answers coding questions
-          <ul><li>Free for students via the GitHub Student Developer Pack</li></ul>
-        </li>
-        <li class="fragment"><strong>"Vibe coding"</strong> — describe what you want in plain English, AI writes the code for you
-          <ul><li>Term coined by Andrej Karpathy (OpenAI founding member), February 2025</li>
-          <li><strong>This is how you'll code in this course</strong></li></ul>
-        </li>
-      </ul>
-      <div class="highlight-box fragment">
-        <p>25% of Y Combinator Winter 2025 startups had <strong>95% AI-generated</strong> codebases. This is already mainstream.</p>
-      </div>
-    </div>
-    <div class="col">
-      <img src="figures/slide20_fig01_placeholder.png" alt="Placeholder: screenshot of VS Code with Copilot" style="max-width: 100%; border-radius: 8px;">
-      <p class="small">Replace with: screenshot of VS Code + Copilot or vibe coding</p>
-    </div>
+  <ul>
+    <li class="fragment"><strong>GitHub Copilot</strong> (<a href="https://github.com/features/copilot" target="_blank">github.com/features/copilot</a>) — AI inside VS Code, suggests code as you type, answers coding questions
+      <ul><li>Free for students via the GitHub Student Developer Pack</li></ul>
+    </li>
+    <li class="fragment"><strong>AI-native code editors</strong> — <a href="https://cursor.com" target="_blank">Cursor</a> and <a href="https://windsurf.com" target="_blank">Windsurf</a> build AI into every part of the coding workflow
+      <ul><li>Edit, refactor, and debug across entire projects through conversation</li></ul>
+    </li>
+    <li class="fragment"><strong>"Vibe coding"</strong> — describe what you want in plain English, AI writes the code
+      <ul><li>Term coined by Andrej Karpathy (OpenAI founding member), February 2025</li>
+      <li><strong>This is how you'll code in this course</strong></li></ul>
+    </li>
+    <li class="fragment"><strong>CLI coding agents</strong> — AI that works directly in your terminal, reading your codebase and editing files autonomously
+      <ul><li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code</a> (Anthropic), <a href="https://github.com/openai/codex" target="_blank">Codex CLI</a> (OpenAI), <a href="https://github.com/google-gemini/gemini-cli" target="_blank">Gemini CLI</a> (Google, open source)</li></ul>
+    </li>
+  </ul>
+  <div class="highlight-box fragment">
+    <p>25% of Y Combinator Winter 2025 startups had <strong>95% AI-generated</strong> codebases. This is already mainstream.</p>
   </div>
 </section>
 
@@ -587,19 +623,32 @@
   <h2><i class="ph ph-robot"></i> Agentic Systems <span class="tag tag-purple">The Frontier</span></h2>
   <div class="spacer"></div>
   <div class="info-box">
-    <p>AI that can <strong>plan and execute multi-step tasks</strong> autonomously — break down a complex task, use tools, check its own work, and iterate toward a solution.</p>
+    <p>AI that doesn't just answer questions — it can <strong>plan, act, and iterate</strong> to complete complex tasks autonomously.</p>
   </div>
   <div class="spacer"></div>
-  <ul>
-    <li class="fragment">Instead of answering one question at a time, an agent can orchestrate an entire workflow
-      <ul><li>"Analyse this dataset, find the best model, generate a report" — as a single instruction</li></ul>
-    </li>
-    <li class="fragment">Already in use: AI coding agents that can write, test, and debug entire features autonomously</li>
-    <li class="fragment">For research: agents that can run literature reviews, analyse data, and draft methods sections
-      <ul><li>Still requires human oversight — the researcher remains in control of decisions</li></ul>
-    </li>
-  </ul>
-  <p class="fragment small">We'll explore agentic AI in more depth in Week 11.</p>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+        <li class="fragment"><strong>Tools</strong> — agents can use web search, code execution, file management, databases</li>
+        <li class="fragment"><strong>Skills</strong> — specialised capabilities like data analysis, writing, or research</li>
+        <li class="fragment"><strong>Autonomy</strong> — break tasks into steps, execute, check work, adjust approach</li>
+        <li class="fragment"><strong>Multi-agent systems</strong> — multiple specialised agents collaborating on a task
+          <ul><li>New protocols: Anthropic's <strong>MCP</strong>, Google's <strong>A2A</strong></li></ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="key-insight fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-trend-up"></i> How Big Is This?</h4>
+        <p class="small">Gartner: <strong>40%</strong> of enterprise apps will have AI agents by end of 2026. McKinsey: <strong>1,445%</strong> surge in multi-agent inquiries.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="info-box fragment">
+        <p class="small"><strong>Example:</strong> A coding agent reads your project, writes code across multiple files, runs the tests, fixes failures, and commits — all from a single instruction.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fragment small">We'll explore agentic AI in depth in Week 11.</p>
 </section>
 
 <!-- Slide 28: Tools Augment, Not Replace -->

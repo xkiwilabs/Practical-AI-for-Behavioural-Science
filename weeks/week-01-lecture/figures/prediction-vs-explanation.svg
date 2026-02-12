@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" font-family="Inter, Helvetica, Arial, sans-serif">
+  <!-- Explanation circle (blue) -->
+  <circle cx="260" cy="185" r="175" fill="#4A90D9" fill-opacity="0.1" stroke="#4A90D9" stroke-width="3"/>
+
+  <!-- Prediction circle (red) -->
+  <circle cx="440" cy="185" r="175" fill="#A71930" fill-opacity="0.1" stroke="#A71930" stroke-width="3"/>
+
+  <!-- Explanation text (left side, away from overlap) -->
+  <text x="175" y="145" font-size="20" font-weight="700" fill="#4A90D9" text-anchor="middle">Explanation</text>
+  <text x="175" y="170" font-size="14" fill="#2D2D2D" text-anchor="middle" font-style="italic">Traditional Psychology</text>
+  <text x="175" y="200" font-size="14" font-weight="600" fill="#2D2D2D" text-anchor="middle">Why does X cause Y?</text>
+  <text x="175" y="222" font-size="13" fill="#2D2D2D" text-anchor="middle">Controlled experiments,</text>
+  <text x="175" y="240" font-size="13" fill="#2D2D2D" text-anchor="middle">statistical inference</text>
+
+  <!-- Prediction text (right side, away from overlap) -->
+  <text x="525" y="145" font-size="20" font-weight="700" fill="#A71930" text-anchor="middle">Prediction</text>
+  <text x="525" y="170" font-size="14" fill="#2D2D2D" text-anchor="middle" font-style="italic">Machine Learning</text>
+  <text x="525" y="200" font-size="14" font-weight="600" fill="#2D2D2D" text-anchor="middle">Can we forecast Y from X?</text>
+  <text x="525" y="222" font-size="13" fill="#2D2D2D" text-anchor="middle">Pattern finding in</text>
+  <text x="525" y="240" font-size="13" fill="#2D2D2D" text-anchor="middle">large datasets</text>
+
+  <!-- Overlap text -->
+  <text x="350" y="178" font-size="18" font-weight="700" fill="#2D2D2D" text-anchor="middle">Both</text>
+  <text x="350" y="200" font-size="18" font-weight="700" fill="#2D2D2D" text-anchor="middle">valuable</text>
+  <text x="350" y="228" font-size="15" font-weight="600" fill="#A71930" text-anchor="middle">This course &#x2192;</text>
+
+  <!-- Caption -->
+  <text x="350" y="375" font-size="12" fill="#8C8C8C" text-anchor="middle" font-style="italic">Yarkoni &amp; Westfall (2017) &#x2014; psychology's focus on explanation has come at the cost of prediction</text>
+</svg>

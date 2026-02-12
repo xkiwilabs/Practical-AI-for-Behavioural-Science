@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" font-family="Inter, Helvetica, Arial, sans-serif">
+  <!-- Traditional Programming (left side) -->
+  <text x="170" y="28" font-size="17" font-weight="700" fill="#4A90D9" text-anchor="middle">Traditional Programming</text>
+
+  <!-- Rules box -->
+  <rect x="80" y="45" width="180" height="44" rx="8" fill="#4A90D9" fill-opacity="0.1" stroke="#4A90D9" stroke-width="2"/>
+  <text x="170" y="72" font-size="14" font-weight="600" fill="#4A90D9" text-anchor="middle">Rules (written by human)</text>
+
+  <!-- Plus -->
+  <text x="170" y="108" font-size="20" font-weight="700" fill="#8C8C8C" text-anchor="middle">+</text>
+
+  <!-- Data box -->
+  <rect x="80" y="118" width="180" height="44" rx="8" fill="#8C8C8C" fill-opacity="0.1" stroke="#8C8C8C" stroke-width="2"/>
+  <text x="170" y="145" font-size="14" font-weight="600" fill="#8C8C8C" text-anchor="middle">Data</text>
+
+  <!-- Down arrow -->
+  <text x="170" y="186" font-size="22" fill="#8C8C8C" text-anchor="middle">&#x2193;</text>
+
+  <!-- Output box -->
+  <rect x="80" y="195" width="180" height="44" rx="8" fill="#5BA55B" fill-opacity="0.1" stroke="#5BA55B" stroke-width="2"/>
+  <text x="170" y="222" font-size="14" font-weight="600" fill="#5BA55B" text-anchor="middle">Output</text>
+
+  <!-- Caption -->
+  <text x="170" y="260" font-size="12" fill="#8C8C8C" text-anchor="middle" font-style="italic">Computer follows rules</text>
+
+  <!-- VS divider -->
+  <text x="350" y="145" font-size="24" font-weight="700" fill="#8C8C8C" text-anchor="middle">vs</text>
+
+  <!-- Machine Learning (right side) -->
+  <text x="530" y="28" font-size="17" font-weight="700" fill="#A71930" text-anchor="middle">Machine Learning</text>
+
+  <!-- Data box -->
+  <rect x="440" y="45" width="180" height="44" rx="8" fill="#E8873D" fill-opacity="0.1" stroke="#E8873D" stroke-width="2"/>
+  <text x="530" y="72" font-size="14" font-weight="600" fill="#E8873D" text-anchor="middle">Data (lots of examples)</text>
+
+  <!-- Plus -->
+  <text x="530" y="108" font-size="20" font-weight="700" fill="#8C8C8C" text-anchor="middle">+</text>
+
+  <!-- Desired output box -->
+  <rect x="440" y="118" width="180" height="44" rx="8" fill="#8C8C8C" fill-opacity="0.1" stroke="#8C8C8C" stroke-width="2"/>
+  <text x="530" y="145" font-size="14" font-weight="600" fill="#8C8C8C" text-anchor="middle">Desired Output (goals)</text>
+
+  <!-- Down arrow -->
+  <text x="530" y="186" font-size="22" fill="#8C8C8C" text-anchor="middle">&#x2193;</text>
+
+  <!-- Rules box (learned) -->
+  <rect x="440" y="195" width="180" height="44" rx="8" fill="#A71930" fill-opacity="0.1" stroke="#A71930" stroke-width="2"/>
+  <text x="530" y="222" font-size="14" font-weight="600" fill="#A71930" text-anchor="middle">Rules (learned by computer)</text>
+
+  <!-- Caption -->
+  <text x="530" y="260" font-size="12" fill="#8C8C8C" text-anchor="middle" font-style="italic">Computer discovers rules</text>
+</svg>

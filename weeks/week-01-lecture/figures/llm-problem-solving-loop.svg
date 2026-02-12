@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 420" font-family="Inter, Helvetica, Arial, sans-serif">
+  <!-- Outer loop container -->
+  <rect x="15" y="10" width="820" height="400" rx="20" fill="#4A90D9" fill-opacity="0.04" stroke="#4A90D9" stroke-width="3"/>
+  <text x="40" y="38" font-size="13" font-weight="700" fill="#4A90D9" letter-spacing="1">OUTER LOOP &#x2014; YOUR RESEARCH PROCESS</text>
+
+  <!-- PLAN box -->
+  <rect x="35" y="60" width="120" height="60" rx="10" fill="#4A90D9" fill-opacity="0.12" stroke="#4A90D9" stroke-width="2"/>
+  <text x="95" y="86" font-size="16" font-weight="700" fill="#4A90D9" text-anchor="middle">PLAN</text>
+  <text x="95" y="106" font-size="11" fill="#4A90D9" text-anchor="middle">Define your goal</text>
+
+  <!-- Arrow PLAN -> EXECUTE -->
+  <text x="170" y="95" font-size="22" fill="#8C8C8C" text-anchor="middle">&#x2192;</text>
+
+  <!-- EXECUTE / Inner loop container -->
+  <rect x="190" y="50" width="430" height="200" rx="16" fill="#A71930" fill-opacity="0.04" stroke="#A71930" stroke-width="3"/>
+  <text x="210" y="76" font-size="11" font-weight="700" fill="#A71930" letter-spacing="0.8">EXECUTE &#x2014; INNER LOOP</text>
+
+  <!-- Inner loop boxes -->
+  <!-- ENGINEER -->
+  <rect x="210" y="90" width="90" height="50" rx="8" fill="#A71930" fill-opacity="0.12" stroke="#A71930" stroke-width="2"/>
+  <text x="255" y="112" font-size="12" font-weight="700" fill="#A71930" text-anchor="middle">ENGINEER</text>
+  <text x="255" y="128" font-size="9" fill="#A71930" text-anchor="middle">Craft prompt</text>
+
+  <!-- Arrow -->
+  <text x="312" y="118" font-size="16" fill="#8C8C8C" text-anchor="middle">&#x2192;</text>
+
+  <!-- PROMPT -->
+  <rect x="322" y="90" width="80" height="50" rx="8" fill="#E8873D" fill-opacity="0.12" stroke="#E8873D" stroke-width="2"/>
+  <text x="362" y="112" font-size="12" font-weight="700" fill="#E8873D" text-anchor="middle">PROMPT</text>
+  <text x="362" y="128" font-size="9" fill="#E8873D" text-anchor="middle">Send to AI</text>
+
+  <!-- Arrow -->
+  <text x="414" y="118" font-size="16" fill="#8C8C8C" text-anchor="middle">&#x2192;</text>
+
+  <!-- VERIFY -->
+  <rect x="424" y="90" width="80" height="50" rx="8" fill="#7B68A8" fill-opacity="0.12" stroke="#7B68A8" stroke-width="2"/>
+  <text x="464" y="112" font-size="12" font-weight="700" fill="#7B68A8" text-anchor="middle">VERIFY</text>
+  <text x="464" y="128" font-size="9" fill="#7B68A8" text-anchor="middle">Run &amp; check</text>
+
+  <!-- Arrow -->
+  <text x="516" y="118" font-size="16" fill="#8C8C8C" text-anchor="middle">&#x2192;</text>
+
+  <!-- REFINE -->
+  <rect x="526" y="90" width="80" height="50" rx="8" fill="#5BA55B" fill-opacity="0.12" stroke="#5BA55B" stroke-width="2"/>
+  <text x="566" y="112" font-size="12" font-weight="700" fill="#5BA55B" text-anchor="middle">REFINE</text>
+  <text x="566" y="128" font-size="9" fill="#5BA55B" text-anchor="middle">Add context</text>
+
+  <!-- Inner cycle-back arrow -->
+  <path d="M576 148 V180 H255 V155" stroke="#8C8C8C" stroke-width="2" stroke-dasharray="5 3" fill="none" stroke-linejoin="round"/>
+  <polygon points="255,148 249,158 261,158" fill="#8C8C8C"/>
+  <text x="415" y="195" font-size="12" font-weight="500" fill="#8C8C8C" text-anchor="middle">repeat 2-5 times</text>
+
+  <!-- Inner loop description -->
+  <text x="405" y="238" font-size="11" fill="#A71930" text-anchor="middle" font-style="italic">Working with the AI &#x2014; iterate until you get what you need</text>
+
+  <!-- Arrow EXECUTE -> EVALUATE -->
+  <text x="635" y="95" font-size="22" fill="#8C8C8C" text-anchor="middle">&#x2192;</text>
+
+  <!-- EVALUATE box -->
+  <rect x="650" y="60" width="120" height="60" rx="10" fill="#5BA55B" fill-opacity="0.12" stroke="#5BA55B" stroke-width="2"/>
+  <text x="710" y="86" font-size="15" font-weight="700" fill="#5BA55B" text-anchor="middle">EVALUATE</text>
+  <text x="710" y="106" font-size="11" fill="#5BA55B" text-anchor="middle">Is it correct?</text>
+
+  <!-- Arrow EVALUATE -> DOCUMENT -->
+  <path d="M710 125 V270" stroke="#8C8C8C" stroke-width="2" fill="none"/>
+  <polygon points="710,278 704,268 716,268" fill="#8C8C8C"/>
+
+  <!-- DOCUMENT box -->
+  <rect x="650" y="280" width="120" height="60" rx="10" fill="#C8972C" fill-opacity="0.12" stroke="#C8972C" stroke-width="2"/>
+  <text x="710" y="308" font-size="14" font-weight="700" fill="#C8972C" text-anchor="middle">DOCUMENT</text>
+  <text x="710" y="326" font-size="11" fill="#C8972C" text-anchor="middle">Record &amp; reflect</text>
+
+  <!-- Outer cycle-back arrow (DOCUMENT -> PLAN) -->
+  <path d="M648 310 H95 V125" stroke="#4A90D9" stroke-width="2.5" stroke-dasharray="6 4" fill="none" stroke-linejoin="round" opacity="0.5"/>
+  <polygon points="95,118 89,128 101,128" fill="#4A90D9" opacity="0.5"/>
+  <text x="370" y="300" font-size="12" font-weight="500" fill="#8C8C8C" text-anchor="middle">each cycle deepens your understanding</text>
+
+  <!-- Key insight box -->
+  <rect x="35" y="355" width="580" height="40" rx="8" fill="#A71930" fill-opacity="0.06" stroke="#A71930" stroke-width="2"/>
+  <text x="325" y="380" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">This is your workflow for every lab challenge in this course. By Week 10, it'll be second nature.</text>
+</svg>
