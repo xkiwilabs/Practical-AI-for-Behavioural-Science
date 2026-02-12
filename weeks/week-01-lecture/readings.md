@@ -42,6 +42,14 @@ These go deeper into specific topics from the lecture. Read them if something fr
 
 *Why read this:* Demonstrates how LLMs can be conditioned with demographic backstories to simulate human survey responses — creating "silicon samples" that reproduce real survey distributions. Raises important questions about using AI in social science research. Preprint available on [arXiv](https://arxiv.org/abs/2209.06899).
 
+### 9. Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). On the dangers of stochastic parrots: Can language models be too big? In *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency* (pp. 610–623). ACM. https://doi.org/10.1145/3442188.3445922
+
+*Why read this:* The paper that coined the term "stochastic parrots" for LLMs — arguing that these models stitch together sequences of words based on statistical patterns without any reference to meaning. An important counterpoint to claims about LLM intelligence, and directly relevant to the discussion questions in the companion reading. [Free PDF](https://s10251.pcdn.co/pdf/2021-bender-parrots.pdf).
+
+### 10. Onnela, J.-P., & Rauch, S. L. (2016). Harnessing smartphone-based digital phenotyping to enhance behavioral and mental health. *Neuropsychopharmacology, 41*(7), 1691–1696. https://doi.org/10.1038/npp.2016.7
+
+*Why read this:* An early and influential paper on digital phenotyping — using passive smartphone sensor data to understand and predict mental health. Raises key questions about privacy, ethics, and the potential of ML in clinical settings. **Open access** via [PubMed Central](https://pmc.ncbi.nlm.nih.gov/articles/PMC4869063/).
+
 ---
 
 ## Recommended Books
