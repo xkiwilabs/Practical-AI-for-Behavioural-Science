@@ -22,19 +22,23 @@ These go deeper into specific topics from the lecture. Read them if something fr
 
 *Why read this:* A fascinating study that tested LLMs on classic cognitive psychology tasks — the kind you've studied in cognitive science courses. Shows how larger language models develop human-like biases, and how ChatGPT can engage in more deliberate reasoning. Published in *Nature Computational Science*.
 
-### 4. Dwyer, D. B., Falkai, P., & Koutsouleris, N. (2018). Machine learning approaches for clinical psychology and psychiatry. *Annual Review of Clinical Psychology, 14*, 91–118. https://doi.org/10.1146/annurev-clinpsy-032816-045037
+### 4. Binz, M., Schulz, E., et al. (2025). A foundation model to predict and capture human cognition. *Nature, 644*(8078), 1002–1009. https://doi.org/10.1038/s41586-025-09215-4
+
+*Why read this:* The team created Psych-101, a massive dataset of 60,000+ participants making 10 million+ choices across 160 experiments, and used it to fine-tune an LLM (Centaur) that predicts human behaviour better than traditional cognitive models. A landmark demonstration of ML as a tool for building unified theories of cognition. **Open access** — free preprint on [arXiv](https://arxiv.org/abs/2410.20268).
+
+### 5. Dwyer, D. B., Falkai, P., & Koutsouleris, N. (2018). Machine learning approaches for clinical psychology and psychiatry. *Annual Review of Clinical Psychology, 14*, 91–118. https://doi.org/10.1146/annurev-clinpsy-032816-045037
 
 *Why read this:* A comprehensive review of how ML is being used in clinical psychology and psychiatry — from diagnosis to treatment prediction. Good for understanding the clinical applications of the methods we'll cover.
 
-### 5. Hassabis, D., Kumaran, D., Summerfield, C., & Botvinick, M. (2017). Neuroscience-inspired artificial intelligence. *Neuron, 95*(2), 245–258. https://doi.org/10.1016/j.neuron.2017.06.011
+### 6. Hassabis, D., Kumaran, D., Summerfield, C., & Botvinick, M. (2017). Neuroscience-inspired artificial intelligence. *Neuron, 95*(2), 245–258. https://doi.org/10.1016/j.neuron.2017.06.011
 
 *Why read this:* For cognitive science students especially — this paper explores the two-way relationship between neuroscience and AI. Written by researchers at DeepMind (including CEO Demis Hassabis), it argues that understanding the brain can inspire better AI, and vice versa. **Open access.**
 
-### 6. Auletta, F., Kallen, R. W., di Bernardo, M., & Richardson, M. J. (2023). Predicting and understanding human action decisions during skillful joint-action using supervised machine learning and explainable-AI. *Scientific Reports, 13*, 4992. https://doi.org/10.1038/s41598-023-31807-1
+### 7. Auletta, F., Kallen, R. W., di Bernardo, M., & Richardson, M. J. (2023). Predicting and understanding human action decisions during skillful joint-action using supervised machine learning and explainable-AI. *Scientific Reports, 13*, 4992. https://doi.org/10.1038/s41598-023-31807-1
 
 *Why read this:* A direct demonstration of ML + explainable AI applied to understanding human behaviour in a collaborative task. Shows how ML models can reveal things about human decision-making that traditional methods miss. **Open access.**
 
-### 7. Argyle, L. P., Busby, E. C., Fulda, N., Gubler, J. R., Rytting, C., & Wingate, D. (2023). Out of one, many: Using language models to simulate human samples. *Political Analysis, 31*(3), 337–351. https://doi.org/10.1017/pan.2023.2
+### 8. Argyle, L. P., Busby, E. C., Fulda, N., Gubler, J. R., Rytting, C., & Wingate, D. (2023). Out of one, many: Using language models to simulate human samples. *Political Analysis, 31*(3), 337–351. https://doi.org/10.1017/pan.2023.2
 
 *Why read this:* Demonstrates how LLMs can be conditioned with demographic backstories to simulate human survey responses — creating "silicon samples" that reproduce real survey distributions. Raises important questions about using AI in social science research. Preprint available on [arXiv](https://arxiv.org/abs/2209.06899).
 

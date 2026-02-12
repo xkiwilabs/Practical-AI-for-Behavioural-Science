@@ -17,7 +17,11 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │   │   ├── README.md              # Companion reading
 │   │   ├── readings.md            # Optional/suggested readings
 │   │   ├── examples/              # Code examples, notebooks, plots
-│   │   └── slides/                # .pptx files (git-ignored, local only)
+│   │   ├── scripts/               # Figure generation scripts (optional)
+│   │   └── slides/                # reveal.js slide deck
+│   │       ├── index.html         # The slide deck (HTML)
+│   │       ├── css/mq-theme.css   # Shared MQ theme (copy per week)
+│   │       └── figures/           # Generated + placeholder images
 │   ├── week-02-lab/               # Challenge lab weeks
 │   │   ├── README.md              # Challenge brief
 │   │   ├── starter.ipynb          # Starter notebook with scaffolding
@@ -84,6 +88,7 @@ Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-le
 1. **README.md** — Companion reading covering lecture topics in detail
    - Overview (2-3 sentences: what and why)
    - Key Concepts (explained with psychology-relevant examples)
+   - **"Think about it" discussion prompts** — 3-4 per lecture week (see below)
    - Worked Examples (reference notebooks in `examples/`)
    - Common Misconceptions
    - Connections to Psychology
@@ -100,9 +105,35 @@ Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-le
    - Include clear comments explaining each step
    - Name descriptively: `01_train_test_split_demo.ipynb`
 
-4. **slides/** — PowerPoint files (git-ignored)
-   - Develop locally, distribute via iLearn
-   - Won't appear on GitHub
+4. **slides/** — reveal.js HTML slide deck (see "Building Slide Decks" below)
+   - `index.html` — the slide content
+   - `css/mq-theme.css` — shared MQ-branded theme
+   - `figures/` — generated PNGs + placeholder images
+
+### "Think About It" Discussion Prompts
+
+Each lecture week's companion reading should include **3–4 discussion prompts** embedded at natural pause points. These are designed for the instructor to use during the live lecture as 2–3 minute class discussions.
+
+**Format:** Use a blockquote with bold label:
+```markdown
+> **Think about it:** Your question here?
+```
+
+**Guidelines:**
+- Place them *after* the concept they relate to, not before — the student needs the context first
+- Focus on genuine tensions, open questions, or human-vs-AI contrasts — not factual recall
+- Good prompts don't have a single right answer; they invite debate and multiple perspectives
+- Prefer questions that connect the technical content to psychology, cognition, or research practice
+- Aim for questions that honours students can engage with using their existing knowledge — they shouldn't need ML expertise to have a thoughtful opinion
+
+**Themes that work well:**
+- Differences between human cognition and artificial intelligence (e.g., data efficiency, embodied knowledge, understanding vs. pattern matching)
+- Ethical tensions in applying ML to human behaviour
+- When is a method useful vs. when is it misleading?
+- What does "understanding" mean in the context of prediction?
+
+**Example (from Week 1):**
+> **Think about it:** Why do you think a toddler can learn "dog" from a few examples while an ML model needs thousands? What does the human bring to the task that the model doesn't?
 
 ---
 
@@ -139,6 +170,298 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
 
 ---
 
+## Building Slide Decks
+
+Slides are built as **reveal.js HTML decks** — no PowerPoint, no build step. Each lecture week has a self-contained `slides/` folder with an `index.html`, a shared CSS theme, and a `figures/` directory.
+
+### Workflow: README First, Then Slides, Then Iterate
+
+1. **Write the README.md first.** The companion reading defines the content, structure, and "Think about it" prompts. The slide deck is a visual presentation of this content — not the other way around.
+2. **Build the slide deck** from the README. Each major section of the reading maps to a section in the slides. Add fragment animations, diagrams, and examples.
+3. **Iterate.** Open `index.html` in a browser, step through the slides, adjust text density, timing, and visuals. Refine both the slides and the README together.
+
+### Slide Deck Structure
+
+Every lecture deck follows this template structure:
+
+```
+slides/
+├── index.html          # The deck — all slides in one file
+├── css/
+│   └── mq-theme.css    # MQ-branded theme (copy from Week 1)
+└── figures/
+    ├── *.png           # Generated figures (from scripts/)
+    └── slide##_fig##_placeholder.png  # Placeholders for manual images
+```
+
+### index.html Template
+
+The HTML file loads reveal.js and plugins from CDN (no local install needed):
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week N: Title — PSYC4411</title>
+
+  <!-- reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+
+  <!-- MQ custom theme -->
+  <link rel="stylesheet" href="css/mq-theme.css">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- SLIDES GO HERE -->
+
+</div></div>
+
+<!-- reveal.js core + plugins -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+
+<script>
+  // See Week 1 for the full config including nav bar and clock
+  Reveal.initialize({ ... });
+</script>
+</body>
+</html>
+```
+
+Copy the full `<script>` block from Week 1's `index.html` — it includes the Reveal config, the custom navigation bar builder, and the live clock.
+
+### Reveal.js Configuration
+
+Key settings (defined in the `Reveal.initialize()` call):
+
+| Setting | Value | Purpose |
+|---------|-------|---------|
+| `width` / `height` | 1920 / 1080 | 16:9 widescreen design dimensions |
+| `margin` | 0 | Full-bleed slides |
+| `center` | false | Content starts from the top, not vertically centred |
+| `controls` | true | Forward/back arrows visible |
+| `controlsLayout` | 'edges' | Arrows at far left/right edges of the slide |
+| `slideNumber` | false | Disabled — replaced by custom nav bar |
+| `progress` | false | Disabled — replaced by custom nav bar |
+| `transition` | 'slide' | Horizontal slide transition |
+| `hash` | true | URL updates with slide number for direct linking |
+
+### Custom Features (built in JS, appended after `Reveal.initialize()`)
+
+These are included in the Week 1 script block. Copy them into every deck:
+
+- **Slide navigation bar** — thin bar at the bottom of every slide. Shows progress (red tint for visited slides, solid red for current). On hover, expands to show numbered pills with slide-title tooltips. Click to jump.
+- **Live clock** — top-right corner, 12-hour format, updates every 15 seconds. Adapts colour for dark-background slides.
+
+### Slide Types and CSS Classes
+
+The MQ theme (`mq-theme.css`) defines these slide types. Use the appropriate class on the `<section>` element.
+
+| Class | Background | Use |
+|-------|-----------|-----|
+| `.title-slide` | Dark gradient (via `data-background-gradient`) | First slide only — title, subtitle, instructor info |
+| `.section-divider` | MQ red gradient (via `data-background-gradient`) | Section breaks between major topics |
+| `.think-slide` | Dark navy gradient (via `data-background-gradient`) | "Think about it" discussion prompts |
+| `.end-slide` | Dark gradient (via `data-background-gradient`) | Final "Questions?" slide |
+| `.image-full` | White | Centred image with caption |
+| *(no class)* | White | Standard content slides |
+
+**Important:** Dark-background slides use `data-background-gradient` on the `<section>` tag, not CSS `background`. This is required for reveal.js to render the gradient full-viewport behind the content.
+
+```html
+<!-- Section divider example -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-brain"></i></div>
+  <h2>Section Title</h2>
+  <p>Subtitle text</p>
+</section>
+
+<!-- Think about it example -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>Your discussion question here?</p>
+</section>
+```
+
+### Background Gradients Reference
+
+| Slide type | `data-background-gradient` value |
+|------------|----------------------------------|
+| Title slide | `linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)` |
+| Section divider | `linear-gradient(135deg, #A71930 0%, #8B1428 100%)` |
+| Think-about-it | `linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)` |
+| End slide | `linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)` |
+
+### Layout Classes
+
+| Class | Description |
+|-------|-------------|
+| `.two-col` | Equal two-column grid (50/50) |
+| `.two-col-wide-left` | Two-column grid, left wider (65/35) |
+| `.two-col-wide-right` | Two-column grid, right wider (35/65) |
+| `.three-col` | Equal three-column grid |
+| `.col` | Column container (child of the grid classes above) |
+
+### Content Component Classes
+
+| Class | Description |
+|-------|-------------|
+| `.highlight-box` | Red-accented callout box (left border) |
+| `.info-box` | Blue-accented callout box (left border) |
+| `.key-insight` | Gold-accented callout box (left border) |
+| `.tag` + `.tag-red` / `.tag-blue` / etc. | Inline coloured pill badges |
+| `.prompt-bad` | Red-bordered monospace box for "vague" prompt examples |
+| `.prompt-good` | Green-bordered monospace box for "specific" prompt examples |
+| `.tool-grid` | 2×2 grid of tool/feature cards |
+| `.tool-card` | Individual card within `.tool-grid` |
+| `.small` | Smaller, grey text for annotations and attributions |
+| `.spacer` | 12px vertical gap |
+| `.spacer-lg` | 24px vertical gap |
+
+### HTML Diagram Classes
+
+Prefer HTML/CSS diagrams over static images for flow charts, hierarchies, comparisons, and timelines — they animate with fragments, are easy to edit, and scale cleanly.
+
+| Class | Description |
+|-------|-------------|
+| `.hierarchy-diagram` / `.hierarchy-layer` | Nested box diagram (e.g., AI → ML → DL → GenAI) |
+| `.flow-diagram` / `.flow-step` / `.flow-arrow` | Horizontal step-by-step flow chart |
+| `.compare-diagram` / `.compare-side` / `.compare-box` | Side-by-side comparison (e.g., traditional vs ML) |
+| `.venn-container` / `.venn-circle` / `.venn-overlap` | Two-circle Venn diagram |
+| `.timeline` / `.timeline-event` / `.timeline-dot` / `.timeline-year` / `.timeline-text` | Horizontal timeline with coloured dots |
+
+### Coloured Bullet Classes
+
+Match bullet marker colour to a diagram element:
+
+```html
+<li class="fragment bullet-blue">Blue-bulleted text</li>
+<li class="fragment bullet-red">Red-bulleted text</li>
+```
+
+Available: `.bullet-blue`, `.bullet-orange`, `.bullet-grey`, `.bullet-green`, `.bullet-red`, `.bullet-purple`.
+
+Use `.timeline-bullets` on the `<ul>` for extra vertical spacing between items.
+
+### Flow Diagram Cycle-Back Arrows
+
+For loops (outer loop, inner loop), add a right-angle SVG return arrow beneath the flow diagram. The arrow goes down from the last step, across horizontally, and back up into the first step:
+
+```html
+<div class="flow-cycle fragment" style="height: 44px;">
+  <svg width="720" height="44" viewBox="0 0 720 44" fill="none" xmlns="http://www.w3.org/2000/svg"
+       style="display: block; margin: 0 auto;">
+    <!-- Right-angle path: down from last step, across, up into first step -->
+    <path d="M660 2 V32 H60 V14" stroke="#8C8C8C" stroke-width="2.5"
+          stroke-dasharray="6 4" fill="none" stroke-linejoin="round"/>
+    <!-- Upward arrowhead -->
+    <polygon points="60,6 53,16 67,16" fill="#8C8C8C"/>
+    <!-- Label on horizontal segment -->
+    <text x="360" y="28" text-anchor="middle" font-family="Inter, sans-serif"
+          font-size="13" font-weight="500" fill="#8C8C8C">label text here</text>
+  </svg>
+</div>
+```
+
+Adjust `width`, `M`/`V`/`H` coordinates, and arrowhead position to match the flow diagram width.
+
+### Fragment Animations
+
+Use `class="fragment"` on any element to reveal it on click/keypress. Use `data-fragment-index="N"` to synchronise multiple elements appearing together (e.g., a timeline dot and its matching bullet point):
+
+```html
+<!-- These appear together -->
+<div class="timeline-event fragment" data-fragment-index="0"> ... </div>
+<li class="fragment bullet-blue" data-fragment-index="0">Matching text</li>
+```
+
+### Placeholder Images
+
+For images that need to be added manually later (screenshots, photos), create a placeholder:
+
+- File name: `slide##_fig##_placeholder.png` (e.g., `slide19_fig01_placeholder.png`)
+- Generate a simple grey rectangle with matplotlib or use any 800×600 grey image
+- Reference in HTML with a descriptive `alt` tag and a `<p class="small">Replace with: description</p>` caption
+
+### Citing References in Slides
+
+Every journal article or book cited in the slides must include a hyperlink:
+
+- **Author names** should be wrapped in an `<a>` tag linking to the paper
+- **Journal line** (e.g., "Published in Nature, 2023") should also link to the paper
+- Link to the **DOI URL** (e.g., `https://doi.org/10.xxxx/xxxxx`) as the primary link — this is permanent and resolves to the publisher
+- If the paper is **open access**, note this (e.g., "Open access") after the journal link
+- If the paper is behind a paywall but has an **open preprint** (e.g., arXiv, PsyArXiv, PMC), add a second link to the free version
+- Always use `target="_blank"` so links open in a new tab
+
+Example:
+```html
+<li><a href="https://doi.org/10.1038/s41598-023-31807-1" target="_blank">Auletta et al. (2023)</a> used LSTM networks...</li>
+...
+<p class="small"><em>Published in <a href="https://doi.org/10.1038/s41598-023-31807-1" target="_blank">Scientific Reports, 2023</a></em> · Open access</p>
+```
+
+Before including any reference, verify via web search that the DOI resolves correctly and check whether an open access version exists. See `.claude/CLAUDE.md` for full reference verification rules.
+
+### Icons
+
+Use [Phosphor Icons](https://phosphoricons.com/) (loaded via CDN). Two weights available:
+
+- Regular: `<i class="ph ph-icon-name"></i>`
+- Bold: `<i class="ph-bold ph-icon-name"></i>`
+
+Common icons used in slides: `ph-brain`, `ph-lightbulb`, `ph-code`, `ph-flask`, `ph-robot`, `ph-chart-line-up`, `ph-chats-circle`, `ph-toolbox`, `ph-arrows-clockwise`, `ph-rocket-launch`, `ph-warning`, `ph-microphone`, `ph-pencil-line`, `ph-presentation-chart`, `ph-gear`, `ph-hand-waving`.
+
+### Typical Section Structure (per lecture)
+
+Each major topic in the lecture follows this pattern in the HTML:
+
+```
+1. Section divider slide (dark red background, icon, title)
+2. Definition / overview slide (highlight-box with key definition)
+3. 2–4 content slides (bullet points with fragments, examples, diagrams)
+4. "Think about it" slide (dark navy background, discussion question)
+```
+
+### Slide Count Guidelines
+
+| Week type | Target slides | Notes |
+|-----------|--------------|-------|
+| Week 1 | ~60 | Extended lecture time (no student presentations) |
+| Standard lecture (Weeks 3, 5, 7, 9) | 40–50 | ~60 min lecture time |
+| Week 11 (hybrid) | 30–40 | Split between lecture and lab |
+
+These include section dividers, think-about-it slides, and the assessment/homework slides. Some slides advance quickly (section dividers); others need 2–3 minutes of discussion.
+
+### Checklist: New Slide Deck
+
+- [ ] Copy `slides/` folder structure from Week 1
+- [ ] Copy `css/mq-theme.css` unchanged (shared theme)
+- [ ] Copy the full `<script>` block from Week 1 (config + nav bar + clock)
+- [ ] Update `<title>` to "Week N: Title — PSYC4411"
+- [ ] Update the title slide (week number, subtitle, keep instructor info)
+- [ ] Build section dividers for each major topic
+- [ ] Build content slides from the README sections
+- [ ] Add "Think about it" slides matching the README discussion prompts
+- [ ] Add fragment animations to all bullet points and diagram elements
+- [ ] Prefer HTML/CSS diagrams over static images where possible
+- [ ] Add placeholder images for screenshots/photos not yet available
+- [ ] Test: open in browser, step through every slide and fragment
+- [ ] Check text density: slides should feel full (not cramped, not empty)
+- [ ] Australian English throughout (behaviour, generalisation, colour, etc.)
+
+---
+
 ## Conventions
 
 ### File Naming
@@ -171,16 +494,16 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
 
 | Week | Type | Topic | Key Deliverables |
 |------|------|-------|------------------|
-| 1 | Lecture | ML in Psychological Science | Companion reading, concept examples |
-| 2 | Lab | Setup + LLM Problem-Solving Loop | Starter notebook, figure reproduction challenge |
-| 3 | Lecture | Generalisation & Overfitting | Companion reading, train/test demo |
-| 4 | Lab | Regression Pipeline | Starter notebook, prediction challenge, dataset |
-| 5 | Lecture | Classification & Evaluation | Companion reading, metrics examples |
-| 6 | Lab | Trees & Ensembles | Starter notebook, classifier challenge, dataset |
-| 7 | Lecture | Clustering & Dim. Reduction | Companion reading, clustering demos |
-| 8 | Lab | PCA/UMAP & Clustering | Starter notebook, structure challenge, dataset |
-| 9 | Lecture | Neural Networks | Companion reading, MLP examples |
-| 10 | Lab | Neural Network Training | Starter notebook, baseline challenge, dataset |
-| 11 | Hybrid | Embeddings & LLMs | Companion reading + LLM challenge, dataset |
+| 1 | Lecture | ML in Psychological Science | Companion reading, slide deck, readings |
+| 2 | Lab | Setup + LLM Problem-Solving Loop | Starter notebook, challenge brief, dataset |
+| 3 | Lecture | Generalisation & Overfitting | Companion reading, slide deck, train/test demo |
+| 4 | Lab | Regression Pipeline | Starter notebook, challenge brief, dataset |
+| 5 | Lecture | Classification & Evaluation | Companion reading, slide deck, metrics examples |
+| 6 | Lab | Trees & Ensembles | Starter notebook, challenge brief, dataset |
+| 7 | Lecture | Clustering & Dim. Reduction | Companion reading, slide deck, clustering demos |
+| 8 | Lab | PCA/UMAP & Clustering | Starter notebook, challenge brief, dataset |
+| 9 | Lecture | Neural Networks | Companion reading, slide deck, MLP examples |
+| 10 | Lab | Neural Network Training | Starter notebook, challenge brief, dataset |
+| 11 | Hybrid | Embeddings & LLMs | Companion reading, slide deck, challenge, dataset |
 | 12 | Review | Viva Preparation | Study guide, concept list, practice Qs |
 | 13 | Discussion | Ethics & Reflection | Discussion prompts |
