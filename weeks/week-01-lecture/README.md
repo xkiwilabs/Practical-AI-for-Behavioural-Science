@@ -8,6 +8,8 @@ This course is about learning to use modern computational tools — machine lear
 
 Here's the reassuring part: **you don't need any coding or technical background.** You'll use AI assistants to help you write code, and you'll learn by doing — exploring data, building models, and making sense of results. The goal isn't to become a software developer. It's to become a researcher who can use these powerful new tools thoughtfully and critically.
 
+The lecture slides for this week are available here: **[Week 1 Slides](slides/index.html)**
+
 ## Key Concepts
 
 ### What Are AI and Machine Learning?
