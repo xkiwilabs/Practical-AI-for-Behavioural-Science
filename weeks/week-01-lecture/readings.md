@@ -66,6 +66,10 @@ These go deeper into specific topics from the lecture. Read them if something fr
 
 *Why read this:* Shows that perception and action are coupled dynamical systems, with behaviour emerging from the continuous interaction between body, brain, and environment. A clear, well-written argument for why psychology needs dynamical systems thinking.
 
+### 15. Richardson, M. J., Dale, R., & Marsh, K. L. (2014). Complex dynamical systems in social and personality psychology: Theory, modeling, and analysis. In H. T. Reis & C. M. Judd (Eds.), *Handbook of research methods in social and personality psychology* (2nd ed., pp. 253–282). Cambridge University Press. https://doi.org/10.1017/CBO9780511996481.015
+
+*Why read this:* Extends complex systems thinking to social coordination and interpersonal dynamics — how people synchronise movements, coordinate conversations, and create emergent group behaviour. Shows how dynamical systems methods apply across the full range of psychological phenomena, from neurons to social interaction.
+
 ---
 
 ## Recommended Books
