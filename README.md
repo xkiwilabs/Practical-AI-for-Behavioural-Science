@@ -40,7 +40,7 @@ My research sits at the intersection of experimental psychology, cognitive scien
 
 | Week | Date | Type | Topic | Slides |
 |------|------|------|-------|--------|
-| 1 | 23 Feb | Lecture | [Why ML and AI Belongs in Psychological Science](weeks/week-01-lecture/) | [Slides](weeks/week-01-lecture/slides/index.html) |
+| 1 | 23 Feb | Lecture | [Why ML and AI Belongs in Psychological Science](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
 | 2 | 02 Mar | Lab | [Setup, Plotting, and the LLM Problem-Solving Loop](weeks/week-02-lab/) | — |
 | 3 | 09 Mar | Lecture | [Models, Not Magic: Generalisation, Overfitting, and How ML Misleads](weeks/week-03-lecture/) | Slides |
 | 4 | 16 Mar | Lab | [Regression Pipeline, Cross-Validation, and Interpretation](weeks/week-04-lab/) | — |
