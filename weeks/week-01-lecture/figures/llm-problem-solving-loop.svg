@@ -76,6 +76,6 @@
   <text x="370" y="300" font-size="12" font-weight="500" fill="#8C8C8C" text-anchor="middle">each cycle deepens your understanding</text>
 
   <!-- Key insight box -->
-  <rect x="35" y="355" width="580" height="40" rx="8" fill="#A71930" fill-opacity="0.06" stroke="#A71930" stroke-width="2"/>
-  <text x="325" y="380" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">This is your workflow for every lab challenge in this course. By Week 10, it'll be second nature.</text>
+  <rect x="35" y="355" width="780" height="40" rx="8" fill="#A71930" fill-opacity="0.06" stroke="#A71930" stroke-width="2"/>
+  <text x="425" y="380" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">This is your workflow for every lab challenge in this course. By Week 10, it'll be second nature.</text>
 </svg>
