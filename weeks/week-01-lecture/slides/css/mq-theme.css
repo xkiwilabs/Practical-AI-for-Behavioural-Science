@@ -845,6 +845,31 @@
   margin-bottom: 0.65em;
 }
 
+/* ===== Back to Repo Link ===== */
+.back-to-repo {
+  position: fixed;
+  top: 16px;
+  left: 24px;
+  z-index: 50;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mq-grey);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 4px 14px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  transition: opacity 0.3s, color 0.3s, background 0.3s;
+  opacity: 0.7;
+}
+.back-to-repo:hover {
+  opacity: 1;
+  color: var(--mq-red);
+  text-decoration: none;
+}
+
 /* ===== Live Clock ===== */
 .live-clock {
   position: fixed;

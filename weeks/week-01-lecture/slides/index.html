@@ -1760,6 +1760,14 @@
     Reveal.on('slidechanged', updateNav);
     updateNav();
 
+    // === Back to Repo Link (top-left) ===
+    var backLink = document.createElement('a');
+    backLink.className = 'back-to-repo';
+    backLink.href = 'https://github.com/xkiwilabs/Current-Advances-in-Psychological-Methods-and-Analyses-Repo';
+    backLink.target = '_blank';
+    backLink.textContent = '\u2190 Back to Repo';
+    document.body.appendChild(backLink);
+
     // === Live Clock (top-right) ===
     var clock = document.createElement('div');
     clock.className = 'live-clock';
@@ -1777,8 +1785,8 @@
     updateClock();
     setInterval(updateClock, 15000);
 
-    // Adapt clock style for dark slides
-    function updateClockStyle() {
+    // Adapt clock and back-link style for dark slides
+    function updateOverlayStyles() {
       var current = Reveal.getCurrentSlide();
       var isDark = current.classList.contains('section-divider') ||
                    current.classList.contains('title-slide') ||
@@ -1786,10 +1794,12 @@
                    current.classList.contains('end-slide');
       clock.style.color = isDark ? 'rgba(255,255,255,0.5)' : '';
       clock.style.background = isDark ? 'rgba(0,0,0,0.3)' : '';
+      backLink.style.color = isDark ? 'rgba(255,255,255,0.5)' : '';
+      backLink.style.background = isDark ? 'rgba(0,0,0,0.3)' : '';
     }
 
-    Reveal.on('slidechanged', updateClockStyle);
-    updateClockStyle();
+    Reveal.on('slidechanged', updateOverlayStyles);
+    updateOverlayStyles();
   });
 </script>
 </body>
