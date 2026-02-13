@@ -313,12 +313,38 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
    - Should run without errors as-is (just loads data and prints summary)
 
 5. **Example solution** (on `solutions` branch only, in `example_solution/`)
-   - `plan.md` — Analysis plan following the plan-first approach
-   - `example_solution.ipynb` — Complete notebook workflow solution
-   - `visualise.py` — Complete script workflow solution
-   - `plan_final.md` — Updated plan documenting what actually happened
-   - `slide.html` + `css/` — Example presentation slide
-   - Include commentary explaining choices and the thinking process
+
+   The example solution demonstrates the full workflow students should follow, including patterns they can learn from. See Week 2's `example_solution/` for the reference implementation.
+
+   **Folder structure:**
+   ```
+   example_solution/
+   ├── README.md                    # Explains what's in the folder (shows on GitHub)
+   ├── plan.md                      # Initial analysis plan (before coding)
+   ├── plan_final.md                # Updated plan documenting what actually happened
+   ├── example_solution.ipynb       # Notebook workflow (explore → plan → visualise → bonus)
+   ├── explore_data.py              # Script workflow step 1: explore the data
+   ├── visualise_key_variables.py   # Script workflow step 2: focused visualisation
+   ├── slide.html                   # Example presentation slide (reveal.js)
+   ├── css/mq-theme.css             # Slide styling
+   └── images/                      # All generated figures
+       ├── correlation_heatmap.png  # From exploration step
+       ├── pairplot.png             # From exploration step
+       ├── our_visualisation.png    # Notebook main output
+       ├── <script_output>.png      # Script main output
+       └── bonus_*.png              # Bonus challenge outputs
+   ```
+
+   **Key principles:**
+   - **Exploration first** — Both workflows (notebook and script) must start by exploring the data before planning a visualisation. This means computing summary statistics, a correlation matrix, and a pairplot (or equivalent). The exploration findings should inform which variables to focus on and what plot types to use.
+   - **Two scripts, not one** — The script workflow uses separate files for exploration (`explore_data.py`) and visualisation (`visualise_*.py`). This mirrors real data science practice: exploration is about understanding; visualisation is about communication.
+   - **Images in `images/`** — All generated PNGs go in an `images/` subfolder, not the root of `example_solution/`. All references (notebook save cells, script savefig calls, slide img src) must use the `images/` path.
+   - **README.md** — Every `example_solution/` folder needs a README that explains the folder structure and what each file demonstrates. This shows up when browsing the folder on GitHub.
+   - **Plan evolution** — Include both `plan.md` (the initial plan) and `plan_final.md` (what was actually built and why it changed). This shows students that plans evolve.
+   - **Bonus challenges** — Include solutions for the bonus challenges from the lab README, both as notebook cells at the end and as generated PNGs.
+   - **Commentary throughout** — The notebook should include markdown cells explaining the thinking process, not just code. Show the prompts that were used, the verification checklist, and reflections on what worked.
+   - **Slide with toggles** — The example slide should have toggle buttons to switch between outputs (notebook, script, exploration, bonus) so students can see all the work on one slide.
+   - **Accurate values** — Run all code and verify that any statistics mentioned in the text (r values, means, etc.) match the actual data output. Don't use placeholder values.
 
 ---
 
@@ -706,8 +732,10 @@ The script reads the API key from `.secrets/api_keys.json` and redacts it from a
 
 ### LLM Prompts (in challenge briefs)
 - Provide 3-4 starter prompts students can use with their LLM assistant
+- Include **planning prompts** (for both notebook and script workflows) and **code prompts**
 - Frame prompts as detailed requests with full context (DataFrame name, column names, libraries)
 - Include a weak vs strong prompt comparison in the starter notebook (established in Week 2)
+- Encourage the **explore → plan → code** pipeline: start with an exploration prompt ("show me which variables are most related to X"), use the findings to write a more specific planning prompt, then write a focused code prompt
 - Example strong prompt: "I have a pandas DataFrame called `data` with columns `Sleep_hrs_night` (continuous), `Exercise_hrs_week` (continuous), and `Depression` (continuous). Using matplotlib and seaborn, create a 2×2 figure with four scatter plots..."
 
 ---
