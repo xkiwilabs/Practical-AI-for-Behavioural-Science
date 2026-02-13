@@ -123,11 +123,13 @@ When you use ChatGPT or Claude, your prompts are sent to external servers. For c
 
 ### What You Can Run
 
-- **Meta Llama 3.2 / 3.3** — Excellent general-purpose and coding models (3B to 70B parameters)
-- **Qwen 2.5 / Qwen 2.5 Coder** — Strong coding and reasoning models
-- **DeepSeek R1** — Excellent reasoning and mathematical ability
-- **Google Gemma 3** — Smaller, efficient, designed for local use
-- **Phi 4** — Microsoft's compact but capable model
+New open-source models are released almost every week — this list was current as of February 2026. Check the <a href="https://ollama.com/library" target="_blank">Ollama model library</a> for the latest, or see our detailed [Ollama guide](ollama-guide.md#recommended-models) for models organised by RAM tier.
+
+- **Qwen 3** — Alibaba's general-purpose and coding models (4B to 235B). Currently among the best open-source models available.
+- **GPT-OSS** — OpenAI's open-weight models (20B and 120B). MoE architecture, Apache 2.0 licence.
+- **Llama 4 Scout / Maverick** — Meta's multimodal models (text + images). Scout (109B MoE) runs on 64GB; Maverick (400B MoE) needs more.
+- **DeepSeek R1** — Excellent reasoning, maths, and code generation.
+- **GLM-5** — 744B MoE model from Zhipu AI, MIT licence. Very capable on 128GB+ machines.
 
 ### Hardware Requirements
 

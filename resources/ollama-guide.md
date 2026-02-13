@@ -80,17 +80,17 @@ You should see a version number. If you get "command not found", close and reope
 Ollama doesn't come with any models — you download the ones you want. Here are some good starting points:
 
 ```bash
-# A small, fast model — good for testing (requires ~5GB)
-ollama pull llama3.2:3b
+# A small, fast model — good for testing (needs 8GB+ RAM)
+ollama pull qwen3:8b
 
-# A solid general-purpose model (requires ~8GB, needs 16GB+ RAM)
-ollama pull llama3.2
+# OpenAI's open-weight model — MoE, surprisingly capable (needs 16GB+ RAM)
+ollama pull gpt-oss:20b
 
-# A very capable model (requires ~26GB, needs 32GB+ RAM)
-ollama pull qwen2.5:32b
+# A strong general-purpose model (needs 32GB+ RAM)
+ollama pull qwen3:32b
 
-# A large, high-quality model (requires ~40GB, needs 64GB+ RAM)
-ollama pull llama3.3:70b
+# Multimodal (text + images), very capable (needs 64GB+ RAM)
+ollama pull llama4:scout
 ```
 
 The download will take a few minutes depending on your internet speed. Models are stored on your computer and only need to be downloaded once.
@@ -110,7 +110,7 @@ ollama list
 The quickest way to use a model:
 
 ```bash
-ollama run llama3.2
+ollama run qwen3:8b
 ```
 
 This opens a chat session. Type your message and press Enter. Type `/bye` to exit.
@@ -145,7 +145,7 @@ Ollama runs a local server that you can call from Python, just like calling the 
 import requests
 
 response = requests.post("http://localhost:11434/api/generate", json={
-    "model": "llama3.2",
+    "model": "qwen3:8b",
     "prompt": "Explain k-means clustering in simple terms.",
     "stream": False
 })
@@ -162,7 +162,7 @@ pip install ollama
 ```python
 import ollama
 
-response = ollama.chat(model="llama3.2", messages=[
+response = ollama.chat(model="qwen3:8b", messages=[
     {"role": "user", "content": "Explain k-means clustering in simple terms."}
 ])
 
@@ -180,23 +180,55 @@ Several VS Code extensions can connect to Ollama, letting you use local models i
 
 ## Recommended Models
 
-Here are some models that work well for coding and data science tasks:
+> **This list will go out of date.** New open-source models are released almost every week, and the landscape changes fast. The models below were current as of February 2026. Always check the <a href="https://ollama.com/library" target="_blank">Ollama model library</a> for the latest, or ask your AI assistant: *"What are the best open-source models I can run locally right now?"*
 
-| Model | Size | RAM needed | Good for |
-|-------|------|-----------|----------|
-| `llama3.2:3b` | ~2 GB | 8 GB+ | Quick tests, simple questions |
-| `llama3.2` (8B) | ~5 GB | 16 GB+ | General chat, basic coding |
-| `qwen2.5-coder:14b` | ~9 GB | 24 GB+ | Code generation, debugging |
-| `qwen2.5:32b` | ~20 GB | 32 GB+ | Strong general + coding |
-| `llama3.3:70b` | ~40 GB | 64 GB+ | Near-cloud quality |
-| `deepseek-r1:70b` | ~40 GB | 64 GB+ | Strong reasoning, maths, code |
+Here are models that work well for coding and data science tasks, organised by how much RAM you need:
 
-**Tip:** Check the <a href="https://ollama.com/library" target="_blank">Ollama model library</a> for the latest available models. New models are added regularly.
+### Fits in 8–16 GB RAM
+
+| Model | Download | Good for |
+|-------|----------|----------|
+| **Qwen 3 (8B)** | `ollama pull qwen3:8b` | Strong general-purpose and coding — great starter model |
+| **Qwen 3 (4B)** | `ollama pull qwen3:4b` | Lighter option for 8GB machines |
+| **GPT-OSS (20B)** | `ollama pull gpt-oss:20b` | OpenAI's open-weight model. MoE architecture (only 3.6B parameters active per query), so it runs fast and fits in 16GB despite being 20B total |
+
+### Fits in 32 GB RAM
+
+| Model | Download | Good for |
+|-------|----------|----------|
+| **Qwen 3 (32B)** | `ollama pull qwen3:32b` | Excellent reasoning, coding, and general tasks |
+| **Qwen 3 (14B)** | `ollama pull qwen3:14b` | Great balance of quality and speed |
+| **Qwen 3 Coder (14B)** | `ollama pull qwen3-coder:14b` | Specialised for code generation and debugging |
+| **Qwen 3 (30B MoE)** | `ollama pull qwen3:30b-a3b` | MoE with only 3B active — fast and capable |
+
+### Fits in 64 GB RAM
+
+| Model | Download | Good for |
+|-------|----------|----------|
+| **Llama 4 Scout** | `ollama pull llama4:scout` | Meta's multimodal model (text + images). 109B MoE with 17B active. Near-cloud quality |
+| **DeepSeek R1 (70B)** | `ollama pull deepseek-r1:70b` | Excellent reasoning, maths, and code |
+| **GPT-OSS (120B)** | `ollama pull gpt-oss:120b` | OpenAI's larger open model. MoE (5.1B active). Very capable |
+
+### Fits in 128 GB+ RAM
+
+| Model | Download | Good for |
+|-------|----------|----------|
+| **Qwen 3 (235B MoE)** | `ollama pull qwen3:235b` | Frontier-class quality. 22B active parameters. Rivals cloud APIs |
+| **GLM-5** | `ollama pull glm-5` | 744B total, 40B active. MIT licence. Strong reasoning and coding |
+
+### What do "MoE" and "active parameters" mean?
+
+Some models use a **Mixture of Experts (MoE)** architecture. The model has many total parameters but only activates a fraction of them for each query — like having a team of specialists where only the relevant ones work on each question. This means:
+- **Faster responses** than a dense model of the same total size
+- **Lower RAM needed** than you'd expect from the total parameter count
+- **Quality comparable** to dense models many times their active size
+
+For example, `gpt-oss:20b` has 21B total parameters but only 3.6B active — so it runs like a small model but thinks like a much larger one.
 
 **To remove a model you no longer want:**
 
 ```bash
-ollama rm llama3.2:3b
+ollama rm qwen3:8b
 ```
 
 ---

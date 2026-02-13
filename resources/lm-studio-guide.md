@@ -46,14 +46,17 @@ When you first open LM Studio, you'll need to download a model:
 
 1. Click the **Discover** tab (magnifying glass icon) in the left sidebar
 2. Search for a model — good starting points:
-   - `Llama 3.2` — Meta's general-purpose model (various sizes)
-   - `Qwen 2.5 Coder` — Excellent for code generation
-   - `Phi 4` — Microsoft's efficient small model
-   - `DeepSeek R1` — Strong at reasoning and maths
+   - `Qwen 3` — Alibaba's excellent general-purpose and coding models (available from 4B to 235B)
+   - `GPT-OSS` — OpenAI's open-weight model (20B and 120B, MoE architecture)
+   - `Llama 4 Scout` — Meta's multimodal model (text + images, 109B MoE)
+   - `DeepSeek R1` — Strong at reasoning, maths, and code
+   - `Qwen 3 Coder` — Specialised for code generation
 3. Each model shows its file size and the RAM needed to run it. **Pick one that fits your hardware** — LM Studio will highlight compatible models.
 4. Click **Download** and wait for it to finish
 
-**Tip:** LM Studio makes it easy to see which models will run well on your hardware. Models that are too large for your system will be flagged with a warning.
+> **New models come out almost every week.** The suggestions above were current as of February 2026 but may be outdated by the time you read this. LM Studio's Discover tab always shows the latest available models — browse it and ask your AI assistant what's best right now.
+
+**Tip:** LM Studio makes it easy to see which models will run well on your hardware. Models that are too large for your system will be flagged with a warning. See the [Ollama guide](ollama-guide.md#recommended-models) for a detailed breakdown of models by RAM tier.
 
 ---
 
