@@ -4,7 +4,9 @@
 
 Create a beautiful, multi-panel visualisation that explores the relationships between lifestyle factors (sleep, exercise, screen time) and depression in a synthetic psychology dataset. Use an LLM coding assistant to help write the Python code. **Success = a figure that could appear in a research presentation.**
 
-This is a group challenge. You'll work together during class and prepare a 1-slide, 2-minute presentation for Week 3.
+This is a group challenge. You'll work together during class and prepare a 1-slide, ~3-minute presentation for Week 3.
+
+> **Note:** This is practice for creating HTML slides and presenting your work. The formal Paper Presentation assessment (20% of your grade) starts in Week 4 and is about a research paper you choose, not a lab challenge. See [assessments/presentation.md](../../assessments/presentation.md) for details.
 
 ## Background
 
@@ -86,7 +88,7 @@ Here are four example prompts that demonstrate good prompt engineering — notic
 
 ## What to Present
 
-Prepare **1 HTML slide** for the start of Week 3 (~2 minutes per group). Build it using <a href="../../resources/html-slides-guide.md">reveal.js with the help of an LLM coding assistant</a> — a <a href="../../resources/presentation-template/">starter template</a> is provided, but you can design it however you like. Export it as a **PDF** for submission.
+Prepare **1 HTML slide** for the start of Week 3 (~3 minutes per group). Build it using <a href="../../resources/html-slides-guide.md">reveal.js with the help of an LLM coding assistant</a> — a <a href="../../resources/presentation-template/">starter template</a> is provided, but you can design it however you like. Export it as a **PDF** for submission.
 
 Your slide should include:
 

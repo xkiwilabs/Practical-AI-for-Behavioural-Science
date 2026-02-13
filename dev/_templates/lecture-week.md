@@ -16,13 +16,6 @@
 
 [Continue for each major concept covered in the lecture.]
 
-## Worked Examples
-
-[Reference notebooks/scripts in the `examples/` folder. Briefly describe what each one demonstrates.]
-
-- [`01_example_name.ipynb`](examples/01_example_name.ipynb) — [What it shows]
-- [`02_example_name.ipynb`](examples/02_example_name.ipynb) — [What it shows]
-
 ## Common Misconceptions
 
 - **[Misconception 1]:** [Why it's wrong and what's actually true]

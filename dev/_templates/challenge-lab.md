@@ -42,7 +42,7 @@ Open [`starter.ipynb`](starter.ipynb) for a scaffolded notebook with imports and
 
 ## What to Present
 
-Prepare **1 HTML slide** summarising your group's solution for the start of next week's lecture (~2 min per group). Build it using [reveal.js with the help of an LLM coding assistant](../../resources/html-slides-guide.md) — a [starter template](../../resources/presentation-template/) is provided, but you can design it however you like. Export it as a **PDF** for submission.
+Prepare **1 HTML slide** summarising your group's solution for the start of next week's lecture (~3 min per group). Build it using [reveal.js with the help of an LLM coding assistant](../../resources/html-slides-guide.md) — a [starter template](../../resources/presentation-template/) is provided, but you can design it however you like. Export it as a **PDF** for submission.
 
 Your slide should include:
 - Your approach (what did you try?)

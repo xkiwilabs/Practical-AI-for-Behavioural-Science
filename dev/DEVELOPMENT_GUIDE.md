@@ -28,16 +28,18 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │       ├── index.html             # reveal.js single-slide template
 │       └── css/mq-theme.css       # MQ theme (copy from Week 1)
 ├── setup/
-│   └── getting-started.md         # Student setup guide (Python, Jupyter, VS Code)
+│   ├── getting-started.md         # Student setup guide (Python, Jupyter, VS Code)
+│   ├── setup-mac.sh               # macOS setup script (venv + packages + kernel)
+│   ├── setup-windows.ps1          # Windows setup script
+│   └── test-setup.ipynb           # Test notebook to verify installation
 ├── weeks/
 │   ├── week-01-lecture/           # Lecture weeks
 │   │   ├── README.md              # Companion reading (required reading)
 │   │   ├── readings.md            # Additional readings (optional)
-│   │   ├── figures/               # SVG diagrams referenced from README
+│   │   ├── figures/               # All figures: SVGs for README + PNGs for slides
 │   │   └── slides/                # reveal.js slide deck
 │   │       ├── index.html         # The slide deck (HTML)
-│   │       ├── css/mq-theme.css   # Shared MQ theme (copy from Week 1)
-│   │       └── figures/           # Placeholder images for manual screenshots
+│   │       └── css/mq-theme.css   # Shared MQ theme (copy from Week 1)
 │   ├── week-02-lab/               # Challenge lab weeks
 │   │   ├── README.md              # Challenge brief
 │   │   ├── starter.ipynb          # Starter notebook with scaffolding
@@ -45,10 +47,11 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │   ├── week-11-lecture-lab/       # Hybrid week (both lecture + challenge)
 │   ├── week-12-viva-review/       # Study guide + practice questions
 │   └── week-13-discussion/        # Discussion prompts + reflection
-├── data/                          # Shared datasets (used across weeks)
-├── iLearnMaterials/               # HTML files for iLearn LMS (not weekly content)
+├── data/                          # Shared datasets (currently unused; week-specific data lives in each week's data/ folder)
+├── iLearnMaterials/               # HTML files for iLearn LMS upload (course description, schedule, assessments)
 └── dev/                           # Development files (not student-facing)
     ├── DEVELOPMENT_GUIDE.md       # This file — development conventions
+    ├── generate-image.py          # DALL-E 3 image generation script (reads key from .secrets/)
     ├── _templates/                # Templates for new weeks
     │   ├── lecture-week.md
     │   └── challenge-lab.md
@@ -113,15 +116,15 @@ Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-le
 
 2. **readings.md** — Additional readings (**optional** — for depth and paper discovery)
    - Title should be "Additional Readings and Resources" with a note clarifying these are optional
-   - 1-2 suggested readings (accessible, foundational)
-   - 2-4 optional readings (deeper dives, applied examples)
+   - 2+ suggested readings (accessible, foundational)
+   - Multiple optional readings as appropriate (deeper dives, applied examples, books)
    - Use APA format, include DOI links
    - Note open access availability (PMC, arXiv, author site)
 
 3. **slides/** — reveal.js HTML slide deck (see "Building Slide Decks" below)
    - `index.html` — all slides in one HTML file
    - `css/mq-theme.css` — MQ-branded theme (copy from Week 1, do not modify)
-   - `figures/` — placeholder images for screenshots/photos to be added manually
+   - PNG figures for slides live in the week-level `figures/` folder (not inside `slides/`); reference them from slides with `src="../figures/filename.png"`
 
 **Note:** There is no `examples/` or `scripts/` folder for lecture weeks. All diagrams (flow charts, hierarchies, timelines, Venn diagrams, comparisons) are built as HTML/CSS directly in the slides — not generated as PNGs. This keeps diagrams editable, animatable with fragments, and consistent with the theme.
 
@@ -156,28 +159,39 @@ When citing academic references within "Think about it" prompts, include DOI hyp
 > **Think about it:** ... (For more on the promises and challenges of digital phenotyping, see [Onnela & Rauch, 2016](https://doi.org/10.1038/npp.2016.7).)
 ```
 
-### SVG Figures in READMEs
+### Figures Folder Convention
 
-Companion readings can include SVG diagrams for key concepts (e.g., the AI/ML hierarchy, the LLM Problem-Solving Loop, prediction vs explanation). These live in a `figures/` folder at the week level (not inside `slides/`).
+Each lecture week has a single `figures/` folder at the week level (not inside `slides/`). This folder holds **all** figures for that week — both SVG diagrams referenced from the README and PNG images referenced from the slides.
 
 ```
 weeks/week-01-lecture/
 ├── README.md
 ├── readings.md
-├── figures/                        # SVG diagrams for the README
-│   ├── ai-ml-hierarchy.svg
-│   ├── traditional-vs-ml.svg
-│   └── llm-problem-solving-loop.svg
+├── figures/                        # ALL figures for this week
+│   ├── ai-ml-hierarchy.svg         # SVG diagram → referenced from README
+│   ├── traditional-vs-ml.svg       # SVG diagram → referenced from README
+│   ├── llm-problem-solving-loop.svg
+│   ├── digital-phenotyping.png     # PNG image → referenced from slides
+│   ├── cognitive-biases-llm.png    # PNG image → referenced from slides
+│   └── gpt-deep-research-screenshot.png
 └── slides/
-    ├── figures/                    # Placeholder PNGs for the slide deck
-    ...
+    ├── index.html                  # References PNGs as src="../figures/name.png"
+    └── css/mq-theme.css
 ```
 
-Reference them in Markdown with standard image syntax:
-
+**SVG diagrams** (for READMEs) — reference with standard Markdown image syntax:
 ```markdown
 ![AI, ML, Deep Learning, and Generative AI — each is a subset of the layer above](figures/ai-ml-hierarchy.svg)
 ```
+
+**PNG images** (for slides) — reference from `slides/index.html` with a relative path up one level:
+```html
+<img src="../figures/digital-phenotyping.png" alt="Description" style="max-height: 520px;">
+```
+
+**Figure naming:** Use descriptive names (e.g., `digital-phenotyping.png`, `few-shot-vs-many-shot.png`). Do not include slide numbers in filenames — this makes figures reusable and easier to identify if slides are reordered.
+
+**Generating PNG figures:** Use `dev/generate-image.py` to create images with DALL-E 3 (see "Image Generation" section below).
 
 ### New-Tab Links in Markdown
 
@@ -257,7 +271,7 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
 
 ## Building Slide Decks
 
-Slides are built as **reveal.js HTML decks** — no PowerPoint, no build step, no Python figure scripts. Each lecture week has a self-contained `slides/` folder with an `index.html`, a shared CSS theme, and a `figures/` directory for placeholder images only.
+Slides are built as **reveal.js HTML decks** — no PowerPoint, no build step, no Python figure scripts. Each lecture week has a `slides/` folder with an `index.html` and a shared CSS theme. PNG images for slides live in the week-level `figures/` folder (shared with SVG diagrams used in the README) — slides reference them with `src="../figures/name.png"`.
 
 All diagrams (flow charts, hierarchies, timelines, Venn diagrams, comparisons) are built as **HTML/CSS directly in the slides**, not generated as PNG images. This means diagrams can be animated with `fragment` classes, styled consistently with the theme, and edited without re-running scripts.
 
@@ -275,11 +289,11 @@ Every lecture deck follows this template structure:
 ```
 slides/
 ├── index.html          # The deck — all slides in one file
-├── css/
-│   └── mq-theme.css    # MQ-branded theme (copy from Week 1, do not modify)
-└── figures/
-    └── slide##_fig##_placeholder.png  # Placeholders for manual screenshots/photos
+└── css/
+    └── mq-theme.css    # MQ-branded theme (copy from Week 1, do not modify)
 ```
+
+PNG images for slides live in the week-level `figures/` folder (one level up from `slides/`). No `figures/` subfolder inside `slides/`.
 
 **No `scripts/` or `examples/` folders** are needed for lecture weeks. If a future week requires a live code demo, use a Jupyter notebook in the lab week instead.
 
@@ -477,14 +491,14 @@ Use `class="fragment"` on any element to reveal it on click/keypress. Use `data-
 <li class="fragment bullet-blue" data-fragment-index="0">Matching text</li>
 ```
 
-### Placeholder Images
+### PNG Images for Slides
 
-The only PNGs in `slides/figures/` should be **placeholders for screenshots and photos** that need to be added manually (e.g., app screenshots, research figure reproductions, photos). All diagrams are HTML/CSS.
+PNG images in the week-level `figures/` folder include screenshots, DALL-E generated illustrations, and photos. All diagrams should be HTML/CSS (not PNG). Reference PNGs from slides with `src="../figures/name.png"`.
 
-- File name: `slide##_fig##_placeholder.png` (e.g., `slide19_fig01_placeholder.png`)
-- Use any 800×600 grey rectangle image as the placeholder
-- Reference in HTML with a descriptive `alt` tag and a `<p class="small">Replace with: description</p>` caption
-- Once real images are available, replace the placeholder file and remove the caption
+- **Naming:** Use descriptive names — e.g., `digital-phenotyping.png`, `gpt-deep-research-screenshot.png`. No slide numbers in filenames.
+- **Generation:** Use `dev/generate-image.py` to create images with DALL-E 3 (see "Image Generation" section below).
+- **Alt text:** Always include a descriptive `alt` attribute for accessibility.
+- **Sizing:** Use inline `style="max-height: 520px;"` or similar to constrain large images within slides.
 
 ### Citing References in Slides
 
@@ -540,7 +554,7 @@ These include section dividers, think-about-it slides, and the assessment/homewo
 
 **Content first:**
 - [ ] Write `README.md` — companion reading with key concepts, research examples, "Think about it" prompts
-- [ ] Create `figures/` folder with SVG diagrams for key concepts referenced from README
+- [ ] Create `figures/` folder with SVG diagrams for key concepts referenced from README and PNG images for slides
 - [ ] Write `readings.md` — title "Additional Readings and Resources", add note that these are optional, verify all DOIs, check open access, APA 7th format
 - [ ] Ensure every paper cited in the README has a DOI hyperlink
 
@@ -556,7 +570,7 @@ These include section dividers, think-about-it slides, and the assessment/homewo
 - [ ] Add "Think about it" slides matching the README discussion prompts
 - [ ] Add fragment animations to all bullet points and diagram elements
 - [ ] Link all cited papers to their DOIs with `target="_blank"`
-- [ ] Add placeholder images only for screenshots/photos not yet available
+- [ ] Generate PNG images for screenshots/illustrations using `dev/generate-image.py` (saved to week-level `figures/` folder)
 - [ ] Test: open in browser, step through every slide and fragment
 - [ ] Check text density: slides should feel full (not cramped, not empty)
 - [ ] Australian English throughout (behaviour, generalisation, colour, etc.)
@@ -565,6 +579,54 @@ These include section dividers, think-about-it slides, and the assessment/homewo
 **After pushing:**
 - [ ] Verify GitHub Pages link works: `https://xkiwilabs.github.io/.../weeks/week-NN-lecture/slides/index.html`
 - [ ] Update the root README Weekly Materials table with the Slides link
+
+---
+
+## Image Generation with DALL-E
+
+For PNG images in slides (conceptual illustrations, stylised research visualisations, app mockups), use the `dev/generate-image.py` script. This calls the OpenAI DALL-E 3 API and saves the result to the specified path.
+
+### Setup (one-time)
+
+Create `.secrets/api_keys.json` in the repo root (this folder is gitignored):
+
+```json
+{
+  "openai": {
+    "api_key": "sk-proj-..."
+  }
+}
+```
+
+Get an API key from [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+
+### Usage
+
+```bash
+# Standard 1024×1024
+python dev/generate-image.py --prompt "A warm illustration of..." --output weeks/week-03-lecture/figures/my-image.png
+
+# Landscape for wide slides
+python dev/generate-image.py --prompt "..." --output path/to/image.png --size 1792x1024
+
+# High quality
+python dev/generate-image.py --prompt "..." --output path/to/image.png --quality hd
+
+# Preview prompt without calling API
+python dev/generate-image.py --prompt "..." --output path/to/image.png --dry-run
+```
+
+### Prompting Tips
+
+- Be extremely specific about the visual style and content
+- Include "ABSOLUTELY NO TEXT, NO WORDS, NO LABELS, NO LETTERS" if you want a text-free image (DALL-E tends to add garbled text otherwise)
+- Describe the colour palette, mood, and composition
+- Mention it's for an academic presentation slide on a dark background if that's the context
+- The script prints the revised prompt DALL-E actually used — helpful for understanding what it interpreted
+
+### Security
+
+The script reads the API key from `.secrets/api_keys.json` and redacts it from any error output. The `.secrets/` folder is gitignored. Never commit API keys.
 
 ---
 
@@ -579,7 +641,7 @@ These include section dividers, think-about-it slides, and the assessment/homewo
 - Write for 4th-year psychology students with no coding/ML background
 - Explain jargon the first time it appears
 - Use concrete psychology examples (not abstract math)
-- Keep companion readings around 1000-2000 words
+- Keep companion readings around 1500-2500 words (Week 1 is longer due to extended lecture time and course introduction)
 - Use collapsible sections for hints and optional depth
 
 ### Code Style
@@ -590,9 +652,10 @@ These include section dividers, think-about-it slides, and the assessment/homewo
 - All notebooks should run top-to-bottom without errors
 
 ### LLM Prompts (in challenge briefs)
-- Provide 2-3 starter prompts students can use with their LLM assistant
-- Frame prompts as questions, not instructions (teaches good prompting)
-- Example: "I have a CSV with columns X, Y, Z. How would I build a simple linear regression to predict Y from X and Z using scikit-learn?"
+- Provide 3-4 starter prompts students can use with their LLM assistant
+- Frame prompts as detailed requests with full context (DataFrame name, column names, libraries)
+- Include a weak vs strong prompt comparison in the starter notebook (established in Week 2)
+- Example strong prompt: "I have a pandas DataFrame called `data` with columns `Sleep_hrs_night` (continuous), `Exercise_hrs_week` (continuous), and `Depression` (continuous). Using matplotlib and seaborn, create a 2×2 figure with four scatter plots..."
 
 ---
 
