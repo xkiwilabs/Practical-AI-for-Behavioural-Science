@@ -43,11 +43,11 @@ These tools help you write, debug, and understand code. They integrate into your
 ### GitHub Copilot
 
 - **Website:** <a href="https://github.com/features/copilot" target="_blank">github.com/features/copilot</a>
-- **What it does:** AI code completion and chat inside VS Code. Suggests code as you type and answers questions via Copilot Chat.
+- **What it does:** AI coding assistant inside VS Code with four modes: inline completions (ghost text as you type), Chat (ask questions and debug), Edit mode (describe changes in plain English), and Agent mode (autonomous multi-step coding). Also includes a model selector to choose between GPT, Claude, and Gemini models.
 - **Free for students:** Apply for the <a href="https://education.github.com/pack" target="_blank">GitHub Student Developer Pack</a> to get Copilot Pro free
 - **Best for:** Code autocompletion while you work, inline explanations, debugging in VS Code
 - **Setup:** Install the "GitHub Copilot" extension in VS Code, then sign in with your GitHub account
-- **Tip:** Copilot Chat (the sidebar panel) is great for asking "what does this code do?" or "why am I getting this error?"
+- **Full guide:** See the **[Copilot guide](copilot-guide.md)** for a detailed walkthrough of each mode with examples
 
 ### Cursor & Windsurf
 
@@ -59,11 +59,17 @@ These tools help you write, debug, and understand code. They integrate into your
 
 ### CLI Agents
 
-- **Claude Code:** <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">docs.anthropic.com/en/docs/claude-code</a> (paid)
-- **Codex CLI:** <a href="https://github.com/openai/codex" target="_blank">github.com/openai/codex</a> (paid)
-- **Gemini CLI:** <a href="https://github.com/google-gemini/gemini-cli" target="_blank">github.com/google-gemini/gemini-cli</a> (free with Google account)
-- **What they do:** AI agents that work in your terminal — they can read your codebase, write files, run tests, and fix bugs autonomously.
-- **Note:** These are the cutting edge of AI coding. You don't need them for this course, but they're worth knowing about.
+CLI stands for **Command-Line Interface** — these are tools you run in the terminal rather than through a graphical window. They can read your entire codebase, write files, run tests, and fix bugs autonomously.
+
+| Tool | Provider | Install | Access |
+|------|----------|---------|--------|
+| **Gemini CLI** | Google | `npm install -g @google/gemini-cli` | Free with Google account |
+| **Claude Code** | Anthropic | Download from <a href="https://claude.ai/download" target="_blank">claude.ai/download</a> | Max, Team, or API subscription |
+| **Codex CLI** | OpenAI | `npm install -g @openai/codex` | Plus, Pro, or API subscription |
+
+- **Links:** <a href="https://github.com/google-gemini/gemini-cli" target="_blank">Gemini CLI on GitHub</a> · <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code docs</a> · <a href="https://github.com/openai/codex" target="_blank">Codex CLI on GitHub</a>
+- The `npm` install commands require <a href="https://nodejs.org/" target="_blank">Node.js</a> (which includes npm). Gemini CLI needs Node.js 20+; Codex CLI needs Node.js 18+.
+- **Note:** You don't need any of these for this course. They're here for students who are curious or who already have paid subscriptions.
 
 ---
 

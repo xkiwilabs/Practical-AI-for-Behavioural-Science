@@ -91,36 +91,31 @@ See the [Jupyter Notebooks guide](jupyter-guide.md) for more detail.
 
 ## Selecting the Right Python Environment
 
-After running the setup script, you'll have a Python environment called `psyc4411-env` with all the course packages installed.
+After running the setup script, you'll have a conda environment called `psyc4411` with all the course packages installed. Conda environments are automatically detected by VS Code, so they should appear without extra configuration.
 
 **To select it in VS Code:**
 
 1. Open any `.py` or `.ipynb` file
 2. Look at the bottom-right of the Status Bar — it shows the current Python interpreter
-3. Click it and select `psyc4411-env` from the list
+3. Click it and select `psyc4411 (conda)` from the list
 4. For notebooks, you can also select the kernel from the top-right corner (look for **PSYC4411**)
 
-If `psyc4411-env` doesn't appear, you may need to rerun the setup script — see the [Getting Started guide](../setup/getting-started.md).
+If `psyc4411` doesn't appear, try closing and reopening VS Code. If it's still missing, you may need to rerun the setup script — see the [Getting Started guide](../setup/getting-started.md).
 
 ---
 
 ## Using GitHub Copilot in VS Code
 
-Once you've installed the GitHub Copilot extension and signed in:
+Once you've installed the GitHub Copilot extension and signed in, you have four tools at your disposal:
 
-### Inline Completions
+- **Inline completions** — Grey "ghost text" appears as you type. Press **Tab** to accept, or keep typing to ignore.
+- **Chat** — A conversation panel for asking questions, debugging errors, and getting explanations. Open it with `Cmd+Shift+I` (Mac) / `Ctrl+Shift+I` (Windows).
+- **Edit mode** — Describe changes in plain English and Copilot edits your code directly.
+- **Agent mode** — Give Copilot a bigger task and it plans, writes, runs, and debugs the code autonomously.
 
-As you type code, Copilot suggests completions in grey text. Press **Tab** to accept a suggestion, or keep typing to ignore it.
+You can also switch between different AI models using the **model selector** at the top of the Chat panel — each model has different strengths.
 
-### Copilot Chat
-
-Click the Copilot icon in the Activity Bar (or press Cmd+Shift+I) to open Copilot Chat. You can ask questions like:
-
-- "What does this code do?"
-- "I'm getting a KeyError — here's my code. What's wrong?"
-- "Write a scatter plot of Depression vs Sleep using seaborn"
-
-Copilot Chat can see your open files, which means it already has context about your code.
+For a full walkthrough of each feature (with examples for psychology students), see the **[Copilot guide](copilot-guide.md)**.
 
 ---
 
@@ -140,7 +135,7 @@ Copilot Chat can see your open files, which means it already has context about y
 
 ## Troubleshooting
 
-**"No Python interpreter selected"** — Click the Python version in the Status Bar and select `psyc4411-env`.
+**"No Python interpreter selected"** — Click the Python version in the Status Bar and select `psyc4411 (conda)`.
 
 **Terminal says "command not found: python"** — Try `python3` instead of `python`. On some systems, Python 3 is only available as `python3`.
 

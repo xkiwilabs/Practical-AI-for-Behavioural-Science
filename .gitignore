@@ -11,7 +11,6 @@ __pycache__/
 .venv/
 venv/
 env/
-psyc4411-env/
 .old_materials/
 
 # Jupyter

@@ -10,7 +10,7 @@ Here's what you'll set up:
 |------|-------------|
 | **GitHub** | A platform for sharing code and collaborating (also gets you free AI tools) |
 | **VS Code** | A text editor designed for writing and running code |
-| **Python** | The programming language we'll use for data analysis |
+| **Miniconda** | A lightweight installer for Python and package management |
 | **Course packages** | Libraries for plotting, statistics, and machine learning |
 | **AI assistants** | Tools that help you write code and understand concepts |
 
@@ -58,94 +58,116 @@ VS Code (Visual Studio Code) is a free text editor made by Microsoft. It's where
 
 ### First Launch
 
-When you open VS Code for the first time, you'll see a Welcome tab. Feel free to explore it, or close it — we'll set up the important bits in Step 5.
+When you open VS Code for the first time, you'll see a Welcome tab. Feel free to explore it, or close it — we'll set up the important bits in Step 6.
 
 ---
 
-## Step 3: Install Python
+## Step 3: Download the Course Repository
 
-Python is the programming language used throughout this course. You won't need to memorise Python syntax — you'll use AI assistants to help write code — but Python needs to be installed on your computer so the code can actually run.
+All course materials live in a GitHub repository. You need to **clone** (download a linked copy of) this repository to your computer. The key benefit of cloning rather than just downloading a ZIP file: when we add new materials each week, you can **pull** (fetch) the updates with one click.
+
+### Using VS Code
+
+1. Open VS Code
+2. Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows) to open the **Command Palette**
+3. Type `Git: Clone` and select it
+4. Paste this URL and press Enter:
+   ```
+   https://github.com/xkiwilabs/Current-Advances-in-Psychological-Methods-and-Analyses-Repo.git
+   ```
+5. Choose where to save it (your Desktop or Documents folder is fine)
+6. When VS Code asks "Would you like to open the cloned repository?", click **Open**
+
+You should now see all the course folders in the VS Code sidebar.
+
+> **If VS Code says Git is not installed:**
+> - **Mac:** You'll see a pop-up asking to install "Command Line Developer Tools" — click **Install** and wait for it to finish (this can take a few minutes). Then try the clone steps again.
+> - **Windows:** Download and install Git from [git-scm.com](https://git-scm.com). Use the default settings (click Next through each screen). Restart VS Code, then try the clone steps again.
+
+### Pulling Updates Later
+
+Throughout the semester, we'll add new weekly materials. To get the latest content:
+
+1. Open the course folder in VS Code
+2. Click the **Source Control** icon in the left sidebar (it looks like a branch/fork symbol)
+3. Click the **⋯** (three dots) menu at the top of the Source Control panel → **Pull**
+
+Any new or updated files will be downloaded automatically. We'll remind you to pull before each new week.
+
+---
+
+## Step 4: Install Miniconda
+
+Miniconda is a lightweight installer that gives you Python and **conda** — a tool for managing packages and environments. An environment is a self-contained set of packages that keeps your course tools separate from everything else on your computer, so nothing gets mixed up.
+
+> **Already have Anaconda or Miniconda installed?** You can skip this step entirely — go straight to Step 5. Anaconda includes everything Miniconda does (and more).
 
 ### macOS
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and click the big yellow **Download Python 3.12.x** button (or whatever the latest 3.12+ version is)
+1. Go to the [Miniconda download page](https://docs.anaconda.com/miniconda/) and download the **macOS installer** (choose the `.pkg` file for the easiest install)
 2. Open the downloaded `.pkg` file and follow the installer prompts (click Continue, Agree, Install)
-3. When the installer finishes, it may open a Finder window — you can close this
+3. When the installer finishes, **close and reopen Terminal** — this is important so your terminal knows where to find conda
 
 **Verify it worked:** Open **Terminal** (search for "Terminal" in Spotlight, or find it in Applications → Utilities) and type:
 
 ```
-python3 --version
+conda --version
 ```
 
-You should see something like `Python 3.12.8`. If you see an error, try closing and reopening Terminal, then try again.
+You should see something like `conda 24.x.x`. If you see "command not found", try closing and reopening Terminal. If it still doesn't work, you may need to run `~/miniconda3/bin/conda init` and then restart Terminal.
 
 ### Windows
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and click the big yellow **Download Python 3.12.x** button
+1. Go to the [Miniconda download page](https://docs.anaconda.com/miniconda/) and download the **Windows installer** (the `.exe` file)
 2. Run the downloaded installer
-3. **This is the most important step:** At the very bottom of the first installer screen, you'll see a checkbox that says **"Add python.exe to PATH"** — **CHECK THIS BOX**. If you miss this, Python won't work from the command line and you'll need to reinstall.
-4. Click **Install Now** and wait for it to finish
+3. **Important:** During installation, check the box that says **"Add Miniconda3 to my PATH environment variable"**. The installer warns against this, but for this course it makes everything much easier.
+4. Click **Install** and wait for it to finish
+5. **Close and reopen PowerShell** after installation
 
 **Verify it worked:** Open **PowerShell** (search for "PowerShell" in the Start menu) and type:
 
 ```
-python --version
+conda --version
 ```
 
-You should see something like `Python 3.12.8`. If you get an error saying `python` is not recognised, you probably missed the "Add to PATH" checkbox — uninstall Python and reinstall, making sure to check that box.
+You should see something like `conda 24.x.x`. If you get an error, make sure you checked the "Add to PATH" box during installation — if you missed it, uninstall Miniconda and reinstall with that box checked.
 
 ---
 
-## Step 4: Run the Setup Script
+## Step 5: Run the Setup Script
 
 This is where the magic happens. We've written a script that automatically:
-- Creates a **virtual environment** — think of this as a self-contained folder that keeps your course packages separate from everything else on your computer, so nothing gets mixed up
+- Creates a **conda environment** called `psyc4411` — a self-contained set of packages for this course
 - Installs all the Python libraries you'll need (pandas for data, matplotlib for plotting, scikit-learn for machine learning, etc.)
 - Registers everything with VS Code/Jupyter so it all works together
 
-### macOS
+You should still have the course repository open in VS Code from Step 3. If not, open VS Code and go to **File → Open Folder** and select the course repository folder.
 
-1. Open **Terminal**
-2. Navigate to the setup folder. If you saved the course repository to your Desktop, you'd type something like:
-   ```
-   cd ~/Desktop/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/setup
-   ```
-   (Adjust the path to wherever you saved the course folder.)
-3. Run the setup script:
-   ```
-   bash setup-mac.sh
-   ```
-4. Wait for it to finish. You'll see progress messages and, at the end, "Setup complete!"
-
-### Windows
-
-1. Open **PowerShell**
-2. You may need to allow scripts to run (this is a one-time Windows security setting). Type:
+1. Open the **terminal inside VS Code**: go to **View → Terminal** (or press `` Ctrl+` `` — that's the backtick key, usually below Escape)
+2. **Windows only:** You may need to allow scripts to run (this is a one-time security setting). Type:
    ```
    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
    Press **Y** if asked to confirm.
-3. Navigate to the setup folder. If you saved the course repository to your Desktop, you'd type something like:
+3. Navigate to the setup folder:
    ```
-   cd ~\Desktop\Current-Advances-in-Psychological-Methods-and-Analyses-Repo\setup
+   cd setup
    ```
 4. Run the setup script:
-   ```
-   .\setup-windows.ps1
-   ```
+   - **Mac:** `bash setup-mac.sh`
+   - **Windows:** `.\setup-windows.ps1`
 5. Wait for it to finish. You'll see progress messages and, at the end, "Setup complete!"
 
 ### If Something Goes Wrong
 
-- **"python not found"** — Python isn't installed or isn't in your PATH. Go back to Step 3.
-- **"pip not found"** — This usually means the virtual environment didn't activate. Try closing your terminal, reopening it, and running the script again.
+- **"conda not found"** — Miniconda isn't installed or isn't in your PATH. Go back to Step 4. Make sure you closed and reopened VS Code after installing Miniconda (the terminal inside VS Code needs to be restarted too).
+- **"environment already exists"** — The script will ask if you want to recreate it. Choose "y" to start fresh.
 - **Installation hangs for a long time** — Some packages are large. Give it up to 10 minutes on a slow connection. If it's truly stuck, press `Ctrl + C` to cancel and try again.
 - **Any other error** — Take a screenshot and bring it to class in Week 2. We'll figure it out together.
 
 ---
 
-## Step 5: Install VS Code Extensions
+## Step 6: Install VS Code Extensions
 
 Extensions add extra features to VS Code. You need three (and one optional but highly recommended one):
 
@@ -160,6 +182,8 @@ Extensions add extra features to VS Code. You need three (and one optional but h
 | **GitHub Copilot** | GitHub | AI code completion + Copilot Chat (requires Student Developer Pack) |
 
 For each one: type the name in the search bar, find the one by the correct publisher, and click **Install**.
+
+**Optional extras:** If you have a Google account, you can also install **Gemini Code Assist** (by Google) for an alternative AI assistant inside VS Code. And if you have a paid ChatGPT or Claude subscription, see the [Copilot guide](../resources/copilot-guide.md#alternative-ai-coding-tools) for other options.
 
 ### Sign In to GitHub from VS Code
 
@@ -179,22 +203,43 @@ If your Student Developer Pack hasn't been approved yet, Copilot won't activate 
 
 ---
 
-## Step 6: Test Your Setup
+## Step 7: Test Your Setup
 
-Let's make sure everything works together.
+Let's make sure everything works together. There are two ways to test — a notebook test and a script test.
 
-1. Open VS Code
-2. Go to **File → Open Folder** and open the course repository folder (`Current-Advances-in-Psychological-Methods-and-Analyses-Repo`)
-3. Navigate to `setup/test-setup.ipynb` in the file explorer on the left and click to open it
-4. **Select the right kernel:** When the notebook opens, look at the top right corner of the notebook. You should see a kernel selector — click it and choose **PSYC4411** from the list. If you don't see it, try selecting "Python Environments" and look for `psyc4411-env`.
+### Test 1: Notebook (test-setup.ipynb)
+
+1. Open VS Code and open the course repository folder (if it's not already open from Step 3, go to **File → Open Folder** and select `Current-Advances-in-Psychological-Methods-and-Analyses-Repo`)
+2. Navigate to `setup/test-setup.ipynb` in the file explorer on the left and click to open it
+4. **Select the right kernel:** When the notebook opens, look at the top right corner of the notebook. You should see a kernel selector — click it and choose **PSYC4411** from the list. If you don't see it, try selecting "Python Environments" and look for `psyc4411 (conda)`.
 5. Click **Run All** (the double-play button at the top of the notebook) or run each cell one at a time with `Shift + Enter`
-6. If you see library version numbers and a scatter plot, followed by "Setup complete!" — you're done!
+6. If you see library version numbers and a scatter plot, followed by "Setup complete!" — you're done with this test!
 
-**If the kernel doesn't appear:** Close VS Code completely, reopen it, and try again. Sometimes VS Code needs a restart to detect newly created environments.
+### Test 2: Python script (test-setup.py)
+
+This test runs as a Python script in the terminal — good practice for running code outside of a notebook.
+
+1. Open a terminal (in VS Code: View → Terminal, or use the macOS Terminal / Windows PowerShell)
+2. Activate the course environment:
+   ```
+   conda activate psyc4411
+   ```
+   You should see `(psyc4411)` appear at the start of your terminal prompt.
+3. Navigate to the setup folder (if you're not already there):
+   ```
+   cd path/to/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/setup
+   ```
+4. Run the test script:
+   ```
+   python test-setup.py
+   ```
+5. If you see "All checks passed!" — your setup is complete!
+
+**If the PSYC4411 kernel doesn't appear in VS Code:** Close VS Code completely, reopen it, and try again. Sometimes VS Code needs a restart to detect newly created environments.
 
 ---
 
-## Step 7: Set Up Your AI Coding Assistants
+## Step 8: Set Up Your AI Coding Assistants
 
 Throughout this course, you'll use AI assistants to help write code, debug errors, and understand concepts. Think of these as very knowledgeable (but sometimes confidently wrong) study partners. Here's what's available:
 
@@ -215,7 +260,14 @@ These tools have free tiers that are more than enough for this course:
 
 These give you more powerful AI access at no cost:
 
-- **GitHub Copilot Pro** (free via Student Developer Pack) — This is the big one for coding. Copilot works directly inside VS Code, suggesting code as you type and letting you ask questions via Copilot Chat. If you completed Step 1, you should have access.
+- **GitHub Copilot Pro** (free via Student Developer Pack) — This is the big one for coding. Copilot works directly inside VS Code and gives you four powerful features:
+  - **Inline completions** — suggests code as you type (press Tab to accept)
+  - **Copilot Chat** — ask questions, debug errors, get explanations (like ChatGPT inside VS Code)
+  - **Edit mode** — describe what you want to change in plain English, and Copilot edits your code
+  - **Agent mode** — describe a whole task and Copilot plans, writes, and tests the code for you
+  - **Model selector** — choose between different AI models (GPT, Claude, Gemini) for different tasks
+
+  If you completed Step 1, you should have access once your Student Developer Pack is approved. See the **[Copilot guide](../resources/copilot-guide.md)** for a full walkthrough of each feature.
 
 - **Google Gemini Pro Student Plan** — Free for 1 year. Includes Gemini Pro, Deep Research, and 2TB of Google storage. Sign up at [gemini.google/students](https://gemini.google/students/) (verified through SheerID with your university email).
 
@@ -320,12 +372,15 @@ We'll provide starter code for this when we get to the relevant weeks. You don't
 
 | Problem | Solution |
 |---------|----------|
-| "python not found" or "python3 not found" | Python isn't installed or isn't in your PATH. Reinstall from [python.org](https://python.org) — on Windows, make sure to check "Add to PATH" |
-| Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 4. |
-| VS Code doesn't show the PSYC4411 kernel | Close and reopen VS Code. If still missing, open a terminal in VS Code and run: `python -m ipykernel install --user --name=psyc4411 --display-name="PSYC4411"` |
+| "conda not found" or "conda is not recognised" | Miniconda isn't installed or isn't in your PATH. Reinstall from [docs.anaconda.com/miniconda](https://docs.anaconda.com/miniconda/). On Windows, make sure to check "Add to PATH". On Mac, close and reopen Terminal after installing. |
+| Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 5. |
+| VS Code doesn't show the PSYC4411 kernel | Close and reopen VS Code. If still missing, open a terminal and run: `conda run -n psyc4411 python -m ipykernel install --user --name=psyc4411 --display-name="PSYC4411"` |
 | Packages fail to install (network error) | Check your internet connection. If on campus, try switching between WiFi and a personal hotspot. |
 | "ModuleNotFoundError" when running the test notebook | You're using the wrong Python environment. Make sure to select the **PSYC4411** kernel in the top-right of the notebook. |
+| `conda activate` says "Run 'conda init' first" | Run `conda init` in your terminal, then close and reopen the terminal. This is a one-time setup that teaches your shell how to activate environments. |
 | Copilot says I don't have access | Your Student Developer Pack may still be processing. It can take a few days. Everything else will work without Copilot. |
+
+**Tip:** If you hit an error during setup, try pasting the full error message into **Copilot Chat**, **ChatGPT**, or **Claude**. AI assistants are great at diagnosing installation errors, package conflicts, and environment problems. Just say something like: *"I'm trying to set up Python for a university course and I got this error:"* and paste the error.
 
 **Still stuck?** Bring your laptop to the Week 2 class and we'll help you get sorted. You can also post a question in the iLearn discussion forum — chances are someone else hit the same issue.
 

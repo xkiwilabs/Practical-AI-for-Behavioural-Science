@@ -2,10 +2,13 @@
 # ============================================================
 # PSYC4411 Setup Script — macOS / Linux
 # ============================================================
-# This script sets up everything you need for the course.
-# It creates a virtual environment (a self-contained folder
-# that keeps your course packages separate from everything
-# else on your computer) and installs all required libraries.
+# This script creates a conda environment with all the Python
+# packages you need for the course, and registers it as a
+# Jupyter kernel so VS Code can find it.
+#
+# PREREQUISITES:
+#   - Miniconda (or Anaconda) must be installed first.
+#     Download from: https://docs.anaconda.com/miniconda/
 #
 # HOW TO RUN:
 #   1. Open Terminal
@@ -22,71 +25,75 @@ echo "  PSYC4411 Environment Setup (macOS)"
 echo "=========================================="
 echo ""
 
-# Step 1: Check Python is installed
-echo "Checking for Python..."
-if command -v python3 &> /dev/null; then
-    PYTHON_CMD=python3
-    PIP_CMD=pip3
-elif command -v python &> /dev/null; then
-    PYTHON_CMD=python
-    PIP_CMD=pip
-else
+# ── Step 1: Check that conda is available ─────────────────
+
+echo "Checking for conda..."
+
+if ! command -v conda &> /dev/null; then
     echo ""
-    echo "ERROR: Python is not installed or not found in your PATH."
-    echo "Please install Python from https://www.python.org/downloads/"
-    echo "Then re-run this script."
+    echo "ERROR: conda is not installed or not found in your PATH."
+    echo ""
+    echo "Please install Miniconda first:"
+    echo "  https://docs.anaconda.com/miniconda/"
+    echo ""
+    echo "After installing, close and reopen Terminal, then run this script again."
     exit 1
 fi
 
-PYTHON_VERSION=$($PYTHON_CMD --version 2>&1)
-echo "Found: $PYTHON_VERSION"
+CONDA_VERSION=$(conda --version 2>&1)
+echo "Found: $CONDA_VERSION"
 echo ""
 
-# Step 2: Create virtual environment
-echo "Creating virtual environment (psyc4411-env)..."
-echo "(This is a self-contained folder for your course packages)"
-$PYTHON_CMD -m venv psyc4411-env
+# ── Step 2: Create (or recreate) the conda environment ───
 
-# Step 3: Activate virtual environment
-echo "Activating virtual environment..."
-source psyc4411-env/bin/activate
+ENV_NAME="psyc4411"
 
-# Step 4: Upgrade pip
-echo "Upgrading pip (the package installer)..."
-pip install --upgrade pip --quiet
+# Check if environment already exists
+if conda env list | grep -q "^${ENV_NAME} "; then
+    echo "The '$ENV_NAME' environment already exists."
+    echo ""
+    read -p "Do you want to remove it and start fresh? (y/n) " -n 1 -r
+    echo ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Removing existing environment..."
+        conda env remove -n "$ENV_NAME" -y --quiet
+        echo ""
+    else
+        echo "Keeping existing environment. Skipping to kernel registration..."
+        echo ""
+        # Jump ahead to kernel registration
+        SKIP_CREATE=true
+    fi
+fi
 
-# Step 5: Install course packages
+if [ "${SKIP_CREATE}" != "true" ]; then
+    echo "Creating conda environment '$ENV_NAME' from environment.yml..."
+    echo "(This installs Python and all course packages — may take a few minutes)"
+    echo ""
+    conda env create -f environment.yml
+    echo ""
+fi
+
+# ── Step 3: Register the Jupyter kernel ───────────────────
+
+echo "Registering Jupyter kernel (so VS Code can find it)..."
+conda run -n "$ENV_NAME" python -m ipykernel install --user --name="$ENV_NAME" --display-name="PSYC4411"
 echo ""
-echo "Installing course packages (this may take a few minutes)..."
-echo "  - pandas (data analysis)"
-echo "  - numpy (numerical computing)"
-echo "  - matplotlib (plotting)"
-echo "  - seaborn (statistical visualisation)"
-echo "  - scikit-learn (machine learning)"
-echo "  - jupyter & notebook (interactive notebooks)"
-echo "  - ipykernel (Jupyter kernel support)"
-echo ""
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter notebook ipykernel --quiet
 
-# Step 6: Register the kernel so Jupyter/VS Code can find it
-echo "Registering Jupyter kernel..."
-python -m ipykernel install --user --name=psyc4411 --display-name="PSYC4411" --quiet 2>/dev/null || \
-python -m ipykernel install --user --name=psyc4411 --display-name="PSYC4411"
+# ── Step 4: Test that packages import correctly ──────────
 
-# Step 7: Test that everything imports correctly
-echo ""
 echo "Testing that all packages load correctly..."
-python -c "
+conda run -n "$ENV_NAME" python -c "
 import pandas as pd
 import numpy as np
 import matplotlib
 import seaborn as sns
 import sklearn
-print('  pandas      ✓  (version ' + pd.__version__ + ')')
-print('  numpy       ✓  (version ' + np.__version__ + ')')
-print('  matplotlib  ✓  (version ' + matplotlib.__version__ + ')')
-print('  seaborn     ✓  (version ' + sns.__version__ + ')')
-print('  scikit-learn ✓  (version ' + sklearn.__version__ + ')')
+print('  pandas       v' + pd.__version__)
+print('  numpy        v' + np.__version__)
+print('  matplotlib   v' + matplotlib.__version__)
+print('  seaborn      v' + sns.__version__)
+print('  scikit-learn v' + sklearn.__version__)
 print()
 print('All packages installed successfully!')
 "
@@ -96,11 +103,12 @@ echo "=========================================="
 echo "  Setup complete!"
 echo "=========================================="
 echo ""
-echo "Your virtual environment is called 'psyc4411-env'."
+echo "Your conda environment is called '$ENV_NAME'."
 echo ""
-echo "To activate it later, run:"
-echo "  source psyc4411-env/bin/activate"
+echo "To activate it in the terminal, run:"
+echo "  conda activate $ENV_NAME"
 echo ""
-echo "Next step: Open VS Code and run test-setup.ipynb"
-echo "to make sure everything works."
+echo "Next steps:"
+echo "  1. Open VS Code and run test-setup.ipynb (select the PSYC4411 kernel)"
+echo "  2. In the terminal, run:  conda activate $ENV_NAME && python test-setup.py"
 echo ""

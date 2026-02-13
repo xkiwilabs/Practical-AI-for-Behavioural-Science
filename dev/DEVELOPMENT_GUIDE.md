@@ -28,10 +28,12 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │       ├── index.html             # reveal.js single-slide template
 │       └── css/mq-theme.css       # MQ theme (copy from Week 1)
 ├── setup/
-│   ├── getting-started.md         # Student setup guide (Python, Jupyter, VS Code)
-│   ├── setup-mac.sh               # macOS setup script (venv + packages + kernel)
+│   ├── getting-started.md         # Student setup guide (Miniconda, VS Code, Jupyter)
+│   ├── environment.yml            # Conda environment definition (single source of truth)
+│   ├── setup-mac.sh               # macOS setup script (conda env + packages + kernel)
 │   ├── setup-windows.ps1          # Windows setup script
-│   └── test-setup.ipynb           # Test notebook to verify installation
+│   ├── test-setup.ipynb           # Test notebook to verify installation
+│   └── test-setup.py              # Test script to verify installation (terminal)
 ├── weeks/
 │   ├── week-01-lecture/           # Lecture weeks
 │   │   ├── README.md              # Companion reading (required reading)

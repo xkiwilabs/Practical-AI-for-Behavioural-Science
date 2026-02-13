@@ -1,10 +1,13 @@
 # ============================================================
 # PSYC4411 Setup Script — Windows (PowerShell)
 # ============================================================
-# This script sets up everything you need for the course.
-# It creates a virtual environment (a self-contained folder
-# that keeps your course packages separate from everything
-# else on your computer) and installs all required libraries.
+# This script creates a conda environment with all the Python
+# packages you need for the course, and registers it as a
+# Jupyter kernel so VS Code can find it.
+#
+# PREREQUISITES:
+#   - Miniconda (or Anaconda) must be installed first.
+#     Download from: https://docs.anaconda.com/miniconda/
 #
 # HOW TO RUN:
 #   1. Open PowerShell (search "PowerShell" in the Start menu)
@@ -24,66 +27,77 @@ Write-Host "  PSYC4411 Environment Setup (Windows)"    -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Cyan
 Write-Host ""
 
-# Step 1: Check Python is installed
-Write-Host "Checking for Python..."
+# ── Step 1: Check that conda is available ─────────────────
+
+Write-Host "Checking for conda..."
+
 try {
-    $pythonVersion = python --version 2>&1
-    Write-Host "Found: $pythonVersion"
+    $condaVersion = conda --version 2>&1
+    Write-Host "Found: $condaVersion"
 } catch {
     Write-Host ""
-    Write-Host "ERROR: Python is not installed or not found in your PATH." -ForegroundColor Red
-    Write-Host "Please install Python from https://www.python.org/downloads/" -ForegroundColor Red
-    Write-Host "IMPORTANT: During installation, check the box that says" -ForegroundColor Yellow
-    Write-Host "           'Add Python to PATH'" -ForegroundColor Yellow
-    Write-Host "Then restart PowerShell and re-run this script."
+    Write-Host "ERROR: conda is not installed or not found in your PATH." -ForegroundColor Red
+    Write-Host ""
+    Write-Host "Please install Miniconda first:" -ForegroundColor Yellow
+    Write-Host "  https://docs.anaconda.com/miniconda/" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "During installation, make sure to check:" -ForegroundColor Yellow
+    Write-Host "  'Add Miniconda to my PATH environment variable'" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "After installing, close and reopen PowerShell, then run this script again."
     exit 1
 }
 Write-Host ""
 
-# Step 2: Create virtual environment
-Write-Host "Creating virtual environment (psyc4411-env)..."
-Write-Host "(This is a self-contained folder for your course packages)"
-python -m venv psyc4411-env
+# ── Step 2: Create (or recreate) the conda environment ───
 
-# Step 3: Activate virtual environment
-Write-Host "Activating virtual environment..."
-.\psyc4411-env\Scripts\Activate.ps1
+$envName = "psyc4411"
 
-# Step 4: Upgrade pip
-Write-Host "Upgrading pip (the package installer)..."
-pip install --upgrade pip --quiet
+# Check if environment already exists
+$envList = conda env list 2>&1
+if ($envList -match "^$envName\s") {
+    Write-Host "The '$envName' environment already exists."
+    Write-Host ""
+    $response = Read-Host "Do you want to remove it and start fresh? (y/n)"
+    if ($response -match "^[Yy]") {
+        Write-Host "Removing existing environment..."
+        conda env remove -n $envName -y --quiet
+        Write-Host ""
+    } else {
+        Write-Host "Keeping existing environment. Skipping to kernel registration..."
+        Write-Host ""
+        $skipCreate = $true
+    }
+}
 
-# Step 5: Install course packages
+if (-not $skipCreate) {
+    Write-Host "Creating conda environment '$envName' from environment.yml..."
+    Write-Host "(This installs Python and all course packages - may take a few minutes)"
+    Write-Host ""
+    conda env create -f environment.yml
+    Write-Host ""
+}
+
+# ── Step 3: Register the Jupyter kernel ───────────────────
+
+Write-Host "Registering Jupyter kernel (so VS Code can find it)..."
+conda run -n $envName python -m ipykernel install --user --name=$envName --display-name="PSYC4411"
 Write-Host ""
-Write-Host "Installing course packages (this may take a few minutes)..."
-Write-Host "  - pandas (data analysis)"
-Write-Host "  - numpy (numerical computing)"
-Write-Host "  - matplotlib (plotting)"
-Write-Host "  - seaborn (statistical visualisation)"
-Write-Host "  - scikit-learn (machine learning)"
-Write-Host "  - jupyter & notebook (interactive notebooks)"
-Write-Host "  - ipykernel (Jupyter kernel support)"
-Write-Host ""
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter notebook ipykernel --quiet
 
-# Step 6: Register the kernel so Jupyter/VS Code can find it
-Write-Host "Registering Jupyter kernel..."
-python -m ipykernel install --user --name=psyc4411 --display-name="PSYC4411"
+# ── Step 4: Test that packages import correctly ──────────
 
-# Step 7: Test that everything imports correctly
-Write-Host ""
 Write-Host "Testing that all packages load correctly..."
-python -c @"
+conda run -n $envName python -c @"
 import pandas as pd
 import numpy as np
 import matplotlib
 import seaborn as sns
 import sklearn
-print('  pandas       (version ' + pd.__version__ + ')')
-print('  numpy        (version ' + np.__version__ + ')')
-print('  matplotlib   (version ' + matplotlib.__version__ + ')')
-print('  seaborn      (version ' + sns.__version__ + ')')
-print('  scikit-learn (version ' + sklearn.__version__ + ')')
+print('  pandas       v' + pd.__version__)
+print('  numpy        v' + np.__version__)
+print('  matplotlib   v' + matplotlib.__version__)
+print('  seaborn      v' + sns.__version__)
+print('  scikit-learn v' + sklearn.__version__)
 print()
 print('All packages installed successfully!')
 "@
@@ -93,11 +107,12 @@ Write-Host "==========================================" -ForegroundColor Green
 Write-Host "  Setup complete!"                          -ForegroundColor Green
 Write-Host "==========================================" -ForegroundColor Green
 Write-Host ""
-Write-Host "Your virtual environment is called 'psyc4411-env'."
+Write-Host "Your conda environment is called '$envName'."
 Write-Host ""
-Write-Host "To activate it later, run:"
-Write-Host "  .\psyc4411-env\Scripts\Activate.ps1"
+Write-Host "To activate it in the terminal, run:"
+Write-Host "  conda activate $envName"
 Write-Host ""
-Write-Host "Next step: Open VS Code and run test-setup.ipynb"
-Write-Host "to make sure everything works."
+Write-Host "Next steps:"
+Write-Host "  1. Open VS Code and run test-setup.ipynb (select the PSYC4411 kernel)"
+Write-Host "  2. In the terminal, run:  conda activate $envName && python test-setup.py"
 Write-Host ""

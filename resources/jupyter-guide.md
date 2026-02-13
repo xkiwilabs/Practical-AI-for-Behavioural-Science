@@ -155,7 +155,7 @@ Make sure you have `import matplotlib.pyplot as plt` in your imports, and that y
 The package isn't installed in your current environment. Make sure you're using the PSYC4411 kernel (check the top-right corner of the notebook). If the package is still missing, open the terminal and run:
 
 ```
-pip install seaborn
+conda install -n psyc4411 seaborn
 ```
 
 ---

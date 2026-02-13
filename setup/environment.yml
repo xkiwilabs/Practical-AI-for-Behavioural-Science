@@ -1,0 +1,26 @@
+# PSYC4411 Conda Environment
+# This file defines all the packages needed for the course.
+#
+# To create the environment:
+#   conda env create -f environment.yml
+#
+# To activate it:
+#   conda activate psyc4411
+#
+# To update it (if packages are added later):
+#   conda env update -f environment.yml --prune
+
+name: psyc4411
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - jupyter
+  - notebook
+  - ipykernel

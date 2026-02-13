@@ -15,6 +15,7 @@ Guides, references, and templates to help you through PSYC4411. Everything here 
 
 ## Working with AI
 
+- **[Copilot guide](copilot-guide.md)** — Using GitHub Copilot in VS Code: inline completions, Chat, Edit mode, Agent mode, model selector, and tips
 - **[AI Tools guide](ai-tools-guide.md)** — Comprehensive overview of AI tools in 2026: conversational AI, coding assistants, research tools, local models, deep research
 - **[Prompt Engineering guide](prompt-engineering-guide.md)** — Writing effective prompts: vague vs specific, context engineering, patterns, and examples
 
@@ -36,6 +37,7 @@ Guides, references, and templates to help you through PSYC4411. Everything here 
 | Learn how VS Code works | [VS Code guide](vscode-guide.md) |
 | Understand Jupyter notebooks | [Jupyter guide](jupyter-guide.md) |
 | Set up my GitHub account | [GitHub guide](github-guide.md) |
+| Use Copilot effectively | [Copilot guide](copilot-guide.md) |
 | Find the right AI tool | [AI Tools guide](ai-tools-guide.md) |
 | Write better prompts | [Prompt Engineering guide](prompt-engineering-guide.md) |
 | Format a README or document | [Markdown guide](markdown-guide.md) |
