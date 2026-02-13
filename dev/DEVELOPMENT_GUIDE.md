@@ -234,7 +234,7 @@ Students create **HTML slides** using reveal.js with the help of **any AI tool**
 - All challenge lab READMEs should reference HTML slides (not PowerPoint) in their "What to Present" section
 
 **Submission workflow (two channels):**
-- **HTML file → shared OneDrive folder** (all presentations — student and challenge lab). Named `Firstname_Lastname.html` or `GroupN.html`. Used to present from the classroom computer.
+- **HTML file → shared OneDrive folder** (all presentations — student and challenge lab). Named `Firstname_Lastname.html` (student) or `Group#_Week#.html` (challenge lab, e.g., `Group3_Week2.html`). Used to present from the classroom computer.
 - **PDF → iLearn** (graded student presentations only, Weeks 4/6/8/10). Named `Lastname_Firstname_Presentation.pdf`.
 - Challenge lab presentations require only the HTML upload — no PDF needed.
 

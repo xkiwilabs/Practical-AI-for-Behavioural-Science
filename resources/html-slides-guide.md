@@ -28,7 +28,7 @@ This is the simplest approach. You don't need VS Code or any special software �
 1. Open <a href="https://chat.openai.com" target="_blank">ChatGPT</a>, <a href="https://gemini.google.com" target="_blank">Gemini</a>, or <a href="https://claude.ai" target="_blank">Claude</a> in your browser
 2. Ask it to create your slide (see the example prompt below)
 3. The chatbot will generate HTML code — copy it all and paste it into a new text file
-4. Save the file with your name: `Firstname_Lastname.html` (for challenge labs, use `Group1.html`, `Group2.html`, etc.). Make sure it ends in `.html`, not `.txt`
+4. Save the file with your name: `Firstname_Lastname.html` (for challenge labs, use `Group#_Week#.html`, e.g., `Group3_Week2.html`). Make sure it ends in `.html`, not `.txt`
 5. Double-click the file to open it in your browser — you should see your slide
 6. To make changes, go back to your chatbot, paste the code, and ask for what you want changed
 
@@ -37,7 +37,7 @@ This is the simplest approach. You don't need VS Code or any special software �
 ### Option 2: Use the course template
 
 1. Download or copy the [presentation template](presentation-template/)
-2. Rename the `index.html` file to `Firstname_Lastname.html` (or `Group1.html` for challenge labs)
+2. Rename the `index.html` file to `Firstname_Lastname.html` (or `Group#_Week#.html` for challenge labs)
 3. Open the folder in VS Code (or any text editor — even Notepad works)
 4. Open your HTML file — this is your slide
 5. Open it in your browser to preview (double-click the file, or in VS Code: right-click → "Open with Live Server" if you have the extension)
@@ -136,7 +136,7 @@ For the formal Paper Presentation assessment, you need to submit a PDF version o
 Name your HTML file so it's easy to identify:
 
 - **Paper presentations (individual):** `Firstname_Lastname.html` (e.g., `Jane_Smith.html`)
-- **Challenge lab presentations (group):** `Group1.html`, `Group2.html`, etc.
+- **Challenge lab presentations (group):** `Group#_Week#.html` (e.g., `Group3_Week2.html`, `Group3_Week4.html`)
 
 ## Submission
 
