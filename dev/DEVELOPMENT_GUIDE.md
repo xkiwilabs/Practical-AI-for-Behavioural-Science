@@ -51,7 +51,7 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │   │   ├── starter.ipynb          # Starter notebook with scaffolding
 │   │   ├── starter.py             # Starter script for script workflow
 │   │   ├── data/                  # Datasets for the challenge
-│   │   └── example_solution/      # (solutions branch only) Worked examples
+│   │   └── example_solution/      # (staging branch; merged to main after students present)
 │   ├── week-11-lecture-lab/       # Hybrid week (both lecture + challenge)
 │   ├── week-12-viva-review/       # Study guide + practice questions
 │   └── week-13-discussion/        # Discussion prompts + reflection
@@ -70,37 +70,30 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 
 ## Branching Strategy
 
-Three branches, each with a clear purpose:
+Two branches:
 
 | Branch | Purpose | Visible to students? |
 |--------|---------|---------------------|
 | **`main`** | Released, student-facing content | Yes — students clone and pull from this |
-| **`staging`** | Work-in-progress content for future weeks | No — only the instructor sees this |
-| **`solutions`** | Example solutions for challenge labs | No — shared with students after they present |
+| **`staging`** | All unreleased content (future weeks + example solutions) | No — only the instructor sees this |
 
 ### Workflow: Developing New Content
 
 1. **Switch to `staging`:** `git checkout staging`
 2. **Rebase onto main** (to pick up any recent changes): `git rebase main`
-3. **Develop the week's content** — commit as you go
-4. **When ready to release** (the day before class):
-   - `git checkout main`
-   - `git merge staging` (or cherry-pick specific commits if other unreleased weeks are on staging)
+3. **Develop the week's content** — commit as you go (both the student materials and the example solution)
+4. **Monday of Week N** — release that week's student content:
+   - Cherry-pick or merge the week's files to `main` (README, starter notebook/script, data/) — but **not** the `example_solution/` folder
    - `git push origin main`
-5. Students run `git pull` to get the new content
-
-### Workflow: Developing Solutions
-
-1. **Switch to `solutions`:** `git checkout solutions`
-2. **Rebase onto main** (to get the latest released content): `git rebase main`
-3. **Create the example solution** in `weeks/week-NN-lab/example_solution/`
-4. **Commit and push** to the solutions branch
-5. **After students present**, share the solutions branch link — or merge the specific solution folder into main
+5. **Monday of Week N+1** — release the previous week's example solution:
+   - Merge the `example_solution/` folder to `main` (students have already presented)
+   - `git push origin main`
+6. Students run `git pull` to get the new content
 
 ### Tips
 
 - **Always develop future weeks on `staging`**, never directly on `main`. This prevents students from seeing incomplete content when they pull.
-- **Solutions never go on `main` or `staging`** until after the relevant presentation. Keep them exclusively on the `solutions` branch.
+- **Example solutions stay on `staging`** until the week after students present. Then they get merged to `main` so students can reference them.
 - **The `dev/` folder** is on all branches — it's fine to update `DEVELOPMENT_GUIDE.md` or templates on any branch, but prefer `main` so all branches pick it up on rebase.
 - **If `staging` has multiple unreleased weeks** and you only want to release one, use `git cherry-pick` to move specific commits to main, or reorganise commits so each week is a clean set of commits you can merge up to.
 
@@ -312,7 +305,7 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
    - Placeholder comments for student/AI code
    - Should run without errors as-is (just loads data and prints summary)
 
-5. **Example solution** (on `solutions` branch only, in `example_solution/`)
+5. **Example solution** (on `staging` until after students present, then merged to `main`; in `example_solution/`)
 
    The example solution demonstrates the full workflow students should follow, including patterns they can learn from. See Week 2's `example_solution/` for the reference implementation.
 
