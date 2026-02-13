@@ -2,7 +2,7 @@
 
 ## The Challenge
 
-Create a beautiful, multi-panel visualisation that explores the relationships between lifestyle factors (sleep, exercise, screen time) and depression in a synthetic psychology dataset. Use an LLM coding assistant to help write the Python code. **Success = a figure that could appear in a research presentation.**
+Create a beautiful, multi-panel visualisation that explores the relationships between lifestyle factors (sleep, exercise, screen time) and depression in a synthetic psychology dataset. Use an LLM coding assistant to help write the Python code. You'll try **two different coding workflows** — Jupyter notebooks and Python scripts — to find which suits you best. **Success = a figure that could appear in a research presentation.**
 
 This is a group challenge. You'll work together during class and prepare a 1-slide, ~3-minute presentation for Week 3.
 
@@ -10,12 +10,13 @@ This is a group challenge. You'll work together during class and prepare a 1-sli
 
 ## Background
 
-This challenge puts the **LLM Problem-Solving Loop** from Week 1 into practice. You'll:
-- **Plan** what relationships to explore and how to visualise them
-- **Engineer prompts** that give the AI enough context to produce useful code
-- **Verify** that the code runs and the output makes sense
-- **Refine** your prompts and your figure until it looks great
-- **Document** what you did and what you learned
+This challenge puts the **LLM Problem-Solving Loop** from Week 1 into practice:
+
+**Outer loop (your research process):** PLAN → EXECUTE → EVALUATE → DOCUMENT
+
+**Inner loop (working with the AI):** ENGINEER → PROMPT → VERIFY → REFINE
+
+The key lesson from Week 1: **ask the AI to plan first.** Before it writes any code, ask it to outline its approach. A written plan catches misunderstandings early — it's much easier to say "actually, let's use violin plots instead of box plots" when you're looking at a plan than after the AI has written 50 lines of code. Planning saves iteration cycles and produces better results.
 
 The emphasis is on **prompt engineering** — the more context you give your LLM assistant (what your data looks like, what libraries you're using, what you want to achieve), the better the code it generates. LLMs make mistakes. They'll sometimes produce code that doesn't run, uses the wrong variable names, or creates a plot that doesn't match what you asked for. That's expected. The skill you're building is knowing how to identify the problem and guide the AI to a better solution.
 
@@ -45,34 +46,78 @@ The data is in [`data/fake_depression_dataset.csv`](data/fake_depression_dataset
 - Some variables interact — for example, the relationship between screen time and depression might look different for different age groups
 - Not every variable is interesting — finding that out is part of the process
 
+## Two Ways to Code
+
+In this lab, you'll try two different workflows for writing code with an AI assistant. Neither is "better" — researchers and data scientists use both depending on the task. Trying both now means you can make an informed choice for future weeks.
+
+### Option A: Jupyter Notebook
+
+- **Interactive, cell-by-cell execution** — you run code in small chunks and see results immediately
+- Documentation lives in **markdown cells** alongside your code
+- **Plan-first approach:** Have the AI write the analysis plan as markdown cells in the notebook. Review the plan. Only then ask for code.
+- Good for: exploratory analysis, seeing results immediately, mixing notes and code
+
+### Option B: Python Scripts
+
+- Code lives in **`.py` files**, documentation in **`.md` files**
+- You run the whole script from the terminal with `python starter.py`
+- **Plan-first approach:** Have the AI create a `plan.md` file. Review and iterate on the plan. Then have the AI create (or edit) a `.py` script. Review the code. Run it.
+- Good for: reproducible workflows, cleaner code, version control, larger projects
+- Your AI assistant can **create new files**, **edit existing files**, and **add new sections** to files — use this to build up your script and documentation piece by piece
+
+### Which should I use later?
+
+You'll choose one workflow for future labs. Some people prefer the immediacy of notebooks; others prefer the tidiness of scripts. There's no wrong answer — the point of this lab is to try both so you have an informed preference.
+
 ## Getting Started
+
+### Part 1: Notebook Workflow (~45 min)
 
 Open [`starter.ipynb`](starter.ipynb) — the imports and data loading are already done for you.
 
-### Suggested Approach
+1. **Explore the data** — Run the setup cells to see the data's shape, summary statistics, and missing values. Get a feel for what's in the dataset.
 
-1. **Explore the data** — Run the cells that show the data's shape, summary statistics, and missing values. Get a feel for what's in the dataset.
+2. **PLAN** — In your AI assistant (Copilot Chat, ChatGPT, Claude, etc.), ask it to create an analysis plan for a multi-panel visualisation. The plan should go in a markdown cell in your notebook — review it before any code is written. Does the approach make sense? Would the panels tell a coherent story? Revise with the AI if needed. This is the **PLAN** step of the outer loop — a good plan means fewer iterations in the inner loop.
 
-2. **PLAN your visualisation** — Choose 3–4 relationships you want to show. Think about what story you want to tell. A multi-panel figure works well here (e.g., a 2×2 grid of scatter plots, each showing a different relationship).
+3. **ENGINEER your prompt** — Based on your reviewed plan, write a detailed prompt for the code. Include what your data looks like (column names, types), what type of plots you want, the layout, the libraries, and any visual features. The notebook has a weak vs strong prompt comparison to guide you.
 
-3. **ENGINEER your prompt** — Before you type anything into ChatGPT or Copilot, plan what you're going to ask for. Include:
-   - What your data looks like (column names, types)
-   - What type of plot you want (scatter, bar, box, etc.)
-   - What layout you want (how many panels, grid arrangement)
-   - What libraries you're using (`matplotlib` and `seaborn`)
-   - Any specific visual features (colours, labels, trend lines)
+4. **EXECUTE** — Send your prompt to the AI and paste the code into your notebook. Run each cell.
 
-4. **PROMPT** — Send your carefully engineered prompt to your LLM assistant.
+5. **VERIFY & REFINE** — Check the output. Are the axes correct? Do the patterns make sense? Does it look professional? Fix issues by sending error messages or feedback back to the AI.
 
-5. **VERIFY** — Paste the code into your notebook and run it. Does it work? Does the output look right? Check the axis labels, the variable names, and whether the patterns make sense.
+6. **DOCUMENT** — Add markdown cells reflecting on what you found and what you learned.
 
-6. **REFINE** — Adjust colours, labels, layout, and spacing. Fix any errors. If the AI got something wrong, tell it what went wrong and ask it to fix it (with more context this time).
+### Part 2: Script Workflow (~45 min)
 
-7. **DOCUMENT** — Add markdown cells explaining your figure. Save the final version as a PNG.
+For the second half of the lab, try creating a visualisation using Python scripts instead of a notebook. A starter template is provided at [`starter.py`](starter.py) with the imports and data loading already done.
 
-### Starter LLM Prompts
+1. **PLAN** — Ask your AI assistant to create a `plan.md` file for a different visualisation (or extension) of the same dataset. The plan should outline: what relationships to explore, what plot types to use, what the final figure layout should look like, and what libraries to use. Review the plan. Iterate — "Actually, let's use violin plots instead of box plots for the gender comparison" — until you're satisfied.
 
-Here are four example prompts that demonstrate good prompt engineering — notice how each one gives the AI specific context about the data and tools:
+2. **EXECUTE** — Ask the AI to edit `starter.py` (or create a new `.py` script) that implements the plan. The script should load the data, create the visualisation, and save it as a PNG. Your AI assistant can **create new files**, **edit existing ones**, and **build up your project piece by piece** — you don't need to write everything in one go.
+
+3. **RUN** — In the terminal:
+   ```
+   conda activate psyc4411-env
+   python starter.py
+   ```
+
+4. **VERIFY & REFINE** — Check the saved PNG. If it needs changes, ask the AI to edit the script and re-run.
+
+5. **DOCUMENT** — Have the AI update `plan.md` with what actually happened — key findings, changes from the original plan, and any surprises. You can also have the AI add new sections to your notebook summarising the script results.
+
+## Starter LLM Prompts
+
+Here are example prompts that demonstrate good prompt engineering. Notice how each one gives the AI specific context about the data and tools.
+
+### Planning Prompts
+
+**For the notebook workflow:**
+> "Based on the dataset I've loaded (columns: Age, Gender, Height_cm, Weight_kg, TV_hrs_week, VideoGames_hrs_week, Siblings, FB_Friends, SocialMedia_hrs_week, Sleep_hrs_night, Exercise_hrs_week, Depression — all described in the data dictionary above), write an analysis plan for a 2×2 multi-panel scatter plot figure exploring lifestyle factors and depression. Write the plan as a numbered list in markdown — what goes in each panel, what relationships we're testing, and what visual features to include. Don't write any code yet."
+
+**For the script workflow:**
+> "I have a CSV dataset at `data/fake_depression_dataset.csv` with 2000 rows and columns: Age, Gender, Height_cm, Weight_kg, TV_hrs_week, VideoGames_hrs_week, Siblings, FB_Friends, SocialMedia_hrs_week, Sleep_hrs_night, Exercise_hrs_week, Depression. Create a `plan.md` file that outlines a visualisation comparing depression scores across lifestyle factors. Include: which relationships to plot, what plot types to use, what the final figure layout should look like, and what libraries to use (matplotlib, seaborn). Don't write any code yet — just the plan."
+
+### Code Prompts
 
 **Prompt 1 — Creating a multi-panel scatter plot:**
 > "I have a pandas DataFrame called `data` with columns including `Sleep_hrs_night`, `Exercise_hrs_week`, `SocialMedia_hrs_week`, and `Depression` (all continuous). Using matplotlib and seaborn, create a 2×2 figure with four scatter plots, each showing Depression on the y-axis against a different lifestyle variable on the x-axis. Use `sns.scatterplot` with a small marker size and some transparency. Add a descriptive title to each subplot."
@@ -100,6 +145,21 @@ Your slide should include:
 2. **Your approach** — which relationships did you choose and why?
 3. **One key finding** — what's the most interesting pattern you found in the data?
 4. **One thing about prompting** — what did you learn about communicating with an LLM? What worked well, or what was surprisingly hard?
+5. **Notebook vs. scripts** — which workflow did you prefer and why? Did the plan-first approach change how you worked with the AI?
+
+## Bonus Challenges
+
+Finished early? Try one of these — they work in either the notebook or the script workflow. Have your AI assistant create new files, edit existing ones, or add new sections to your notebook.
+
+1. **Correlation heatmap:** Ask your AI to create a correlation matrix heatmap showing the relationships between all numeric variables at once. Use `sns.heatmap` with `data.corr()`. Try it as a new cell in your notebook *and* as a standalone script — see which workflow feels more natural.
+
+2. **Group comparison:** Create box plots or violin plots comparing Depression scores across different groups — for example, high vs. low social media users (split at the median), or Male vs. Female participants.
+
+3. **Interactive exploration:** Ask your AI about `seaborn.pairplot` — it creates a grid of scatter plots for every pair of variables. What patterns do you notice that you didn't see in your multi-panel figure?
+
+4. **Annotation:** Add text annotations to your figure highlighting the most interesting findings (e.g., "r = -0.45" next to a strong correlation, or an arrow pointing to an interesting cluster of points).
+
+5. **Multiple output files:** Have the AI create a script that generates several different figures, each saved as a separate PNG. Then have the AI create a summary `.md` file that describes what each figure shows and what patterns were found.
 
 ## Hints
 
@@ -151,6 +211,21 @@ A few small touches that make a big difference:
 - **Spacing:** If `plt.tight_layout()` isn't enough, try `plt.subplots_adjust(hspace=0.3, wspace=0.3)`
 
 Ask your LLM assistant: "How can I make this matplotlib figure look more professional and polished?"
+
+</details>
+
+<details>
+<summary>Hint 4: Running a Python script from the terminal</summary>
+
+If you haven't used the terminal before, here's the step-by-step:
+
+1. Open a terminal in VS Code (Terminal → New Terminal, or `` Ctrl+` ``)
+2. Make sure you're in the right folder: `cd weeks/week-02-lab`
+3. Activate your environment: `conda activate psyc4411-env`
+4. Run the script: `python starter.py`
+5. If the script saves a figure, it will appear as a new file in your folder
+
+If you get an error, copy the full error message and send it to your AI assistant — it will help you debug.
 
 </details>
 
