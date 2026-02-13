@@ -30,9 +30,9 @@ My research sits at the intersection of experimental psychology, cognitive scien
 
 ## How to Use This Repo
 
-1. **Before each lecture:** Optionally read the companion material for that week
+1. **Before each lecture:** Read the companion reading for that week (the `README.md` in each week's folder — this is the required reading)
 2. **During lab weeks:** Open the challenge brief and starter notebook for your group work
-3. **After labs:** Use the examples and readings to deepen your understanding
+3. **After labs:** Use the optional readings in `readings.md` and the examples to deepen your understanding
 
 ---
 
@@ -54,6 +54,35 @@ My research sits at the intersection of experimental psychology, cognitive scien
 | 11 | 18 May | Lecture + Lab | [Meaning in Vectors: Embeddings and LLMs for Research Workflows](weeks/week-11-lecture-lab/) | Slides |
 | 12 | 25 May | Review | [Viva Review: Consolidation, Q&A, and Practice Defenses](weeks/week-12-viva-review/) | — |
 | 13 | 01 Jun | Discussion | [Limits, Ethics, Reproducibility, and Reasoned Conclusions](weeks/week-13-discussion/) | — |
+
+---
+
+## Assessments
+
+| Assessment | Weight | Format | Due |
+|------------|--------|--------|-----|
+| [Paper Presentation](assessments/presentation.md) | 20% | 3-min talk + 1 HTML slide (PDF submission) | Weeks 4, 6, 8, or 10 |
+| [Written Assignment](assessments/written-assignment.md) | 40% | Popular science article + LLM chat history | Sunday 19 Apr, 11:55pm |
+| [Viva Exam](assessments/viva-exam.md) | 40% | 15-min oral exam (3 sections) | Weeks 12–13 |
+
+See the [assessments folder](assessments/) for full details, rubrics, and tips.
+
+---
+
+## Resources
+
+Guides and references for tools used in this course — all written for beginners:
+
+- **[AI Tools guide](resources/ai-tools-guide.md)** — Overview of AI tools in 2026: conversational AI, coding assistants, research tools, local models
+- **[Prompt Engineering guide](resources/prompt-engineering-guide.md)** — Writing effective prompts: patterns, examples, and common mistakes
+- **[VS Code guide](resources/vscode-guide.md)** — Navigate the interface, install extensions, use the terminal
+- **[Jupyter Notebooks guide](resources/jupyter-guide.md)** — Cells, kernels, execution order, common mistakes
+- **[GitHub guide](resources/github-guide.md)** — Account setup, navigating repos, Student Developer Pack
+- **[Markdown guide](resources/markdown-guide.md)** — Formatting syntax for notebooks and READMEs
+- **[HTML Slides guide](resources/html-slides-guide.md)** — Creating your presentation slide with reveal.js
+- **[Presentation template](resources/presentation-template/)** — Ready-to-use HTML slide template
+
+See the [resources folder](resources/) for the full list.
 
 ---
 
