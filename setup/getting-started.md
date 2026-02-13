@@ -248,6 +248,74 @@ Set up **GitHub Copilot in VS Code** (for in-line code help while you work) plus
 
 ---
 
+## Optional: Set Up API Keys for Programmatic Access
+
+The AI assistants above all work through their websites and VS Code extensions — you don't need API keys for normal use in this course. However, if you want to call AI models directly from Python code (e.g., for text analysis, embeddings, or automated tasks in later weeks), you can set up API keys.
+
+**Why you might want this:** In Weeks 9–11, we'll work with embeddings and programmatic AI access. Having API keys ready means you can run code that calls these models directly, rather than copying and pasting between a chat window and your notebook.
+
+### How to set it up
+
+1. **Create a `.secrets` folder** in the root of your course repository:
+   ```
+   Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
+   └── .secrets/
+       └── api_keys.json
+   ```
+
+2. **Create `api_keys.json`** inside that folder. Copy and paste this template:
+
+   ```json
+   {
+     "openai": {
+       "api_key": "PASTE_YOUR_OPENAI_API_KEY_HERE",
+       "note": "Get from https://platform.openai.com/api-keys"
+     },
+     "anthropic": {
+       "api_key": "PASTE_YOUR_ANTHROPIC_API_KEY_HERE",
+       "note": "Get from https://console.anthropic.com/settings/keys"
+     },
+     "google": {
+       "api_key": "PASTE_YOUR_GOOGLE_AI_API_KEY_HERE",
+       "note": "Get from https://aistudio.google.com/apikey"
+     }
+   }
+   ```
+
+3. **Replace the placeholder values** with your actual API keys. You don't need all three — just add the ones you have. Most providers offer free tiers with limited usage that is more than enough for this course.
+
+4. **Make sure `.secrets/` is in your `.gitignore`** so your keys are never pushed to GitHub. The course repo already includes this — but if you're working in your own repo, add this line to your `.gitignore`:
+   ```
+   .secrets/
+   ```
+
+### Where to get API keys
+
+| Provider | Free tier | Where to get a key |
+|----------|-----------|-------------------|
+| **OpenAI** | Limited free credits for new accounts | <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a> |
+| **Anthropic** | Limited free credits for new accounts | <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com/settings/keys</a> |
+| **Google AI** | Generous free tier (Gemini API) | <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a> |
+
+### How to use them in Python
+
+```python
+import json
+
+# Load your API keys
+with open("../../.secrets/api_keys.json") as f:
+    keys = json.load(f)
+
+# Example: use the OpenAI key
+openai_key = keys["openai"]["api_key"]
+```
+
+We'll provide starter code for this when we get to the relevant weeks. You don't need to worry about it now.
+
+> **Important:** Never share your API keys, paste them into chat messages, or commit them to GitHub. Treat them like passwords. The `.secrets/` folder is gitignored specifically to prevent accidental sharing.
+
+---
+
 ## Troubleshooting
 
 | Problem | Solution |

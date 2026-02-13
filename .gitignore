@@ -27,3 +27,6 @@ Thumbs.db
 
 # Claude
 .claude/
+
+# Secrets (API keys, credentials)
+.secrets/
