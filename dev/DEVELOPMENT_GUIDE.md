@@ -10,12 +10,30 @@ This document outlines the structure, conventions, and workflow for building out
 Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 ├── README.md                      # Course overview + weekly links table
 ├── .gitignore                     # Excludes .pptx, __pycache__, .DS_Store, etc.
+├── assessments/                   # Student-facing assessment documentation
+│   ├── README.md                  # Overview of all 3 assessments, key dates
+│   ├── presentation.md            # Paper presentation details + rubric
+│   ├── written-assignment.md      # Popular science article + chat history + rubric
+│   └── viva-exam.md               # Oral exam: 3 sections, concept pool, rubric
+├── resources/                     # Guides and references (beginner-friendly)
+│   ├── README.md                  # Hub page linking all guides
+│   ├── ai-tools-guide.md          # AI tools overview (2026)
+│   ├── github-guide.md            # GitHub for beginners
+│   ├── vscode-guide.md            # VS Code for beginners
+│   ├── jupyter-guide.md           # Jupyter notebooks guide
+│   ├── html-slides-guide.md       # Creating presentations with reveal.js
+│   ├── markdown-guide.md          # Markdown basics + cheat sheet
+│   ├── prompt-engineering-guide.md # Prompt engineering patterns
+│   └── presentation-template/     # Starter template for student presentations
+│       ├── index.html             # reveal.js single-slide template
+│       └── css/mq-theme.css       # MQ theme (copy from Week 1)
 ├── setup/
 │   └── getting-started.md         # Student setup guide (Python, Jupyter, VS Code)
 ├── weeks/
 │   ├── week-01-lecture/           # Lecture weeks
-│   │   ├── README.md              # Companion reading
-│   │   ├── readings.md            # Optional/suggested readings
+│   │   ├── README.md              # Companion reading (required reading)
+│   │   ├── readings.md            # Additional readings (optional)
+│   │   ├── figures/               # SVG diagrams referenced from README
 │   │   └── slides/                # reveal.js slide deck
 │   │       ├── index.html         # The slide deck (HTML)
 │   │       ├── css/mq-theme.css   # Shared MQ theme (copy from Week 1)
@@ -73,7 +91,7 @@ Each class session is **2 hours** (Mondays 3–5pm), but content does not fill t
 - **Companion readings** should cover what can realistically be taught in ~60 minutes of lecture (not 2 hours).
 - **Challenge labs** should be achievable in ~90 minutes of focused work, with stretch goals for fast students.
 - **Slide decks** should target roughly 40–50 content slides for a 60-minute lecture (some slides are quick, some need discussion).
-- **Week 1 slides** can be larger (~60–70 slides) given the extended lecture time.
+- **Week 1 slides** can be larger (70+ slides) given the extended lecture time.
 
 ---
 
@@ -83,7 +101,7 @@ Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-le
 
 ### Checklist
 
-1. **README.md** — Companion reading covering lecture topics in detail
+1. **README.md** — Companion reading (this is the **required reading** for the week)
    - Overview (2-3 sentences: what and why)
    - Key Concepts (explained with psychology-relevant examples)
    - **"Think about it" discussion prompts** — 3-4 per lecture week (see below)
@@ -91,8 +109,10 @@ Use `dev/_templates/lecture-week.md` as the starting point for `weeks/week-NN-le
    - Common Misconceptions
    - Connections to Psychology
    - Link to `readings.md`
+   - SVG figures for key diagrams (see "SVG Figures in READMEs" below)
 
-2. **readings.md** — Suggested and optional readings
+2. **readings.md** — Additional readings (**optional** — for depth and paper discovery)
+   - Title should be "Additional Readings and Resources" with a note clarifying these are optional
    - 1-2 suggested readings (accessible, foundational)
    - 2-4 optional readings (deeper dives, applied examples)
    - Use APA format, include DOI links
@@ -130,6 +150,76 @@ Each lecture week's companion reading should include **3–4 discussion prompts*
 **Example (from Week 1):**
 > **Think about it:** Why do you think a toddler can learn "dog" from a few examples while an ML model needs thousands? What does the human bring to the task that the model doesn't?
 
+When citing academic references within "Think about it" prompts, include DOI hyperlinks inline. Example from Week 1:
+
+```markdown
+> **Think about it:** ... (For more on the promises and challenges of digital phenotyping, see [Onnela & Rauch, 2016](https://doi.org/10.1038/npp.2016.7).)
+```
+
+### SVG Figures in READMEs
+
+Companion readings can include SVG diagrams for key concepts (e.g., the AI/ML hierarchy, the LLM Problem-Solving Loop, prediction vs explanation). These live in a `figures/` folder at the week level (not inside `slides/`).
+
+```
+weeks/week-01-lecture/
+├── README.md
+├── readings.md
+├── figures/                        # SVG diagrams for the README
+│   ├── ai-ml-hierarchy.svg
+│   ├── traditional-vs-ml.svg
+│   └── llm-problem-solving-loop.svg
+└── slides/
+    ├── figures/                    # Placeholder PNGs for the slide deck
+    ...
+```
+
+Reference them in Markdown with standard image syntax:
+
+```markdown
+![AI, ML, Deep Learning, and Generative AI — each is a subset of the layer above](figures/ai-ml-hierarchy.svg)
+```
+
+### New-Tab Links in Markdown
+
+For external links in student-facing Markdown files, use `<a target="_blank">` to open in a new tab. Standard Markdown links (`[text](url)`) don't support `target="_blank"`, so use raw HTML:
+
+```markdown
+<a href="https://revealjs.com" target="_blank">reveal.js</a>
+```
+
+### GitHub Pages
+
+Slide decks are served via GitHub Pages at:
+
+```
+https://xkiwilabs.github.io/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/weeks/week-NN-lecture/slides/index.html
+```
+
+After pushing a new slide deck, verify the link works. The root README links to slides using this pattern with `target="_blank"`:
+
+```markdown
+<a href="https://xkiwilabs.github.io/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a>
+```
+
+### Readings Terminology
+
+To avoid confusion between required and optional reading:
+
+- **Required reading** = the `README.md` companion reading in each week's folder. Students should read this before or after the lecture.
+- **Optional/additional readings** = the `readings.md` file. These are for depth, exploration, and paper discovery for the presentation and written assignment.
+
+Use "companion reading" or "required reading" when referring to the README. Use "additional readings" or "optional readings" when referring to readings.md. The `readings.md` file should have a note at the top clarifying this distinction (see Week 1 for the pattern).
+
+### Student Presentations
+
+Students create **HTML slides** using reveal.js with the help of an LLM coding assistant, then export to **PDF** for submission. This replaces the earlier PowerPoint format.
+
+- A starter template is provided at `resources/presentation-template/`
+- The template is optional — students can customise it completely or build from scratch
+- The `resources/html-slides-guide.md` has step-by-step instructions
+- All challenge lab READMEs should reference HTML slides (not PowerPoint) in their "What to Present" section
+- Submission format: `[Lastname]_[Firstname]_Presentation.pdf`
+
 ---
 
 ## Building a Challenge Lab Week
@@ -143,7 +233,7 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
    - Background (what lecture concept is being applied)
    - Dataset description (what's in `data/`, what each variable means)
    - Getting Started (suggested steps, useful LLM prompts, starter code reference)
-   - What to Present (1 slide, what to include)
+   - What to Present (1 HTML slide, exported as PDF, what to include)
    - Hints (collapsible spoiler sections)
 
 2. **starter.ipynb** — Scaffolded Jupyter notebook
@@ -258,8 +348,11 @@ Key settings (defined in the `Reveal.initialize()` call):
 
 These are included in the Week 1 script block. Copy them into every deck:
 
+- **Back-to-repo link** — top-left corner, "← Back to Repo" link that opens the GitHub repo in a new tab. Styled with `back-to-repo` CSS class. Adapts colour for dark-background slides.
 - **Slide navigation bar** — thin bar at the bottom of every slide. Shows progress (red tint for visited slides, solid red for current). On hover, expands to show numbered pills with slide-title tooltips. Click to jump.
 - **Live clock** — top-right corner, 12-hour format, updates every 15 seconds. Adapts colour for dark-background slides.
+
+All three elements adapt their styling for dark-background slides (title, section-divider, think-slide, end-slide) via the `updateOverlayStyles()` function in the script block.
 
 ### Slide Types and CSS Classes
 
@@ -437,7 +530,7 @@ Each major topic in the lecture follows this pattern in the HTML:
 
 | Week type | Target slides | Notes |
 |-----------|--------------|-------|
-| Week 1 | ~60 | Extended lecture time (no student presentations) |
+| Week 1 | 70+ | Extended lecture time (no student presentations) |
 | Standard lecture (Weeks 3, 5, 7, 9) | 40–50 | ~60 min lecture time |
 | Week 11 (hybrid) | 30–40 | Split between lecture and lab |
 
@@ -447,14 +540,16 @@ These include section dividers, think-about-it slides, and the assessment/homewo
 
 **Content first:**
 - [ ] Write `README.md` — companion reading with key concepts, research examples, "Think about it" prompts
-- [ ] Write `readings.md` — verify all DOIs, check open access, APA 7th format
+- [ ] Create `figures/` folder with SVG diagrams for key concepts referenced from README
+- [ ] Write `readings.md` — title "Additional Readings and Resources", add note that these are optional, verify all DOIs, check open access, APA 7th format
 - [ ] Ensure every paper cited in the README has a DOI hyperlink
 
 **Build the slide deck:**
 - [ ] Create `slides/` folder: copy `css/mq-theme.css` unchanged from Week 1
-- [ ] Create `index.html` — copy the HTML template and full `<script>` block from Week 1 (config + nav bar + clock)
+- [ ] Create `index.html` — copy the HTML template and full `<script>` block from Week 1 (config + nav bar + clock + back-to-repo link)
 - [ ] Update `<title>` to "Week N: Title — PSYC4411"
 - [ ] Update the title slide (week number, subtitle, keep instructor info)
+- [ ] Verify back-to-repo link points to the correct GitHub repo URL
 - [ ] Build section dividers for each major topic from the README
 - [ ] Build content slides from the README sections
 - [ ] Build all diagrams as HTML/CSS (not PNG images) — flow charts, hierarchies, timelines, Venn diagrams, comparisons
@@ -466,6 +561,10 @@ These include section dividers, think-about-it slides, and the assessment/homewo
 - [ ] Check text density: slides should feel full (not cramped, not empty)
 - [ ] Australian English throughout (behaviour, generalisation, colour, etc.)
 - [ ] No `scripts/` or `examples/` folders needed for lecture weeks
+
+**After pushing:**
+- [ ] Verify GitHub Pages link works: `https://xkiwilabs.github.io/.../weeks/week-NN-lecture/slides/index.html`
+- [ ] Update the root README Weekly Materials table with the Slides link
 
 ---
 
