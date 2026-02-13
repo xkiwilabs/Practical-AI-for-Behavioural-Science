@@ -18,9 +18,13 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 ├── resources/                     # Guides and references (beginner-friendly)
 │   ├── README.md                  # Hub page linking all guides
 │   ├── ai-tools-guide.md          # AI tools overview (2026)
+│   ├── packages-glossary.md       # Python packages glossary (what each does, when used)
+│   ├── ollama-guide.md            # Running local AI models with Ollama
+│   ├── lm-studio-guide.md         # Running local AI models with LM Studio
 │   ├── github-guide.md            # GitHub for beginners
 │   ├── vscode-guide.md            # VS Code for beginners
 │   ├── jupyter-guide.md           # Jupyter notebooks guide
+│   ├── copilot-guide.md           # GitHub Copilot usage guide
 │   ├── html-slides-guide.md       # Creating presentations with reveal.js
 │   ├── markdown-guide.md          # Markdown basics + cheat sheet
 │   ├── prompt-engineering-guide.md # Prompt engineering patterns
@@ -45,7 +49,9 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │   ├── week-02-lab/               # Challenge lab weeks
 │   │   ├── README.md              # Challenge brief
 │   │   ├── starter.ipynb          # Starter notebook with scaffolding
-│   │   └── data/                  # Datasets for the challenge
+│   │   ├── starter.py             # Starter script for script workflow
+│   │   ├── data/                  # Datasets for the challenge
+│   │   └── example_solution/      # (solutions branch only) Worked examples
 │   ├── week-11-lecture-lab/       # Hybrid week (both lecture + challenge)
 │   ├── week-12-viva-review/       # Study guide + practice questions
 │   └── week-13-discussion/        # Discussion prompts + reflection
@@ -64,8 +70,39 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 
 ## Branching Strategy
 
-- **`main`** — Student-facing content. Everything here is visible to students.
-- **`solutions`** — Solution notebooks for challenges. Merge into main after each challenge presentation week to reveal solutions.
+Three branches, each with a clear purpose:
+
+| Branch | Purpose | Visible to students? |
+|--------|---------|---------------------|
+| **`main`** | Released, student-facing content | Yes — students clone and pull from this |
+| **`staging`** | Work-in-progress content for future weeks | No — only the instructor sees this |
+| **`solutions`** | Example solutions for challenge labs | No — shared with students after they present |
+
+### Workflow: Developing New Content
+
+1. **Switch to `staging`:** `git checkout staging`
+2. **Rebase onto main** (to pick up any recent changes): `git rebase main`
+3. **Develop the week's content** — commit as you go
+4. **When ready to release** (the day before class):
+   - `git checkout main`
+   - `git merge staging` (or cherry-pick specific commits if other unreleased weeks are on staging)
+   - `git push origin main`
+5. Students run `git pull` to get the new content
+
+### Workflow: Developing Solutions
+
+1. **Switch to `solutions`:** `git checkout solutions`
+2. **Rebase onto main** (to get the latest released content): `git rebase main`
+3. **Create the example solution** in `weeks/week-NN-lab/example_solution/`
+4. **Commit and push** to the solutions branch
+5. **After students present**, share the solutions branch link — or merge the specific solution folder into main
+
+### Tips
+
+- **Always develop future weeks on `staging`**, never directly on `main`. This prevents students from seeing incomplete content when they pull.
+- **Solutions never go on `main` or `staging`** until after the relevant presentation. Keep them exclusively on the `solutions` branch.
+- **The `dev/` folder** is on all branches — it's fine to update `DEVELOPMENT_GUIDE.md` or templates on any branch, but prefer `main` so all branches pick it up on rebase.
+- **If `staging` has multiple unreleased weeks** and you only want to release one, use `git cherry-pick` to move specific commits to main, or reorganise commits so each week is a clean set of commits you can merge up to.
 
 ---
 
@@ -269,10 +306,19 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
    - Include a brief data dictionary in the README or as a separate `data_dictionary.md`
    - Keep datasets small enough for GitHub (<50MB)
 
-4. **Solution notebook** (on `solutions` branch only)
-   - Complete worked solution
-   - Include commentary explaining choices
-   - Name: `solution.ipynb`
+4. **starter.py** — Starter script for the script workflow (optional, established in Week 2)
+   - Import cells with standard libraries
+   - Data loading
+   - Placeholder comments for student/AI code
+   - Should run without errors as-is (just loads data and prints summary)
+
+5. **Example solution** (on `solutions` branch only, in `example_solution/`)
+   - `plan.md` — Analysis plan following the plan-first approach
+   - `example_solution.ipynb` — Complete notebook workflow solution
+   - `visualise.py` — Complete script workflow solution
+   - `plan_final.md` — Updated plan documenting what actually happened
+   - `slide.html` + `css/` — Example presentation slide
+   - Include commentary explaining choices and the thinking process
 
 ---
 
