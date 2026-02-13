@@ -226,13 +226,17 @@ Use "companion reading" or "required reading" when referring to the README. Use 
 
 ### Student Presentations
 
-Students create **HTML slides** using reveal.js with the help of an LLM coding assistant, then export to **PDF** for submission. This replaces the earlier PowerPoint format.
+Students create **HTML slides** using reveal.js with the help of **any AI tool** — browser chatbots (ChatGPT, Gemini, Claude), VS Code with Copilot, or anything else. This replaces the earlier PowerPoint format.
 
 - A starter template is provided at `resources/presentation-template/`
-- The template is optional — students can customise it completely or build from scratch
+- The template is optional — students can customise it completely or build from scratch using any chatbot
 - The `resources/html-slides-guide.md` has step-by-step instructions
 - All challenge lab READMEs should reference HTML slides (not PowerPoint) in their "What to Present" section
-- Submission format: `[Lastname]_[Firstname]_Presentation.pdf`
+
+**Submission workflow (two channels):**
+- **HTML file → shared OneDrive folder** (all presentations — student and challenge lab). Named `Firstname_Lastname.html` or `GroupN.html`. Used to present from the classroom computer.
+- **PDF → iLearn** (graded student presentations only, Weeks 4/6/8/10). Named `Lastname_Firstname_Presentation.pdf`.
+- Challenge lab presentations require only the HTML upload — no PDF needed.
 
 ---
 

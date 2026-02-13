@@ -28,7 +28,7 @@ This is the simplest approach. You don't need VS Code or any special software �
 1. Open <a href="https://chat.openai.com" target="_blank">ChatGPT</a>, <a href="https://gemini.google.com" target="_blank">Gemini</a>, or <a href="https://claude.ai" target="_blank">Claude</a> in your browser
 2. Ask it to create your slide (see the example prompt below)
 3. The chatbot will generate HTML code — copy it all and paste it into a new text file
-4. Save the file as `index.html` (make sure it ends in `.html`, not `.txt`)
+4. Save the file with your name: `Firstname_Lastname.html` (for challenge labs, use `Group1.html`, `Group2.html`, etc.). Make sure it ends in `.html`, not `.txt`
 5. Double-click the file to open it in your browser — you should see your slide
 6. To make changes, go back to your chatbot, paste the code, and ask for what you want changed
 
@@ -37,10 +37,11 @@ This is the simplest approach. You don't need VS Code or any special software �
 ### Option 2: Use the course template
 
 1. Download or copy the [presentation template](presentation-template/)
-2. Open the folder in VS Code (or any text editor — even Notepad works)
-3. Open `index.html` — this is your slide
-4. Open it in your browser to preview (double-click the file, or in VS Code: right-click → "Open with Live Server" if you have the extension)
-5. Ask your LLM assistant (Copilot Chat, ChatGPT, Claude, etc.) to help you customise it
+2. Rename the `index.html` file to `Firstname_Lastname.html` (or `Group1.html` for challenge labs)
+3. Open the folder in VS Code (or any text editor — even Notepad works)
+4. Open your HTML file — this is your slide
+5. Open it in your browser to preview (double-click the file, or in VS Code: right-click → "Open with Live Server" if you have the extension)
+6. Ask your LLM assistant (Copilot Chat, ChatGPT, Claude, etc.) to help you customise it
 
 The template is a starting point — you can change everything about it. Different colours, different layout, different fonts. It's yours to customise however you like.
 
@@ -98,20 +99,20 @@ Ask your LLM assistant to help you customise the slide. Here are some example pr
 
 ## Previewing Your Slide
 
-**Double-click** your `index.html` file — it will open in your default browser and display the slide. That's it.
+**Double-click** your HTML file — it will open in your default browser and display the slide. That's it.
 
-If you're using VS Code and want auto-refresh (the slide updates every time you save), install the "Live Server" extension, then right-click `index.html` → "Open with Live Server".
+If you're using VS Code and want auto-refresh (the slide updates every time you save), install the "Live Server" extension, then right-click your file → "Open with Live Server".
 
 ---
 
 ## Exporting to PDF
 
-You need to submit your slide as a PDF. Here's how:
+For the formal Paper Presentation assessment, you need to submit a PDF version of your slide via iLearn (in addition to the HTML file in the shared folder). Here's how to export:
 
 ### Method 1: Browser Print (easiest)
 
 1. Open your slide in Chrome or Edge
-2. Add `?print-pdf` to the end of the URL (e.g., `file:///path/to/index.html?print-pdf`)
+2. Add `?print-pdf` to the end of the URL (e.g., `file:///path/to/Jane_Smith.html?print-pdf`)
 3. Press Cmd+P (Mac) or Ctrl+P (Windows) to open the Print dialog
 4. Change "Destination" to **Save as PDF**
 5. Set "Layout" to **Landscape**
@@ -130,17 +131,34 @@ You need to submit your slide as a PDF. Here's how:
 
 ---
 
+## File Naming
+
+Name your HTML file so it's easy to identify:
+
+- **Paper presentations (individual):** `Firstname_Lastname.html` (e.g., `Jane_Smith.html`)
+- **Challenge lab presentations (group):** `Group1.html`, `Group2.html`, etc.
+
 ## Submission
 
+### For presenting in class (all presentations)
+
+Upload your **HTML file** to the shared OneDrive folder (link provided in iLearn) **before** your presentation session. This is how your slide will be opened on the classroom computer — the instructor will open your file in the browser so you can present directly from it.
+
+### For grading (paper presentations only)
+
+For the formal Paper Presentation assessment (Weeks 4, 6, 8, 10), you also need to submit a **PDF** via iLearn:
+
 1. Export your slide as a PDF (see above)
-2. Name it: `[Lastname]_[Firstname]_Presentation.pdf`
+2. Name it: `Lastname_Firstname_Presentation.pdf`
 3. Upload to the iLearn submission portal **before** your presentation session
+
+Challenge lab presentations do not require a PDF submission — just upload the HTML file to the shared folder.
 
 ---
 
 ## Troubleshooting
 
-**Slide is blank when I open index.html:**
+**Slide is blank when I open the HTML file:**
 - Check that you haven't accidentally deleted the `<div class="slides">` content
 - Make sure the reveal.js CDN links are correct (the template has them pre-configured)
 - Try opening in Chrome or Edge instead of Safari
