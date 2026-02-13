@@ -40,6 +40,8 @@ His research sits at the intersection of experimental psychology, cognitive scie
 
 ## Weekly Materials
 
+Materials are released on the Monday of each class week. The dates below show when each topic goes live — by the end of semester, all weeks will be available here.
+
 | Week | Date | Type | Topic | Slides |
 |------|------|------|-------|--------|
 | 1 | 23 Feb | Lecture | [Why ML and AI Belongs in Psychological Science](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
