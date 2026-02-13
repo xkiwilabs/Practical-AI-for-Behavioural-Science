@@ -135,7 +135,9 @@ You need **at least 32GB of RAM** to run useful local models, and **64GB or more
 
 - **Mac users with Apple Silicon** (M1 Pro/Max or newer) — The unified memory architecture makes Macs particularly good for this. A MacBook Pro with 36GB+ unified memory handles medium models well; 64GB+ handles large ones.
 - **Mini PCs with shared memory** — An increasing number of compact desktops now ship with 96GB or 128GB of shared memory at affordable prices. These are excellent for running local models.
+- **NVIDIA DGX Spark and GB10-based systems** — The <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank">DGX Spark</a> is a compact desktop with 128GB unified memory, purpose-built for local AI. Derivatives are available from Dell, MSI, Acer, ASUS, HP, and Lenovo. These run Ubuntu Linux and can handle models up to 200 billion parameters.
 - **Windows/Linux with a dedicated GPU** — NVIDIA GPUs with 12GB+ VRAM can accelerate smaller models. For larger models, system RAM matters more.
+- **Linux (Ubuntu)** — Most AI infrastructure runs on Linux. If you're serious about local models, Ubuntu is the native environment where you'll get the best performance and compatibility.
 
 If your computer has 16GB or less, the cloud tools will give you a much better experience — don't worry about local models.
 

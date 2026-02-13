@@ -20,7 +20,9 @@ Local AI models need a lot of memory (RAM). See the [Ollama guide](ollama-guide.
 **Best candidates for local models:**
 - **Mac users** with Apple Silicon (M1 Pro/Max or newer) and 32GB+ unified memory
 - **Mini PCs and desktops** with 96–128GB shared/unified memory (increasingly common and affordable)
+- **NVIDIA DGX Spark and GB10-based systems** — Purpose-built for local AI with 128GB unified memory. Available from NVIDIA, Dell, MSI, Acer, ASUS, and others. These run Ubuntu Linux. See the [Ollama guide](ollama-guide.md#do-i-have-enough-hardware) for details.
 - **Windows/Linux users** with NVIDIA GPUs that have 12GB+ VRAM
+- **Linux (Ubuntu) users** — Linux is the default OS for AI/ML work worldwide. If you're running Ubuntu, you'll get excellent compatibility and performance with local models.
 
 If your computer has 16GB or less, stick with cloud tools — they'll give you a much better experience.
 
@@ -33,6 +35,7 @@ If your computer has 16GB or less, stick with cloud tools — they'll give you a
 3. Install as you would any application:
    - **Mac:** Open the `.dmg` file and drag LM Studio to Applications
    - **Windows:** Run the installer and follow the prompts
+   - **Linux (Ubuntu):** Download the `.deb` package from the website and install with `sudo dpkg -i lm-studio-*.deb`, or download the `.AppImage` file and run it directly
 4. Open LM Studio
 
 ---
@@ -122,16 +125,16 @@ Both are excellent tools for running local models. Here's how they compare:
 
 | Feature | LM Studio | Ollama |
 |---------|-----------|--------|
-| **Interface** | Graphical (point and click) | Terminal (command line) |
-| **Ease of use** | Easier for beginners | Requires comfort with the terminal |
+| **Interface** | Graphical (point and click) | Terminal + desktop chat app (macOS/Windows) |
+| **Ease of use** | Easier for beginners | Slightly more technical, but the desktop app helps |
 | **Model browsing** | Built-in model discovery with hardware compatibility checks | Browse online, pull from terminal |
-| **Chat interface** | Built-in, looks like ChatGPT | Terminal-based chat |
+| **Chat interface** | Built-in, looks like ChatGPT | Desktop app (with file drag-and-drop) or terminal |
 | **Local server** | Built-in, one-click | Built-in, runs automatically |
 | **Python integration** | Via local server (OpenAI-compatible) | Via local server or `ollama` Python package |
-| **Resource usage** | Heavier (GUI app) | Lighter (no GUI overhead) |
+| **Linux support** | Yes (AppImage or .deb) | Excellent (one-line install, native) |
 | **Automation** | Less suited for scripting | Great for scripting and automation |
 
-**Our suggestion:** If you've never used the terminal before, start with **LM Studio** — it's more visual and intuitive. If you're comfortable with the terminal (or want to be), **Ollama** is lighter and more scriptable. You can install both and use whichever feels right for the task.
+**Our suggestion:** Both now have graphical interfaces, so either is a good starting point. LM Studio's model discovery is excellent for browsing what's available and checking hardware compatibility. Ollama is lighter, more scriptable, and has stronger Linux support. You can install both and use whichever feels right for the task.
 
 ---
 

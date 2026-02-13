@@ -1,6 +1,6 @@
 # Ollama Guide — Running AI Models on Your Own Computer
 
-Ollama lets you download and run large language models (LLMs) directly on your own machine — no internet connection needed, no data sent to external servers. It's free, open-source, and runs from the terminal.
+Ollama lets you download and run large language models (LLMs) directly on your own machine — no internet connection needed, no data sent to external servers. It's free, open-source, and works both from the terminal and through a built-in desktop chat interface.
 
 > **This is completely optional.** You do not need local models for this course. The cloud-based tools (Copilot, ChatGPT, Claude, Gemini) are more than enough. Local models are useful later in the course and in research when you're working with sensitive data that can't be sent to external servers, or when you want to experiment without usage limits.
 
@@ -21,9 +21,11 @@ Local AI models need a lot of memory (RAM). The model has to be loaded entirely 
 
 **Who's most likely to have enough?**
 
-- **Mac users with Apple Silicon** (M1 Pro/Max, M2, M3, M4 and their Pro/Max/Ultra variants) — These chips use **unified memory**, meaning the CPU and GPU share the same pool of RAM. A MacBook Pro with 32GB or 36GB of unified memory can run 7B–14B models well. Models with 48GB, 64GB, or more can run even larger models comfortably.
+- **Mac users with Apple Silicon** (M1 Pro/Max, M2, M3, M4 and their Pro/Max/Ultra variants) — These chips use **unified memory**, meaning the CPU and GPU share the same pool of RAM. A MacBook Pro with 32GB or 36GB of unified memory can run 7B–14B models well. Machines with 48GB, 64GB, or more can run even larger models comfortably.
 - **Mini PCs and desktops with shared memory** — An increasing number of compact desktop computers (from brands like Minisforum, Beelink, and others) now ship with 96GB or 128GB of unified/shared memory. These are excellent for running local models.
+- **NVIDIA DGX Spark and GB10-based systems** — The <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank">NVIDIA DGX Spark</a> (formerly Project DIGITS) is a compact desktop powered by the GB10 Grace Blackwell Superchip with **128GB of unified memory** — purpose-built for running local AI models. It can handle models up to 200 billion parameters. Derivatives are available from <a href="https://www.dell.com/en-us/shop/desktop-computers/dell-pro-max-with-gb10/spd/dell-pro-max-fcm1253-micro" target="_blank">Dell</a>, <a href="https://ipc.msi.com/product_detail/Industrial-Computer-Box-PC/AI-Supercomputer/EdgeXpert-MS-C931" target="_blank">MSI</a>, Acer, ASUS, HP, and Lenovo. These run Ubuntu Linux and are an increasingly popular option for researchers who need serious local AI capability.
 - **Windows/Linux with a dedicated GPU** — If you have an NVIDIA GPU with 8GB+ of VRAM, you can run smaller models on the GPU (which is faster than running on CPU alone). For larger models, you need more VRAM or the model will run on the CPU, which is much slower.
+- **Linux (Ubuntu) users** — If you're running Ubuntu or another Linux distribution, you're in great company. Linux is the default operating system for most AI and machine learning infrastructure worldwide, and tools like Ollama, PyTorch, and CUDA run natively and often perform best on Linux. If you're curious about Linux but haven't tried it, it's worth exploring — many AI researchers use Ubuntu as their primary OS.
 - **Most regular laptops (8–16GB RAM)** — Honestly, the experience won't be great. You can technically run very small models, but the quality and speed will be disappointing compared to cloud tools. If this is you, stick with the cloud tools — they're better for your setup.
 
 **Not sure how much RAM you have?**
@@ -48,6 +50,18 @@ Local AI models need a lot of memory (RAM). The model has to be loaded entirely 
 2. Click **Download for Windows**
 3. Run the downloaded installer and follow the prompts
 4. Ollama will run in the background (you'll see a small icon in the system tray)
+
+### Linux (Ubuntu)
+
+Ollama has first-class Linux support — one command does everything:
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+This installs Ollama and sets it up as a system service that starts automatically. It works on Ubuntu, Debian, Fedora, and most other distributions. If you have an NVIDIA GPU, the installer will detect it and configure GPU acceleration automatically (as long as NVIDIA drivers and CUDA are installed).
+
+> **Why Linux?** Most AI and ML infrastructure runs on Linux. If you're exploring local models seriously — especially on hardware like the DGX Spark — Ubuntu is the native environment and where you'll get the best performance and compatibility.
 
 ### Verify it works
 
@@ -112,6 +126,16 @@ for example, one person in a study. The position of the dot shows that
 person's values on the two variables: one variable determines how far left
 or right the dot goes, and the other determines how high or low...
 ```
+
+### Chat with the desktop app
+
+Ollama also comes with a **built-in desktop chat interface** (on macOS and Windows) that looks and feels similar to ChatGPT — but everything runs locally on your machine. It supports:
+
+- **File drag-and-drop** — drop a PDF, text file, or code file into the chat for the model to reason about
+- **Image inputs** — with compatible models (like Gemma 3), you can include images in your conversations
+- **Adjustable context length** — increase the model's memory for processing larger documents
+
+To use it, just open the Ollama app from your Applications folder (Mac) or Start menu (Windows). If you installed the CLI-only version, you can download the desktop app from <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>.
 
 ### Use it with Python
 

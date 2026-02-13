@@ -383,7 +383,9 @@ Later in the semester, we'll explore running AI models directly on your own comp
 
 - **Mac users** with Apple Silicon (M1 Pro/Max or newer) and **32GB+ unified memory** — you're in the sweet spot
 - **Desktop/mini PC users** with **64GB+ RAM** — excellent for local models
+- **NVIDIA DGX Spark or GB10-based systems** — purpose-built for local AI with 128GB unified memory, available from NVIDIA, Dell, MSI, Acer, and others (these run Ubuntu Linux)
 - **Windows/Linux users** with an **NVIDIA GPU** (12GB+ VRAM) — GPU acceleration helps a lot
+- **Linux (Ubuntu) users** — Linux is the default OS for AI/ML work and is where these tools run best. If you're already on Ubuntu, you'll have a great experience.
 
 If your computer has 16GB of RAM or less, local models won't run well and you'll have a better experience with the cloud tools. No need to install anything — you won't be at any disadvantage in this course.
 
