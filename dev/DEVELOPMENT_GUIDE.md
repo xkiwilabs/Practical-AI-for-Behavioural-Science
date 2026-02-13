@@ -48,6 +48,9 @@ Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
 │   │       └── css/mq-theme.css   # Shared MQ theme (copy from Week 1)
 │   ├── week-02-lab/               # Challenge lab weeks
 │   │   ├── README.md              # Challenge brief
+│   │   ├── slides/                # Challenge intro slides (~5 min)
+│   │   │   ├── index.html
+│   │   │   └── css/mq-theme.css
 │   │   ├── starter.ipynb          # Starter notebook with scaffolding
 │   │   ├── starter.py             # Starter script for script workflow
 │   │   ├── data/                  # Datasets for the challenge
@@ -279,9 +282,17 @@ Use `dev/_templates/challenge-lab.md` as the starting point for `weeks/week-NN-l
 
 ### Checklist
 
-1. **README.md** — Challenge brief
+1. **Challenge intro slides** (`slides/index.html` + `css/mq-theme.css`)
+   - ~5 minutes of slides the instructor presents at the start of class before students begin working
+   - Cover: the challenge overview, tool reminders (VS Code Chat/Edit/Agent, browser chatbots, CLI tools), the LLM→Code→Solution workflow, and getting started pointers
+   - Use the same reveal.js + MQ theme as lecture slides (copy `css/mq-theme.css` from Week 1)
+   - Keep it short — students should be working within 10 minutes of class starting
+   - See Week 2's `slides/index.html` for the reference implementation
+
+2. **README.md** — Challenge brief
    - The Challenge (clear goal statement)
    - Background (what lecture concept is being applied)
+   - Tool flexibility note (use whatever AI tools you like; VS Code benefits for tighter feedback loop)
    - Dataset description (what's in `data/`, what each variable means)
    - Getting Started (suggested steps, useful LLM prompts, starter code reference)
    - What to Present (1 HTML slide, exported as PDF, what to include)
