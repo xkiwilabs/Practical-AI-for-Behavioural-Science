@@ -28,7 +28,7 @@ This is the simplest approach. You don't need VS Code or any special software �
 1. Open <a href="https://chat.openai.com" target="_blank">ChatGPT</a>, <a href="https://gemini.google.com" target="_blank">Gemini</a>, or <a href="https://claude.ai" target="_blank">Claude</a> in your browser
 2. Ask it to create your slide (see the example prompt below)
 3. The chatbot will generate HTML code — copy it all and paste it into a new text file
-4. Save the file with your name: `Firstname_Lastname.html` (for challenge labs, use `Group#_Week#.html`, e.g., `Group3_Week2.html`). Make sure it ends in `.html`, not `.txt`
+4. Save the file as an `.html` file (make sure it ends in `.html`, not `.txt`)
 5. Double-click the file to open it in your browser — you should see your slide
 6. To make changes, go back to your chatbot, paste the code, and ask for what you want changed
 
@@ -37,7 +37,7 @@ This is the simplest approach. You don't need VS Code or any special software �
 ### Option 2: Use the course template
 
 1. Download or copy the [presentation template](presentation-template/)
-2. Rename the `index.html` file to `Firstname_Lastname.html` (or `Group#_Week#.html` for challenge labs)
+2. Open the folder — `index.html` is your slide file
 3. Open the folder in VS Code (or any text editor — even Notepad works)
 4. Open your HTML file — this is your slide
 5. Open it in your browser to preview (double-click the file, or in VS Code: right-click → "Open with Live Server" if you have the extension)
@@ -107,7 +107,7 @@ If you're using VS Code and want auto-refresh (the slide updates every time you 
 
 ## Exporting to PDF
 
-For the formal Paper Presentation assessment, you need to submit a PDF version of your slide via iLearn (in addition to the HTML file in the shared folder). Here's how to export:
+For the formal Paper Presentation assessment, you need to submit a PDF version of your slide via iLearn (in addition to the emailed zip). Here's how to export:
 
 ### Method 1: Browser Print (easiest)
 
@@ -131,28 +131,53 @@ For the formal Paper Presentation assessment, you need to submit a PDF version o
 
 ---
 
-## File Naming
-
-Name your HTML file so it's easy to identify:
-
-- **Paper presentations (individual):** `Firstname_Lastname.html` (e.g., `Jane_Smith.html`)
-- **Challenge lab presentations (group):** `Group#_Week#.html` (e.g., `Group3_Week2.html`, `Group3_Week4.html`)
-
 ## Submission
 
-### For presenting in class (all presentations)
+### Step 1: Organise your files into a folder
 
-Upload your **HTML file** to the shared OneDrive folder (link provided in iLearn) **before** your presentation session. This is how your slide will be opened on the classroom computer — the instructor will open your file in the browser so you can present directly from it.
+Create a folder containing everything your slide needs to work:
 
-### For grading (paper presentations only)
+- Your HTML file
+- The `css/` folder (if you used the course template or a separate CSS file)
+- Any images you included in your slide
+
+**Folder naming:**
+
+- **Paper presentations (individual):** `Lastname_Firstname_WeekN` (e.g., `Smith_Jane_Week4`)
+- **Challenge lab presentations (group):** `GroupN_WeekN` (e.g., `Group3_Week2`)
+
+### Step 2: Zip the folder
+
+Right-click the folder → **Compress** (Mac) or **Send to → Compressed (zipped) folder** (Windows).
+
+**Always zip your folder** — MQ email will reject standalone HTML file attachments.
+
+### Step 3: Email the zip file
+
+Email the zip file to **michael.j.richardson@mq.edu.au**.
+
+**Paper presentations:**
+- Subject line: `PSYC4411 Presentation - Lastname Firstname - Week N` (e.g., `PSYC4411 Presentation - Smith Jane - Week 4`)
+- **Deadline:** 12pm (noon) on the Monday of your presentation week
+
+**Challenge lab presentations:**
+- Subject line: `PSYC4411 Challenge Lab - Group N - Week N` (e.g., `PSYC4411 Challenge Lab - Group 3 - Week 2`)
+- Only **one group member** needs to send the email
+- **Deadline:** 12pm (noon) on the Monday you present (the week after the challenge lab)
+
+### Step 4: Submit PDF via iLearn (paper presentations only)
 
 For the formal Paper Presentation assessment (Weeks 4, 6, 8, 10), you also need to submit a **PDF** via iLearn:
 
-1. Export your slide as a PDF (see above)
+1. Export your slide as a PDF (see Exporting to PDF above)
 2. Name it: `Lastname_Firstname_Presentation.pdf`
 3. Upload to the iLearn submission portal **before** your presentation session
 
-Challenge lab presentations do not require a PDF submission — just upload the HTML file to the shared folder.
+Challenge lab presentations do not require a PDF submission — just the emailed zip.
+
+### Testing before you send
+
+**Test before sending:** Email the zip to yourself first. Download it, unzip it, open the folder and double-click your HTML file — it should display in your browser exactly as you expect. If something looks wrong (missing styles, broken images), you're probably missing a file in the folder. Fix it, re-zip, and send.
 
 ---
 

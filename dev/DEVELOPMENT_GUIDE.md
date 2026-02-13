@@ -234,9 +234,10 @@ Students create **HTML slides** using reveal.js with the help of **any AI tool**
 - All challenge lab READMEs should reference HTML slides (not PowerPoint) in their "What to Present" section
 
 **Submission workflow (two channels):**
-- **HTML file → shared OneDrive folder** (all presentations — student and challenge lab). Named `Firstname_Lastname.html` (student) or `Group#_Week#.html` (challenge lab, e.g., `Group3_Week2.html`). Used to present from the classroom computer.
+- **Zipped folder → email** (all presentations — student and challenge lab). Students zip their presentation folder (HTML + css/ + images) and email to michael.j.richardson@mq.edu.au by 12pm Monday. Folder naming: `Lastname_Firstname_WeekN` (student) or `GroupN_WeekN` (challenge lab). Subject line: `PSYC4411 Presentation - ...` or `PSYC4411 Challenge Lab - ...`.
 - **PDF → iLearn** (graded student presentations only, Weeks 4/6/8/10). Named `Lastname_Firstname_Presentation.pdf`.
-- Challenge lab presentations require only the HTML upload — no PDF needed.
+- Challenge lab presentations require only the emailed zip — no PDF needed.
+- MQ email rejects standalone HTML attachments, so the zip is mandatory.
 
 ---
 

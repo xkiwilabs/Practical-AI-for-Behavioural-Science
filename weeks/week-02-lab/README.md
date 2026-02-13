@@ -90,7 +90,9 @@ Here are four example prompts that demonstrate good prompt engineering — notic
 
 Prepare **1 HTML slide** for the start of Week 3 (~3 minutes per group). Build it using <a href="https://revealjs.com" target="_blank">reveal.js</a> with the help of any AI tool you like — a browser chatbot (ChatGPT, Gemini, Claude), VS Code with Copilot, or anything else. Most chatbots can generate the HTML file for you directly in the conversation. A <a href="../../resources/presentation-template/">starter template</a> and <a href="../../resources/html-slides-guide.md">step-by-step guide</a> are provided, but you can design it however you like.
 
-**File naming:** Save your file as `Group#_Week2.html` (e.g., `Group3_Week2.html`). Upload it to the shared OneDrive folder (link in iLearn) before the start of Week 3 so it can be opened on the classroom computer for your presentation. No PDF needed for challenge lab presentations.
+**Submitting your slide:** Put your HTML file, `css/` folder (if used), and any images into a folder named `GroupN_Week2` (e.g., `Group3_Week2`). Zip the folder and have **one group member** email it to **michael.j.richardson@mq.edu.au** with subject line `PSYC4411 Challenge Lab - Group N - Week 2`. **Deadline: 12pm (noon) Monday of Week 3.** No PDF needed for challenge lab presentations.
+
+**Tip:** Test before sending — email the zip to yourself first, download it, unzip it, and open the HTML file in your browser. If it displays as you expect, you're good to send.
 
 Your slide should include:
 

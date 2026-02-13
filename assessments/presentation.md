@@ -41,8 +41,8 @@ Below are some ML and AI methods commonly used in psychological and cognitive sc
 - **Duration:** 3 minutes (strictly enforced)
 - **Slides:** Maximum 1 HTML slide built with <a href="https://revealjs.com" target="_blank">reveal.js</a>. You can use **any tools you like** to create it — browser-based chatbots (ChatGPT, Gemini, Claude), VS Code with Copilot, or any other AI assistant. Most chatbots can generate a complete HTML file for you right in the browser. A <a href="../resources/presentation-template/">starter template</a> and <a href="../resources/html-slides-guide.md">step-by-step guide</a> are provided, but they're optional — you're free to design your slide however you like.
 - **Submission (two parts):**
-  1. **PDF for grading:** Export your slide as a PDF and upload it to the iLearn submission portal **before** your presentation session. File naming: `Lastname_Firstname_Presentation.pdf`
-  2. **HTML for presenting:** Upload your HTML file to the shared OneDrive folder (link provided in iLearn) so it can be opened on the classroom computer during your presentation. File naming: `Firstname_Lastname.html`
+  1. **HTML for presenting:** Put your HTML file, `css/` folder, and any images into a folder named `Lastname_Firstname_WeekN` (e.g., `Smith_Jane_Week4`). Zip the folder and email it to **michael.j.richardson@mq.edu.au** with subject line `PSYC4411 Presentation - Lastname Firstname - Week N`. **Deadline: 12pm (noon) on the Monday of your presentation week.**
+  2. **PDF for grading:** Export your slide as a PDF named `Lastname_Firstname_Presentation.pdf` and upload it to the iLearn submission portal **before** your presentation session.
 - **AI disclosure:** At the end of your presentation, you will be given 30 seconds to explain what LLM/chatbot/Gen-AI tools you used to research and prepare your presentation. Be ready to discuss your process — what you asked for, how you refined it, and what you learned. Save your chat histories so you can refer back to them.
 
 ---
@@ -98,16 +98,15 @@ Your presentation slide is an HTML file built with <a href="https://revealjs.com
 1. Open ChatGPT, Gemini, or Claude in your browser
 2. Ask it to create a reveal.js HTML slide for your presentation (see example prompt below)
 3. Copy the HTML code the chatbot gives you into a new text file
-4. Save it as `Firstname_Lastname.html` (make sure it ends in `.html`, not `.txt`)
+4. Save it as an `.html` file (make sure it ends in `.html`, not `.txt`)
 5. Double-click the file to open it in your browser — you should see your slide
 6. Go back to the chatbot to refine — paste the code back and ask for changes
 
 **Option B: Use the course template**
 1. Download or copy the <a href="../resources/presentation-template/">presentation template</a>
-2. Rename `index.html` to `Firstname_Lastname.html`
-3. Open it in VS Code (or any text editor)
-4. Ask your LLM assistant (Copilot Chat, ChatGPT, Claude, etc.) to help you customise it
-5. Open it in your browser to preview
+2. Open it in VS Code (or any text editor)
+3. Ask your LLM assistant (Copilot Chat, ChatGPT, Claude, etc.) to help you customise it
+4. Open the HTML file in your browser to preview
 
 **Option C: Start from scratch with any LLM**
 Ask any chatbot: *"Create a single reveal.js HTML slide for a 3-minute research presentation. Use the reveal.js CDN (version 5.1.0). Include a title, author name, and space for 4 content areas: research question, methods, key findings, and one limitation. Use a clean, professional design."*
