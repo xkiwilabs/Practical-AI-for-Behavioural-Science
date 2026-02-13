@@ -86,7 +86,9 @@ Here are four example prompts that demonstrate good prompt engineering — notic
 
 ## What to Present
 
-Prepare **1 PowerPoint slide** for the start of Week 3 (~2 minutes per group). Your slide should include:
+Prepare **1 HTML slide** for the start of Week 3 (~2 minutes per group). Build it using <a href="../../resources/html-slides-guide.md">reveal.js with the help of an LLM coding assistant</a> — a <a href="../../resources/presentation-template/">starter template</a> is provided, but you can design it however you like. Export it as a **PDF** for submission.
+
+Your slide should include:
 
 1. **Your final figure** — the multi-panel visualisation you created
 2. **Your approach** — which relationships did you choose and why?

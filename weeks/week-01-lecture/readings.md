@@ -1,4 +1,6 @@
-# Week 1: Readings and Resources
+# Week 1: Additional Readings and Resources
+
+> **Note:** The required reading for this week is the [companion reading](README.md) (the `README.md` in this folder). The readings below are **optional** — they provide additional depth and are a great place to find papers for your presentation and written assignment.
 
 ## Suggested Readings
 

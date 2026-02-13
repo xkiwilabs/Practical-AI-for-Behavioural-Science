@@ -1,7 +1,6 @@
 # Week N: [Lecture Title]
 
-> Companion reading for the Week N lecture. This is optional supplementary
-> material that covers the lecture topics in more detail.
+> Companion reading for the Week N lecture. Read this before or after the lecture — it covers the same ideas in more detail and at your own pace.
 
 ## Overview
 
@@ -33,7 +32,7 @@
 
 [How these methods connect to real psychological research questions. Concrete examples of published studies that use these techniques.]
 
-## Optional Readings
+## Additional Readings
 
 See [readings.md](readings.md) for suggested and optional papers.
 
