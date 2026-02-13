@@ -129,12 +129,27 @@ Modern Apple Silicon Macs (M2 Pro and above) can run useful models comfortably. 
 
 ## Image, Video, and Audio
 
-- **DALL-E 3** (via ChatGPT) — Image generation from text
-- **Midjourney** (<a href="https://midjourney.com" target="_blank">midjourney.com</a>) — High-quality image generation
-- **ElevenLabs** (<a href="https://elevenlabs.io" target="_blank">elevenlabs.io</a>) — Text-to-speech and voice cloning
-- **Whisper** (via OpenAI or locally) — Speech-to-text transcription
+These tools can be useful for creating experimental stimuli, generating visualisations, transcribing interviews, and making materials accessible.
 
-These can be useful for creating experimental stimuli, generating visualisations, transcribing interviews, and making materials accessible.
+### Image Generation
+
+- **Gemini** (<a href="https://gemini.google.com" target="_blank">gemini.google.com</a>) — Generate images directly in the Gemini app by asking it to create an image. Powered by Imagen 3 / Gemini 3 Pro Image. Free tier includes daily image generation. Via the API (Google AI Studio), Gemini 2.5 Flash Image provides up to 500 images per day at no cost.
+- **DALL-E 3** (via ChatGPT) — Image generation from text descriptions. Available to free ChatGPT users with daily limits.
+- **Midjourney** (<a href="https://midjourney.com" target="_blank">midjourney.com</a>) — High-quality artistic image generation. Paid only, but produces stunning results.
+
+### Video Generation
+
+- **Gemini + Veo** (<a href="https://gemini.google.com" target="_blank">gemini.google.com</a>) — Generate short videos (up to 8 seconds, up to 4K) from text or image prompts using Veo 3.1. Available in the Gemini app and via the API. Includes natively generated audio. Free access with daily limits; expanded access with Google AI Pro/Ultra subscriptions or the free student plan.
+
+### Text-to-Speech
+
+- **Gemini TTS** (<a href="https://ai.google.dev/gemini-api/docs/speech-generation" target="_blank">ai.google.dev</a>) — Gemini 2.5 Flash and Pro TTS models convert text to natural-sounding speech with control over style, accent, pace, and emotion using natural language prompts. Supports 30+ speakers in 80+ languages. Available via Google AI Studio and the Gemini API.
+- **ElevenLabs** (<a href="https://elevenlabs.io" target="_blank">elevenlabs.io</a>) — High-quality text-to-speech and voice cloning. Free tier with limited characters per month.
+- **NotebookLM Audio Overviews** (<a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a>) — Upload papers or notes and get AI-generated podcast-style audio summaries. Free.
+
+### Speech-to-Text
+
+- **Whisper** (via OpenAI or locally) — Speech-to-text transcription. Highly accurate, supports many languages. Can run locally for free or via the OpenAI API.
 
 ---
 
@@ -149,6 +164,10 @@ These can be useful for creating experimental stimuli, generating visualisations
 | Quick fact-check a claim | Consensus or Gemini (with web search) |
 | Work with sensitive data | Ollama or LM Studio (local models) |
 | Create a study summary | NotebookLM (upload your materials) |
+| Generate an image or diagram | Gemini or ChatGPT (DALL-E 3) |
+| Create a short video clip | Gemini (Veo 3.1) |
+| Convert text to speech | Gemini TTS or ElevenLabs |
+| Transcribe an interview | Whisper (locally or via OpenAI API) |
 
 ---
 
