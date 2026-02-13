@@ -39,9 +39,9 @@ Below are some ML and AI methods commonly used in psychological and cognitive sc
 ## Presentation Format
 
 - **Duration:** 3 minutes (strictly enforced)
-- **Slides:** Maximum 1 HTML slide — build it using <a href="../resources/html-slides-guide.md">reveal.js with the help of an LLM coding assistant</a>. A <a href="../resources/presentation-template/">starter template</a> is provided, but you're free to design your slide however you like — different colours, layouts, styles. The template is just a starting point.
+- **Slides:** Maximum 1 HTML slide built with <a href="https://revealjs.com" target="_blank">reveal.js</a>. You can use **any tools you like** to create it — browser-based chatbots (ChatGPT, Gemini, Claude), VS Code with Copilot, or any other AI assistant. Most chatbots can generate a complete HTML file for you right in the browser. A <a href="../resources/presentation-template/">starter template</a> and <a href="../resources/html-slides-guide.md">step-by-step guide</a> are provided, but they're optional — you're free to design your slide however you like.
 - **Submission:** Export your slide as a **PDF** and upload it to the iLearn submission portal **before** your presentation session. File naming: `[Lastname]_[Firstname]_Presentation.pdf`
-- **AI disclosure:** At the end of your presentation, you will be given 30 seconds to explain what LLM/chatbot/Gen-AI tools you used to research and prepare your presentation.
+- **AI disclosure:** At the end of your presentation, you will be given 30 seconds to explain what LLM/chatbot/Gen-AI tools you used to research and prepare your presentation. Be ready to discuss your process — what you asked for, how you refined it, and what you learned. Save your chat histories so you can refer back to them.
 
 ---
 
@@ -90,16 +90,27 @@ Your presentation should cover:
 
 ## Creating Your HTML Slide
 
-Your presentation slide is an HTML file built with <a href="https://revealjs.com" target="_blank">reveal.js</a> — the same framework used for the course lecture slides. You'll use an LLM coding assistant (ChatGPT, Claude, Copilot, etc.) to help you build it.
+Your presentation slide is an HTML file built with <a href="https://revealjs.com" target="_blank">reveal.js</a> — the same framework used for the course lecture slides. You can use **any AI tools you like** to build it. Here are some approaches:
 
-**Getting started:**
+**Option A: Use a browser chatbot (easiest)**
+1. Open ChatGPT, Gemini, or Claude in your browser
+2. Ask it to create a reveal.js HTML slide for your presentation (see example prompt below)
+3. Copy the HTML code the chatbot gives you into a text file and save it as `index.html`
+4. Open the file in your browser to preview
+5. Go back to the chatbot to refine — paste the code back and ask for changes
+
+**Option B: Use the course template**
 1. Download or copy the <a href="../resources/presentation-template/">presentation template</a>
-2. Open it in VS Code
-3. Ask your LLM assistant to help you customise it with your content
+2. Open it in VS Code (or any text editor)
+3. Ask your LLM assistant (Copilot Chat, ChatGPT, Claude, etc.) to help you customise it
 4. Open it in your browser to preview
-5. Export to PDF for submission (see the <a href="../resources/html-slides-guide.md">HTML slides guide</a> for instructions)
 
-The template includes the Macquarie University theme, but you can change anything — colours, fonts, layout. It's a starting point, not a requirement.
+**Option C: Start from scratch with any LLM**
+Ask any chatbot: *"Create a single reveal.js HTML slide for a 3-minute research presentation. Use the reveal.js CDN (version 5.1.0). Include a title, author name, and space for 4 content areas: research question, methods, key findings, and one limitation. Use a clean, professional design."*
+
+Whichever approach you choose, export to PDF for submission (see the <a href="../resources/html-slides-guide.md">HTML slides guide</a> for instructions).
+
+**The key requirement:** Save your chat histories so you can discuss how you used AI tools to create your slide during the 30-second AI disclosure.
 
 ---
 

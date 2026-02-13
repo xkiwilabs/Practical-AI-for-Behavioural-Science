@@ -19,21 +19,34 @@ You don't need to know HTML or CSS. Your LLM assistant will write the code for y
 
 ## Getting Started
 
-### Option 1: Use the template (recommended for beginners)
+You can use **any AI tools you like** to create your slide — you are not limited to VS Code. Pick whichever approach feels most comfortable.
+
+### Option 1: Use a browser chatbot (easiest — no setup required)
+
+This is the simplest approach. You don't need VS Code or any special software — just a web browser and a chatbot.
+
+1. Open <a href="https://chat.openai.com" target="_blank">ChatGPT</a>, <a href="https://gemini.google.com" target="_blank">Gemini</a>, or <a href="https://claude.ai" target="_blank">Claude</a> in your browser
+2. Ask it to create your slide (see the example prompt below)
+3. The chatbot will generate HTML code — copy it all and paste it into a new text file
+4. Save the file as `index.html` (make sure it ends in `.html`, not `.txt`)
+5. Double-click the file to open it in your browser — you should see your slide
+6. To make changes, go back to your chatbot, paste the code, and ask for what you want changed
+
+> **Example prompt:** "Create a single reveal.js HTML slide for a 3-minute research presentation. Use the reveal.js CDN (version 5.1.0). The slide should have a title, author name, and space for 4 content areas: research question, methods, key findings, and one limitation. Use a clean, professional design. Include all CSS inline in a `<style>` tag so the entire slide is in one HTML file."
+
+### Option 2: Use the course template
 
 1. Download or copy the [presentation template](presentation-template/)
-2. Open the folder in VS Code
+2. Open the folder in VS Code (or any text editor — even Notepad works)
 3. Open `index.html` — this is your slide
-4. Right-click `index.html` in VS Code and select "Open with Live Server" (if you have the Live Server extension) or open it directly in your browser (File → Open File)
-5. You should see a working slide with the Macquarie University theme
+4. Open it in your browser to preview (double-click the file, or in VS Code: right-click → "Open with Live Server" if you have the extension)
+5. Ask your LLM assistant (Copilot Chat, ChatGPT, Claude, etc.) to help you customise it
 
 The template is a starting point — you can change everything about it. Different colours, different layout, different fonts. It's yours to customise however you like.
 
-### Option 2: Start from scratch with your LLM
+### Option 3: Start from scratch in VS Code
 
-If you'd prefer to build from scratch, ask your LLM assistant:
-
-> "Create a single reveal.js HTML slide for a 3-minute research presentation. Use the reveal.js CDN (version 5.1.0). The slide should have a title, author name, and space for 4 content areas: research question, methods, key findings, and one limitation. Use a clean, professional design. Include all CSS inline in a `<style>` tag."
+If you'd prefer full control, create a new file in VS Code and use your LLM assistant (Copilot Chat or any chatbot) to build the HTML from scratch. The example prompt from Option 1 works here too.
 
 ---
 
@@ -85,15 +98,9 @@ Ask your LLM assistant to help you customise the slide. Here are some example pr
 
 ## Previewing Your Slide
 
-### In a browser
+**Double-click** your `index.html` file — it will open in your default browser and display the slide. That's it.
 
-Double-click the `index.html` file, or right-click → Open With → your browser. The slide will display full-screen.
-
-### With Live Server (VS Code extension)
-
-1. Install the "Live Server" extension in VS Code
-2. Right-click `index.html` → "Open with Live Server"
-3. The slide opens in your browser and automatically refreshes when you save changes
+If you're using VS Code and want auto-refresh (the slide updates every time you save), install the "Live Server" extension, then right-click `index.html` → "Open with Live Server".
 
 ---
 

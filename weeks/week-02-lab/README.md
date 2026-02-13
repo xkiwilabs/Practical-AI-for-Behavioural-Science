@@ -88,7 +88,7 @@ Here are four example prompts that demonstrate good prompt engineering — notic
 
 ## What to Present
 
-Prepare **1 HTML slide** for the start of Week 3 (~3 minutes per group). Build it using <a href="../../resources/html-slides-guide.md">reveal.js with the help of an LLM coding assistant</a> — a <a href="../../resources/presentation-template/">starter template</a> is provided, but you can design it however you like. Export it as a **PDF** for submission.
+Prepare **1 HTML slide** for the start of Week 3 (~3 minutes per group). Build it using <a href="https://revealjs.com" target="_blank">reveal.js</a> with the help of any AI tool you like — a browser chatbot (ChatGPT, Gemini, Claude), VS Code with Copilot, or anything else. Most chatbots can generate the HTML file for you directly in the conversation. A <a href="../../resources/presentation-template/">starter template</a> and <a href="../../resources/html-slides-guide.md">step-by-step guide</a> are provided, but you can design it however you like. Export it as a **PDF** for submission.
 
 Your slide should include:
 
