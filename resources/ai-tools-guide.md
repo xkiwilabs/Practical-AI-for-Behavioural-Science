@@ -110,7 +110,7 @@ These AI tools are designed specifically for academic research.
 
 ## Running AI Locally
 
-For privacy-sensitive work or offline use, you can run AI models on your own computer.
+For privacy-sensitive work or offline use, you can run AI models on your own computer. This is completely optional for this course, but becomes important in research when working with sensitive data.
 
 ### Why Run Locally?
 
@@ -118,18 +118,26 @@ When you use ChatGPT or Claude, your prompts are sent to external servers. For c
 
 ### Tools for Local AI
 
-- **Ollama:** <a href="https://ollama.com" target="_blank">ollama.com</a> — Open-source, command-line tool for running models locally. Free.
-- **LM Studio:** <a href="https://lmstudio.ai" target="_blank">lmstudio.ai</a> — Graphical interface, beginner-friendly. Free.
+- **Ollama:** <a href="https://ollama.com" target="_blank">ollama.com</a> — Open-source, command-line tool for running models locally. Free. **[Full guide →](ollama-guide.md)**
+- **LM Studio:** <a href="https://lmstudio.ai" target="_blank">lmstudio.ai</a> — Graphical interface, beginner-friendly. Free. **[Full guide →](lm-studio-guide.md)**
 
 ### What You Can Run
 
-- **Meta Llama 4** — Available in Scout and Maverick variants
-- **Mistral Large 3** — 675B parameters, Apache 2.0 licence
+- **Meta Llama 3.2 / 3.3** — Excellent general-purpose and coding models (3B to 70B parameters)
+- **Qwen 2.5 / Qwen 2.5 Coder** — Strong coding and reasoning models
+- **DeepSeek R1** — Excellent reasoning and mathematical ability
 - **Google Gemma 3** — Smaller, efficient, designed for local use
+- **Phi 4** — Microsoft's compact but capable model
 
 ### Hardware Requirements
 
-Modern Apple Silicon Macs (M2 Pro and above) can run useful models comfortably. On the PC side, you need a dedicated GPU with reasonable VRAM. Smaller models (7B–13B parameters) run on most recent laptops; larger models need more capable hardware.
+You need **at least 32GB of RAM** to run useful local models, and **64GB or more** is ideal. Here's who can run them comfortably:
+
+- **Mac users with Apple Silicon** (M1 Pro/Max or newer) — The unified memory architecture makes Macs particularly good for this. A MacBook Pro with 36GB+ unified memory handles medium models well; 64GB+ handles large ones.
+- **Mini PCs with shared memory** — An increasing number of compact desktops now ship with 96GB or 128GB of shared memory at affordable prices. These are excellent for running local models.
+- **Windows/Linux with a dedicated GPU** — NVIDIA GPUs with 12GB+ VRAM can accelerate smaller models. For larger models, system RAM matters more.
+
+If your computer has 16GB or less, the cloud tools will give you a much better experience — don't worry about local models.
 
 ---
 

@@ -1,0 +1,198 @@
+# Ollama Guide — Running AI Models on Your Own Computer
+
+Ollama lets you download and run large language models (LLMs) directly on your own machine — no internet connection needed, no data sent to external servers. It's free, open-source, and runs from the terminal.
+
+> **This is completely optional.** You do not need local models for this course. The cloud-based tools (Copilot, ChatGPT, Claude, Gemini) are more than enough. Local models are useful later in the course and in research when you're working with sensitive data that can't be sent to external servers, or when you want to experiment without usage limits.
+
+---
+
+## Do I Have Enough Hardware?
+
+Local AI models need a lot of memory (RAM). The model has to be loaded entirely into memory to run, so the size of the model you can use depends directly on how much memory your computer has.
+
+**Here's a rough guide:**
+
+| Your RAM | What you can run | Experience |
+|----------|-----------------|------------|
+| 8–16 GB | Small models only (1B–3B parameters) | Very limited — basic tasks, slow |
+| **32 GB** | **Medium models (7B–14B parameters)** | **Minimum for useful results** |
+| 64 GB | Large models (32B–70B parameters) | Good quality, comfortable speed |
+| 96–128 GB+ | Very large models (70B+ parameters) | Excellent quality, approaching cloud AI |
+
+**Who's most likely to have enough?**
+
+- **Mac users with Apple Silicon** (M1 Pro/Max, M2, M3, M4 and their Pro/Max/Ultra variants) — These chips use **unified memory**, meaning the CPU and GPU share the same pool of RAM. A MacBook Pro with 32GB or 36GB of unified memory can run 7B–14B models well. Models with 48GB, 64GB, or more can run even larger models comfortably.
+- **Mini PCs and desktops with shared memory** — An increasing number of compact desktop computers (from brands like Minisforum, Beelink, and others) now ship with 96GB or 128GB of unified/shared memory. These are excellent for running local models.
+- **Windows/Linux with a dedicated GPU** — If you have an NVIDIA GPU with 8GB+ of VRAM, you can run smaller models on the GPU (which is faster than running on CPU alone). For larger models, you need more VRAM or the model will run on the CPU, which is much slower.
+- **Most regular laptops (8–16GB RAM)** — Honestly, the experience won't be great. You can technically run very small models, but the quality and speed will be disappointing compared to cloud tools. If this is you, stick with the cloud tools — they're better for your setup.
+
+**Not sure how much RAM you have?**
+- **Mac:** Apple menu → About This Mac → look for "Memory" or "Unified Memory"
+- **Windows:** Settings → System → About → look for "Installed RAM"
+
+---
+
+## Installing Ollama
+
+### macOS
+
+1. Go to <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>
+2. Click **Download for macOS**
+3. Open the downloaded `.zip` file — it will unzip into an application called **Ollama**
+4. Drag **Ollama** into your **Applications** folder
+5. Open Ollama from Applications — it will add a small icon to your menu bar (top-right of your screen)
+
+### Windows
+
+1. Go to <a href="https://ollama.com/download" target="_blank">ollama.com/download</a>
+2. Click **Download for Windows**
+3. Run the downloaded installer and follow the prompts
+4. Ollama will run in the background (you'll see a small icon in the system tray)
+
+### Verify it works
+
+Open a terminal (Terminal on Mac, PowerShell on Windows) and type:
+
+```
+ollama --version
+```
+
+You should see a version number. If you get "command not found", close and reopen your terminal.
+
+---
+
+## Downloading Your First Model
+
+Ollama doesn't come with any models — you download the ones you want. Here are some good starting points:
+
+```bash
+# A small, fast model — good for testing (requires ~5GB)
+ollama pull llama3.2:3b
+
+# A solid general-purpose model (requires ~8GB, needs 16GB+ RAM)
+ollama pull llama3.2
+
+# A very capable model (requires ~26GB, needs 32GB+ RAM)
+ollama pull qwen2.5:32b
+
+# A large, high-quality model (requires ~40GB, needs 64GB+ RAM)
+ollama pull llama3.3:70b
+```
+
+The download will take a few minutes depending on your internet speed. Models are stored on your computer and only need to be downloaded once.
+
+**To see what models you've downloaded:**
+
+```bash
+ollama list
+```
+
+---
+
+## Using Ollama
+
+### Chat in the terminal
+
+The quickest way to use a model:
+
+```bash
+ollama run llama3.2
+```
+
+This opens a chat session. Type your message and press Enter. Type `/bye` to exit.
+
+**Example:**
+
+```
+>>> Explain what a scatter plot is in one paragraph, for someone who has never seen one.
+
+A scatter plot is a type of graph that shows the relationship between two
+variables by placing dots on a grid. Each dot represents one observation —
+for example, one person in a study. The position of the dot shows that
+person's values on the two variables: one variable determines how far left
+or right the dot goes, and the other determines how high or low...
+```
+
+### Use it with Python
+
+Ollama runs a local server that you can call from Python, just like calling the OpenAI or Anthropic APIs — but everything stays on your machine:
+
+```python
+import requests
+
+response = requests.post("http://localhost:11434/api/generate", json={
+    "model": "llama3.2",
+    "prompt": "Explain k-means clustering in simple terms.",
+    "stream": False
+})
+
+print(response.json()["response"])
+```
+
+There's also an official Python library:
+
+```bash
+pip install ollama
+```
+
+```python
+import ollama
+
+response = ollama.chat(model="llama3.2", messages=[
+    {"role": "user", "content": "Explain k-means clustering in simple terms."}
+])
+
+print(response["message"]["content"])
+```
+
+### Use it with VS Code
+
+Several VS Code extensions can connect to Ollama, letting you use local models inside your editor:
+
+- **Continue** (<a href="https://continue.dev" target="_blank">continue.dev</a>) — Open-source AI coding assistant that works with Ollama. Provides chat, autocomplete, and inline editing using your local models.
+- **GitHub Copilot** — Copilot Chat supports connecting to Ollama as a model provider in some configurations.
+
+---
+
+## Recommended Models
+
+Here are some models that work well for coding and data science tasks:
+
+| Model | Size | RAM needed | Good for |
+|-------|------|-----------|----------|
+| `llama3.2:3b` | ~2 GB | 8 GB+ | Quick tests, simple questions |
+| `llama3.2` (8B) | ~5 GB | 16 GB+ | General chat, basic coding |
+| `qwen2.5-coder:14b` | ~9 GB | 24 GB+ | Code generation, debugging |
+| `qwen2.5:32b` | ~20 GB | 32 GB+ | Strong general + coding |
+| `llama3.3:70b` | ~40 GB | 64 GB+ | Near-cloud quality |
+| `deepseek-r1:70b` | ~40 GB | 64 GB+ | Strong reasoning, maths, code |
+
+**Tip:** Check the <a href="https://ollama.com/library" target="_blank">Ollama model library</a> for the latest available models. New models are added regularly.
+
+**To remove a model you no longer want:**
+
+```bash
+ollama rm llama3.2:3b
+```
+
+---
+
+## Tips
+
+- **Ollama needs to be running** for models to work. On Mac, check for the Ollama icon in your menu bar. On Windows, check the system tray.
+- **Models run faster on first use** after the initial load. The first response may take a few seconds as the model loads into memory.
+- **Close other memory-heavy apps** (Chrome with many tabs, Photoshop, etc.) before running large models — they need that RAM.
+- **The model quality scales with size.** If a 3B model gives poor answers, try a 14B or 32B model before concluding that local models aren't useful.
+- **You can run models in the background** and query them from notebooks — we'll do this in later weeks of the course.
+
+---
+
+## Further Reading
+
+- <a href="https://ollama.com" target="_blank">Ollama website</a>
+- <a href="https://github.com/ollama/ollama" target="_blank">Ollama on GitHub</a> (documentation and examples)
+- <a href="https://ollama.com/library" target="_blank">Model library</a> (browse all available models)
+
+---
+
+*[Back to resources](README.md) · [Back to course overview](../README.md)*

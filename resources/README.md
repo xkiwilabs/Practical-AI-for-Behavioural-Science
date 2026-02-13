@@ -21,6 +21,19 @@ Guides, references, and templates to help you through PSYC4411. Everything here 
 
 ---
 
+## Running AI Locally (Optional)
+
+- **[Ollama guide](ollama-guide.md)** — Install and use Ollama to run AI models from the terminal (free, open-source)
+- **[LM Studio guide](lm-studio-guide.md)** — A graphical interface for downloading, managing, and chatting with local AI models (free)
+
+---
+
+## Python Packages
+
+- **[Packages Glossary](packages-glossary.md)** — What each Python package does, why we chose it, and when you'll use it (pandas, matplotlib, scikit-learn, PyTorch, and more)
+
+---
+
 ## Writing and Presenting
 
 - **[Markdown guide](markdown-guide.md)** — Headings, bold, lists, links, images, code blocks, and a cheat sheet
@@ -43,6 +56,8 @@ Guides, references, and templates to help you through PSYC4411. Everything here 
 | Format a README or document | [Markdown guide](markdown-guide.md) |
 | Build my presentation slide | [HTML Slides guide](html-slides-guide.md) |
 | Start my presentation slide | [Presentation template](presentation-template/) |
+| Look up a Python package | [Packages Glossary](packages-glossary.md) |
+| Run AI models on my own computer | [Ollama guide](ollama-guide.md) or [LM Studio guide](lm-studio-guide.md) |
 
 ---
 

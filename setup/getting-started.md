@@ -368,6 +368,27 @@ We'll provide starter code for this when we get to the relevant weeks. You don't
 
 ---
 
+## Optional: Install Local AI Models
+
+> **Only do this if your computer has 32GB of RAM or more.** If you're not sure, skip this step — the cloud-based AI tools above are more than enough for this course.
+
+Later in the semester, we'll explore running AI models directly on your own computer. This is useful in research when you're working with sensitive data that can't be sent to external servers, or when you want to experiment without usage limits. If you have capable hardware, you can set this up now.
+
+**Two tools to choose from (or install both):**
+
+- **Ollama** — Runs from the terminal. Lightweight, scriptable, great for automation. See the **[Ollama guide](../resources/ollama-guide.md)** for installation and setup.
+- **LM Studio** — Has a graphical interface that looks like ChatGPT. Easier if you're not yet comfortable with the terminal. See the **[LM Studio guide](../resources/lm-studio-guide.md)** for installation and setup.
+
+**Who should consider this?**
+
+- **Mac users** with Apple Silicon (M1 Pro/Max or newer) and **32GB+ unified memory** — you're in the sweet spot
+- **Desktop/mini PC users** with **64GB+ RAM** — excellent for local models
+- **Windows/Linux users** with an **NVIDIA GPU** (12GB+ VRAM) — GPU acceleration helps a lot
+
+If your computer has 16GB of RAM or less, local models won't run well and you'll have a better experience with the cloud tools. No need to install anything — you won't be at any disadvantage in this course.
+
+---
+
 ## Troubleshooting
 
 | Problem | Solution |

@@ -1,5 +1,7 @@
 # Week 2 Challenge Lab: Visualising Lifestyle and Mental Health
 
+> **New to Python packages?** See the [Packages Glossary](../../resources/packages-glossary.md) for a plain-English guide to every package used in this course — what it does, why we chose it, and when you'll use it.
+
 ## The Challenge
 
 Create a beautiful, multi-panel visualisation that explores the relationships between lifestyle factors (sleep, exercise, screen time) and depression in a synthetic psychology dataset. Use an LLM coding assistant to help write the Python code. You'll try **two different coding workflows** — Jupyter notebooks and Python scripts — to find which suits you best. **Success = a figure that could appear in a research presentation.**
