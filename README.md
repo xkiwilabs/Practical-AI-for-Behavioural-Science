@@ -22,7 +22,7 @@ This repository contains weekly companion readings, lecture slides, challenge la
 
 ## About the Instructor
 
-**Michael J. Richardson** is a Professor in the [School of Psychological Sciences](https://www.mq.edu.au/faculty-of-medicine-health-and-human-sciences/school-of-psychological-sciences) and the [Centre for Elite Performance and Expertise](https://www.mq.edu.au/research/research-centres-groups-and-facilities/healthy-people/centres/centre-for-elite-performance-expertise-and-training) within the Faculty of Medicine, Health and Human Sciences at Macquarie University. He completed his undergraduate degree and Master of Science at the [University of Canterbury](https://www.canterbury.ac.nz/) in New Zealand, then his PhD in Experimental Psychology at the [University of Connecticut](https://psych.uconn.edu/) (2005), at the Center for the Ecological Study of Perception and Action.
+**Michael J. Richardson** is a Professor in the [School of Psychological Sciences](https://www.mq.edu.au/faculty-of-medicine-health-and-human-sciences/departments-and-schools/school-of-psychological-sciences) and the [Centre for Elite Performance and Expertise](https://www.mq.edu.au/research/research-centres-groups-and-facilities/healthy-people/centres/centre-for-elite-performance-expertise-and-training) within the Faculty of Medicine, Health and Human Sciences at Macquarie University. He completed his undergraduate degree and Master of Science at the [University of Canterbury](https://www.canterbury.ac.nz/) in New Zealand, then his PhD in Experimental Psychology at the [University of Connecticut](https://psych.uconn.edu/) (2005), at the Center for the Ecological Study of Perception and Action.
 
 Following a one-year postdoc at UConn and [Haskins Laboratories](https://haskinslabs.org/), he joined [Colby College](https://www.colby.edu/) in Maine as an Assistant Professor in 2006. He then moved to the [University of Cincinnati](https://www.uc.edu/) in 2009, progressing from Assistant Professor to Full Professor of Psychology before heading down under to [Macquarie University](https://www.mq.edu.au/) in 2017. He currently teaches in the psychology and cognitive science programs within the School of Psychological Sciences and co-directs the **MInD Lab** (Movement and Interaction Dynamics Lab).
 
@@ -34,7 +34,7 @@ His research sits at the intersection of experimental psychology, cognitive scie
 
 **Teaching Assistant:** [Dr Ayeh Alhasan](https://www.researchgate.net/profile/Ayeh-Alhasan)
 
-**Course Development:** This course was developed by [Prof. Michael J. Richardson](https://researchers.mq.edu.au/en/persons/michael-richardson/), [Prof. Rachel W. Kallen](https://researchers.mq.edu.au/en/persons/rachel-kallen), and [Dr Ayeh Alhasan](https://www.researchgate.net/profile/Ayeh-Alhasan), all from the [School of Psychological Sciences](https://www.mq.edu.au/faculty-of-medicine-health-and-human-sciences/school-of-psychological-sciences) at Macquarie University.
+**Course Development:** This course was developed by [Prof. Michael J. Richardson](https://researchers.mq.edu.au/en/persons/michael-richardson/), [Prof. Rachel W. Kallen](https://researchers.mq.edu.au/en/persons/rachel-kallen), and [Dr Ayeh Alhasan](https://www.researchgate.net/profile/Ayeh-Alhasan), all from the [School of Psychological Sciences](https://www.mq.edu.au/faculty-of-medicine-health-and-human-sciences/departments-and-schools/school-of-psychological-sciences) at Macquarie University.
 
 ---
 
