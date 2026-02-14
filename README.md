@@ -44,7 +44,7 @@ Materials are released on the Monday of each class week. The dates below show wh
 
 | Week | Date | Type | Topic | Slides |
 |------|------|------|-------|--------|
-| 1 | 23 Feb | Lecture | [Why ML and AI Belongs in Psychological Science](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
+| 1 | 23 Feb | Lecture | [Why ML and AI Belongs in the Cognitive, Psychological and Behavioural Sciences](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
 | 2 | 02 Mar | Lab | [Setup, Plotting, and the LLM Problem-Solving Loop](weeks/week-02-lab/) | — |
 | 3 | 09 Mar | Lecture | [Models, Not Magic: Generalisation, Overfitting, and How ML Misleads](weeks/week-03-lecture/) | Slides |
 | 4 | 16 Mar | Lab | [Regression Pipeline, Cross-Validation, and Interpretation](weeks/week-04-lab/) | — |
