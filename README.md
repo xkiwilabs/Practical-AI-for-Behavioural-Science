@@ -161,6 +161,8 @@ Use this template (or something similar) for every piece of assessed work you su
 
 The content and materials for this course were designed and developed in collaboration with numerous AI tools, including [Claude](https://claude.ai), [ChatGPT](https://chat.openai.com), [GitHub Copilot](https://github.com/features/copilot), and [Gemini](https://gemini.google.com). All materials were reviewed, verified, and curated by the course instructor. This transparent use of AI in course development reflects the same approach we teach students throughout the unit — AI tools are powerful collaborators, but human judgement, verification, and critical evaluation remain essential.
 
+It is also worth acknowledging that the large language models used to help create these materials — and all current LLMs — were trained on vast quantities of text scraped from the internet, largely without the explicit consent of the original authors. If you have ever published a paper, written a book, posted on a blog, or contributed to any publicly accessible text online, there is a near-certainty that your words were part of the training data for one or more of these models. This is sometimes described as *model-mediated content appropriation* — LLMs can reproduce, remix, and recombine the ideas and language of millions of authors without attribution. We want to explicitly acknowledge the collective intellectual labour of the scientists, researchers, educators, and writers whose published work forms the foundation on which these AI tools operate. Their contributions are embedded — uncredited — in every output these models produce, including the materials you are reading now.
+
 ---
 
 ## Licence
