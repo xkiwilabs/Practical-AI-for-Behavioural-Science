@@ -73,7 +73,7 @@ All course materials live in a GitHub repository. You need to **clone** (downloa
 3. Type `Git: Clone` and select it
 4. Paste this URL and press Enter:
    ```
-   https://github.com/xkiwilabs/Current-Advances-in-Psychological-Methods-and-Analyses-Repo.git
+   https://github.com/xkiwilabs/Practical-AI-for-Behavioural-Science.git
    ```
 5. Choose where to save it (your Desktop or Documents folder is fine)
 6. When VS Code asks "Would you like to open the cloned repository?", click **Open**
@@ -209,7 +209,7 @@ Let's make sure everything works together. There are two ways to test — a note
 
 ### Test 1: Notebook (test-setup.ipynb)
 
-1. Open VS Code and open the course repository folder (if it's not already open from Step 3, go to **File → Open Folder** and select `Current-Advances-in-Psychological-Methods-and-Analyses-Repo`)
+1. Open VS Code and open the course repository folder (if it's not already open from Step 3, go to **File → Open Folder** and select `Practical-AI-for-Behavioural-Science`)
 2. Navigate to `setup/test-setup.ipynb` in the file explorer on the left and click to open it
 4. **Select the right kernel:** When the notebook opens, look at the top right corner of the notebook. You should see a kernel selector — click it and choose **PSYC4411** from the list. If you don't see it, try selecting "Python Environments" and look for `psyc4411 (conda)`.
 5. Click **Run All** (the double-play button at the top of the notebook) or run each cell one at a time with `Shift + Enter`
@@ -227,7 +227,7 @@ This test runs as a Python script in the terminal — good practice for running 
    You should see `(psyc4411)` appear at the start of your terminal prompt.
 3. Navigate to the setup folder (if you're not already there):
    ```
-   cd path/to/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/setup
+   cd path/to/Practical-AI-for-Behavioural-Science/setup
    ```
 4. Run the test script:
    ```
@@ -310,7 +310,7 @@ The AI assistants above all work through their websites and VS Code extensions �
 
 1. **Create a `.secrets` folder** in the root of your course repository:
    ```
-   Current-Advances-in-Psychological-Methods-and-Analyses-Repo/
+   Practical-AI-for-Behavioural-Science/
    └── .secrets/
        └── api_keys.json
    ```

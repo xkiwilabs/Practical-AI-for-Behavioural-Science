@@ -15,7 +15,7 @@
 #      Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 #      (Press Y if asked to confirm)
 #   3. Navigate to the setup folder:
-#      cd path\to\Current-Advances-in-Psychological-Methods-and-Analyses-Repo\setup
+#      cd path\to\Practical-AI-for-Behavioural-Science\setup
 #   4. Run:  .\setup-windows.ps1
 # ============================================================
 

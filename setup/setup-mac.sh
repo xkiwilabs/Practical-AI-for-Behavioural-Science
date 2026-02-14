@@ -13,7 +13,7 @@
 # HOW TO RUN:
 #   1. Open Terminal
 #   2. Navigate to the setup folder:
-#      cd path/to/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/setup
+#      cd path/to/Practical-AI-for-Behavioural-Science/setup
 #   3. Run:  bash setup-mac.sh
 # ============================================================
 

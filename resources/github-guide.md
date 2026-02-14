@@ -42,7 +42,7 @@ Once approved, you'll have free access to GitHub Copilot Pro — the AI coding a
 
 ## Navigating the Course Repository
 
-The course repo is at: **xkiwilabs/Current-Advances-in-Psychological-Methods-and-Analyses-Repo**
+The course repo is at: **xkiwilabs/Practical-AI-for-Behavioural-Science**
 
 ### Key areas
 
