@@ -124,7 +124,7 @@ See the [Week 1 companion reading](weeks/week-01-lecture/) for a detailed walkth
 
 ## AI Disclosure
 
-I use LLMs and generative AI tools for virtually all aspects of my work — research, writing, coding, data analysis, course development, and scientific exploration. These tools make me more productive, help me think through problems from new angles, and let me spend less time on tedious mechanics and more time on the ideas that matter. I embrace their use, I actively explore how they can enhance research and scientific practice, and I encourage my students to do the same.
+I (Mike Richardson, course instructor) use LLMs and generative AI tools for virtually all aspects of my work — research, writing, coding, data analysis, course development, and scientific exploration. These tools make me more productive, help me think through problems from new angles, and let me spend less time on tedious mechanics and more time on the ideas that matter. I embrace their use, I actively explore how they can enhance research and scientific practice, and I encourage my students to do the same. 
 
 Here's the thing: using AI tools well is a skill, not a shortcut. It requires critical thinking, domain knowledge, and the ability to evaluate whether what the AI gives you is actually correct. That's what this course teaches. The use of AI should be praised, encouraged, and talked about openly — not hidden or treated as something to be ashamed of. We're all figuring out how to work with these tools, and the students who lean into that process will be better researchers for it.
 
