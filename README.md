@@ -1,10 +1,12 @@
-# PSYC4411: Current Advances in Psychological Methods and Analyses (2026)
+# Practical AI for Behavioural Science
 
-### Machine Learning and AI for Research
+### PSYC4411: Current Advances in Psychological Methods and Analyses — Macquarie University, Semester 1 2026
 
-This unit introduces modern computational methods now shaping psychological and cognitive science research, with a focus on machine learning and contemporary AI tools, including large language models (LLMs). Students learn how to frame research questions for supervised and unsupervised learning, evaluate models responsibly, and use LLM-based assistants to support coding, analysis, visualisation, and research workflows.
+A hands-on course introducing machine learning and AI tools to psychological and cognitive science research. No coding or technical background required.
 
-**No technical or mathematical background is assumed.** Emphasis is placed on practical, student-guided experimentation and sound scientific interpretation. Students will learn to use modern LLM tools (e.g., ChatGPT, Claude, Gemini, GitHub Copilot) as coding assistants and problem-solving partners throughout the course.
+Students learn to frame research questions for supervised and unsupervised learning, evaluate models responsibly, and use LLM-based assistants (ChatGPT, Claude, Gemini, GitHub Copilot) to support coding, analysis, visualisation, and research workflows — all through practical, student-guided experimentation with real and synthetic datasets.
+
+This repository contains weekly companion readings, lecture slides, challenge lab briefs, starter notebooks, and datasets.
 
 **Learning Objectives** — By the end of this course, students will be able to:
 
@@ -15,8 +17,6 @@ This unit introduces modern computational methods now shaping psychological and 
 5. **Identify common pitfalls** including overfitting, data leakage, and spurious structure
 6. **Communicate findings** clearly, distinguishing prediction from explanation and acknowledging limitations
 7. **Evaluate ethical implications** of ML-based categorisation and prediction in psychological research
-
-This is a companion repository containing weekly companion readings, code examples, challenge lab briefs, starter notebooks, and datasets.
 
 ---
 
@@ -44,7 +44,7 @@ Materials are released on the Monday of each class week. The dates below show wh
 
 | Week | Date | Type | Topic | Slides |
 |------|------|------|-------|--------|
-| 1 | 23 Feb | Lecture | [Why ML and AI Belongs in Psychological Science](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Current-Advances-in-Psychological-Methods-and-Analyses-Repo/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
+| 1 | 23 Feb | Lecture | [Why ML and AI Belongs in Psychological Science](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
 | 2 | 02 Mar | Lab | [Setup, Plotting, and the LLM Problem-Solving Loop](weeks/week-02-lab/) | — |
 | 3 | 09 Mar | Lecture | [Models, Not Magic: Generalisation, Overfitting, and How ML Misleads](weeks/week-03-lecture/) | Slides |
 | 4 | 16 Mar | Lab | [Regression Pipeline, Cross-Validation, and Interpretation](weeks/week-04-lab/) | — |
