@@ -53,17 +53,17 @@ Materials are released on the Monday of each class week. The dates below show wh
 | Week | Date | Type | Topic | Slides |
 |------|------|------|-------|--------|
 | 1 | 23 Feb | Lecture | [Why ML and AI Belongs in the Cognitive, Psychological and Behavioural Sciences](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
-| 2 | 02 Mar | Lab | [Setup, Plotting, and the LLM Problem-Solving Loop](weeks/week-02-lab/) | — |
-| 3 | 09 Mar | Lecture | [Models, Not Magic: Generalisation, Overfitting, and How ML Misleads](weeks/week-03-lecture/) | Slides |
-| 4 | 16 Mar | Lab | [Regression Pipeline, Cross-Validation, and Interpretation](weeks/week-04-lab/) | — |
-| 5 | 23 Mar | Lecture | [Prediction with Accountability: Classification, Uncertainty, and Evaluation](weeks/week-05-lecture/) | Slides |
-| 6 | 30 Mar | Lab | [Trees, Ensembles, Feature Importance, and Error Analysis](weeks/week-06-lab/) | — |
+| 2 | 02 Mar | Lab | [Setup, Plotting, and the LLM Problem-Solving Loop](weeks/week-02-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-02-lab/slides/index.html" target="_blank">Slides</a> |
+| 3 | 09 Mar | Lecture | [Models, Not Magic: Generalisation, Overfitting, and How ML Misleads](weeks/week-03-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-03-lecture/slides/index.html" target="_blank">Slides</a> |
+| 4 | 16 Mar | Lab | [Regression Pipeline, Cross-Validation, and Interpretation](weeks/week-04-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-04-lab/slides/index.html" target="_blank">Slides</a> |
+| 5 | 23 Mar | Lecture | [Prediction with Accountability: Classification, Uncertainty, and Evaluation](weeks/week-05-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-05-lecture/slides/index.html" target="_blank">Slides</a> |
+| 6 | 30 Mar | Lab | [Trees, Ensembles, Feature Importance, and Error Analysis](weeks/week-06-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-06-lab/slides/index.html" target="_blank">Slides</a> |
 | — | 06–19 Apr | Break | Mid-Semester Break | — |
-| 7 | 20 Apr | Lecture | [Discovering Structure: Clustering and Dimensionality Reduction](weeks/week-07-lecture/) | Slides |
-| 8 | 27 Apr | Lab | [PCA/UMAP, Clustering, and Stability Checks](weeks/week-08-lab/) | — |
-| 9 | 04 May | Lecture | [Learning Representations: Neural Networks as Psychological Tools](weeks/week-09-lecture/) | Slides |
-| 10 | 11 May | Lab | [Simple Neural Network, Training Diagnostics, and Baseline Comparison](weeks/week-10-lab/) | — |
-| 11 | 18 May | Lecture + Lab | [Meaning in Vectors: Embeddings and LLMs for Research Workflows](weeks/week-11-lecture-lab/) | Slides |
+| 7 | 20 Apr | Lecture | [Discovering Structure: Clustering and Dimensionality Reduction](weeks/week-07-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-07-lecture/slides/index.html" target="_blank">Slides</a> |
+| 8 | 27 Apr | Lab | [PCA/UMAP, Clustering, and Stability Checks](weeks/week-08-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-08-lab/slides/index.html" target="_blank">Slides</a> |
+| 9 | 04 May | Lecture | [Learning Representations: Neural Networks as Psychological Tools](weeks/week-09-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-09-lecture/slides/index.html" target="_blank">Slides</a> |
+| 10 | 11 May | Lab | [Simple Neural Network, Training Diagnostics, and Baseline Comparison](weeks/week-10-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-10-lab/slides/index.html" target="_blank">Slides</a> |
+| 11 | 18 May | Lecture + Lab | [Meaning in Vectors: Embeddings and LLMs for Research Workflows](weeks/week-11-lecture-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-11-lecture-lab/slides/index.html" target="_blank">Slides</a> |
 | 12 | 25 May | Review | [Viva Review: Consolidation, Q&A, and Practice Defenses](weeks/week-12-viva-review/) | — |
 | 13 | 01 Jun | Discussion | [Limits, Ethics, Reproducibility, and Reasoned Conclusions](weeks/week-13-discussion/) | — |
 
