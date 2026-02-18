@@ -117,12 +117,13 @@ A core workflow you'll develop throughout this course. It has two nested loops �
 
 **Inner loop (working with the AI):**
 
-1. **ENGINEER** — Craft your prompt: be specific, provide context (your data, libraries, constraints), state your goal clearly
-2. **PROMPT** — Send it to the AI
-3. **VERIFY** — Read the code the AI gives you. Don't just copy and paste — look at what it's doing. Then run it. Does it execute without errors? Does the output make sense?
-4. **REFINE** — If it's not right: add more context, correct misunderstandings, try a different approach. Then go back to step 1.
+1. **ENGINEER** — Craft your prompt: be specific, provide context (your data, libraries, constraints), state your goal clearly, and, crucially, ***ask for a plan***
+2. **PLAN** — Review the AI's proposed approach. Does it make sense? Right methods, right steps? Redirect *before* anything is generated
+3. **GENERATE** — Once the plan looks right, ask the AI to execute it — code, text, visualisations, whatever you need
+4. **VERIFY** — Read what the AI gives you. Don't just copy and paste — look at what it's doing. Then run it. Does it execute without errors? Does the output make sense?
+5. **REFINE** — If it's not right: add more context, correct misunderstandings, try a different approach. Go back to the appropriate step — sometimes you need to fix the plan, sometimes just the output.
 
-The inner loop typically runs 2–5 times per task. That's normal — even experienced developers iterate with AI tools. Strategies that help: ask the AI to plan before coding, break problems into smaller pieces, provide rich context (paste in column names, error messages, documentation), and explain *what* went wrong, not just *that* something went wrong.
+The inner loop typically runs 2–5 times per task. That's normal — even experienced developers iterate with AI tools. Strategies that help: break problems into smaller pieces, provide rich context (paste in column names, error messages, documentation), explain *what* went wrong not just *that* something went wrong, and refine at the right level (plan vs output).
 
 **Critical rule:** Never trust LLM output without verification. You are the researcher. The AI is a tool.
 

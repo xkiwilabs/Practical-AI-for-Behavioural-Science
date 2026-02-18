@@ -160,9 +160,9 @@ This is the framework you'll use all semester. Prompt engineering is one part of
 1. **PLAN** → 2. **EXECUTE** → 3. **EVALUATE** → 4. **DOCUMENT**
 
 **Inner loop (working with the AI):**
-1. **ENGINEER** → 2. **PROMPT** → 3. **VERIFY** → 4. **REFINE**
+1. **ENGINEER** → 2. **PLAN** → 3. **GENERATE** → 4. **VERIFY** → 5. **REFINE**
 
-The inner loop typically runs 2–5 times per task. That's normal. Each refinement is an opportunity to improve your prompt and learn something about how the AI interprets your requests.
+The ENGINEER step is where prompt engineering lives — crafting a clear, context-rich prompt and asking the AI for a plan. The PLAN step is where you review the AI's proposed approach before it generates anything. The GENERATE step covers any AI output — code, text, visualisations, analysis. The inner loop typically runs 2–5 times per task. That's normal. Each refinement is an opportunity to improve your approach and learn something about how the AI interprets your requests.
 
 See the [Week 1 companion reading](../weeks/week-01-lecture/README.md) for a detailed walkthrough with examples.
 
