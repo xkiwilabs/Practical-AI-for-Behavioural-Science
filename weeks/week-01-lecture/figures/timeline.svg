@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" font-family="Inter, Helvetica, Arial, sans-serif">
+  <!-- Title -->
+  <text x="450" y="24" font-size="16" font-weight="700" fill="#2D2D2D" text-anchor="middle">The Roller-Coaster Ride of AI</text>
+
+  <!-- Horizontal line -->
+  <line x1="60" y1="80" x2="840" y2="80" stroke="#D0D0D0" stroke-width="2"/>
+
+  <!-- 1950s -->
+  <circle cx="110" cy="80" r="10" fill="#4A90D9"/>
+  <text x="110" y="60" font-size="14" font-weight="700" fill="#4A90D9" text-anchor="middle">1950s</text>
+  <text x="110" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Turing asks</text>
+  <text x="110" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">"Can machines think?"</text>
+
+  <!-- 1980s -->
+  <circle cx="250" cy="80" r="10" fill="#E8873D"/>
+  <text x="250" y="60" font-size="14" font-weight="700" fill="#E8873D" text-anchor="middle">1980s</text>
+  <text x="250" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Expert systems</text>
+  <text x="250" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">encode human rules</text>
+
+  <!-- 1990s -->
+  <circle cx="370" cy="80" r="10" fill="#8C8C8C"/>
+  <text x="370" y="60" font-size="14" font-weight="700" fill="#8C8C8C" text-anchor="middle">1990s</text>
+  <text x="370" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">"AI winters"</text>
+  <text x="370" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">hype then disappointment</text>
+
+  <!-- 2012 -->
+  <circle cx="490" cy="80" r="10" fill="#5BA55B"/>
+  <text x="490" y="60" font-size="14" font-weight="700" fill="#5BA55B" text-anchor="middle">2012</text>
+  <text x="490" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Deep learning wins</text>
+  <text x="490" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">ImageNet</text>
+
+  <!-- 2017 -->
+  <circle cx="580" cy="80" r="10" fill="#7B68A8"/>
+  <text x="580" y="60" font-size="14" font-weight="700" fill="#7B68A8" text-anchor="middle">2017</text>
+  <text x="580" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Transformer</text>
+  <text x="580" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">architecture</text>
+
+  <!-- 2022 -->
+  <circle cx="670" cy="80" r="10" fill="#E8873D"/>
+  <text x="670" y="60" font-size="14" font-weight="700" fill="#E8873D" text-anchor="middle">2022</text>
+  <text x="670" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">ChatGPT</text>
+  <text x="670" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">launches</text>
+
+  <!-- 2025-26 -->
+  <circle cx="790" cy="80" r="10" fill="#A71930"/>
+  <text x="790" y="60" font-size="14" font-weight="700" fill="#A71930" text-anchor="middle">2025-26</text>
+  <text x="790" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Vibe coding +</text>
+  <text x="790" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">agentic AI</text>
+
+  <!-- Bottom note -->
+  <rect x="200" y="155" width="500" height="50" rx="10" fill="#A71930" fill-opacity="0.06" stroke="#A71930" stroke-width="2"/>
+  <text x="450" y="178" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">Most of the AI tools you'll use in this course</text>
+  <text x="450" y="196" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">didn't exist two years ago.</text>
+
+  <!-- Caption -->
+  <text x="450" y="240" font-size="12" fill="#8C8C8C" text-anchor="middle" font-style="italic">The pace of change is unprecedented</text>
+</svg>

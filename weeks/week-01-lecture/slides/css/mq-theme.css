@@ -19,6 +19,7 @@
   --mq-green: #5BA55B;
   --mq-orange: #E8873D;
   --mq-purple: #7B68A8;
+  --mq-teal: #2B8A8A;
   --mq-grey: #8C8C8C;
   --mq-light-grey: #F5F5F5;
   --mq-white: #FFFFFF;
@@ -211,6 +212,11 @@
   font-weight: 400;
   max-width: 900px;
   margin: 0 auto;
+}
+
+.reveal .think-slide strong {
+  color: var(--mq-red);
+  font-weight: 700;
 }
 
 /* ===== Image Slides ===== */

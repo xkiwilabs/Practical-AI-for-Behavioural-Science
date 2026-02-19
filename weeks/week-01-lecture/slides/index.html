@@ -20,28 +20,1788 @@
 <div class="reveal">
 <div class="slides">
 
-  <section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 60px;">
-      <p style="font-size: 1.4em; color: rgba(255,255,255,0.5); margin-bottom: 12px; font-weight: 300;">PSYC4411 — Practical AI for Behavioural Science</p>
-      <p style="font-size: 1.1em; color: rgba(255,255,255,0.4); margin-bottom: 40px; font-weight: 300;">Week 1 — Lecture</p>
-      <h1 style="font-size: 2.4em; color: white; margin-bottom: 40px; line-height: 1.2;">Why ML and AI Belongs in the Cognitive, Psychological and Behavioural Sciences</h1>
-      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px 48px; margin-top: 20px;">
-        <p style="font-size: 1.3em; color: rgba(255,255,255,0.7); margin: 0;"><i class="ph-bold ph-clock"></i>&ensp;Content coming soon</p>
-        <p style="font-size: 0.9em; color: rgba(255,255,255,0.4); margin-top: 8px;">Materials will be available on 23 February</p>
-      </div>
-      <p style="font-size: 0.85em; color: rgba(255,255,255,0.3); margin-top: 48px;">Prof. Michael Richardson — Macquarie University, 2026</p>
+<!-- ============================================================
+     SECTION 1: TITLE & WELCOME  (Slides 1–4)
+     ============================================================ -->
+
+<!-- Slide 1: Title -->
+<section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+  <div class="course-code">PSYC4411</div>
+  <h1>Why ML and AI Belongs in the Cognitive,<br>Psychological and Behavioural Sciences</h1>
+  <div class="spacer-lg"></div>
+  <p class="subtitle">Week 1 &middot; Semester 1, 2026</p>
+  <p class="subtitle">Current Advances in Psychological Methods &amp; Analyses</p>
+  <div class="spacer"></div>
+  <p class="subtitle"><strong style="color: rgba(255,255,255,0.85); font-weight: 600;">Prof. Michael J. Richardson</strong></p>
+  <p class="subtitle">School of Psychological Sciences<br>Faculty of Medicine, Health and Human Sciences<br>Macquarie University</p>
+  <p class="subtitle" style="margin-top: 0.3em;"><a href="mailto:michael.j.richardson@mq.edu.au" style="color: rgba(255,255,255,0.6); border-bottom-color: rgba(255,255,255,0.2);">michael.j.richardson@mq.edu.au</a></p>
+</section>
+
+<!-- Slide 2: Welcome -->
+<section>
+  <h2>Welcome <i class="ph ph-hand-waving"></i></h2>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment">This course is about learning to use <strong>modern computational tools</strong> — machine learning and AI — to ask and answer questions about human behaviour
+      <ul><li>You'll work with real data, build real models, and interpret real results</li></ul>
+    </li>
+    <li class="fragment">You <strong>don't need any coding or technical background</strong>
+      <ul><li>Seriously — 99% of students who take this course have never written a line of code</li></ul>
+    </li>
+    <li class="fragment">You'll use <strong>AI assistants</strong> to help you write code, and learn by doing
+      <ul><li>Describe what you want in plain English → the AI writes the code → you verify and refine</li></ul>
+    </li>
+    <li class="fragment">The goal: become a researcher who can use powerful new tools <strong>thoughtfully and critically</strong>
+      <ul><li>Not a software developer — a psychologist with a bigger toolbox</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 3: How This Course Works -->
+<section>
+  <h2>How This Course Works</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3><i class="ph ph-chalkboard-teacher"></i> Lecture Weeks</h3>
+      <p class="small">Weeks 1, 3, 5, 7, 9, 11</p>
+      <ul>
+        <li class="fragment">Student presentations (~30 min)
+          <ul><li>Pairs present their lab challenge results from the previous week</li></ul>
+        </li>
+        <li class="fragment">Lecture (~60 min)
+          <ul><li>New concepts, demos, discussion</li></ul>
+        </li>
+        <li class="fragment">Discussion + Q&amp;A (~30 min)
+          <ul><li>Open questions, preview of next lab</li></ul>
+        </li>
+      </ul>
     </div>
-  </section>
+    <div class="col">
+      <h3><i class="ph ph-code"></i> Lab Weeks</h3>
+      <p class="small">Weeks 2, 4, 6, 8, 10</p>
+      <ul>
+        <li class="fragment">Challenge briefing (~15 min)
+          <ul><li>Instructor walks through the brief and dataset</li></ul>
+        </li>
+        <li class="fragment">Hands-on lab time (~90 min)
+          <ul><li>Work in pairs with LLM coding assistants</li></ul>
+        </li>
+        <li class="fragment">Wrap-up (~15 min)
+          <ul><li>Prepare 1-slide presentation for next week</li></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-</div></div>
+<!-- Slide 4: Today's Agenda -->
+<section>
+  <h2>Today's Agenda</h2>
+  <div class="spacer"></div>
+  <ol>
+    <li class="fragment"><strong>What are AI and machine learning?</strong> — definitions, relationships, the big picture</li>
+    <li class="fragment"><strong>A brief history</strong> — from Turing to ChatGPT to today</li>
+    <li class="fragment"><strong>The AI tools landscape in 2026</strong> — what's available to you right now</li>
+    <li class="fragment"><strong>Prompt engineering</strong> — the most practical skill you'll learn this semester</li>
+    <li class="fragment"><strong>The LLM Problem-Solving Loop</strong> — your core workflow all semester</li>
+    <li class="fragment"><strong>ML in psychological science</strong> — real research examples</li>
+    <li class="fragment"><strong>Getting ready for Week 2</strong> — setup homework</li>
+  </ol>
+</section>
 
+<!-- ============================================================
+     SECTION 2: WHAT ARE AI AND ML?  (Slides 5–15)
+     ============================================================ -->
+
+<!-- Slide 5: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-brain"></i></div>
+  <h2>What Are AI and<br>Machine Learning?</h2>
+  <p>Definitions, relationships, and the key distinction</p>
+</section>
+
+<!-- Slide 6: AI Definition -->
+<section>
+  <h2>Artificial Intelligence <span class="tag tag-red">AI</span></h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>The broad field of building systems that can perform tasks that typically require <strong>human intelligence</strong></p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><i class="ph ph-eye"></i> Recognising faces in photos — even in different lighting, angles, or expressions</li>
+    <li class="fragment"><i class="ph ph-translate"></i> Translating between languages — with awareness of context and idiom</li>
+    <li class="fragment"><i class="ph ph-chats"></i> Having a conversation — answering questions, explaining concepts, debating ideas</li>
+    <li class="fragment"><i class="ph ph-car"></i> Driving a car — perceiving the environment and making real-time decisions</li>
+  </ul>
+  <p class="fragment small">The common thread: tasks where there's no fixed set of rules a programmer can write down — the system needs to handle ambiguity, variability, and complexity.</p>
+</section>
+
+<!-- Slide 7: ML Definition -->
+<section>
+  <h2>Machine Learning <span class="tag tag-orange">ML</span></h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>A subset of AI where systems <strong>learn patterns from data</strong> instead of following rules written by a programmer</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment">Show the system thousands of examples — "here are photos labelled 'dog' and 'not dog'"
+      <ul><li>The more examples, the better it learns (usually)</li></ul>
+    </li>
+    <li class="fragment">It figures out the rules on its own — discovers which features distinguish dogs from cats
+      <ul><li>Ear shape? Snout length? Fur texture? The model decides what matters</li></ul>
+    </li>
+    <li class="fragment">No programmer needs to anticipate every possible case
+      <ul><li>The model generalises from examples it's seen to examples it hasn't</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 8: Deep Learning -->
+<section>
+  <h2>Deep Learning <span class="tag tag-purple">DL</span></h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>A subset of ML that uses <strong>neural networks</strong> — layers of mathematical operations loosely inspired by how neurons in the brain process information</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment">Multiple layers ("deep") allow the model to learn increasingly abstract features
+      <ul><li>Layer 1 might detect edges → Layer 2 detects shapes → Layer 3 detects faces</li></ul>
+    </li>
+    <li class="fragment">Powers most of the impressive AI in the news — image recognition, language translation, game-playing</li>
+    <li class="fragment">Requires large amounts of data and computing power to train
+      <ul><li>Training GPT-4 reportedly cost over $100 million in compute</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 9: Generative AI -->
+<section>
+  <h2>Generative AI <span class="tag tag-green">GenAI</span></h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>AI systems that can <strong>generate new content</strong> — text, images, code, audio, video — based on what they've learned from vast amounts of training data</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><i class="ph ph-text-aa"></i> <strong>Text:</strong> ChatGPT, Claude, Gemini — write essays, explain concepts, have conversations</li>
+    <li class="fragment"><i class="ph ph-image"></i> <strong>Images:</strong> DALL-E, Midjourney, Stable Diffusion — create images from text descriptions</li>
+    <li class="fragment"><i class="ph ph-code"></i> <strong>Code:</strong> GitHub Copilot, Cursor — write and debug software</li>
+    <li class="fragment"><i class="ph ph-microphone"></i> <strong>Audio &amp; Video:</strong> ElevenLabs, Sora — synthesise speech, generate video clips</li>
+  </ul>
+  <p class="fragment small">This is the subset you've probably interacted with most — and the one we'll use throughout this course.</p>
+</section>
+
+<!-- Slide 10: AI Hierarchy — HTML Diagram -->
+<section>
+  <h2>How They Relate</h2>
+  <div class="spacer"></div>
+  <div class="hierarchy-diagram">
+    <div class="hierarchy-layer fragment" style="background: rgba(212,83,59,0.08); border: 3px solid #D4533B; padding: 20px 30px;">
+      <div class="layer-label" style="color: #D4533B;">Artificial Intelligence (AI)</div>
+      <div class="layer-examples">Robotics, Expert Systems, Computer Vision, NLP</div>
+      <div class="hierarchy-layer fragment" style="background: rgba(232,135,61,0.08); border: 3px solid #E8873D; padding: 16px 26px;">
+        <div class="layer-label" style="color: #E8873D;">Machine Learning (ML)</div>
+        <div class="layer-examples">Random Forests, SVMs, Regression, k-Means</div>
+        <div class="hierarchy-layer fragment" style="background: rgba(123,104,168,0.08); border: 3px solid #7B68A8; padding: 14px 22px;">
+          <div class="layer-label" style="color: #7B68A8;">Deep Learning</div>
+          <div class="layer-examples">CNNs, RNNs, LSTMs, Transformers</div>
+          <div class="hierarchy-layer fragment" style="background: rgba(91,165,91,0.08); border: 3px solid #5BA55B; padding: 12px 20px;">
+            <div class="layer-label" style="color: #5BA55B;">Generative AI</div>
+            <div class="layer-examples">ChatGPT, Claude, DALL-E, Gemini, Sora</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="small" style="text-align: center;">Each layer is a subset of the one above it — GenAI is a type of Deep Learning, which is a type of ML, which is a type of AI.</p>
+</section>
+
+<!-- Slide 11: Psychology Analogy -->
+<section>
+  <h2>A Psychology Analogy</h2>
+  <div class="spacer"></div>
+  <p class="fragment">Humans learn from examples too — a child doesn't memorise a rule book for recognising dogs. They see enough dogs and gradually learn the pattern. ML formalises this same idea mathematically.</p>
+  <div class="spacer"></div>
+  <div class="highlight-box fragment">
+    <p><strong>But here's a striking difference:</strong> A child learns to recognise dogs from maybe <strong>3–5 examples</strong>. A typical ML model needs <strong>thousands or millions</strong>.</p>
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment">Why are humans so much more data-efficient? We bring a lifetime of <strong>embodied experience</strong>, prior concepts, and structured knowledge to every new learning task.</p>
+  <p class="fragment small">This efficiency gap is one of the deepest open questions in cognitive science and AI — and it tells us that whatever humans are doing when they learn, it's not the same thing current ML models are doing.</p>
+</section>
+
+<!-- Slide 12: Placeholder — Human vs ML learning -->
+<section class="image-full">
+  <h2>Few-Shot vs Many-Shot Learning</h2>
+  <img src="../figures/few-shot-vs-many-shot.png" alt="Illustration comparing human few-shot learning from a handful of examples with machine learning requiring thousands of data points">
+</section>
+
+<!-- Slide 13: Think About It #1 -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>Why do you think a toddler can learn "dog" from a few examples while an ML model needs thousands?</p>
+  <div class="spacer"></div>
+  <p>What does the human bring to the task that the model doesn't?</p>
+</section>
+
+<!-- Slide 14: Traditional vs ML — HTML Diagram -->
+<section>
+  <h2>Traditional Programming vs Machine Learning</h2>
+  <div class="spacer"></div>
+  <div class="compare-diagram">
+    <!-- Left: Traditional -->
+    <div class="compare-side fragment">
+      <h3 style="color: var(--mq-blue);"><i class="ph ph-code"></i> Traditional Programming</h3>
+      <div class="compare-box" style="background: rgba(74,144,217,0.1); border: 2px solid var(--mq-blue);">
+        <i class="ph ph-user"></i> Rules <span style="font-weight: 400; font-size: 0.85em;">(written by human)</span>
+      </div>
+      <div class="compare-arrow">+</div>
+      <div class="compare-box" style="background: rgba(140,140,140,0.1); border: 2px solid var(--mq-grey);">
+        <i class="ph ph-database"></i> Data
+      </div>
+      <div class="compare-arrow">↓</div>
+      <div class="compare-box" style="background: rgba(91,165,91,0.1); border: 2px solid var(--mq-green);">
+        <i class="ph ph-check-circle"></i> Output
+      </div>
+      <p class="small" style="margin-top: 12px;">Computer <em>follows</em> rules</p>
+    </div>
+    <!-- VS -->
+    <div class="compare-vs">vs</div>
+    <!-- Right: ML -->
+    <div class="compare-side fragment">
+      <h3 style="color: var(--mq-red);"><i class="ph ph-chart-line-up"></i> Machine Learning</h3>
+      <div class="compare-box" style="background: rgba(232,135,61,0.1); border: 2px solid var(--mq-orange);">
+        <i class="ph ph-database"></i> Data <span style="font-weight: 400; font-size: 0.85em;">(lots of examples)</span>
+      </div>
+      <div class="compare-arrow">+</div>
+      <div class="compare-box" style="background: rgba(140,140,140,0.1); border: 2px solid var(--mq-grey);">
+        <i class="ph ph-target"></i> Desired Output <span style="font-weight: 400; font-size: 0.85em;">(labels / goals)</span>
+      </div>
+      <div class="compare-arrow">↓</div>
+      <div class="compare-box" style="background: rgba(167,25,48,0.1); border: 2px solid var(--mq-red);">
+        <i class="ph ph-lightbulb"></i> Rules <span style="font-weight: 400; font-size: 0.85em;">(learned by computer)</span>
+      </div>
+      <p class="small" style="margin-top: 12px;">Computer <em>discovers</em> rules</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 15: Key Distinction -->
+<section>
+  <h2>The Key Distinction</h2>
+  <div class="spacer-lg"></div>
+  <div class="key-insight" style="padding: 24px 30px;">
+    <p style="font-size: 1.0em;">In traditional programming, a human writes rules → computer follows them.</p>
+    <p style="font-size: 1.0em;">In machine learning, a human provides data + a goal → computer <strong>discovers</strong> the rules.</p>
+  </div>
+  <div class="spacer-lg"></div>
+  <p class="fragment">This shift is what makes ML so powerful for research — it can find patterns in data that humans might never think to look for.</p>
+  <p class="fragment">But it also means we need to be careful: <strong>finding a pattern doesn't mean understanding it</strong>. That's where your training as a psychologist becomes essential.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 3: A BRIEF HISTORY  (Slides 16–18)
+     ============================================================ -->
+
+<!-- Slide 16: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-clock-countdown"></i></div>
+  <h2>A Brief History of AI</h2>
+  <p>From Turing to transformers to today</p>
+</section>
+
+<!-- Slide 17: Key Milestones — Combined Timeline + Story -->
+<section>
+  <h2>The Roller-Coaster Ride of AI</h2>
+  <div class="spacer"></div>
+  <!-- HTML Timeline -->
+  <div class="timeline">
+    <div class="timeline-event fragment" data-fragment-index="0">
+      <div class="timeline-dot" style="background: var(--mq-blue);"></div>
+      <div class="timeline-year">1950s</div>
+      <div class="timeline-text">Turing asks<br>"Can machines think?"</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="1">
+      <div class="timeline-dot" style="background: var(--mq-orange);"></div>
+      <div class="timeline-year">1980s</div>
+      <div class="timeline-text">Expert systems<br>encode human rules</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="2">
+      <div class="timeline-dot" style="background: var(--mq-grey);"></div>
+      <div class="timeline-year">1990s</div>
+      <div class="timeline-text">"AI winters"<br>hype → disappointment</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="3">
+      <div class="timeline-dot" style="background: var(--mq-green);"></div>
+      <div class="timeline-year">2000s</div>
+      <div class="timeline-text">Big data + GPUs<br>change everything</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="3">
+      <div class="timeline-dot" style="background: var(--mq-red);"></div>
+      <div class="timeline-year">2012</div>
+      <div class="timeline-text">Deep learning wins<br>ImageNet → modern era</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <!-- Story text beneath timeline — synced with dots -->
+  <ul class="timeline-bullets">
+    <li class="fragment bullet-blue" data-fragment-index="0"><strong>1950s–60s:</strong> "We'll have human-level AI in 20 years!" — wildly optimistic. Early programs could solve logic puzzles, but the real world proved far more complex than anyone expected.</li>
+    <li class="fragment bullet-orange" data-fragment-index="1"><strong>1980s:</strong> Expert systems tried to encode human knowledge as explicit rules — too brittle, couldn't handle the messiness and ambiguity of real-world problems.</li>
+    <li class="fragment bullet-grey" data-fragment-index="2"><strong>1990s:</strong> Cycles of hype and disappointment led to "AI winters" and funding cuts. But researchers quietly kept working on statistical and neural approaches that would later prove transformative.</li>
+    <li class="fragment bullet-green" data-fragment-index="3"><strong>2000s–2012:</strong> Big data + cheap GPUs + better algorithms = game changer. In 2012, deep learning won ImageNet by a massive margin, and the modern AI era began.</li>
+  </ul>
+</section>
+
+<!-- Slide 18: The Pace of Change 2017–2026 — Flow Chart + Text -->
+<section>
+  <h2>The Pace of Change: 2017–2026</h2>
+  <div class="spacer"></div>
+  <!-- HTML Flow Timeline -->
+  <div class="timeline">
+    <div class="timeline-event fragment" data-fragment-index="0">
+      <div class="timeline-dot" style="background: var(--mq-purple);"></div>
+      <div class="timeline-year">2017</div>
+      <div class="timeline-text">Transformer<br>architecture</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="1">
+      <div class="timeline-dot" style="background: var(--mq-orange);"></div>
+      <div class="timeline-year">2022</div>
+      <div class="timeline-text">ChatGPT<br>launches</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="2">
+      <div class="timeline-dot" style="background: var(--mq-blue);"></div>
+      <div class="timeline-year">2023–24</div>
+      <div class="timeline-text">Multimodal models<br>+ coding assistants</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="3">
+      <div class="timeline-dot" style="background: var(--mq-green);"></div>
+      <div class="timeline-year">2025</div>
+      <div class="timeline-text">Vibe coding +<br>agentic AI</div>
+    </div>
+    <div class="timeline-event fragment" data-fragment-index="4">
+      <div class="timeline-dot" style="background: var(--mq-red);"></div>
+      <div class="timeline-year">2026</div>
+      <div class="timeline-text">AI embedded in<br>everyday research</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <!-- Detail text beneath timeline — synced with dots -->
+  <ul class="timeline-bullets">
+    <li class="fragment bullet-purple" data-fragment-index="0"><strong>2017:</strong> "Attention Is All You Need" introduces the <strong>transformer architecture</strong> — the foundation of every modern large language model (LLM)</li>
+    <li class="fragment bullet-orange" data-fragment-index="1"><strong>2022:</strong> ChatGPT launches — millions discover what LLMs can do literally overnight. The public conversation about AI changes permanently.</li>
+    <li class="fragment bullet-blue" data-fragment-index="2"><strong>2023–24:</strong> Multimodal models arrive (text + images + audio in one system), plus AI coding assistants, image and video generation tools</li>
+    <li class="fragment bullet-green" data-fragment-index="3"><strong>2025:</strong> "Vibe coding" goes mainstream (describe what you want → AI writes code), deep research tools, and the first generation of truly agentic AI systems</li>
+    <li class="fragment bullet-red" data-fragment-index="4"><strong>2026:</strong> AI tools are now embedded in everyday research and professional workflows — including this course</li>
+  </ul>
+  <div class="key-insight fragment" data-fragment-index="5">
+    <p>Most of the AI tools you'll use in this course <strong>didn't exist two years ago</strong>. The pace of change is unprecedented.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4: AI TOOLS LANDSCAPE  (Slides 20–31)
+     ============================================================ -->
+
+<!-- Slide 20: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-toolbox"></i></div>
+  <h2>The AI Tools Landscape<br>in 2026</h2>
+  <p>What's available to you as a researcher right now</p>
+</section>
+
+<!-- Slide 21: Conversational AI & Deep Research -->
+<section>
+  <h2><i class="ph ph-chats-circle"></i> Conversational AI &amp; Deep Research</h2>
+  <div class="spacer"></div>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <ul>
+        <li class="fragment"><strong>ChatGPT</strong> (<a href="https://chat.openai.com" target="_blank">chat.openai.com</a>), <strong>Claude</strong> (<a href="https://claude.ai" target="_blank">claude.ai</a>), <strong>Gemini</strong> (<a href="https://gemini.google.com" target="_blank">gemini.google.com</a>)
+          <ul><li>Not just chatbots anymore — they reason, write, code, and analyse data</li></ul>
+        </li>
+        <li class="fragment"><strong>Deep Research</strong> modes (ChatGPT &amp; Gemini) — the AI autonomously searches, reads, and synthesises information across many sources
+          <ul><li>Like having a research assistant who can read dozens of papers and summarise them for you</li></ul>
+        </li>
+        <li class="fragment">Genuinely useful for <strong>literature reviews</strong>, understanding new methods, exploring how a technique has been used across fields</li>
+      </ul>
+    </div>
+    <div class="col">
+      <img src="../figures/gpt-deep-research-screenshot.png" alt="Screenshot of ChatGPT Deep Research investigating how ML and AI are used in psychological research" style="max-width: 100%; border-radius: 8px;">
+    </div>
+  </div>
+</section>
+
+<!-- Slide 22: Foundation Models & Model Sizes — NEW -->
+<section>
+  <h2><i class="ph ph-cube"></i> Foundation Models &amp; Model Sizes</h2>
+  <div class="spacer"></div>
+  <p class="fragment">These tools are powered by <strong>foundation models</strong> — large neural networks trained on massive data that can be adapted to many tasks.</p>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;">OpenAI</h3>
+      <p class="small"><strong>GPT-5</strong> (Aug 2025)<br>GPT-5.2 (Dec 2025)<br>Models: GPT-4o mini → GPT-5</p>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;">Google</h3>
+      <p class="small"><strong>Gemini 3</strong> (Nov 2025)<br>Gemini 3 Deep Think<br>Models: Flash → Pro → Ultra</p>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;">Anthropic</h3>
+      <p class="small"><strong>Claude Opus 4.6</strong> (Feb 2026)<br>Sonnet 4.5, Haiku 4.5<br>Models: Haiku → Sonnet → Opus</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-gauge"></i> Model "Flavours"</h4>
+        <p class="small">Each company offers <strong>different sizes</strong>. Larger models reason more carefully but are slower and cost more. Smaller models are faster and cheaper. A practical tradeoff you'll encounter.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="info-box fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-lightning"></i> Training vs Inference</h4>
+        <p class="small"><strong>Training</strong> = building the model (months, millions of dollars). <strong>Inference</strong> = using the model to generate a response (seconds, fractions of a cent). We'll cover this in Weeks 9–10.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fragment small"><strong>Mixture of experts (MoE):</strong> Rather than activating the entire network for every input, MoE models route to specialised sub-networks — large capacity, fast inference. Used in GPT-5, Gemini 3. More in later weeks.</p>
+</section>
+
+<!-- Slide 23: Multimodal LLMs -->
+<section>
+  <h2><i class="ph ph-eye"></i> Multimodal AI</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>Modern AI models aren't limited to text — they can <strong>see</strong>, <strong>hear</strong>, and <strong>generate</strong> across multiple types of media simultaneously.</p>
+  </div>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;"><i class="ph ph-image"></i> Vision</h3>
+      <p class="small">Upload a photo and ask questions about it. "What's in this brain scan?" "Describe this graph."</p>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;"><i class="ph ph-microphone"></i> Audio</h3>
+      <p class="small">Speak to the AI and hear it respond. Real-time voice conversations with natural intonation.</p>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;"><i class="ph ph-file-doc"></i> Documents</h3>
+      <p class="small">Upload PDFs, spreadsheets, papers. "Summarise this paper." "What are the main findings?"</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment small"><strong>Examples:</strong> GPT-5 (text + image + audio), Gemini 3 (natively multimodal), Claude (text + image + documents). These can process research papers, analyse figures, transcribe interviews, and more — all in one conversation.</p>
+</section>
+
+<!-- Slide 23: Coding Assistance & Vibe Coding -->
+<section>
+  <h2><i class="ph ph-code"></i> Coding Assistance &amp; Vibe Coding</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><strong>GitHub Copilot</strong> (<a href="https://github.com/features/copilot" target="_blank">github.com/features/copilot</a>) — AI inside VS Code, suggests code as you type, answers coding questions
+      <ul><li>Free for students via the GitHub Student Developer Pack</li></ul>
+    </li>
+    <li class="fragment"><strong>AI-native code editors</strong> — <a href="https://cursor.com" target="_blank">Cursor</a> and <a href="https://windsurf.com" target="_blank">Windsurf</a> build AI into every part of the coding workflow
+      <ul><li>Edit, refactor, and debug across entire projects through conversation</li></ul>
+    </li>
+    <li class="fragment"><strong>"Vibe coding"</strong> — describe what you want in plain English, AI writes the code
+      <ul><li>Term coined by Andrej Karpathy (OpenAI founding member), February 2025</li>
+      <li>But pure vibe coding is <strong>passive</strong> — copy-paste and hope for the best</li>
+      <li>In this course, we want something more deliberate: <strong>AI as active collaborator</strong></li></ul>
+    </li>
+    <li class="fragment"><strong>CLI coding agents</strong> — AI that works directly in your terminal, reading your codebase and editing files autonomously
+      <ul><li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code</a> (Anthropic), <a href="https://github.com/openai/codex" target="_blank">Codex CLI</a> (OpenAI), <a href="https://github.com/google-gemini/gemini-cli" target="_blank">Gemini CLI</a> (Google, open source)</li></ul>
+    </li>
+  </ul>
+  <div class="highlight-box fragment">
+    <p>25% of Y Combinator Winter 2025 startups had <strong>95% AI-generated</strong> codebases. This is already mainstream.</p>
+  </div>
+</section>
+
+<!-- Slide: Active Collaboration, Not Passive Coding -->
+<section>
+  <h2><i class="ph ph-handshake"></i> AI as Collaborator, Not Autopilot</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box fragment" style="border-left-color: var(--mq-orange);">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-x-circle"></i> Passive (Vibe Coding)</h4>
+        <ul class="small">
+          <li>Describe what you want</li>
+          <li>Copy-paste whatever the AI gives you</li>
+          <li>Hope it works</li>
+          <li>No understanding of the code</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="info-box fragment" style="border-left-color: var(--mq-green);">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-check-circle"></i> Active (This Course)</h4>
+        <ul class="small">
+          <li><strong>Read</strong> the code the AI generates</li>
+          <li><strong>Understand</strong> what it does and why</li>
+          <li><strong>Ask questions</strong> when something doesn't make sense</li>
+          <li><strong>Develop judgement</strong> about when output is good vs not</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight fragment" style="text-align: center;">
+    <p>You're not accepting whatever the AI produces — you're <strong>working with it</strong>, steering the process, and learning along the way.</p>
+  </div>
+  <p class="fragment small" style="text-align: center;">We'll formalise this into the <strong>LLM Problem-Solving Loop</strong> later in this lecture.</p>
+</section>
+
+<!-- Slide: Open-Source Models & Local AI -->
+<section>
+  <h2><i class="ph ph-desktop-tower"></i> Open-Source Models &amp; Local AI</h2>
+  <div class="spacer"></div>
+  <p class="fragment">Not all AI has to live in the cloud. <strong>Open-source models</strong> can be downloaded and run entirely on your own computer.</p>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3 style="font-size: 0.85em;">Leading Open-Source Models</h3>
+      <ul>
+        <li class="fragment"><strong>Llama 4</strong> (Meta) — Scout &amp; Maverick variants, MoE architecture</li>
+        <li class="fragment"><strong>Mistral Large 3</strong> (Mistral AI) — 675B parameters, Apache 2.0 licence</li>
+        <li class="fragment"><strong>Gemma 3</strong> (Google) — smaller, efficient, designed for local use</li>
+      </ul>
+      <div class="spacer"></div>
+      <h3 style="font-size: 0.85em;">Tools to Run Them</h3>
+      <ul>
+        <li class="fragment"><a href="https://ollama.com" target="_blank"><strong>Ollama</strong></a> — open-source, command-line, lightweight</li>
+        <li class="fragment"><a href="https://lmstudio.ai" target="_blank"><strong>LM Studio</strong></a> — graphical interface, beginner-friendly</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="info-box fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-cpu"></i> Hardware Has Caught Up</h4>
+        <p class="small">Apple M4 Max/Ultra: up to 192GB unified memory. NVIDIA/AMD GPU systems with high VRAM. A well-configured MacBook Pro or desktop can run useful AI models entirely offline.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="key-insight fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-shield-check"></i> Why Run Locally?</h4>
+        <p class="small"><strong>Data privacy.</strong> Your data never leaves your machine. No API calls, no external logs. Essential for sensitive clinical data, patient records, or proprietary datasets where ethics approvals restrict external processing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 24: Image Generation — NEW -->
+<section>
+  <h2><i class="ph ph-paint-brush"></i> Image Generation</h2>
+  <div class="spacer"></div>
+  <p class="fragment">Describe an image in words → AI creates it. Text-to-image generation has become remarkably capable.</p>
+  <div class="spacer"></div>
+  <div class="tool-grid">
+    <div class="tool-card fragment" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-image"></i> DALL-E 3</h4>
+      <p>Built into ChatGPT. Describe what you want, it generates images. Great for creating stimuli, illustrations, and diagrams.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-paint-brush"></i> Midjourney</h4>
+      <p>Known for artistic, high-quality outputs. Popular for creative and stylised images. <a href="https://midjourney.com" target="_blank">midjourney.com</a></p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-orange);">
+      <h4><i class="ph ph-open-ai-logo"></i> Stable Diffusion</h4>
+      <p>Open-source — runs on your own computer. Full control, no usage limits, highly customisable.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-red);">
+      <h4><i class="ph ph-magic-wand"></i> Adobe Firefly</h4>
+      <p>Integrated into Photoshop and creative tools. Designed for professional creative workflows.</p>
+    </div>
+  </div>
+  <p class="fragment small">For research: creating experimental stimuli, visualising concepts, generating figures for presentations. Always disclose AI-generated images.</p>
+</section>
+
+<!-- Slide 25: Video & Audio Generation — NEW -->
+<section>
+  <h2><i class="ph ph-video-camera"></i> Video, Audio &amp; Speech</h2>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;"><i class="ph ph-film-strip"></i> Video Generation</h3>
+      <ul style="font-size: 0.85em;">
+        <li><strong>Sora</strong> (OpenAI) — text-to-video, realistic scenes from descriptions</li>
+        <li><strong>Runway</strong>, <strong>Pika</strong>, <strong>Google Veo</strong> — rapid advances in quality and control</li>
+        <li>Still early, but improving very fast</li>
+      </ul>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;"><i class="ph ph-microphone"></i> Text-to-Speech</h3>
+      <ul style="font-size: 0.85em;">
+        <li><strong>ElevenLabs</strong> (<a href="https://elevenlabs.io" target="_blank">elevenlabs.io</a>) — natural-sounding voices, voice cloning</li>
+        <li><strong>OpenAI TTS</strong> — built into ChatGPT Advanced Voice</li>
+        <li>Applications: accessibility, narration, creating audio materials</li>
+      </ul>
+    </div>
+    <div class="col fragment">
+      <h3 style="font-size: 0.9em;"><i class="ph ph-waveform"></i> Speech-to-Text</h3>
+      <ul style="font-size: 0.85em;">
+        <li><strong>Whisper</strong> (OpenAI) — highly accurate transcription, open-source</li>
+        <li>Built into most LLMs now — talk instead of type</li>
+        <li>For research: transcribing interviews, coding spoken data, accessibility</li>
+      </ul>
+    </div>
+  </div>
+  <div class="key-insight fragment" style="margin-top: 16px;">
+    <p><strong>NotebookLM</strong> (<a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a>) can even generate <strong>podcast-style audio overviews</strong> of your uploaded papers — two AI voices discussing the content in an engaging way.</p>
+  </div>
+</section>
+
+<!-- Slide 26: Research Tools -->
+<section>
+  <h2><i class="ph ph-flask"></i> AI Research Tools</h2>
+  <div class="spacer"></div>
+  <div class="tool-grid">
+    <div class="tool-card fragment">
+      <h4><i class="ph ph-notebook"></i> NotebookLM</h4>
+      <p>Upload papers, get summaries, interactive mind maps, audio overviews. Built on Gemini.</p>
+      <a href="https://notebooklm.google.com" target="_blank">notebooklm.google.com</a>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-magnifying-glass"></i> Elicit</h4>
+      <p>Synthesises evidence from 200M+ academic papers. Ask a question, get structured evidence.</p>
+      <a href="https://elicit.com" target="_blank">elicit.com</a>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-chat-centered-text"></i> Consensus</h4>
+      <p>Ask research questions in plain language, get answers backed by peer-reviewed literature.</p>
+      <a href="https://consensus.app" target="_blank">consensus.app</a>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-orange);">
+      <h4><i class="ph ph-graph"></i> Semantic Scholar</h4>
+      <p>AI-powered paper discovery, citation networks, research recommendations. 200M+ papers.</p>
+      <a href="https://semanticscholar.org" target="_blank">semanticscholar.org</a>
+    </div>
+  </div>
+  <p class="fragment small">These are genuinely useful for your coursework and research. Try them out — most have free tiers.</p>
+</section>
+
+<!-- Slide 27: Agentic Systems -->
+<section>
+  <h2><i class="ph ph-robot"></i> Agentic Systems <span class="tag tag-purple">The Frontier</span></h2>
+  <div class="spacer"></div>
+  <div class="info-box">
+    <p>AI that doesn't just answer questions — it can <strong>plan, act, and iterate</strong> to complete complex tasks autonomously.</p>
+  </div>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+        <li class="fragment"><strong>Tools</strong> — agents can use web search, code execution, file management, databases</li>
+        <li class="fragment"><strong>Skills</strong> — specialised capabilities like data analysis, writing, or research</li>
+        <li class="fragment"><strong>Autonomy</strong> — break tasks into steps, execute, check work, adjust approach</li>
+        <li class="fragment"><strong>Multi-agent systems</strong> — multiple specialised agents collaborating on a task
+          <ul><li>New protocols: Anthropic's <strong>MCP</strong>, Google's <strong>A2A</strong></li></ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="key-insight fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-trend-up"></i> How Big Is This?</h4>
+        <p class="small">Gartner: <strong>40%</strong> of enterprise apps will have AI agents by end of 2026. McKinsey: <strong>1,445%</strong> surge in multi-agent inquiries.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="info-box fragment">
+        <p class="small"><strong>Example:</strong> A coding agent reads your project, writes code across multiple files, runs the tests, fixes failures, and commits — all from a single instruction.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fragment small">We'll explore agentic AI in depth in Week 11.</p>
+</section>
+
+<!-- Slide 28: Tools Augment, Not Replace -->
+<section>
+  <h2>Tools Augment, Not Replace</h2>
+  <div class="spacer-lg"></div>
+  <div class="key-insight" style="text-align: center; padding: 30px;">
+    <p style="font-size: 1.1em;">A hammer doesn't build a house by itself.<br>A skilled carpenter with a hammer builds better houses faster.</p>
+  </div>
+  <div class="spacer-lg"></div>
+  <p class="fragment" style="text-align: center;">That's the relationship we want you to develop with AI tools.</p>
+  <p class="fragment" style="text-align: center;"><strong>You</strong> are the researcher. AI is your tool. Your expertise, judgement, and critical thinking are what matter most.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 4B: WHAT IS AN LLM?  (Slides 29–31)
+     ============================================================ -->
+
+<!-- Slide 29: Section Divider — What Is an LLM? -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-brain"></i></div>
+  <h2>What Is an LLM &amp;<br>How Does It Work?</h2>
+  <p>Understanding the tools makes you better at using them</p>
+</section>
+
+<!-- Slide 30: Under the Hood -->
+<section>
+  <h2>Under the Hood</h2>
+  <div class="spacer"></div>
+  <div class="info-box">
+    <p>Most modern AI tools — ChatGPT, Claude, Gemini, Copilot — run on <strong>large language models</strong> (LLMs). We'll cover this in much more detail in Weeks 9–11, but here's what you need to know now.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment">An LLM is a <strong>neural network</strong> trained on enormous amounts of text — books, articles, websites, code, conversations</li>
+    <li class="fragment">During training, it learns <strong>statistical patterns</strong> in language: which words follow which, how sentences work, what kinds of answers follow what kinds of questions</li>
+    <li class="fragment">The result: a system that generates remarkably fluent text — even though it has <strong>no understanding</strong> of what the words mean</li>
+    <li class="fragment">At its core, an LLM is a <strong>next-token prediction machine</strong></li>
+  </ul>
+</section>
+
+<!-- Slide 31: Tokens and Embeddings -->
+<section>
+  <h2>Tokens &amp; Embeddings</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3 style="font-size: 0.95em;"><i class="ph ph-text-aa"></i> Tokens</h3>
+      <ul>
+        <li class="fragment">The basic unit of text for an LLM — roughly a word or word-fragment</li>
+        <li class="fragment">"psychology" → 1 token<br>"unbelievable" → "un" + "believ" + "able"</li>
+        <li class="fragment">You type a prompt → model converts to tokens → generates response <strong>one token at a time</strong></li>
+        <li class="fragment">Each token is the model's best prediction of what comes next</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="font-size: 0.95em;"><i class="ph ph-vector-three"></i> Embeddings</h3>
+      <ul>
+        <li class="fragment">Each token is converted to a long list of numbers — an <strong>embedding</strong></li>
+        <li class="fragment">Embeddings capture <em>relationships</em> between words</li>
+        <li class="fragment">"Happy" &amp; "joyful" → close together<br>"Happy" &amp; "refrigerator" → far apart</li>
+        <li class="fragment">Meaning represented through <strong>patterns of similarity</strong>, not definitions</li>
+      </ul>
+    </div>
+  </div>
+  <div class="key-insight fragment" style="margin-top: 16px;">
+    <p>We'll explore embeddings in depth in Week 11 — they turn out to be extraordinarily powerful for analysing text and meaning at scale.</p>
+  </div>
+</section>
+
+<!-- Slide 32: Why This Matters Now -->
+<section>
+  <h2>Why This Matters for You Now</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>An LLM doesn't "know" things the way you do — it has learned statistical patterns from text.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><i class="ph ph-warning" style="color: var(--mq-orange);"></i> It can be <strong>confident and wrong</strong> — plausible-sounding nonsense is always possible</li>
+    <li class="fragment"><i class="ph ph-brain" style="color: var(--mq-purple);"></i> It doesn't <strong>remember</strong> previous conversations (unless you're in the same session)</li>
+    <li class="fragment"><i class="ph ph-chat-text" style="color: var(--mq-blue);"></i> It responds to <strong>exactly what you give it</strong> — the clearer your prompt, the better the output</li>
+  </ul>
+  <div class="spacer"></div>
+  <p class="fragment" style="text-align: center;">That's why the next section — <strong>prompt engineering</strong> — matters so much.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 5: PROMPT ENGINEERING  (Slides 33–42)
+     ============================================================ -->
+
+<!-- Slide 33: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-chat-centered-text"></i></div>
+  <h2>Prompt Engineering &amp;<br>Context Engineering</h2>
+  <p>The most practical skill you'll learn this semester</p>
+</section>
+
+<!-- Slide 30: What Is Prompt Engineering? -->
+<section>
+  <h2>Prompt Engineering</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>The art of writing <strong>clear, effective instructions</strong> for an AI. A vague prompt gets a vague answer. A specific, well-structured prompt gets useful output.</p>
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment">Your ability to get good results from AI tools depends almost entirely on <strong>how you communicate with them</strong>.</p>
+  <p class="fragment">This isn't a "nice to have" — it's the difference between spending 2 minutes and 20 minutes on a task.</p>
+  <div class="spacer"></div>
+  <p class="fragment">Let's look at some examples...</p>
+</section>
+
+<!-- Slide 31: Prompt Example 1 — Data Visualisation -->
+<section>
+  <h2><span class="tag tag-blue">Example 1</span> Data Visualisation</h2>
+  <div class="spacer"></div>
+  <div class="prompt-bad fragment">
+    <h4 style="color: #dc3545; margin-bottom: 8px;"><i class="ph ph-x-circle"></i> Vague</h4>
+    "Make me a graph"
+  </div>
+  <div class="spacer"></div>
+  <div class="prompt-good fragment">
+    <h4 style="color: var(--mq-green); margin-bottom: 8px;"><i class="ph ph-check-circle"></i> Specific</h4>
+    "Create a scatter plot of Depression score vs Sleep hours from my DataFrame called <code>data</code>, with points coloured by Gender, using matplotlib. Add a title, axis labels, and a legend."
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment small"><strong>Why it works:</strong> Specifies the plot type, the variables, the data source, the colour coding, the library, and the formatting. The AI knows exactly what to produce.</p>
+</section>
+
+<!-- Slide 32: Prompt Example 2 — Debugging -->
+<section>
+  <h2><span class="tag tag-orange">Example 2</span> Debugging Code</h2>
+  <div class="spacer"></div>
+  <div class="prompt-bad fragment">
+    <h4 style="color: #dc3545; margin-bottom: 8px;"><i class="ph ph-x-circle"></i> Vague</h4>
+    "My code doesn't work, fix it"
+  </div>
+  <div class="spacer"></div>
+  <div class="prompt-good fragment">
+    <h4 style="color: var(--mq-green); margin-bottom: 8px;"><i class="ph ph-check-circle"></i> Specific</h4>
+    "I'm getting a KeyError: 'depression_score' when I run <code>data['depression_score'].mean()</code>. Here are my column names: Age, Gender, Depression, Sleep_hrs. I think the column might be called something different. How do I fix this?"
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment small"><strong>Why it works:</strong> Includes the error message, the code that caused it, the actual column names, and a hypothesis about what went wrong. The AI can pinpoint the issue immediately.</p>
+</section>
+
+<!-- Slide 33: Prompt Example 3 — Research -->
+<section>
+  <h2><span class="tag tag-purple">Example 3</span> Understanding a Method</h2>
+  <div class="spacer"></div>
+  <div class="prompt-bad fragment">
+    <h4 style="color: #dc3545; margin-bottom: 8px;"><i class="ph ph-x-circle"></i> Vague</h4>
+    "Explain random forests"
+  </div>
+  <div class="spacer"></div>
+  <div class="prompt-good fragment">
+    <h4 style="color: var(--mq-green); margin-bottom: 8px;"><i class="ph ph-check-circle"></i> Specific</h4>
+    "I'm a psychology honours student learning ML for the first time. Explain random forests in simple terms, using a psychology example (like predicting treatment outcomes). Compare it to regular regression, which I'm familiar with. Keep it under 300 words."
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment small"><strong>Why it works:</strong> States your background, requests a relevant example, anchors to something you already know, and sets a length constraint. The explanation will be pitched perfectly for you.</p>
+</section>
+
+<!-- Slide 34: What Makes a Good Prompt -->
+<section>
+  <h2>What Makes a Good Prompt?</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+        <li class="fragment"><i class="ph ph-target" style="color: var(--mq-red);"></i> <strong>Be specific</strong>
+          <ul><li>What output do you want? What format? What level of detail?</li></ul>
+        </li>
+        <li class="fragment"><i class="ph ph-info" style="color: var(--mq-blue);"></i> <strong>Give context</strong>
+          <ul><li>Your data, your tools, your background, what you've already tried</li></ul>
+        </li>
+        <li class="fragment"><i class="ph ph-frame-corners" style="color: var(--mq-purple);"></i> <strong>Set constraints</strong>
+          <ul><li>"Use only pandas and matplotlib" / "Keep it under 200 words"</li></ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul>
+        <li class="fragment"><i class="ph ph-book-open" style="color: var(--mq-green);"></i> <strong>Ask for explanations</strong>
+          <ul><li>"...and explain each line of code" — learn as you go</li></ul>
+        </li>
+        <li class="fragment"><i class="ph ph-arrow-counter-clockwise" style="color: var(--mq-orange);"></i> <strong>Iterate</strong>
+          <ul><li>If the first result isn't right, refine your prompt with more detail</li></ul>
+        </li>
+        <li class="fragment"><i class="ph ph-list-checks" style="color: var(--mq-gold);"></i> <strong>Provide examples</strong>
+          <ul><li>Show input → expected output. "Given this data, I want output like this..."</li></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 35: Context Engineering -->
+<section>
+  <h2>Context Engineering</h2>
+  <div class="spacer"></div>
+  <p class="fragment">The AI doesn't know your data, your research question, or your constraints <strong>unless you tell it</strong>. Context engineering means providing all the background information the AI needs to give you a useful answer.</p>
+  <div class="spacer"></div>
+  <div class="info-box fragment">
+    <p>Think of it like briefing a new research assistant: the more background you give them, the more useful their work will be.</p>
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment"><strong>What to include:</strong></p>
+  <ul>
+    <li class="fragment">What libraries and tools you're using — "I'm working in Python with pandas and matplotlib"</li>
+    <li class="fragment">What your data looks like — "I have a DataFrame with 2000 rows and columns: Age, Gender, Depression, Sleep_hrs"</li>
+    <li class="fragment">What you've already tried — "I tried using a bar chart but it doesn't show the relationship clearly"</li>
+    <li class="fragment">What your goal is — "I want to show how sleep hours relate to depression scores for males vs females"</li>
+  </ul>
+</section>
+
+<!-- Slide 36: The Human Comparison -->
+<section>
+  <h2>Why Do We Need Prompt Engineering?</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col fragment">
+      <div class="info-box" style="padding: 20px;">
+        <h3 style="font-size: 0.9em;"><i class="ph ph-user"></i> Human Colleague</h3>
+        <p class="small" style="margin-bottom: 0;">If you said "make me a graph of the sleep data," a human colleague would:</p>
+        <ul style="font-size: 0.75em;">
+          <li>Ask "which sleep data?"</li>
+          <li>Know your project context</li>
+          <li>Guess what kind of graph suits the data</li>
+          <li>Apply domain knowledge</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col fragment">
+      <div class="highlight-box" style="padding: 20px;">
+        <h3 style="font-size: 0.9em;"><i class="ph ph-robot"></i> AI Assistant</h3>
+        <p class="small" style="margin-bottom: 0;">An AI doesn't have:</p>
+        <ul style="font-size: 0.75em;">
+          <li>Shared context from working together</li>
+          <li>Theory of mind — it can't guess your intent</li>
+          <li>Common sense about what "good" looks like in your field</li>
+          <li>Awareness of what you've been working on</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment small" style="text-align: center;">The need for prompt engineering reveals something deep about the difference between human understanding and what AI systems do.</p>
+</section>
+
+<!-- Slide 37: Think About It #2 -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>What does the need for prompt engineering tell us about the difference between human understanding and what AI systems do?</p>
+  <div class="spacer"></div>
+  <p>What would an AI need to be able to do to <em>not</em> need detailed prompts?</p>
+</section>
+
+<!-- ============================================================
+     SECTION 6: LLM PROBLEM-SOLVING LOOP  (Slides 38–43)
+     ============================================================ -->
+
+<!-- Slide 38: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-arrows-clockwise"></i></div>
+  <h2>The LLM<br>Problem-Solving Loop</h2>
+  <p>Your core workflow for the entire semester</p>
+</section>
+
+<!-- Slide 39: Outer Loop -->
+<section>
+  <h2>Outer Loop — Your Research Process</h2>
+  <div class="spacer"></div>
+  <!-- HTML flow diagram -->
+  <div class="flow-diagram" style="margin-bottom: 0;">
+    <div class="flow-step fragment" style="background: rgba(74,144,217,0.12); border: 2px solid var(--mq-blue); color: var(--mq-blue);">
+      PLAN
+      <div class="step-subtitle">Define your goal</div>
+    </div>
+    <div class="flow-arrow fragment">→</div>
+    <div class="flow-step fragment" style="background: rgba(167,25,48,0.12); border: 2px solid var(--mq-red); color: var(--mq-red);">
+      EXECUTE
+      <div class="step-subtitle">Use the AI (inner loop)</div>
+    </div>
+    <div class="flow-arrow fragment">→</div>
+    <div class="flow-step fragment" style="background: rgba(91,165,91,0.12); border: 2px solid var(--mq-green); color: var(--mq-green);">
+      EVALUATE
+      <div class="step-subtitle">Is it correct?</div>
+    </div>
+    <div class="flow-arrow fragment">→</div>
+    <div class="flow-step fragment" style="background: rgba(200,151,44,0.12); border: 2px solid var(--mq-gold); color: var(--mq-gold);">
+      DOCUMENT
+      <div class="step-subtitle">Record &amp; reflect</div>
+    </div>
+  </div>
+  <!-- Cycle-back arrow: DOCUMENT → PLAN (right-angle path) -->
+  <div class="flow-cycle fragment" style="height: 44px;">
+    <svg width="720" height="44" viewBox="0 0 720 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+      <path d="M660 2 V32 H60 V14" stroke="#8C8C8C" stroke-width="2.5" stroke-dasharray="6 4" fill="none" stroke-linejoin="round"/>
+      <polygon points="60,6 53,16 67,16" fill="#8C8C8C"/>
+      <text x="360" y="28" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="500" fill="#8C8C8C">each cycle deepens your understanding</text>
+    </svg>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><strong>PLAN:</strong> What question are you answering? What output do you need? What approach makes sense?</li>
+    <li class="fragment"><strong>EXECUTE:</strong> Use the inner loop (next slide) to get AI-generated code and analysis</li>
+    <li class="fragment"><strong>EVALUATE:</strong> Does the result answer your question? Does it make sense given what you know about the domain?</li>
+    <li class="fragment"><strong>DOCUMENT:</strong> Record what you did, what worked, what you learned — your future self will thank you</li>
+  </ul>
+</section>
+
+<!-- Slide 40: Inner Loop -->
+<section>
+  <h2>Inner Loop — Working with the AI</h2>
+  <div class="spacer"></div>
+  <!-- HTML flow diagram — 5 steps -->
+  <div class="flow-diagram" style="margin-bottom: 0;">
+    <div class="flow-step fragment" style="background: rgba(167,25,48,0.12); border: 2px solid var(--mq-red); color: var(--mq-red); min-width: 110px;">
+      ENGINEER
+      <div class="step-subtitle">Craft prompt + ask for plan</div>
+    </div>
+    <div class="flow-arrow fragment">→</div>
+    <div class="flow-step fragment" style="background: rgba(232,135,61,0.12); border: 2px solid var(--mq-orange); color: var(--mq-orange); min-width: 90px;">
+      PLAN
+      <div class="step-subtitle">Review approach</div>
+    </div>
+    <div class="flow-arrow fragment">→</div>
+    <div class="flow-step fragment" style="background: rgba(43,138,138,0.12); border: 2px solid var(--mq-teal); color: var(--mq-teal); min-width: 110px;">
+      GENERATE
+      <div class="step-subtitle">Execute the plan</div>
+    </div>
+    <div class="flow-arrow fragment">→</div>
+    <div class="flow-step fragment" style="background: rgba(123,104,168,0.12); border: 2px solid var(--mq-purple); color: var(--mq-purple); min-width: 90px;">
+      VERIFY
+      <div class="step-subtitle">Run &amp; check</div>
+    </div>
+    <div class="flow-arrow fragment">→</div>
+    <div class="flow-step fragment" style="background: rgba(91,165,91,0.12); border: 2px solid var(--mq-green); color: var(--mq-green); min-width: 90px;">
+      REFINE
+      <div class="step-subtitle">Add context, retry</div>
+    </div>
+  </div>
+  <!-- Cycle-back arrow: REFINE → ENGINEER (right-angle path) -->
+  <div class="flow-cycle fragment" style="height: 44px;">
+    <svg width="860" height="44" viewBox="0 0 860 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+      <path d="M800 2 V32 H60 V14" stroke="#8C8C8C" stroke-width="2.5" stroke-dasharray="6 4" fill="none" stroke-linejoin="round"/>
+      <polygon points="60,6 53,16 67,16" fill="#8C8C8C"/>
+      <text x="430" y="28" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="500" fill="#8C8C8C">typically runs 2–5 times — that's normal!</text>
+    </svg>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><strong>ENGINEER:</strong> Be specific, provide context, state your goal clearly, and — crucially — <strong><em>ask for a plan</em></strong>.</li>
+    <li class="fragment"><strong>PLAN:</strong> Review the AI's proposed approach. Does it make sense? Right methods? Redirect <em>before</em> any code is written.</li>
+    <li class="fragment"><strong>GENERATE:</strong> Once the plan looks right, ask the AI to execute it — code, text, visualisations, whatever you need.</li>
+    <li class="fragment"><strong>VERIFY:</strong> <strong>Read the output first</strong> — understand what it's doing. Then run it. Does it execute? Does it make sense?</li>
+    <li class="fragment"><strong>REFINE:</strong> What went wrong? Go back to the right level — fix the plan, or fix the output.</li>
+  </ul>
+</section>
+
+<!-- Slide: Strategies for Working with AI -->
+<section>
+  <h2><i class="ph ph-strategy"></i> Strategies That Work</h2>
+  <div class="spacer"></div>
+  <p class="small">The inner loop typically runs 2–5 times. Here's how to make each iteration count:</p>
+  <div class="spacer"></div>
+  <div class="tool-grid">
+    <div class="tool-card fragment" style="border-left-color: var(--mq-blue);">
+      <h4><i class="ph ph-puzzle-piece"></i> Break It Into Pieces</h4>
+      <p>Work step by step — load data, explore, then build one thing at a time. Smaller, focused prompts produce better results.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-file-text"></i> Provide Rich Context</h4>
+      <p>Paste column names, upload data dictionaries, share error tracebacks, point to documentation. Some tools can search the web — use that.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-target"></i> Be Specific About Problems</h4>
+      <p><em>"This didn't work"</em> → weak. <em>"The plot shows all points in one colour, but I wanted them coloured by Gender"</em> → strong.</p>
+    </div>
+    <div class="tool-card fragment" style="border-left-color: var(--mq-orange);">
+      <h4><i class="ph ph-arrows-split"></i> Refine at the Right Level</h4>
+      <p>Output wrong because the <em>plan</em> was wrong? Go back to PLAN. Plan was fine but the AI made a mistake? Go back to GENERATE.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 41: The Nested View — HTML Diagram -->
+<section>
+  <h2>The Complete Picture</h2>
+  <div class="spacer"></div>
+  <div style="text-align: center;">
+    <!-- Outer loop container -->
+    <div style="display: inline-block; border: 3px solid var(--mq-blue); border-radius: 20px; padding: 24px 30px 12px; background: rgba(74,144,217,0.04); max-width: 95%;">
+      <div style="font-size: 0.65em; font-weight: 700; color: var(--mq-blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">Outer Loop — Your Research Process</div>
+      <div class="flow-diagram" style="flex-wrap: wrap; justify-content: center;">
+        <div class="flow-step" style="background: rgba(74,144,217,0.12); border: 2px solid var(--mq-blue); color: var(--mq-blue); min-width: 100px; padding: 10px 16px;">
+          PLAN
+        </div>
+        <div class="flow-arrow">→</div>
+        <!-- EXECUTE contains the inner loop -->
+        <div style="border: 3px solid var(--mq-red); border-radius: 16px; padding: 14px 18px 6px; background: rgba(167,25,48,0.04);">
+          <div style="font-size: 0.55em; font-weight: 700; color: var(--mq-red); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">Execute — Inner Loop</div>
+          <div class="flow-diagram">
+            <div class="flow-step" style="background: rgba(167,25,48,0.12); border: 2px solid var(--mq-red); color: var(--mq-red); min-width: 70px; padding: 8px 10px; font-size: 0.6em;">ENGINEER</div>
+            <div class="flow-arrow" style="font-size: 1em;">→</div>
+            <div class="flow-step" style="background: rgba(232,135,61,0.12); border: 2px solid var(--mq-orange); color: var(--mq-orange); min-width: 65px; padding: 8px 10px; font-size: 0.6em;">PLAN</div>
+            <div class="flow-arrow" style="font-size: 1em;">→</div>
+            <div class="flow-step" style="background: rgba(43,138,138,0.12); border: 2px solid var(--mq-teal); color: var(--mq-teal); min-width: 70px; padding: 8px 10px; font-size: 0.6em;">GENERATE</div>
+            <div class="flow-arrow" style="font-size: 1em;">→</div>
+            <div class="flow-step" style="background: rgba(123,104,168,0.12); border: 2px solid var(--mq-purple); color: var(--mq-purple); min-width: 65px; padding: 8px 10px; font-size: 0.6em;">VERIFY</div>
+            <div class="flow-arrow" style="font-size: 1em;">→</div>
+            <div class="flow-step" style="background: rgba(91,165,91,0.12); border: 2px solid var(--mq-green); color: var(--mq-green); min-width: 65px; padding: 8px 10px; font-size: 0.6em;">REFINE</div>
+          </div>
+          <!-- Inner cycle-back arrow (right-angle) -->
+          <svg width="580" height="36" viewBox="0 0 580 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 4px auto 0;">
+            <path d="M540 2 V24 H40 V12" stroke="#8C8C8C" stroke-width="2" stroke-dasharray="5 3" fill="none" stroke-linejoin="round"/>
+            <polygon points="40,5 34,13 46,13" fill="#8C8C8C"/>
+            <text x="290" y="21" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#8C8C8C">repeat 2–5 times</text>
+          </svg>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background: rgba(91,165,91,0.12); border: 2px solid var(--mq-green); color: var(--mq-green); min-width: 100px; padding: 10px 16px;">
+          EVALUATE
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background: rgba(200,151,44,0.12); border: 2px solid var(--mq-gold); color: var(--mq-gold); min-width: 100px; padding: 10px 16px;">
+          DOCUMENT
+        </div>
+      </div>
+      <!-- Outer cycle-back arrow (right-angle) -->
+      <svg width="900" height="40" viewBox="0 0 900 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 4px auto 0;">
+        <path d="M840 2 V28 H60 V14" stroke="#4A90D9" stroke-width="2.5" stroke-dasharray="6 4" fill="none" stroke-linejoin="round" opacity="0.5"/>
+        <polygon points="60,6 53,14 67,14" fill="#4A90D9" opacity="0.5"/>
+        <text x="450" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#8C8C8C">each cycle deepens your understanding</text>
+      </svg>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight fragment" style="text-align: center;">
+    <p>This is your workflow for <strong>every lab challenge</strong> in this course. By Week 10, it'll be second nature.</p>
+  </div>
+</section>
+
+<!-- Slide 42: Key Insight -->
+<section>
+  <h2>You Are Always in Control</h2>
+  <div class="spacer-lg"></div>
+  <div class="key-insight" style="text-align: center; padding: 30px;">
+    <p style="font-size: 1.05em;"><strong>You</strong> decide what to build.<br><strong>You</strong> verify the output.<br><strong>You</strong> judge whether it's correct.</p>
+  </div>
+  <div class="spacer-lg"></div>
+  <p class="fragment" style="text-align: center;">The AI is a powerful tool, but it doesn't understand your research question the way you do.</p>
+  <p class="fragment" style="text-align: center;">It doesn't know what matters in your field, what's ethically appropriate, or what a reviewer would question.</p>
+  <p class="fragment" style="text-align: center;"><strong>Your domain expertise + AI capability = powerful research.</strong></p>
+</section>
+
+<!-- ============================================================
+     SECTION 7: ML IN PSYCHOLOGY  (Slides 43–54)
+     ============================================================ -->
+
+<!-- Slide 43: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-flask"></i></div>
+  <h2>ML and AI in<br>Psychological Science</h2>
+  <p>Why should psychologists care about machine learning?</p>
+</section>
+
+<!-- Slide 44: Prediction vs Explanation — HTML Venn Diagram -->
+<section>
+  <h2>Prediction vs Explanation</h2>
+  <div class="spacer"></div>
+  <div class="venn-container">
+    <div class="venn-circle fragment" style="left: 60px; top: 30px; padding: 70px 240px 70px 90px; background: rgba(74,144,217,0.1); border: 3px solid var(--mq-blue);">
+      <h3 style="color: var(--mq-blue); text-align: left;">Explanation</h3>
+      <p style="text-align: left; color: var(--mq-charcoal);"><em>Traditional Psychology</em></p>
+      <p style="text-align: left;"><strong>Why</strong> does X cause Y?<br>Controlled experiments,<br>statistical inference</p>
+    </div>
+    <div class="venn-circle fragment" style="right: 60px; top: 30px; padding: 70px 90px 70px 240px; background: rgba(167,25,48,0.1); border: 3px solid var(--mq-red);">
+      <h3 style="color: var(--mq-red); text-align: right;">Prediction</h3>
+      <p style="text-align: right; color: var(--mq-charcoal);"><em>Machine Learning</em></p>
+      <p style="text-align: right;"><strong>Can we forecast</strong> Y from X?<br>Pattern finding in<br>large datasets</p>
+    </div>
+    <div class="venn-overlap fragment" style="top: 50%; left: 50%;">
+      <div style="color: var(--mq-charcoal);">Both<br>valuable</div>
+      <div style="color: var(--mq-red); font-size: 0.85em; margin-top: 8px;">This course →</div>
+    </div>
+  </div>
+  <p class="fragment small" style="text-align: center; margin-top: 0;"><a href="https://doi.org/10.1177/1745691617693393" target="_blank">Yarkoni &amp; Westfall (2017)</a> — psychology's focus on explanation has come at the cost of prediction. The two approaches strengthen each other.</p>
+</section>
+
+<!-- Slide 45: The Tension -->
+<section>
+  <h2>A Productive Tension</h2>
+  <div class="spacer"></div>
+  <p class="fragment">Psychology has traditionally focused on <strong>explanation</strong> — understanding <em>why</em> things happen through controlled experiments and statistical inference.</p>
+  <p class="fragment">ML adds a complementary focus on <strong>prediction</strong> — building models that can accurately forecast outcomes from new data.</p>
+  <div class="spacer"></div>
+  <div class="two-col fragment">
+    <div class="col">
+      <div class="info-box">
+        <p><strong>ML can</strong> predict depression from smartphone data — reduced movement predicts depressive episodes — without knowing anything about mood, motivation, or lived experience.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <p><strong>A clinician can</strong> predict a friend's mood from a single text message — because they <em>understand</em> the person, their history, and their context.</p>
+      </div>
+    </div>
+  </div>
+  <p class="fragment small">One approach scales to millions of people; the other has depth and understanding. Both are valuable for different purposes.</p>
+</section>
+
+<!-- Slide 46: Example 1 — Digital Phenotyping -->
+<section>
+  <h2><span class="tag tag-blue">Example 1</span> Digital Phenotyping</h2>
+  <div class="spacer"></div>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <h3>Mental Health Prediction from Smartphone Data</h3>
+      <ul>
+        <li class="fragment">Smartphone sensors passively collect data: GPS movement patterns, screen time, sleep duration, typing speed, social interactions</li>
+        <li class="fragment">ML models can predict mental health episodes <strong>before they happen</strong>
+          <ul><li>Reduced movement and increased screen time → higher depression risk</li></ul>
+        </li>
+        <li class="fragment">Multiple studies (2024–2025) show passive phone data can identify depression risk with meaningful accuracy</li>
+        <li class="fragment">Opens the door to <strong>early intervention</strong> systems that don't rely on people self-reporting their symptoms</li>
+      </ul>
+    </div>
+    <div class="col">
+      <img src="../figures/digital-phenotyping.png" alt="Illustration of digital phenotyping — smartphone sensors passively collecting data streams that flow into a mental health prediction model" style="max-width: 100%; border-radius: 8px;">
+    </div>
+  </div>
+</section>
+
+<!-- Think About It: Digital Phenotyping -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>If an ML model can predict you're about to have a depressive episode — before you've told anyone, maybe before you've even noticed — is that helpful or unsettling?</p>
+  <div class="spacer"></div>
+  <p>Who should have access to that prediction? Your doctor? Your employer? Your insurer?</p>
+  <div class="spacer"></div>
+  <p class="small">How do we balance the enormous potential of digital phenotyping with the equally enormous privacy and ethical concerns?<br><em>See <a href="https://doi.org/10.1038/npp.2016.7" target="_blank" style="color: rgba(255,255,255,0.8);">Onnela &amp; Rauch (2016)</a></em></p>
+</section>
+
+<!-- Slide 47: Example 2a — LLMs as Cognitive Models -->
+<section>
+  <h2><span class="tag tag-purple">Example 2a</span> LLMs as Cognitive Models</h2>
+  <div class="spacer"></div>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <ul>
+        <li class="fragment"><a href="https://doi.org/10.1038/s43588-023-00527-x" target="_blank">Hagendorff, Fabi &amp; Kosinski (2023)</a> tested LLMs on classic cognitive psychology tasks
+          <ul><li>Semantic illusions, reasoning biases from Kahneman's "Thinking, Fast and Slow"</li></ul>
+        </li>
+        <li class="fragment">As models grew larger, they developed <strong>human-like intuitive thinking and cognitive biases</strong>
+          <ul><li>The same biases that psychology students study in their textbooks</li></ul>
+        </li>
+        <li class="fragment">But these biases <strong>disappeared in ChatGPT</strong>, which could engage in more deliberate "System 2" reasoning
+          <ul><li>What does that tell us about how these systems process information?</li></ul>
+        </li>
+      </ul>
+      <p class="fragment small"><em>Published in <a href="https://doi.org/10.1038/s43588-023-00527-x" target="_blank">Nature Computational Science, 2023</a></em></p>
+    </div>
+    <div class="col">
+      <img src="../figures/cognitive-biases-llm.png" alt="Illustration of System 1 fast intuitive thinking versus System 2 slow deliberate thinking, with an AI model bridging both" style="max-width: 100%; border-radius: 8px;">
+    </div>
+  </div>
+</section>
+
+<!-- Slide 48: The Deep Question -->
+<section>
+  <h2>Same Output, Different Mechanisms</h2>
+  <div class="spacer"></div>
+  <p class="fragment">LLMs exhibit the <strong>same behavioural patterns</strong> as humans on classic cognitive tasks...</p>
+  <p class="fragment">...but through <strong>entirely different mechanisms</strong>.</p>
+  <div class="spacer"></div>
+  <div class="two-col fragment">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-user"></i> Human Biases</h4>
+        <p class="small">Shaped by evolution, emotion, embodied experience, social learning, and a lifetime of interaction with the physical world</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-robot"></i> LLM Biases</h4>
+        <p class="small">Emerge from statistical regularities in text data — patterns of word co-occurrence across billions of documents</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment">When two very different systems produce similar outputs, can we conclude they're using similar processes? This is one of the oldest and most fascinating questions in cognitive science.</p>
+</section>
+
+<!-- Slide 49: Think About It #3 -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>If an LLM shows the same reasoning bias as a human on a classic cognitive psychology task, does that mean it's "thinking" the same way?</p>
+  <div class="spacer"></div>
+  <p>What evidence would you need to make that claim?</p>
+</section>
+
+<!-- Slide 50: Example 2b — Centaur: A Foundation Model of Human Cognition -->
+<section>
+  <h2><span class="tag tag-purple">Example 2b</span> A Foundation Model of Human Cognition</h2>
+  <div class="spacer"></div>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <ul>
+        <li class="fragment"><a href="https://doi.org/10.1038/s41586-025-09215-4" target="_blank">Binz, Schulz et al. (2025)</a> took this idea further — what if you <strong>train</strong> an LLM on how humans actually behave?
+          <ul><li>Fine-tuned a language model on <strong>Psych-101</strong>: trial-by-trial data from 60,000+ participants making 10 million+ choices across 160 experiments</li></ul>
+        </li>
+        <li class="fragment">The resulting model — <strong>Centaur</strong> — predicts human behaviour better than traditional cognitive models
+          <ul><li>Generalises to entirely new tasks, new cover stories, and new domains it was never trained on</li></ul>
+        </li>
+        <li class="fragment">After fine-tuning, the model's internal representations became <strong>more aligned with human neural activity</strong>
+          <ul><li>Measured via brain imaging data — the model's "thinking" became more brain-like</li></ul>
+        </li>
+        <li class="fragment">A single model capturing decision-making, memory, learning, and reasoning — a step toward a <strong>unified computational theory of cognition</strong></li>
+      </ul>
+      <p class="fragment small"><em>Published in <a href="https://doi.org/10.1038/s41586-025-09215-4" target="_blank">Nature, 2025</a></em> · <a href="https://arxiv.org/abs/2410.20268" target="_blank">Open access preprint</a></p>
+    </div>
+    <div class="col">
+      <div class="key-insight fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-brain"></i> Why This Matters</h4>
+        <p class="small">Example 2a asked: do LLMs <em>accidentally</em> think like humans? Centaur flips this — by <em>deliberately</em> training on human behaviour, we get a model that predicts what people will do across a huge range of tasks. This is ML as a tool for building psychological theory.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="info-box fragment">
+        <h4 style="text-transform: none; letter-spacing: 0;"><i class="ph ph-database"></i> Psych-101 Dataset</h4>
+        <p class="small">60,000+ participants · 10M+ choices · 160 experiments · Domains: decision-making, memory, learning, reasoning, multi-armed bandits</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Think About It: Stochastic Parrots -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>When we talk about LLMs, we often say they "reason," "understand," and "decide." But at their core, these models do one thing: predict the <strong>next token</strong> in a sequence. They have no goals, no experiences, no understanding of what the words mean.</p>
+  <div class="spacer"></div>
+  <p><a href="https://doi.org/10.1145/3442188.3445922" target="_blank" style="color: rgba(255,255,255,0.8);">Bender et al. (2021)</a> called LLMs "stochastic parrots" — stitching together words from statistical patterns without reference to meaning.</p>
+  <div class="spacer"></div>
+  <p>But if a "parrot" can predict human cognition better than models built by cognitive scientists... what does that tell us? Is "predicting the next token" something more when done at sufficient scale?</p>
+</section>
+
+<!-- Slide 51: Example 3 — AI Personas -->
+<section>
+  <h2><span class="tag tag-green">Example 3</span> AI Personas as Synthetic Participants</h2>
+  <div class="spacer"></div>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <ul>
+        <li class="fragment"><a href="https://doi.org/10.1017/pan.2023.2" target="_blank">Argyle et al. (2023)</a> conditioned LLMs with demographic backstories
+          <ul><li>"You are a 45-year-old conservative woman from rural Texas with a high school education"</li></ul>
+        </li>
+        <li class="fragment">Simulated human survey responses with surprising accuracy — <strong>"algorithmic fidelity"</strong>
+          <ul><li>"Silicon samples" reproduced real survey distributions across sociodemographic groups</li></ul>
+        </li>
+        <li class="fragment">Possibilities: rapid pilot testing of experiments, studying hard-to-reach populations, exploring demographic differences without recruiting thousands of participants</li>
+        <li class="fragment">But raises important ethical questions about synthetic data in research</li>
+      </ul>
+      <p class="fragment small"><em>Published in <a href="https://doi.org/10.1017/pan.2023.2" target="_blank">Political Analysis, 2023</a></em> · <a href="https://arxiv.org/abs/2209.06899" target="_blank">Open access preprint</a></p>
+    </div>
+    <div class="col">
+      <img src="../figures/synthetic-participants.png" alt="Illustration of an AI chip generating diverse synthetic participant silhouettes representing silicon samples for survey research" style="max-width: 100%; border-radius: 8px;">
+    </div>
+  </div>
+</section>
+
+<!-- Think About It: Ghost in the Machine -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>Where does the "intelligence" in AI actually come from?</p>
+  <div class="spacer"></div>
+  <p>The text LLMs train on was written by humans. The statistical regularities reflect <em>human</em> knowledge and ways of thinking. Even labelled data in supervised ML — "this patient has depression" — depends on human judgement.</p>
+  <div class="spacer"></div>
+  <p>Are AI systems intelligent? Or are they sophisticated mirrors, reflecting <strong>our own intelligence</strong> back at us?</p>
+  <p class="small"><em>See Dennett's <a href="https://mitpress.mit.edu/9780262540537/the-intentional-stance/" target="_blank" style="color: rgba(255,255,255,0.8);">The Intentional Stance</a> (1987)</em></p>
+</section>
+
+<!-- Slide 51: Example 4 — Auletta et al. -->
+<section>
+  <h2><span class="tag tag-orange">Example 4</span> ML for Understanding Decisions</h2>
+  <div class="spacer"></div>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <ul>
+        <li class="fragment"><a href="https://doi.org/10.1038/s41598-023-31807-1" target="_blank">Auletta, Kallen, di Bernardo &amp; Richardson (2023)</a>
+          <ul><li>LSTM neural networks + explainable AI (SHAP) to predict and understand human action decisions</li></ul>
+        </li>
+        <li class="fragment">Studied a collaborative herding task — how do people coordinate actions with a partner?</li>
+        <li class="fragment">ML models predicted expert vs novice decisions at timescales <strong>preceding conscious intent</strong>
+          <ul><li>The model could predict your decision before you were aware of making it</li></ul>
+        </li>
+        <li class="fragment">Explainable AI revealed that experts were more attuned to their co-actor's behaviour — something traditional analysis methods missed entirely</li>
+      </ul>
+      <p class="fragment small"><em>Published in <a href="https://doi.org/10.1038/s41598-023-31807-1" target="_blank">Scientific Reports, 2023</a></em> · Open access</p>
+    </div>
+    <div class="col">
+      <img src="../figures/joint-action.png" alt="Illustration of two people coordinating a collaborative task with an ML model predicting their actions" style="max-width: 100%; border-radius: 8px;">
+    </div>
+  </div>
+</section>
+
+<!-- Think About It: Determinism & Complex Systems -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer"></div>
+  <p>An ML model can predict a player's action <strong>before they consciously decide</strong> — hundreds of milliseconds ahead. Does that undermine free will?</p>
+  <div class="spacer"></div>
+  <p>Or does it reveal something deeper: that human behaviour, even when it <em>feels</em> spontaneous, is far more <strong>structured and deterministic</strong> than we realise?</p>
+  <div class="spacer"></div>
+  <p class="small" style="opacity: 0.7;">This idea has deep roots and a long history in the behavioural sciences — from brain and behaviour (<a href="https://mitpress.mit.edu/9780262611312/dynamic-patterns/" target="_blank" style="color: rgba(255,255,255,0.6);">Kelso, 1995</a>), to development (<a href="https://doi.org/10.7551/mitpress/2524.001.0001" target="_blank" style="color: rgba(255,255,255,0.6);">Thelen &amp; Smith, 1994</a>), to cognition (<a href="https://doi.org/10.1037/0096-3445.132.3.331" target="_blank" style="color: rgba(255,255,255,0.6);">Van Orden et al., 2003</a>), to perception-action (<a href="https://doi.org/10.1037/0033-295X.113.2.358" target="_blank" style="color: rgba(255,255,255,0.6);">Warren, 2006</a>), to social coordination (<a href="https://doi.org/10.1017/CBO9780511996481.015" target="_blank" style="color: rgba(255,255,255,0.6);">Richardson, Dale, &amp; Marsh, 2014</a>).</p>
+</section>
+
+<!-- Slide: A Word of Caution -->
+<section>
+  <h2>Tools, Not Magic <i class="ph ph-warning"></i></h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>These examples show ML and AI are reshaping how we study mind, behaviour, and brain. But as those discussion prompts suggest — these tools raise as many questions as they answer.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment">None of these tools <strong>understand psychology</strong> — they find patterns. <em>You</em> decide which patterns matter.</li>
+    <li class="fragment">ML can find patterns in noisy data — <strong>including patterns that aren't real</strong>
+      <ul><li>Spurious correlations, overfitting, p-hacking with more variables</li></ul>
+    </li>
+    <li class="fragment">Models can inherit and amplify <strong>biases</strong> from their training data
+      <ul><li>Even the most impressive AI outputs are built on borrowed human intelligence and next-token prediction — not understanding</li></ul>
+    </li>
+    <li class="fragment">Throughout this course, we'll spend as much time learning to <strong>evaluate and question</strong> ML results as we will building models</li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     SECTION 8: COMMON MISCONCEPTIONS  (Slide 54)
+     ============================================================ -->
+
+<!-- Slide 54: Myths -->
+<section>
+  <h2>Common Misconceptions</h2>
+  <div class="spacer"></div>
+  <div class="fragment" style="margin-bottom: 16px;">
+    <strong><i class="ph ph-x-circle" style="color: var(--mq-red-light);"></i> "AI will replace researchers"</strong>
+    <p class="small" style="margin-left: 1.5em;">No — AI augments what researchers can do. It handles computation and pattern-finding so you can focus on asking good questions, designing studies, and interpreting results.</p>
+  </div>
+  <div class="fragment" style="margin-bottom: 16px;">
+    <strong><i class="ph ph-x-circle" style="color: var(--mq-red-light);"></i> "ML is just statistics"</strong>
+    <p class="small" style="margin-left: 1.5em;">There's overlap, but different emphases. Statistics focuses on inference and uncertainty ("Is this effect real?"). ML focuses on prediction and scalability ("Can I accurately predict outcomes in new data?").</p>
+  </div>
+  <div class="fragment" style="margin-bottom: 16px;">
+    <strong><i class="ph ph-x-circle" style="color: var(--mq-red-light);"></i> "You need to be a programmer"</strong>
+    <p class="small" style="margin-left: 1.5em;">Not anymore. With LLM assistants and vibe coding, you describe what you want in plain English and get working code. You still need to understand what the code does — but you don't write it from scratch.</p>
+  </div>
+  <div class="fragment" style="margin-bottom: 16px;">
+    <strong><i class="ph ph-x-circle" style="color: var(--mq-red-light);"></i> "AI is objective"</strong>
+    <p class="small" style="margin-left: 1.5em;">Models inherit biases from training data and design choices. An AI trained on biased data produces biased results. Critical evaluation of AI outputs is essential.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 9: WHAT'S AHEAD + GETTING READY  (Slides 55–59)
+     ============================================================ -->
+
+<!-- Slide 55: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-rocket-launch"></i></div>
+  <h2>What's Ahead</h2>
+  <p>Your semester at a glance</p>
+</section>
+
+<!-- Slide 56: Course Roadmap -->
+<section>
+  <h2>What You'll Learn</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><i class="ph ph-trend-up"></i> <strong>Predict</strong> outcomes using regression and classification models
+      <ul><li>Weeks 3–4: Can we predict treatment outcomes from baseline measures?</li></ul>
+    </li>
+    <li class="fragment"><i class="ph ph-tree-structure"></i> <strong>Classify</strong> using decision trees and ensemble methods
+      <ul><li>Weeks 5–6: Can we classify clinical vs non-clinical groups?</li></ul>
+    </li>
+    <li class="fragment"><i class="ph ph-graph"></i> <strong>Discover structure</strong> in data using clustering and dimensionality reduction
+      <ul><li>Weeks 7–8: Are there hidden subgroups in this personality data?</li></ul>
+    </li>
+    <li class="fragment"><i class="ph ph-circuit-board"></i> <strong>Build and evaluate</strong> neural networks
+      <ul><li>Weeks 9–10: How do neural networks learn, and when should you use them?</li></ul>
+    </li>
+    <li class="fragment"><i class="ph ph-text-aa"></i> <strong>Work with text</strong> using embeddings and large language models
+      <ul><li>Week 11: How can we analyse language and meaning at scale?</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 57: Assessment Overview -->
+<section>
+  <h2>Assessment Overview</h2>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col fragment">
+      <div class="highlight-box" style="padding: 20px;">
+        <h3 style="font-size: 1.0em;"><i class="ph ph-presentation-chart"></i> Presentation</h3>
+        <p style="font-size: 0.85em;">3-minute individual paper presentation on a research study using ML/AI in psychology</p>
+        <p class="small"><strong>When:</strong> Weeks 4, 6, 8, or 10<br><strong>Format:</strong> 1 slide, 3 minutes</p>
+      </div>
+    </div>
+    <div class="col fragment">
+      <div class="info-box" style="padding: 20px;">
+        <h3 style="font-size: 1.0em;"><i class="ph ph-pencil-line"></i> Written Assignment</h3>
+        <p style="font-size: 0.85em;">Popular science article (1400 words) with transparent LLM collaboration</p>
+        <p class="small"><strong>Due:</strong> Sun 19 Apr, 11:55pm<br><strong>Submit:</strong> Article + complete chat history</p>
+      </div>
+    </div>
+    <div class="col fragment">
+      <div style="background: rgba(200,151,44,0.08); border-left: 4px solid var(--mq-gold); padding: 20px; border-radius: 0 8px 8px 0;">
+        <h3 style="font-size: 1.0em;"><i class="ph ph-microphone"></i> Viva Exam</h3>
+        <p style="font-size: 0.85em;">15-minute individual oral exam covering all course content (Weeks 1–11)</p>
+        <p class="small"><strong>When:</strong> Weeks 12–13<br><strong>Format:</strong> In-person, no notes</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight fragment">
+    <p>Lab challenges are <strong>not assessed</strong> but are essential practice — each one builds skills you'll need for the assignment and viva.</p>
+  </div>
+</section>
+
+<!-- Slide 58: Presentation Details -->
+<section>
+  <h2><i class="ph ph-presentation-chart"></i> Presentation</h2>
+  <div class="spacer"></div>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <p class="fragment">Choose <strong>one research paper</strong> that uses ML/AI methods in psychological or cognitive science research. Present it to the class in <strong>3 minutes on 1 slide</strong>.</p>
+      <div class="spacer"></div>
+      <ul>
+        <li class="fragment"><strong>Research question:</strong> What were the authors trying to understand or predict?</li>
+        <li class="fragment"><strong>Methods:</strong> What ML/AI technique(s) did they use? Explain briefly.</li>
+        <li class="fragment"><strong>Key findings:</strong> What did they discover? How well did it work?</li>
+        <li class="fragment"><strong>One limitation or critique:</strong> A weakness, concern, or open question</li>
+        <li class="fragment"><strong>GenAI reflection (30 sec):</strong> How did you use LLM tools to research and prepare?</li>
+      </ul>
+    </div>
+    <div class="col fragment">
+      <div class="highlight-box" style="padding: 20px;">
+        <h4 style="text-transform: none; letter-spacing: 0; color: var(--mq-charcoal); font-size: 0.85em;"><i class="ph ph-info"></i> Important</h4>
+        <p class="small">Your presentation paper is also the basis for your <strong>written assignment</strong>. Choose a paper you find genuinely interesting — you'll be working with it throughout the semester.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="info-box" style="padding: 20px;">
+        <h4 style="text-transform: none; letter-spacing: 0; color: var(--mq-charcoal); font-size: 0.85em;"><i class="ph ph-calendar"></i> Scheduling</h4>
+        <p class="small">Presentations happen during lab weeks (Weeks 4, 6, 8, 10). You'll be assigned a week by the beginning of Week 2.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 59: Written Assignment Details -->
+<section>
+  <h2><i class="ph ph-pencil-line"></i> Written Assignment</h2>
+  <div class="spacer"></div>
+  <p class="fragment">Write a <strong>popular science article</strong> (max 1400 words) about research that uses ML/AI in psychological or cognitive science — based on the same paper you presented.</p>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+        <li class="fragment">Write for an intelligent general audience — engaging, accessible, no jargon without explanation</li>
+        <li class="fragment">You are <strong>required</strong> to use an LLM assistant throughout — for searching, summarising, drafting, and editing</li>
+        <li class="fragment">Submit your <strong>complete, unedited chat history</strong> alongside the article — this is a core part of the assessment</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul>
+        <li class="fragment">40% of the mark is on your <strong>LLM process</strong>: problem-solving, critical evaluation, verification, and ownership</li>
+        <li class="fragment">60% is on the <strong>article itself</strong>: content accuracy, engagement, critical perspective, and formatting</li>
+      </ul>
+      <div class="highlight-box fragment" style="padding: 16px; margin-top: 12px;">
+        <p class="small" style="margin-bottom: 0;"><strong><i class="ph ph-calendar"></i> Due: Sunday 19 April 2026, 11:55pm</strong><br>Submit via Turnitin: article (.docx) + chat history (.pdf)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 60: Viva Exam Details -->
+<section>
+  <h2><i class="ph ph-microphone"></i> Viva Exam</h2>
+  <div class="spacer"></div>
+  <p class="fragment"><strong>15-minute individual oral exam</strong>, in-person, no notes. Covers all material from Weeks 1–11.</p>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col fragment">
+      <div class="highlight-box" style="padding: 20px;">
+        <h3 style="font-size: 0.9em;">Section 1<br>Concept Definitions</h3>
+        <p class="small" style="margin-top: 8px;">10 concepts, randomly selected from a pool of 40. Provide a clear, concise one-sentence definition for each.</p>
+        <p class="small"><strong>Time:</strong> 20 seconds per concept<br><strong>Points:</strong> 40 / 100</p>
+      </div>
+    </div>
+    <div class="col fragment">
+      <div class="info-box" style="padding: 20px;">
+        <h3 style="font-size: 0.9em;">Section 2<br>Research Application</h3>
+        <p class="small" style="margin-top: 8px;">3 scenarios — which ML/AI methods would you use and why? Think through the problem, then give a 1-minute response.</p>
+        <p class="small"><strong>Time:</strong> 30 sec prep + 1 min answer<br><strong>Points:</strong> 36 / 100</p>
+      </div>
+    </div>
+    <div class="col fragment">
+      <div style="background: rgba(200,151,44,0.08); border-left: 4px solid var(--mq-gold); padding: 20px; border-radius: 0 8px 8px 0;">
+        <h3 style="font-size: 0.9em;">Section 3<br>Study Proposal</h3>
+        <p class="small" style="margin-top: 8px;">2-minute elevator pitch: propose a research study using ML/AI methods from the course. Prepare in advance, but no notes during the exam.</p>
+        <p class="small"><strong>Time:</strong> 2 min pitch + 30 sec LLM reflection<br><strong>Points:</strong> 24 / 100</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 58: Getting Ready for Week 2 -->
+<section>
+  <h2>Homework: Get Set Up <i class="ph ph-gear"></i></h2>
+  <div class="spacer"></div>
+  <p>Before Week 2, complete the <strong>Getting Started guide</strong> on GitHub:</p>
+  <div class="spacer"></div>
+  <ol>
+    <li class="fragment"><strong>GitHub account</strong> — use a <strong>personal email</strong> (not your MQ email — so your account persists after you graduate)</li>
+    <li class="fragment"><strong>GitHub Student Developer Pack</strong> — gives you free Copilot Pro + 90 other tools</li>
+    <li class="fragment"><strong>VS Code + Python</strong> — download, install, follow the step-by-step instructions</li>
+    <li class="fragment"><strong>Run the setup script</strong> — one command installs all course packages automatically</li>
+    <li class="fragment"><strong>AI assistants</strong> — sign up for <a href="https://chat.openai.com" target="_blank">ChatGPT</a>, <a href="https://claude.ai" target="_blank">Claude</a>, or <a href="https://gemini.google.com" target="_blank">Gemini</a> (all have free tiers)</li>
+  </ol>
+  <div class="spacer"></div>
+  <div class="info-box fragment">
+    <p>If you get stuck on any step, <strong>bring your laptop to Week 2</strong>. We'll troubleshoot at the start of class, then jump into the first challenge.</p>
+  </div>
+</section>
+
+<!-- Slide 59: End Slide -->
+<section class="end-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+  <h1>Questions?</h1>
+  <div class="spacer-lg"></div>
+  <p>Next week: Setup Troubleshooting + Your First LLM Challenge</p>
+  <div class="spacer"></div>
+  <p>PSYC4411 &middot; Macquarie University &middot; 2026</p>
+</section>
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<!-- reveal.js core -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+
+<!-- reveal.js plugins -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+
 <script>
   Reveal.initialize({
-    width: 1920, height: 1080, margin: 0,
-    center: false, controls: false,
-    slideNumber: false, progress: false,
-    transition: 'none', hash: false
+    // Presentation settings
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    minScale: 0.2,
+    maxScale: 1.5,
+
+    // Display
+    hash: true,
+    slideNumber: false,
+    progress: false,
+    center: false,
+    transition: 'slide',
+    transitionSpeed: 'default',
+
+    // Controls — arrows at far left/right edges
+    controls: true,
+    controlsLayout: 'edges',
+    controlsBackArrows: 'visible',
+
+    // Navigation
+    keyboard: true,
+    overview: true,
+    touch: true,
+
+    // Fragment animation
+    fragmentInURL: false,
+
+    // Plugins
+    plugins: [ RevealNotes ]
+  }).then(function () {
+    // === Custom Slide Navigation Bar ===
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var totalSlides = slides.length;
+
+    // Build nav bar
+    var nav = document.createElement('div');
+    nav.className = 'slide-nav';
+
+    // Collect slide titles for tooltips
+    function getSlideLabel(section, index) {
+      var h2 = section.querySelector('h2');
+      var h1 = section.querySelector('h1');
+      var title = (h2 && h2.textContent.trim()) || (h1 && h1.textContent.trim()) || '';
+      // Truncate long titles
+      if (title.length > 40) title = title.substring(0, 38) + '…';
+      return (index + 1) + (title ? '. ' + title : '');
+    }
+
+    for (var i = 0; i < totalSlides; i++) {
+      (function (idx) {
+        var pill = document.createElement('button');
+        pill.className = 'slide-nav-pill';
+        pill.textContent = idx + 1;
+        pill.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+
+        // Tooltip with slide title
+        var tooltip = document.createElement('span');
+        tooltip.className = 'nav-tooltip';
+        tooltip.textContent = getSlideLabel(slides[idx], idx);
+        pill.appendChild(tooltip);
+
+        pill.addEventListener('click', function () {
+          Reveal.slide(idx);
+        });
+        nav.appendChild(pill);
+      })(i);
+    }
+
+    document.body.appendChild(nav);
+
+    // Update active/visited state
+    function updateNav() {
+      var current = Reveal.getIndices().h;
+      var pills = nav.querySelectorAll('.slide-nav-pill');
+      for (var j = 0; j < pills.length; j++) {
+        pills[j].classList.toggle('active', j === current);
+        pills[j].classList.toggle('visited', j < current);
+      }
+    }
+
+    Reveal.on('slidechanged', updateNav);
+    updateNav();
+
+    // === Back to Repo Link (top-left) ===
+    var backLink = document.createElement('a');
+    backLink.className = 'back-to-repo';
+    backLink.href = 'https://github.com/xkiwilabs/Practical-AI-for-Behavioural-Science';
+    backLink.target = '_blank';
+    backLink.textContent = '\u2190 Back to Repo';
+    document.body.appendChild(backLink);
+
+    // === Live Clock (top-right) ===
+    var clock = document.createElement('div');
+    clock.className = 'live-clock';
+    document.body.appendChild(clock);
+
+    function updateClock() {
+      var now = new Date();
+      var h = now.getHours();
+      var m = now.getMinutes();
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12 = h % 12 || 12;
+      clock.textContent = h12 + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+    }
+
+    updateClock();
+    setInterval(updateClock, 15000);
+
+    // Adapt clock and back-link style for dark slides
+    function updateOverlayStyles() {
+      var current = Reveal.getCurrentSlide();
+      var isDark = current.classList.contains('section-divider') ||
+                   current.classList.contains('title-slide') ||
+                   current.classList.contains('think-slide') ||
+                   current.classList.contains('end-slide');
+      clock.style.color = isDark ? 'rgba(255,255,255,0.5)' : '';
+      clock.style.background = isDark ? 'rgba(0,0,0,0.3)' : '';
+      backLink.style.color = isDark ? 'rgba(255,255,255,0.5)' : '';
+      backLink.style.background = isDark ? 'rgba(0,0,0,0.3)' : '';
+    }
+
+    Reveal.on('slidechanged', updateOverlayStyles);
+    updateOverlayStyles();
   });
 </script>
 </body>
