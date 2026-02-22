@@ -27,7 +27,7 @@
   <!-- PLAN (inner) -->
   <rect x="314" y="90" width="76" height="50" rx="8" fill="#E8873D" fill-opacity="0.12" stroke="#E8873D" stroke-width="2"/>
   <text x="352" y="112" font-size="12" font-weight="700" fill="#E8873D" text-anchor="middle">PLAN</text>
-  <text x="352" y="128" font-size="9" fill="#E8873D" text-anchor="middle">Review approach</text>
+  <text x="352" y="128" font-size="9" fill="#E8873D" text-anchor="middle">Review AI's approach</text>
 
   <!-- Arrow -->
   <text x="404" y="118" font-size="16" fill="#8C8C8C" text-anchor="middle">&#x2192;</text>
@@ -35,7 +35,7 @@
   <!-- GENERATE -->
   <rect x="418" y="90" width="86" height="50" rx="8" fill="#2B8A8A" fill-opacity="0.12" stroke="#2B8A8A" stroke-width="2"/>
   <text x="461" y="112" font-size="12" font-weight="700" fill="#2B8A8A" text-anchor="middle">GENERATE</text>
-  <text x="461" y="128" font-size="9" fill="#2B8A8A" text-anchor="middle">Execute the plan</text>
+  <text x="461" y="128" font-size="9" fill="#2B8A8A" text-anchor="middle">Carry out the plan</text>
 
   <!-- Arrow -->
   <text x="518" y="118" font-size="16" fill="#8C8C8C" text-anchor="middle">&#x2192;</text>
