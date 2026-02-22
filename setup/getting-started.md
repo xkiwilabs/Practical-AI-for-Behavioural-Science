@@ -156,7 +156,7 @@ You should still have the course repository open in VS Code from Step 3. If not,
 4. Run the setup script:
    - **Mac:** `bash setup-mac.sh`
    - **Windows:** `.\setup-windows.ps1`
-5. Wait for it to finish. You'll see progress messages and, at the end, "Setup complete!"
+5. Wait for it to finish. You'll see progress messages as each step runs. If everything works, you'll see **"Setup complete!"** at the end. If something goes wrong, the script will print **"SETUP FAILED"** with specific steps to fix it.
 
 ### If Something Goes Wrong
 
@@ -393,10 +393,16 @@ If your computer has 16GB of RAM or less, local models won't run well and you'll
 
 ## Troubleshooting
 
+> **General tip:** If the setup script reports failure, try running `conda clean --packages --tarballs -y` and then run the setup script again. This clears any corrupted downloaded packages and fixes the most common issues.
+
 | Problem | Solution |
 |---------|----------|
 | "conda not found" or "conda is not recognised" | Miniconda isn't installed or isn't in your PATH. Reinstall from [docs.anaconda.com/miniconda](https://docs.anaconda.com/miniconda/). On Windows, make sure to check "Add to PATH". On Mac, close and reopen Terminal after installing. |
 | Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 5. |
+| `InvalidArchiveError` during setup | A downloaded package file is corrupted. Run `conda clean --packages --tarballs -y` then re-run the setup script. (The updated setup scripts do this automatically, but if you're seeing it in the output, running the clean command manually and retrying is the fix.) |
+| `EnvironmentLocationNotFound` errors | The `psyc4411` environment doesn't exist — it likely wasn't created successfully. Re-run the setup script. If it fails again, try `conda clean --all -y` first, then re-run the script. |
+| Setup script said "SETUP FAILED" | Follow the remediation steps it printed. Usually: run `conda clean --packages --tarballs -y`, then re-run the setup script. If that doesn't work, try `conda clean --all -y` and re-run. |
+| Using Anaconda instead of Miniconda | That's completely fine — Anaconda includes everything Miniconda does. If you hit package errors, run `conda clean --packages --tarballs -y` before re-running setup. Anaconda's larger package cache is occasionally prone to corruption, and this clears it. |
 | VS Code doesn't show the PSYC4411 kernel | Close and reopen VS Code. If still missing, open a terminal and run: `conda run -n psyc4411 python -m ipykernel install --user --name=psyc4411 --display-name="PSYC4411"` |
 | Packages fail to install (network error) | Check your internet connection. If on campus, try switching between WiFi and a personal hotspot. |
 | "ModuleNotFoundError" when running the test notebook | You're using the wrong Python environment. Make sure to select the **PSYC4411** kernel in the top-right of the notebook. |
