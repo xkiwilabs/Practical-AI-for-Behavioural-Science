@@ -6,7 +6,7 @@ GitHub sometimes rejects Macquarie University student IDs during the Student Dev
 
 ## What You Need
 
-1. **The verification letter template** — download it here: [Student_GitHub_Enrolment_Verification_Letter_Template.docx](Student_GitHub_Enrolment_Verification_Letter_Template.docx)
+1. **The verification letter template** — download it from **iLearn** (in the Resources section of the course page)
 2. A clear photo or scan of the **front of your MQ student ID**
 3. A clear photo or scan of the **back of your MQ student ID**
 4. **Optional but recommended:** your **unofficial transcript** (especially if GitHub has already rejected your ID on its own)
