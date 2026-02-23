@@ -1,5 +1,5 @@
 # ============================================================
-# PSYC4411 Setup Script — Windows (PowerShell)
+# PSYC4411 Setup Script - Windows (PowerShell)
 # ============================================================
 # This script creates a conda environment with all the Python
 # packages you need for the course, and registers it as a
@@ -21,7 +21,7 @@
 
 $ErrorActionPreference = "Stop"
 
-# ── Helper: check exit code after external commands ─────────
+# -- Helper: check exit code after external commands --------
 # PowerShell does NOT automatically stop on non-zero exit codes
 # from external programs (like conda). This function does.
 function Assert-ExitCode {
@@ -34,7 +34,7 @@ function Assert-ExitCode {
     return $true
 }
 
-# ── Track overall success ───────────────────────────────────
+# -- Track overall success -----------------------------------
 $setupOK = $true
 
 Write-Host ""
@@ -43,7 +43,7 @@ Write-Host "  PSYC4411 Environment Setup (Windows)"    -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Cyan
 Write-Host ""
 
-# ── Step 1: Check that conda is available ─────────────────
+# -- Step 1: Check that conda is available ------------------
 
 Write-Host "Step 1: Checking for conda..."
 
@@ -68,11 +68,11 @@ try {
 $condaInfo = conda info --json 2>&1 | ConvertFrom-Json
 $condaRoot = $condaInfo.root_prefix
 if ($condaRoot -match "anaconda") {
-    Write-Host "  (Using Anaconda — that works perfectly fine for this course)" -ForegroundColor DarkGray
+    Write-Host "  (Using Anaconda - that works perfectly fine for this course)" -ForegroundColor DarkGray
 }
 Write-Host ""
 
-# ── Step 2: Create (or recreate) the conda environment ───
+# -- Step 2: Create (or recreate) the conda environment -----
 
 $envName = "psyc4411"
 $skipCreate = $false
@@ -143,7 +143,7 @@ if ($setupOK -and (-not $skipCreate)) {
     Write-Host ""
 }
 
-# ── Step 3: Register the Jupyter kernel ───────────────────
+# -- Step 3: Register the Jupyter kernel --------------------
 
 if ($setupOK) {
     Write-Host "Step 3: Registering Jupyter kernel (so VS Code can find it)..."
@@ -154,7 +154,7 @@ if ($setupOK) {
     Write-Host ""
 }
 
-# ── Step 4: Test that packages import correctly ──────────
+# -- Step 4: Test that packages import correctly -----------
 
 if ($setupOK) {
     Write-Host "Step 4: Testing that all packages load correctly..."
@@ -178,7 +178,7 @@ print('All packages installed successfully!')
     Write-Host ""
 }
 
-# ── Step 5: Print result ─────────────────────────────────
+# -- Step 5: Print result ------------------------------------
 
 if ($setupOK) {
     Write-Host "==========================================" -ForegroundColor Green
