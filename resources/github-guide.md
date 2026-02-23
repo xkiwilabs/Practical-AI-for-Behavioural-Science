@@ -38,6 +38,8 @@ The <a href="https://education.github.com/pack" target="_blank">Student Develope
 
 Once approved, you'll have free access to GitHub Copilot Pro — the AI coding assistant you'll use throughout this course.
 
+> **MQ student ID rejected?** GitHub sometimes rejects Macquarie University IDs because they don't show an expiry date. If this happens to you, see the **[Student Verification guide](github-student-verification.md)** for how to fix it with a supporting enrolment letter.
+
 ---
 
 ## Navigating the Course Repository

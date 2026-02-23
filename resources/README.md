@@ -10,6 +10,7 @@ Guides, references, and templates to help you through PSYC4411. Everything here 
 - **[VS Code guide](vscode-guide.md)** — Navigate the VS Code interface, install extensions, use the terminal and notebooks
 - **[Jupyter Notebooks guide](jupyter-guide.md)** — Cells, kernels, execution order, saving, and common mistakes
 - **[GitHub guide](github-guide.md)** — What GitHub is, creating an account, navigating repos, Student Developer Pack
+- **[GitHub Student Verification](github-student-verification.md)** — Fix rejected Student Developer Pack applications (MQ IDs missing expiry dates)
 
 ---
 
@@ -50,6 +51,7 @@ Guides, references, and templates to help you through PSYC4411. Everything here 
 | Learn how VS Code works | [VS Code guide](vscode-guide.md) |
 | Understand Jupyter notebooks | [Jupyter guide](jupyter-guide.md) |
 | Set up my GitHub account | [GitHub guide](github-guide.md) |
+| Fix rejected GitHub student verification | [GitHub Student Verification](github-student-verification.md) |
 | Use Copilot effectively | [Copilot guide](copilot-guide.md) |
 | Find the right AI tool | [AI Tools guide](ai-tools-guide.md) |
 | Write better prompts | [Prompt Engineering guide](prompt-engineering-guide.md) |
