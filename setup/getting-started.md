@@ -58,7 +58,7 @@ VS Code (Visual Studio Code) is a free text editor made by Microsoft. It's where
 
 ### First Launch
 
-When you open VS Code for the first time, you'll see a Welcome tab. Feel free to explore it, or close it — we'll set up the important bits in Step 6.
+When you open VS Code for the first time, you'll see a Welcome tab. Feel free to explore it, or close it — we'll set up the important bits in Step 5.
 
 ---
 
@@ -100,12 +100,12 @@ Any new or updated files will be downloaded automatically. We'll remind you to p
 
 Miniconda is a lightweight installer that gives you Python and **conda** — a tool for managing packages and environments. An environment is a self-contained set of packages that keeps your course tools separate from everything else on your computer, so nothing gets mixed up.
 
-> **Already have Anaconda or Miniconda installed?** You can skip this step entirely — go straight to Step 5. Anaconda includes everything Miniconda does (and more).
+> **Already have Anaconda or Miniconda installed?** You can skip this step entirely — go straight to Step 5. Anaconda includes everything Miniconda does (and more). The site makes it hard to find miniconda, as they try and push you to install Anaconda. The link might be at the bottom of the page. 
 
 ### macOS
 
-1. Go to the [Miniconda download page](https://docs.anaconda.com/miniconda/) and download the **macOS installer** (choose the `.pkg` file for the easiest install)
-2. Open the downloaded `.pkg` file and follow the installer prompts (click Continue, Agree, Install)
+1. Go to the [Miniconda download page](https://docs.anaconda.com/miniconda/) and download the **macOS installer** (choose the graphical installer)
+2. Open the downloaded graphical installer and follow the installer prompts (click Continue, Agree, Install)
 3. When the installer finishes, **close and reopen Terminal** — this is important so your terminal knows where to find conda
 
 **Verify it worked:** Open **Terminal** (search for "Terminal" in Spotlight, or find it in Applications → Utilities) and type:
@@ -134,40 +134,7 @@ You should see something like `conda 24.x.x`. If you get an error, make sure you
 
 ---
 
-## Step 5: Run the Setup Script
-
-This is where the magic happens. We've written a script that automatically:
-- Creates a **conda environment** called `psyc4411` — a self-contained set of packages for this course
-- Installs all the Python libraries you'll need (pandas for data, matplotlib for plotting, scikit-learn for machine learning, etc.)
-- Registers everything with VS Code/Jupyter so it all works together
-
-You should still have the course repository open in VS Code from Step 3. If not, open VS Code and go to **File → Open Folder** and select the course repository folder.
-
-1. Open the **terminal inside VS Code**: go to **View → Terminal** (or press `` Ctrl+` `` — that's the backtick key, usually below Escape)
-2. **Windows only:** You may need to allow scripts to run (this is a one-time security setting). Type:
-   ```
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-   ```
-   Press **Y** if asked to confirm.
-3. Navigate to the setup folder:
-   ```
-   cd setup
-   ```
-4. Run the setup script:
-   - **Mac:** `bash setup-mac.sh`
-   - **Windows:** `.\setup-windows.ps1`
-5. Wait for it to finish. You'll see progress messages as each step runs. If everything works, you'll see **"Setup complete!"** at the end. If something goes wrong, the script will print **"SETUP FAILED"** with specific steps to fix it.
-
-### If Something Goes Wrong
-
-- **"conda not found"** — Miniconda isn't installed or isn't in your PATH. Go back to Step 4. Make sure you closed and reopened VS Code after installing Miniconda (the terminal inside VS Code needs to be restarted too).
-- **"environment already exists"** — The script will ask if you want to recreate it. Choose "y" to start fresh.
-- **Installation hangs for a long time** — Some packages are large. Give it up to 10 minutes on a slow connection. If it's truly stuck, press `Ctrl + C` to cancel and try again.
-- **Any other error** — Take a screenshot and bring it to class in Week 2. We'll figure it out together.
-
----
-
-## Step 6: Install VS Code Extensions
+## Step 5: Install VS Code Extensions
 
 Extensions add extra features to VS Code. You need three (and one optional but highly recommended one):
 
@@ -200,6 +167,39 @@ Once signed in, three things happen automatically:
 - **Git integration** connects, so you can push/pull code to GitHub directly from VS Code later in the course
 
 If your Student Developer Pack hasn't been approved yet, Copilot won't activate — that's fine, everything else still works. Come back to check once you get the approval email.
+
+---
+
+## Step 6: Run the Setup Script
+
+This is where the magic happens. We've written a script that automatically:
+- Creates a **conda environment** called `psyc4411` — a self-contained set of packages for this course
+- Installs all the Python libraries you'll need (pandas for data, matplotlib for plotting, scikit-learn for machine learning, etc.)
+- Registers everything with VS Code/Jupyter so it all works together
+
+You should still have the course repository open in VS Code from Step 3. If not, open VS Code and go to **File → Open Folder** and select the course repository folder.
+
+1. Open the **terminal inside VS Code**: go to **View → Terminal** (or press `` Ctrl+` `` — that's the backtick key, usually below Escape)
+2. **Windows only:** You may need to allow scripts to run (this is a one-time security setting). Type:
+   ```
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+   Press **Y** if asked to confirm.
+3. Navigate to the setup folder:
+   ```
+   cd setup
+   ```
+4. Run the setup script:
+   - **Mac:** `bash setup-mac.sh`
+   - **Windows:** `.\setup-windows.ps1`
+5. Wait for it to finish. You'll see progress messages as each step runs. If everything works, you'll see **"Setup complete!"** at the end. If something goes wrong, the script will print **"SETUP FAILED"** with specific steps to fix it.
+
+### If Something Goes Wrong
+
+- **"conda not found"** — Miniconda isn't installed or isn't in your PATH. Go back to Step 4. Make sure you closed and reopened VS Code after installing Miniconda (the terminal inside VS Code needs to be restarted too).
+- **"environment already exists"** — The script will ask if you want to recreate it. Choose "y" to start fresh.
+- **Installation hangs for a long time** — Some packages are large. Give it up to 10 minutes on a slow connection. If it's truly stuck, press `Ctrl + C` to cancel and try again.
+- **Any other error** — Take a screenshot and bring it to class in Week 2. We'll figure it out together.
 
 ---
 
@@ -398,7 +398,7 @@ If your computer has 16GB of RAM or less, local models won't run well and you'll
 | Problem | Solution |
 |---------|----------|
 | "conda not found" or "conda is not recognised" | Miniconda isn't installed or isn't in your PATH. Reinstall from [docs.anaconda.com/miniconda](https://docs.anaconda.com/miniconda/). On Windows, make sure to check "Add to PATH". On Mac, close and reopen Terminal after installing. |
-| Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 5. |
+| Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 6. |
 | `InvalidArchiveError` during setup | A downloaded package file is corrupted. Run `conda clean --packages --tarballs -y` then re-run the setup script. (The updated setup scripts do this automatically, but if you're seeing it in the output, running the clean command manually and retrying is the fix.) |
 | `EnvironmentLocationNotFound` errors | The `psyc4411` environment doesn't exist — it likely wasn't created successfully. Re-run the setup script. If it fails again, try `conda clean --all -y` first, then re-run the script. |
 | Setup script said "SETUP FAILED" | Follow the remediation steps it printed. Usually: run `conda clean --packages --tarballs -y`, then re-run the setup script. If that doesn't work, try `conda clean --all -y` and re-run. |
