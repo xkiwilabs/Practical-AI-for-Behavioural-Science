@@ -12,6 +12,7 @@ Here's what you'll set up:
 | **VS Code** | A text editor designed for writing and running code |
 | **Miniconda** | A lightweight installer for Python and package management |
 | **Course packages** | Libraries for plotting, statistics, and machine learning |
+| **Git** | Version control software that tracks changes and syncs course materials |
 | **AI assistants** | Tools that help you write code and understand concepts |
 
 ---
@@ -58,11 +59,67 @@ VS Code (Visual Studio Code) is a free text editor made by Microsoft. It's where
 
 ### First Launch
 
-When you open VS Code for the first time, you'll see a Welcome tab. Feel free to explore it, or close it — we'll set up the important bits in Step 5.
+When you open VS Code for the first time, you'll see a Welcome tab. Feel free to explore it, or close it — we'll set up the important bits in Step 6.
 
 ---
 
-## Step 3: Download the Course Repository
+## Step 3: Install Git
+
+Git is the version control software that runs behind the scenes when you download and update course materials through VS Code. You need it installed on your computer before you can clone the course repository.
+
+### macOS
+
+Mac doesn't come with Git pre-installed, but there are two easy ways to get it:
+
+**Option A: Install via Homebrew (recommended)**
+
+Homebrew is a package manager for Mac — think of it as an app store you use from the terminal. It makes installing developer tools straightforward.
+
+1. Open **Terminal** (search for "Terminal" in Spotlight, or find it in Applications → Utilities)
+2. Paste this command and press Enter to install Homebrew:
+   ```
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+3. Follow the prompts (you'll need to enter your Mac password). **Important:** When Homebrew finishes, it may display a "Next steps" message with commands to add Homebrew to your PATH — run those commands.
+4. Once Homebrew is installed, install Git:
+   ```
+   brew install git
+   ```
+
+> **Video walkthrough:** If you'd prefer to follow along visually, this <a href="https://www.youtube.com/watch?v=9GZmaxaQV0c" target="_blank">short YouTube tutorial</a> walks through installing Homebrew and Git on Mac.
+
+**Option B: Install via Xcode Command Line Tools**
+
+1. Open **Terminal** and type:
+   ```
+   git --version
+   ```
+2. If Git isn't installed, macOS will pop up a dialog asking to install **Command Line Developer Tools** — click **Install**
+3. Wait for the download and installation to finish (this can take a few minutes)
+
+**Verify it worked:** In Terminal, type:
+```
+git --version
+```
+You should see something like `git version 2.x.x`.
+
+### Windows
+
+1. Go to <a href="https://git-scm.com" target="_blank">git-scm.com</a> and click **Download for Windows**
+2. Run the downloaded installer
+3. Use the default settings — click **Next** through each screen. The defaults are fine for this course.
+4. Click **Install**, then **Finish**
+5. **Close and reopen VS Code** (or PowerShell) after installation so it can detect Git
+
+**Verify it worked:** Open **PowerShell** and type:
+```
+git --version
+```
+You should see something like `git version 2.x.x`.
+
+---
+
+## Step 4: Download the Course Repository
 
 All course materials live in a GitHub repository. You need to **clone** (download a linked copy of) this repository to your computer. The key benefit of cloning rather than just downloading a ZIP file: when we add new materials each week, you can **pull** (fetch) the updates with one click.
 
@@ -80,9 +137,7 @@ All course materials live in a GitHub repository. You need to **clone** (downloa
 
 You should now see all the course folders in the VS Code sidebar.
 
-> **If VS Code says Git is not installed:**
-> - **Mac:** You'll see a pop-up asking to install "Command Line Developer Tools" — click **Install** and wait for it to finish (this can take a few minutes). Then try the clone steps again.
-> - **Windows:** Download and install Git from [git-scm.com](https://git-scm.com). Use the default settings (click Next through each screen). Restart VS Code, then try the clone steps again.
+> **VS Code says Git is not installed?** Go back to Step 3 and make sure Git is installed. Then close and reopen VS Code so it can detect it.
 
 ### Pulling Updates Later
 
@@ -96,11 +151,11 @@ Any new or updated files will be downloaded automatically. We'll remind you to p
 
 ---
 
-## Step 4: Install Miniconda
+## Step 5: Install Miniconda
 
 Miniconda is a lightweight installer that gives you Python and **conda** — a tool for managing packages and environments. An environment is a self-contained set of packages that keeps your course tools separate from everything else on your computer, so nothing gets mixed up.
 
-> **Already have Anaconda or Miniconda installed?** You can skip this step entirely — go straight to Step 5. Anaconda includes everything Miniconda does (and more). The site makes it hard to find miniconda, as they try and push you to install Anaconda. The link might be at the bottom of the page. 
+> **Already have Anaconda or Miniconda installed?** You can skip this step entirely — go straight to Step 6. Anaconda includes everything Miniconda does (and more). The site makes it hard to find miniconda, as they try and push you to install Anaconda. The link might be at the bottom of the page. 
 
 ### macOS
 
@@ -134,7 +189,7 @@ You should see something like `conda 24.x.x`. If you get an error, make sure you
 
 ---
 
-## Step 5: Install VS Code Extensions
+## Step 6: Install VS Code Extensions
 
 Extensions add extra features to VS Code. You need three (and one optional but highly recommended one):
 
@@ -170,14 +225,14 @@ If your Student Developer Pack hasn't been approved yet, Copilot won't activate 
 
 ---
 
-## Step 6: Run the Setup Script
+## Step 7: Run the Setup Script
 
 This is where the magic happens. We've written a script that automatically:
 - Creates a **conda environment** called `psyc4411` — a self-contained set of packages for this course
 - Installs all the Python libraries you'll need (pandas for data, matplotlib for plotting, scikit-learn for machine learning, etc.)
 - Registers everything with VS Code/Jupyter so it all works together
 
-You should still have the course repository open in VS Code from Step 3. If not, open VS Code and go to **File → Open Folder** and select the course repository folder.
+You should still have the course repository open in VS Code from Step 4. If not, open VS Code and go to **File → Open Folder** and select the course repository folder.
 
 1. Open the **terminal inside VS Code**: go to **View → Terminal** (or press `` Ctrl+` `` — that's the backtick key, usually below Escape)
 2. **Windows only:** You may need to allow scripts to run (this is a one-time security setting). Type:
@@ -196,20 +251,20 @@ You should still have the course repository open in VS Code from Step 3. If not,
 
 ### If Something Goes Wrong
 
-- **"conda not found"** — Miniconda isn't installed or isn't in your PATH. Go back to Step 4. Make sure you closed and reopened VS Code after installing Miniconda (the terminal inside VS Code needs to be restarted too).
+- **"conda not found"** — Miniconda isn't installed or isn't in your PATH. Go back to Step 5. Make sure you closed and reopened VS Code after installing Miniconda (the terminal inside VS Code needs to be restarted too).
 - **"environment already exists"** — The script will ask if you want to recreate it. Choose "y" to start fresh.
 - **Installation hangs for a long time** — Some packages are large. Give it up to 10 minutes on a slow connection. If it's truly stuck, press `Ctrl + C` to cancel and try again.
 - **Any other error** — Take a screenshot and bring it to class in Week 2. We'll figure it out together.
 
 ---
 
-## Step 7: Test Your Setup
+## Step 8: Test Your Setup
 
 Let's make sure everything works together. There are two ways to test — a notebook test and a script test.
 
 ### Test 1: Notebook (test-setup.ipynb)
 
-1. Open VS Code and open the course repository folder (if it's not already open from Step 3, go to **File → Open Folder** and select `Practical-AI-for-Behavioural-Science`)
+1. Open VS Code and open the course repository folder (if it's not already open from Step 4, go to **File → Open Folder** and select `Practical-AI-for-Behavioural-Science`)
 2. Navigate to `setup/test-setup.ipynb` in the file explorer on the left and click to open it
 4. **Select the right kernel:** When the notebook opens, look at the top right corner of the notebook. You should see a kernel selector — click it and choose **PSYC4411** from the list. If you don't see it, try selecting "Python Environments" and look for `psyc4411 (conda)`.
 5. Click **Run All** (the double-play button at the top of the notebook) or run each cell one at a time with `Shift + Enter`
@@ -239,7 +294,7 @@ This test runs as a Python script in the terminal — good practice for running 
 
 ---
 
-## Step 8: Set Up Your AI Coding Assistants
+## Step 9: Set Up Your AI Coding Assistants
 
 Throughout this course, you'll use AI assistants to help write code, debug errors, and understand concepts. Think of these as very knowledgeable (but sometimes confidently wrong) study partners. Here's what's available:
 
@@ -398,7 +453,7 @@ If your computer has 16GB of RAM or less, local models won't run well and you'll
 | Problem | Solution |
 |---------|----------|
 | "conda not found" or "conda is not recognised" | Miniconda isn't installed or isn't in your PATH. Reinstall from [docs.anaconda.com/miniconda](https://docs.anaconda.com/miniconda/). On Windows, make sure to check "Add to PATH". On Mac, close and reopen Terminal after installing. |
-| Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 6. |
+| Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 7. |
 | `InvalidArchiveError` during setup | A downloaded package file is corrupted. Run `conda clean --packages --tarballs -y` then re-run the setup script. (The updated setup scripts do this automatically, but if you're seeing it in the output, running the clean command manually and retrying is the fix.) |
 | `EnvironmentLocationNotFound` errors | The `psyc4411` environment doesn't exist — it likely wasn't created successfully. Re-run the setup script. If it fails again, try `conda clean --all -y` first, then re-run the script. |
 | Setup script said "SETUP FAILED" | Follow the remediation steps it printed. Usually: run `conda clean --packages --tarballs -y`, then re-run the setup script. If that doesn't work, try `conda clean --all -y` and re-run. |
