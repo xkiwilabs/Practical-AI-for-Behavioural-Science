@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 2 Challenge Lab — Example Solution</title>
+
+  <!-- reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+
+  <!-- MQ theme -->
+  <link rel="stylesheet" href="css/mq-theme.css">
+
+  <style>
+    .fig-toggle-btn {
+      border: none; border-radius: 4px; padding: 4px 10px;
+      font-size: 0.42em; font-weight: 600; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .fig-toggle-btn.active { background: #4A90D9; color: white; }
+    .fig-toggle-btn.inactive { background: rgba(0,0,0,0.15); color: #555; }
+    .fig-panel { text-align: center; }
+    .fig-panel img { max-width: 100%; max-height: 480px; border-radius: 4px; }
+    .fig-panel p { color: #666; font-size: 0.38em; margin-top: 6px; }
+    .info-card {
+      background: rgba(255,255,255,0.12); border-radius: 0 8px 8px 0;
+      padding: 8px 12px;
+    }
+    .info-card h4 {
+      font-size: 0.5em; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; margin-bottom: 3px;
+    }
+    .info-card p {
+      color: #FFFFFF; font-size: 0.48em;
+      line-height: 1.4; margin: 0;
+    }
+    .info-card strong {
+      color: #FFD966; font-weight: 700;
+    }
+    .info-card code {
+      color: #FFFFFF; background: rgba(255,255,255,0.15);
+      padding: 1px 4px; border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- SLIDE -->
+  <section data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+
+    <!-- Title area -->
+    <div style="text-align: center; margin-bottom: 8px;">
+      <p style="color: rgba(255,255,255,0.5); font-size: 0.45em; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px;">PSYC4411 Week 2 Challenge Lab</p>
+      <h2 style="color: white; font-size: 1.2em; font-weight: 800; margin-bottom: 2px;">
+        Lifestyle Factors and Depression
+      </h2>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.55em;">
+        Example Group — Week 2
+      </p>
+    </div>
+
+    <!-- Content: Figure + 5 info panels -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; margin-top: 6px; align-items: stretch; flex: 1;">
+
+      <!-- Left: The figure (toggleable) -->
+      <div style="background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <!-- Toggle buttons -->
+        <div style="display: flex; gap: 5px; margin-bottom: 6px;">
+          <button id="btn-notebook" class="fig-toggle-btn active" onclick="showFigure('notebook')">Notebook</button>
+          <button id="btn-script" class="fig-toggle-btn inactive" onclick="showFigure('script')">Script</button>
+          <button id="btn-explore" class="fig-toggle-btn inactive" onclick="showFigure('explore')">Exploration</button>
+          <button id="btn-bonus" class="fig-toggle-btn inactive" onclick="showFigure('bonus')">Bonus</button>
+        </div>
+        <!-- Notebook figure -->
+        <div id="fig-notebook" class="fig-panel">
+          <img src="images/our_visualisation.png" alt="2x2 scatter plot grid from notebook workflow">
+          <p>Notebook workflow — 2x2 scatter plots with trend lines and r values</p>
+        </div>
+        <!-- Script figure -->
+        <div id="fig-script" class="fig-panel" style="display: none;">
+          <img src="images/depression_by_gender.png" alt="2x3 scatter and violin plot grid from script workflow">
+          <p>Script workflow — 2x3 scatter + violin plots split by gender</p>
+        </div>
+        <!-- Exploration figure -->
+        <div id="fig-explore" class="fig-panel" style="display: none;">
+          <img src="images/correlation_heatmap.png" alt="Correlation heatmap of all numeric variables">
+          <p>Data exploration — correlation heatmap showing which variables relate to depression</p>
+        </div>
+        <!-- Bonus figure -->
+        <div id="fig-bonus" class="fig-panel" style="display: none;">
+          <img src="images/bonus_group_comparison.png" alt="Violin plots comparing depression by gender and lifestyle level">
+          <p>Bonus — group comparison violin plots (high/low lifestyle × gender)</p>
+        </div>
+      </div>
+
+      <!-- Right: Info panels stacked (stretch to match figure height) -->
+      <div style="display: flex; flex-direction: column; justify-content: space-between;">
+
+        <!-- Approach -->
+        <div class="info-card" style="border-left: 4px solid #4A90D9;">
+          <h4 style="color: #4A90D9;">Our Approach</h4>
+          <p>
+            Started by exploring the data — a correlation heatmap of lifestyle variables against DASS Depression scores showed sleep, study hours, and exercise had the strongest associations. Used these findings to plan a focused 2&times;2 scatter plot figure with trend lines and r values.
+          </p>
+        </div>
+
+        <!-- Key Finding -->
+        <div class="info-card" style="border-left: 4px solid #C8972C;">
+          <h4 style="color: #C8972C;">Key Finding</h4>
+          <p>
+            Sleep was the strongest lifestyle predictor (r = &minus;0.37). Study hours showed an unexpected positive association (r = +0.36) &mdash; possibly reflecting academic stress. Exercise was protective (r = &minus;0.27). Students had the highest depression scores by occupation group (M = 20.3 vs 8.7 for full-time employed).
+          </p>
+        </div>
+
+        <!-- Prompting lesson -->
+        <div class="info-card" style="border-left: 4px solid #5BA55B;">
+          <h4 style="color: #5BA55B;">What We Learned About Prompting</h4>
+          <p>
+            Exploring the data first made our prompts much more specific — we could name the variables, expected relationships, and even mention the DASS-21 score range and missing values. This produced working code on the first attempt, with zero refinement needed.
+          </p>
+        </div>
+
+        <!-- Workflow preference -->
+        <div class="info-card" style="border-left: 4px solid #A771A8;">
+          <h4 style="color: #A771A8;">Notebook vs Scripts</h4>
+          <p>
+            Notebooks were better for exploration (seeing results after each cell). Scripts were cleaner for the final product (one command, one output). Splitting into explore + visualise scripts mirrored how data scientists actually work.
+          </p>
+        </div>
+
+        <!-- Bonus challenges -->
+        <div class="info-card" style="border-left: 4px solid #E74C3C;">
+          <h4 style="color: #E74C3C;">Bonus Challenges</h4>
+          <p>
+            Extended the analysis with occupation-based violin plots (students had markedly higher depression) and an annotated figure highlighting key findings with arrows and text boxes. The exploration step made both bonus tasks easier to plan.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+</div>
+</div>
+
+<!-- reveal.js core -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+
+<script>
+  Reveal.initialize({
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    center: false,
+    controls: false,
+    progress: false,
+    hash: false,
+    transition: 'none'
+  });
+
+  var figIds = ['notebook', 'script', 'explore', 'bonus'];
+
+  function showFigure(which) {
+    figIds.forEach(function(id) {
+      var fig = document.getElementById('fig-' + id);
+      var btn = document.getElementById('btn-' + id);
+      if (id === which) {
+        fig.style.display = 'block';
+        btn.className = 'fig-toggle-btn active';
+      } else {
+        fig.style.display = 'none';
+        btn.className = 'fig-toggle-btn inactive';
+      }
+    });
+  }
+</script>
+</body>
+</html>

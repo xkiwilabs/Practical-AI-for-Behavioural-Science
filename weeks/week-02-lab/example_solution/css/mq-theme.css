@@ -1,0 +1,913 @@
+/*
+ * MQ Theme for reveal.js — PSYC4411
+ * Macquarie University branded theme
+ * 16:9 widescreen (1920×1080 design)
+ */
+
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ===== CSS Variables ===== */
+:root {
+  --mq-red: #A71930;
+  --mq-red-dark: #8B1428;
+  --mq-red-light: #D4533B;
+  --mq-gold: #C8972C;
+  --mq-charcoal: #2D2D2D;
+  --mq-dark: #1A1A2E;
+  --mq-blue: #4A90D9;
+  --mq-green: #5BA55B;
+  --mq-orange: #E8873D;
+  --mq-purple: #7B68A8;
+  --mq-grey: #8C8C8C;
+  --mq-light-grey: #F5F5F5;
+  --mq-white: #FFFFFF;
+  --mq-near-black: #1a1a1a;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ===== Base Slide ===== */
+.reveal {
+  font-family: var(--font-main);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--mq-charcoal);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .slides section {
+  padding: 40px 60px;
+  box-sizing: border-box;
+}
+
+/* ===== Typography ===== */
+.reveal h1 {
+  font-size: 2.4em;
+  font-weight: 800;
+  color: var(--mq-red);
+  margin-bottom: 0.3em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--mq-red);
+  margin-bottom: 0.4em;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.reveal h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--mq-charcoal);
+  margin-bottom: 0.3em;
+  line-height: 1.2;
+}
+
+.reveal h4 {
+  font-size: 1.0em;
+  font-weight: 600;
+  color: var(--mq-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5em;
+}
+
+.reveal p {
+  font-size: 0.95em;
+  line-height: 1.55;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+}
+
+.reveal strong {
+  font-weight: 700;
+  color: var(--mq-charcoal);
+}
+
+.reveal em {
+  color: var(--mq-grey);
+}
+
+/* ===== Lists ===== */
+.reveal ul, .reveal ol {
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.reveal li {
+  font-size: 0.95em;
+  line-height: 1.45;
+  margin-bottom: 0.3em;
+  padding-left: 0.2em;
+}
+
+.reveal li li {
+  font-size: 0.88em;
+  color: var(--mq-grey);
+}
+
+.reveal ul {
+  list-style: none;
+}
+
+.reveal ul > li::before {
+  content: "▸";
+  color: var(--mq-red);
+  font-weight: 700;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* ===== Title Slide ===== */
+.reveal .title-slide {
+  text-align: center;
+  padding: 80px 60px;
+}
+
+.reveal .title-slide h1 {
+  color: var(--mq-white);
+  font-size: 2.6em;
+  margin-bottom: 0.2em;
+}
+
+.reveal .title-slide h2 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+.reveal .title-slide .subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7em;
+  font-weight: 300;
+}
+
+.reveal .title-slide .course-code {
+  display: inline-block;
+  background: var(--mq-red);
+  color: white;
+  padding: 0.2em 0.8em;
+  border-radius: 4px;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5em;
+}
+
+/* ===== Section Divider Slides ===== */
+.reveal .section-divider {
+  text-align: center;
+  padding: 80px 60px;
+}
+
+.reveal .section-divider h2 {
+  color: var(--mq-white);
+  font-size: 2.2em;
+  font-weight: 800;
+  margin-bottom: 0.3em;
+}
+
+.reveal .section-divider p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85em;
+  font-weight: 300;
+}
+
+.reveal .section-divider .section-icon {
+  font-size: 3em;
+  margin-bottom: 0.3em;
+  opacity: 0.8;
+}
+
+/* ===== Discussion / Think About It Slides ===== */
+.reveal .think-slide {
+  text-align: center;
+  padding: 80px 80px;
+}
+
+.reveal .think-slide h2 {
+  color: var(--mq-gold);
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.reveal .think-slide p {
+  color: var(--mq-white);
+  font-size: 1.2em;
+  line-height: 1.55;
+  font-weight: 400;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===== Image Slides ===== */
+.reveal .image-full {
+  text-align: center;
+  padding: 30px 40px;
+}
+
+.reveal .image-full img {
+  max-height: 520px;
+  max-width: 95%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.reveal .image-full h2 {
+  margin-bottom: 0.2em;
+}
+
+/* ===== Two Column Layout ===== */
+.reveal .two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.reveal .two-col-wide-left {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.reveal .two-col-wide-right {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.reveal .col img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* ===== Highlight Boxes ===== */
+.reveal .highlight-box {
+  background: rgba(167, 25, 48, 0.08);
+  border-left: 4px solid var(--mq-red);
+  padding: 16px 24px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+}
+
+.reveal .highlight-box p {
+  margin-bottom: 0;
+  font-size: 0.95em;
+}
+
+.reveal .info-box {
+  background: rgba(74, 144, 217, 0.08);
+  border-left: 4px solid var(--mq-blue);
+  padding: 16px 24px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+}
+
+.reveal .key-insight {
+  background: rgba(200, 151, 44, 0.1);
+  border-left: 4px solid var(--mq-gold);
+  padding: 16px 24px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+}
+
+/* ===== Tags / Badges ===== */
+.reveal .tag {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  border-radius: 20px;
+  font-size: 0.6em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
+
+.tag-red { background: rgba(167, 25, 48, 0.12); color: var(--mq-red); }
+.tag-blue { background: rgba(74, 144, 217, 0.12); color: var(--mq-blue); }
+.tag-green { background: rgba(91, 165, 91, 0.12); color: var(--mq-green); }
+.tag-orange { background: rgba(232, 135, 61, 0.12); color: var(--mq-orange); }
+.tag-purple { background: rgba(123, 104, 168, 0.12); color: var(--mq-purple); }
+
+/* ===== Code Blocks ===== */
+.reveal code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--mq-light-grey);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  color: var(--mq-red-dark);
+}
+
+.reveal pre {
+  background: var(--mq-near-black);
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 0.55em;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.reveal pre code {
+  background: none;
+  color: #e0e0e0;
+  padding: 0;
+}
+
+/* ===== Prompt Comparison ===== */
+.reveal .prompt-bad {
+  background: rgba(220, 53, 69, 0.08);
+  border: 2px solid rgba(220, 53, 69, 0.3);
+  border-radius: 8px;
+  padding: 18px 24px;
+  margin: 8px 0;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
+.reveal .prompt-good {
+  background: rgba(91, 165, 91, 0.08);
+  border: 2px solid rgba(91, 165, 91, 0.3);
+  border-radius: 8px;
+  padding: 18px 24px;
+  margin: 8px 0;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
+/* ===== End Slide ===== */
+.reveal .end-slide {
+  text-align: center;
+  padding: 80px 60px;
+}
+
+.reveal .end-slide h1 {
+  color: var(--mq-white);
+  font-size: 2.2em;
+}
+
+.reveal .end-slide p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8em;
+}
+
+/* ===== Fragment Tweaks ===== */
+.reveal .fragment.fade-in-then-semi-out.visible:not(.current-fragment) {
+  opacity: 0.4;
+}
+
+/* ===== Misc ===== */
+.reveal .small {
+  font-size: 0.75em;
+  color: var(--mq-grey);
+}
+
+.reveal .attribution {
+  font-size: 0.6em;
+  color: var(--mq-grey);
+  text-align: right;
+  margin-top: 1em;
+}
+
+.reveal .spacer {
+  height: 12px;
+}
+
+.reveal .spacer-lg {
+  height: 24px;
+}
+
+/* Icon styling for Phosphor icons */
+.reveal .ph {
+  vertical-align: -0.15em;
+  margin-right: 0.15em;
+}
+
+/* ===== Hide default progress bar & slide number (replaced by nav bar) ===== */
+.reveal .progress {
+  display: none;
+}
+
+.reveal .slide-number {
+  display: none;
+}
+
+/* ===== Edge Controls ===== */
+.reveal .controls {
+  color: var(--mq-red);
+}
+
+/* ===== Custom Slide Navigation Bar ===== */
+.slide-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  z-index: 50;
+  display: flex;
+  align-items: stretch;
+  transition: height 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(45, 45, 45, 0.12);
+  cursor: pointer;
+}
+
+.slide-nav:hover {
+  height: 40px;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.25);
+  background: rgba(26, 26, 46, 0.92);
+}
+
+.slide-nav-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 500;
+  color: transparent;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* On hover of bar, show pill numbers */
+.slide-nav:hover .slide-nav-pill {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.slide-nav:hover .slide-nav-pill:hover {
+  color: var(--mq-white);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Active slide pill */
+.slide-nav-pill.active {
+  background: var(--mq-red);
+}
+
+.slide-nav:hover .slide-nav-pill.active {
+  color: var(--mq-white);
+  background: var(--mq-red);
+  font-weight: 700;
+}
+
+/* Progress fill — visible even when bar is collapsed */
+.slide-nav-pill.visited {
+  background: rgba(167, 25, 48, 0.25);
+}
+
+.slide-nav:hover .slide-nav-pill.visited {
+  background: rgba(167, 25, 48, 0.15);
+}
+
+/* Tooltip on hover */
+.slide-nav-pill .nav-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--mq-charcoal);
+  color: var(--mq-white);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  margin-bottom: 4px;
+}
+
+.slide-nav-pill:hover .nav-tooltip {
+  opacity: 1;
+}
+
+/* ===== Scrollbar ===== */
+.reveal ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reveal ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reveal ::-webkit-scrollbar-thumb {
+  background: var(--mq-grey);
+  border-radius: 3px;
+}
+
+/* ===== Links ===== */
+.reveal a {
+  color: var(--mq-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(74, 144, 217, 0.3);
+  transition: border-color 0.2s;
+}
+
+.reveal a:hover {
+  border-bottom-color: var(--mq-blue);
+}
+
+.reveal .section-divider a,
+.reveal .title-slide a,
+.reveal .think-slide a,
+.reveal .end-slide a {
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== HTML Diagrams ===== */
+
+/* --- AI Hierarchy (nested boxes) --- */
+.hierarchy-diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.hierarchy-layer {
+  border-radius: 16px;
+  padding: 14px 20px;
+  text-align: center;
+  transition: opacity 0.5s;
+}
+
+.hierarchy-layer .layer-label {
+  font-weight: 700;
+  font-size: 0.85em;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.hierarchy-layer .layer-examples {
+  font-size: 0.65em;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+/* --- Flow Diagrams (horizontal step flows) --- */
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.flow-step {
+  padding: 18px 26px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.85em;
+  min-width: 140px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.flow-step .step-subtitle {
+  font-weight: 400;
+  font-size: 0.8em;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.flow-arrow {
+  font-size: 1.8em;
+  color: var(--mq-grey);
+  margin: 0 8px;
+  font-weight: 300;
+}
+
+.flow-return {
+  display: block;
+  text-align: center;
+  font-size: 0.65em;
+  color: var(--mq-grey);
+  margin-top: 8px;
+}
+
+/* --- Cycle-back arrow (curved arrow beneath flow diagram) --- */
+.flow-cycle {
+  position: relative;
+  margin: 0 auto;
+  height: 36px;
+}
+
+.flow-cycle svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.flow-cycle-label {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6em;
+  color: var(--mq-grey);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Compact variant for nested diagram */
+.flow-cycle.compact {
+  height: 24px;
+}
+
+.flow-cycle.compact .flow-cycle-label {
+  font-size: 0.45em;
+}
+
+/* --- Comparison Diagrams --- */
+.compare-diagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.compare-side {
+  text-align: center;
+}
+
+.compare-side h3 {
+  margin-bottom: 16px;
+}
+
+.compare-box {
+  border-radius: 12px;
+  padding: 16px 22px;
+  margin: 8px 0;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.compare-arrow {
+  font-size: 1.6em;
+  color: var(--mq-grey);
+  text-align: center;
+  padding: 4px 0;
+}
+
+.compare-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4em;
+  font-weight: 800;
+  color: var(--mq-grey);
+  opacity: 0.4;
+}
+
+/* --- Venn Diagram --- */
+.venn-container {
+  position: relative;
+  height: 800px;
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+.venn-circle {
+  position: absolute;
+  width: 740px;
+  height: 740px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 90px;
+  box-sizing: border-box;
+}
+
+.venn-circle h3 {
+  font-size: 1.4em;
+  margin-bottom: 8px;
+}
+
+.venn-circle p {
+  font-size: 1.0em;
+  line-height: 1.4;
+}
+
+.venn-overlap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  font-weight: 700;
+  font-size: 1.2em;
+  width: 260px;
+}
+
+/* --- Tool Cards --- */
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.tool-card {
+  background: var(--mq-light-grey);
+  border-radius: 12px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--mq-blue);
+  transition: transform 0.2s;
+}
+
+.tool-card h4 {
+  font-size: 0.9em;
+  color: var(--mq-charcoal);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+
+.tool-card p {
+  font-size: 0.75em;
+  margin-bottom: 0;
+  color: var(--mq-grey);
+}
+
+.tool-card a {
+  font-size: 0.75em;
+}
+
+/* --- Three Column Layout --- */
+.reveal .three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Ensure content inside stretched columns stays top-aligned */
+.reveal .three-col > .col > .highlight-box,
+.reveal .three-col > .col > .info-box,
+.reveal .three-col > .col > div[style] {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* --- HTML Timeline --- */
+.timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 10px;
+  margin: 8px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  right: 20px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--mq-grey) 0%, var(--mq-red) 100%);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.timeline-event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.timeline-year {
+  font-weight: 700;
+  font-size: 0.7em;
+  color: var(--mq-charcoal);
+  margin-bottom: 2px;
+}
+
+.timeline-text {
+  font-size: 0.6em;
+  color: var(--mq-grey);
+  text-align: center;
+  line-height: 1.3;
+  max-width: 160px;
+}
+
+/* --- Coloured Bullet Variants --- */
+.reveal ul > li.bullet-blue::before { color: var(--mq-blue); }
+.reveal ul > li.bullet-orange::before { color: var(--mq-orange); }
+.reveal ul > li.bullet-grey::before { color: var(--mq-grey); }
+.reveal ul > li.bullet-green::before { color: var(--mq-green); }
+.reveal ul > li.bullet-red::before { color: var(--mq-red); }
+.reveal ul > li.bullet-purple::before { color: var(--mq-purple); }
+
+/* --- Timeline Slide Bullet Spacing --- */
+.reveal ul.timeline-bullets > li {
+  margin-bottom: 0.65em;
+}
+
+/* ===== Back to Repo Link ===== */
+.back-to-repo {
+  position: fixed;
+  top: 16px;
+  left: 24px;
+  z-index: 50;
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mq-grey);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 4px 14px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  transition: opacity 0.3s, color 0.3s, background 0.3s;
+  opacity: 0.7;
+}
+.back-to-repo:hover {
+  opacity: 1;
+  color: var(--mq-red);
+  text-decoration: none;
+}
+
+/* ===== Live Clock ===== */
+.live-clock {
+  position: fixed;
+  top: 16px;
+  right: 24px;
+  z-index: 50;
+  font-family: var(--font-main);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mq-grey);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 4px 14px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s;
+}
+
+/* Invert clock on dark slides */
+.reveal .section-divider ~ .live-clock,
+.reveal .title-slide ~ .live-clock,
+.reveal .think-slide ~ .live-clock,
+.reveal .end-slide ~ .live-clock {
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Minimum Text Size Convention =====
+ * No text should render below ~19px (0.6em at 32px base).
+ * Exceptions: bold uppercase labels in nested diagrams (0.65em)
+ * and nav bar UI elements. Always test readability from 3m away.
+ */
+
+/* ===== Print / PDF ===== */
+@media print {
+  .reveal .slides section {
+    page-break-after: always;
+  }
+}
