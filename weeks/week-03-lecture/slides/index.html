@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 3: Models, Not Magic: Generalisation, Overfitting, and How ML Misleads — PSYC4411</title>
+  <title>Week 3: Models, Not Magic — Generalisation, Overfitting, and How ML Misleads — PSYC4411</title>
 
   <!-- reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -15,33 +15,1428 @@
 
   <!-- MQ custom theme -->
   <link rel="stylesheet" href="css/mq-theme.css">
+
+  <!-- Week 3 specific styles -->
+  <style>
+    /* Translation table */
+    .translation-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 6px;
+      font-size: 0.78em;
+    }
+    .translation-table th {
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.85em;
+      letter-spacing: 0.02em;
+    }
+    .translation-table th:first-child {
+      color: var(--mq-blue);
+      background: rgba(74, 144, 217, 0.08);
+      border-radius: 8px 0 0 8px;
+    }
+    .translation-table th:nth-child(2) {
+      color: var(--mq-red);
+      background: rgba(167, 25, 48, 0.08);
+      border-radius: 0 8px 8px 0;
+    }
+    .translation-table td {
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid #eee;
+    }
+    .translation-table td:first-child {
+      border-radius: 6px 0 0 6px;
+      color: var(--mq-charcoal);
+    }
+    .translation-table td:nth-child(2) {
+      border-radius: 0 6px 6px 0;
+      font-weight: 600;
+      color: var(--mq-red);
+    }
+
+    /* Data split blocks */
+    .split-diagram {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 20px auto;
+      max-width: 900px;
+    }
+    .split-block {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9em;
+      border-radius: 12px;
+      position: relative;
+    }
+    .split-train {
+      flex: 3;
+      background: rgba(74, 144, 217, 0.15);
+      border: 3px solid var(--mq-blue);
+      color: var(--mq-blue);
+      border-radius: 12px 0 0 12px;
+    }
+    .split-test {
+      flex: 1;
+      background: rgba(232, 135, 61, 0.15);
+      border: 3px solid var(--mq-orange);
+      color: var(--mq-orange);
+      border-radius: 0 12px 12px 0;
+    }
+    .split-divider {
+      width: 4px;
+      height: 130px;
+      background: var(--mq-charcoal);
+    }
+
+    /* Overfitting curve */
+    .curve-container {
+      position: relative;
+      width: 960px;
+      height: 540px;
+      margin: 10px auto;
+    }
+    .curve-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* K-fold grid */
+    .kfold-grid {
+      display: grid;
+      grid-template-columns: auto repeat(5, 1fr) auto;
+      gap: 6px 8px;
+      max-width: 800px;
+      margin: 10px auto;
+      align-items: center;
+    }
+    .kfold-cell {
+      height: 44px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7em;
+      font-weight: 600;
+    }
+    .kfold-train {
+      background: rgba(74, 144, 217, 0.15);
+      border: 2px solid var(--mq-blue);
+      color: var(--mq-blue);
+    }
+    .kfold-test {
+      background: rgba(232, 135, 61, 0.25);
+      border: 2px solid var(--mq-orange);
+      color: var(--mq-orange);
+    }
+    .kfold-label {
+      font-weight: 700;
+      font-size: 0.8em;
+      color: var(--mq-charcoal);
+      text-align: right;
+      padding-right: 8px;
+    }
+    .kfold-score {
+      font-size: 0.75em;
+      color: var(--mq-grey);
+      padding-left: 8px;
+    }
+
+    /* Bias-variance spectrum */
+    .bv-spectrum {
+      display: flex;
+      align-items: stretch;
+      max-width: 900px;
+      margin: 16px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 160px;
+    }
+    .bv-end {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+    }
+    .bv-end h4 {
+      margin: 0;
+      font-size: 0.85em;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .bv-end p {
+      margin: 4px 0 0 0;
+      font-size: 0.65em;
+    }
+    .bv-gradient {
+      flex: 2;
+      background: linear-gradient(90deg, rgba(74,144,217,0.15), rgba(167,25,48,0.15));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8em;
+      font-weight: 600;
+      color: var(--mq-charcoal);
+    }
+
+    /* Metric cards */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+    .metric-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      border-top: 4px solid var(--mq-grey);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .metric-card h3 {
+      margin-bottom: 6px;
+      font-size: 1.1em;
+    }
+    .metric-card .metric-formula {
+      font-family: var(--font-mono);
+      font-size: 0.75em;
+      color: var(--mq-grey);
+      margin-bottom: 8px;
+    }
+    .metric-card p {
+      font-size: 0.8em;
+      line-height: 1.4;
+    }
+
+    /* Regularisation comparison */
+    .reg-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    .reg-box {
+      border-radius: 12px;
+      padding: 24px;
+    }
+  </style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 
-  <section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 60px;">
-      <p style="font-size: 1.4em; color: rgba(255,255,255,0.5); margin-bottom: 12px; font-weight: 300;">PSYC4411 — Practical AI for Behavioural Science</p>
-      <p style="font-size: 1.1em; color: rgba(255,255,255,0.4); margin-bottom: 40px; font-weight: 300;">Week 3 — Lecture</p>
-      <h1 style="font-size: 2.4em; color: white; margin-bottom: 40px; line-height: 1.2;">Models, Not Magic: Generalisation, Overfitting, and How ML Misleads</h1>
-      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px 48px; margin-top: 20px;">
-        <p style="font-size: 1.3em; color: rgba(255,255,255,0.7); margin: 0;"><i class="ph-bold ph-clock"></i>&ensp;Content coming soon</p>
-        <p style="font-size: 0.9em; color: rgba(255,255,255,0.4); margin-top: 8px;">Materials will be available on 09 March</p>
+<!-- ============================================================
+     SECTION 1: TITLE  (Slide 1)
+     ============================================================ -->
+
+<!-- Slide 1: Title -->
+<section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+  <div class="course-code">PSYC4411</div>
+  <h1>Models, Not Magic</h1>
+  <h2>Generalisation, Overfitting, and How ML Misleads</h2>
+  <div class="spacer-lg"></div>
+  <p class="subtitle">Week 3 &middot; Semester 1, 2026</p>
+  <p class="subtitle">Current Advances in Psychological Methods &amp; Analyses</p>
+  <div class="spacer"></div>
+  <p class="subtitle"><strong style="color: rgba(255,255,255,0.85); font-weight: 600;">Prof. Michael J. Richardson</strong></p>
+  <p class="subtitle">School of Psychological Sciences<br>Faculty of Medicine, Health and Human Sciences<br>Macquarie University</p>
+  <p class="subtitle" style="margin-top: 0.3em;"><a href="mailto:michael.j.richardson@mq.edu.au" style="color: rgba(255,255,255,0.6); border-bottom-color: rgba(255,255,255,0.2);">michael.j.richardson@mq.edu.au</a></p>
+</section>
+
+<!-- Slide 2: Today's Agenda -->
+<section>
+  <h2>Today's Agenda</h2>
+  <div class="spacer"></div>
+  <ol>
+ <li><strong>Speaking ML</strong> — translating stats vocabulary into ML language</li>
+ <li><strong>What is a model?</strong> — demystifying the word</li>
+ <li><strong>Generalisation</strong> — the fundamental goal of ML</li>
+ <li><strong>Train/test splits</strong> — the simplest defence against self-deception</li>
+ <li><strong>Overfitting &amp; underfitting</strong> — when models lie to you</li>
+ <li><strong>Bias–variance trade-off</strong> — the spectrum from too rigid to too flexible</li>
+ <li><strong>Cross-validation</strong> — a more reliable way to evaluate</li>
+ <li><strong>Baselines &amp; metrics</strong> — how to know if your model actually works</li>
+ <li><strong>Regularisation preview</strong> — setting up Week 4</li>
+  </ol>
+</section>
+
+<!-- Slide 3: The Big Idea -->
+<section>
+  <h2>The Big Idea for This Week</h2>
+  <div class="spacer-lg"></div>
+  <div class="key-insight" style="padding: 30px 40px;">
+    <p style="font-size: 1.15em; line-height: 1.5; margin-bottom: 0;">A model that fits your data perfectly is almost certainly <strong>lying to you</strong>.</p>
+    <div class="spacer"></div>
+    <p style="font-size: 1.0em; line-height: 1.5; margin-bottom: 0;">The real goal isn't to explain the data you have — it's to make <strong>predictions about data you haven't seen yet</strong>.</p>
+  </div>
+  <div class="spacer-lg"></div>
+ <p>Understanding this distinction is what separates useful ML from self-deception.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 2: SPEAKING ML  (Slides 4–9)
+     ============================================================ -->
+
+<!-- Slide 4: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-translate"></i></div>
+  <h2>Speaking ML</h2>
+  <p>A translation guide from statistics to machine learning</p>
+</section>
+
+<!-- Slide 5: Translation Table -->
+<section>
+  <h2>Stats → ML: A Translation Guide</h2>
+  <div class="spacer"></div>
+  <table class="translation-table">
+    <tr>
+      <th>What you know (stats)</th>
+      <th>What it's called in ML</th>
+    </tr>
+    <tr class="fragment">
+      <td>IV / Predictor</td>
+      <td>Feature</td>
+    </tr>
+    <tr class="fragment">
+      <td>DV / Outcome</td>
+      <td>Target (regression) / Label (classification)</td>
+    </tr>
+    <tr class="fragment">
+      <td>Running a regression / fitting a model</td>
+      <td>Training</td>
+    </tr>
+    <tr class="fragment">
+      <td>Your sample</td>
+      <td>Training data</td>
+    </tr>
+    <tr class="fragment">
+      <td>Population you generalise to</td>
+      <td>Test data (held-out)</td>
+    </tr>
+    <tr class="fragment">
+      <td>Coefficients / regression weights</td>
+      <td>Model parameters / weights</td>
+    </tr>
+    <tr class="fragment">
+      <td>R², adjusted R²</td>
+      <td>Evaluation metrics (on test data)</td>
+    </tr>
+  </table>
+</section>
+
+<!-- Slide 6: The Biggest Shift -->
+<section>
+  <h2>The Biggest Shift</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+ <div class="highlight-box">
+        <h3 style="color: var(--mq-blue);"><i class="ph ph-chart-bar"></i> Traditional Statistics</h3>
+        <p>Fit model to your <strong>entire sample</strong></p>
+        <p>Ask: <em>"Is this effect real?"</em></p>
+        <p>Assess significance (p-values, confidence intervals)</p>
       </div>
-      <p style="font-size: 0.85em; color: rgba(255,255,255,0.3); margin-top: 48px;">Prof. Michael Richardson — Macquarie University, 2026</p>
     </div>
-  </section>
+    <div class="col">
+ <div class="info-box">
+        <h3 style="color: var(--mq-red);"><i class="ph ph-chart-line-up"></i> Machine Learning</h3>
+        <p>Fit model to <strong>part</strong> of your data</p>
+        <p>Ask: <em>"Can I predict the rest?"</em></p>
+        <p>Evaluate on held-out data (R², MAE)</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+ <p>Same data, fundamentally different question. Statistics asks <em>"is this real?"</em> — ML asks <em>"can I predict what happens next?"</em></p>
+</section>
 
-</div></div>
+<!-- Slide 7: Supervised vs Unsupervised -->
+<section>
+  <h2>Two Flavours of ML</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="highlight-box fragment" style="border-left-color: var(--mq-blue);">
+        <h3 style="color: var(--mq-blue);"><i class="ph ph-tag"></i> Supervised Learning</h3>
+        <p>You have a <strong>target variable</strong> (labelled data)</p>
+        <ul>
+          <li><strong>Regression</strong> — continuous target<br><span class="small">e.g., predicting depression score</span></li>
+          <li><strong>Classification</strong> — categorical target<br><span class="small">e.g., predicting diagnosis group</span></li>
+        </ul>
+        <p class="small" style="margin-top: 8px;">Weeks 3–6 of this course</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="info-box fragment" style="border-left-color: var(--mq-purple);">
+        <h3 style="color: var(--mq-purple);"><i class="ph ph-magnifying-glass"></i> Unsupervised Learning</h3>
+        <p><strong>No target variable</strong> — looking for structure</p>
+        <ul>
+          <li><strong>Clustering</strong> — finding natural groups<br><span class="small">e.g., patient subtypes</span></li>
+          <li><strong>Dimensionality reduction</strong> — simplifying<br><span class="small">e.g., PCA on questionnaire items</span></li>
+        </ul>
+        <p class="small" style="margin-top: 8px;">Weeks 7–8 of this course</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- Slide 8: Running Example -->
+<section>
+  <h2>Our Running Example</h2>
+  <div class="spacer"></div>
+  <p>Remember the <strong>synthetic DASS dataset</strong> from Week 2?</p>
+  <p class="small">3,000 fake participants &middot; lifestyle variables &middot; DASS-21 depression, anxiety, stress scores</p>
+  <div class="spacer"></div>
+ <div class="highlight-box">
+    <p style="font-size: 0.95em;"><strong>Features</strong> (predictors): Sleep_hrs_night, Exercise_hrs_week, SocialMedia_hrs_week, ...</p>
+    <p style="font-size: 0.95em;"><strong>Target</strong> (outcome): DASS_Depression (0–42 scale)</p>
+    <p style="font-size: 0.95em;">This is <strong>supervised learning → regression</strong></p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>Known correlations: Sleep <em>r</em> = −0.37, Exercise <em>r</em> = −0.27 with depression</li>
+ <li>Students had highest depression (M = 20.3) vs employed full-time (M = 8.7)</li>
+ <li>Can we formalise these patterns into a model that <strong>predicts</strong> depression for new people?</li>
+  </ul>
+</section>
+
+<!-- Slide 9: Already done ML -->
+<section>
+  <h2>You've Already Done (a version of) ML</h2>
+  <div class="spacer-lg"></div>
+  <div class="key-insight" style="padding: 24px 30px;">
+    <p style="font-size: 1.05em;">If you've ever fitted a line of best fit or run a correlation, you've already done a version of machine learning.</p>
+    <p style="font-size: 1.05em;">You just called it <strong>statistics</strong>.</p>
+  </div>
+  <div class="spacer-lg"></div>
+ <p>The difference isn't the maths — it's the <strong>question you ask</strong>.</p>
+ <p>Stats: "Is sleep significantly related to depression?"</p>
+ <p>ML: "If I know someone sleeps 5 hours a night, what depression score do I predict?"</p>
+</section>
+
+<!-- ============================================================
+     SECTION 3: WHAT IS A MODEL?  (Slides 10–12)
+     ============================================================ -->
+
+<!-- Slide 10: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-cube"></i></div>
+  <h2>What Is a Model, Really?</h2>
+  <p>Demystifying the word</p>
+</section>
+
+<!-- Slide 11: Models are everywhere -->
+<section>
+  <h2>Models Are Everywhere</h2>
+  <div class="spacer"></div>
+ <p>A <strong>model</strong> is a simplified version of reality that captures a pattern.</p>
+  <div class="spacer"></div>
+  <ul>
+ <li>"Sleep affects mood" — that's a model</li>
+ <li>A regression equation — that's a model</li>
+ <li>"Students are more stressed than working adults" — that's a model</li>
+ <li>A decision tree — that's a model</li>
+  </ul>
+  <div class="spacer-lg"></div>
+ <div class="highlight-box">
+    <p>In <strong>stats</strong>, a model describes relationships in your sample.</p>
+    <p>In <strong>ML</strong>, a model makes predictions about <strong>new data</strong> — people it has never seen before.</p>
+  </div>
+</section>
+
+<!-- Slide 12: Preprocessing -->
+<section>
+  <h2>Before a Model Can Learn: Preprocessing</h2>
+  <div class="spacer"></div>
+  <p><strong>Preprocessing</strong> = getting data ready for the model</p>
+  <div class="spacer"></div>
+  <ul>
+ <li><i class="ph ph-question"></i> <strong>Missing values</strong> — you saw these in Week 2 (~2–3% of lifestyle columns)
+      <ul><li>Remove rows? Fill in with the mean? Depends on the situation.</li></ul>
+    </li>
+ <li><i class="ph ph-hash"></i> <strong>Encoding categories</strong> — converting text to numbers
+      <ul><li>Gender (Male, Female, Non-binary) → numerical codes the model can use</li></ul>
+    </li>
+ <li><i class="ph ph-arrows-out-line-horizontal"></i> <strong>Scaling</strong> — putting variables on comparable ranges
+      <ul><li>Income in thousands vs. sleep in single digits — the model needs them comparable</li></ul>
+    </li>
+  </ul>
+  <div class="spacer"></div>
+ <p class="small">We'll define these techniques properly in Week 4 when you put them into practice.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 4: GENERALISATION  (Slides 13–16)
+     ============================================================ -->
+
+<!-- Slide 13: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-globe-hemisphere-west"></i></div>
+  <h2>Generalisation</h2>
+  <p>The fundamental goal of machine learning</p>
+</section>
+
+<!-- Slide 14: What is generalisation? -->
+<section>
+  <h2>The Core Goal: Generalisation</h2>
+  <div class="spacer"></div>
+  <div class="key-insight" style="padding: 24px 30px;">
+    <p style="font-size: 1.1em; margin-bottom: 0;"><strong>Generalisation</strong> = making accurate predictions about data the model has <strong>never seen</strong>.</p>
+  </div>
+  <div class="spacer-lg"></div>
+  <ul>
+ <li>A model that explains your sample perfectly but fails on new participants is <strong>worthless</strong></li>
+ <li>We want models that capture <strong>real patterns</strong> — not noise specific to our particular sample</li>
+ <li>This is where most ML projects go wrong — optimising for training data instead of new data</li>
+  </ul>
+</section>
+
+<!-- Slide 15: Exam Analogy -->
+<section>
+  <h2>The Exam Analogy</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+ <div class="highlight-box" style="border-left-color: var(--mq-orange);">
+        <h3 style="color: var(--mq-orange);"><i class="ph ph-book-open"></i> Memorising</h3>
+        <p>Memorise every past exam paper word-for-word</p>
+        <p>Perfect marks on <em>those specific papers</em></p>
+        <p>New questions? <strong>In trouble.</strong></p>
+        <p class="small" style="color: var(--mq-orange); font-weight: 600;">= Overfitting</p>
+      </div>
+    </div>
+    <div class="col">
+ <div class="info-box" style="border-left-color: var(--mq-green);">
+        <h3 style="color: var(--mq-green);"><i class="ph ph-brain"></i> Understanding</h3>
+        <p>Understand the underlying concepts</p>
+        <p>Can answer questions you've never seen before</p>
+        <p>Adapts to new situations</p>
+        <p class="small" style="color: var(--mq-green); font-weight: 600;">= Generalising</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+ <p>Understanding the concepts (generalising) beats memorising the specifics (overfitting) every time.</p>
+</section>
+
+<!-- Slide 16: Stats connection -->
+<section>
+  <h2>You Already Know About Generalisation</h2>
+  <div class="spacer"></div>
+ <p>In inferential statistics, you generalise from a <strong>sample</strong> to a <strong>population</strong>.</p>
+ <p>That's what p-values and confidence intervals are for — asking whether patterns in your sample likely exist in the broader population.</p>
+  <div class="spacer"></div>
+ <div class="key-insight">
+    <p>ML takes this further: instead of asking <em>"is this effect real?"</em> it asks <em>"can I predict what will happen for a new person?"</em></p>
+  </div>
+  <div class="spacer"></div>
+ <p>This connects directly to Week 1's theme: <strong>prediction vs explanation</strong> <br>(<a href="https://doi.org/10.1177/1745691617693393">Yarkoni &amp; Westfall, 2017</a>)</p>
+</section>
+
+<!-- ============================================================
+     SECTION 5: TRAIN/TEST SPLITS  (Slides 17–20)
+     ============================================================ -->
+
+<!-- Slide 17: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-scissors"></i></div>
+  <h2>Train / Test Splits</h2>
+  <p>The simplest defence against self-deception</p>
+</section>
+
+<!-- Slide 18: The idea -->
+<section>
+  <h2>Split Your Data Before You Start</h2>
+  <div class="spacer"></div>
+  <p>Before building any model, split your data into two parts:</p>
+  <div class="spacer"></div>
+
+  <!-- HTML train/test split diagram -->
+  <div class="split-diagram">
+ <div class="split-block split-train">
+      <div>
+        <div style="font-size: 1.1em;">Training Set</div>
+        <div style="font-size: 0.7em; font-weight: 400; margin-top: 4px;">~75% of data</div>
+        <div style="font-size: 0.65em; font-weight: 400;">Model learns from this</div>
+      </div>
+    </div>
+ <div class="split-divider"></div>
+ <div class="split-block split-test">
+      <div>
+        <div style="font-size: 1.1em;">Test Set</div>
+        <div style="font-size: 0.7em; font-weight: 400; margin-top: 4px;">~25% of data</div>
+        <div style="font-size: 0.65em; font-weight: 400;">Evaluate here</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-lg"></div>
+ <p>Like splitting your sample in half, running your analysis on one half, and checking whether the same pattern holds in the other — <strong>before publishing</strong>.</p>
+</section>
+
+<!-- Slide 19: Cardinal Rule -->
+<section>
+  <h2>The Cardinal Rule</h2>
+  <div class="spacer-lg"></div>
+  <div style="background: rgba(167, 25, 48, 0.08); border: 3px solid var(--mq-red); border-radius: 16px; padding: 40px 50px; text-align: center;">
+    <p style="font-size: 1.4em; font-weight: 800; color: var(--mq-red); margin-bottom: 0.3em;">Never peek at the test set.</p>
+    <p style="font-size: 1.0em; color: var(--mq-charcoal);">If you look at it — even once — during model development, it stops being "new" data and your evaluation is <strong>contaminated</strong>.</p>
+  </div>
+  <div class="spacer-lg"></div>
+  <ul>
+ <li>Don't use test data to choose features</li>
+ <li>Don't use test data to tune settings</li>
+ <li>Don't use test data to compare models during development</li>
+ <li>Only touch the test set <strong>once, at the very end</strong>, for your final evaluation</li>
+  </ul>
+</section>
+
+<!-- Slide 20: Beyond the Basic Split -->
+<section>
+  <h2>Beyond the Basic Split</h2>
+  <div class="spacer"></div>
+  <p>Train/test is the foundation — but there are more sophisticated strategies:</p>
+  <div class="spacer"></div>
+  <ul>
+    <li class="fragment"><strong>Validation set</strong> — a third split carved from training data, used to compare models and tune settings <em>without</em> touching the test set
+      <ul><li>Cross-validation (coming up next) achieves this without sacrificing data</li></ul>
+    </li>
+    <li class="fragment"><strong>Leave-One-Participant-Out (LOPO)</strong> — hold out one person at a time, train on everyone else
+      <ul><li>Essential when you have repeated measures — prevents data from the same person leaking across splits</li></ul>
+    </li>
+    <li class="fragment"><strong>Leave-One-Group-Out (LOGO)</strong> — hold out an entire site or group
+      <ul><li>Does a model trained at one hospital generalise to another?</li></ul>
+    </li>
+    <li class="fragment"><strong>Stratified splitting</strong> — ensures categories (e.g., diagnosis, gender) are represented proportionally in each split</li>
+  </ul>
+  <div class="spacer"></div>
+  <p class="fragment small">We'll explore these specialised methods in later weeks when we work with more complex datasets.</p>
+</section>
+
+<!-- Slide 21: Think About It #1 -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>A researcher builds 20 different models and picks the one that scores best on the test set. They report that model's test performance as their result.</p>
+  <div class="spacer"></div>
+  <p>Why is this a problem?</p>
+  <div class="spacer"></div>
+  <p>How is it similar to <strong>p-hacking</strong> in traditional statistics?</p>
+</section>
+
+<!-- ============================================================
+     SECTION 6: OVERFITTING & UNDERFITTING  (Slides 21–26)
+     ============================================================ -->
+
+<!-- Slide 21: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-warning-circle"></i></div>
+  <h2>Overfitting &amp; Underfitting</h2>
+  <p>When models lie to you</p>
+</section>
+
+<!-- Slide 22: Overfitting -->
+<section>
+  <h2>Overfitting</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box" style="border-left-color: var(--mq-orange);">
+    <p>The model <strong>memorises</strong> the training data — including its noise and quirks. Performs brilliantly on training data but poorly on anything new.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>Like the student who memorised past exam answers without understanding the material</li>
+ <li>Training R² = 0.95 → "Amazing!"
+      <ul><li>Test R² = 0.10 → "Disaster."</li></ul>
+    </li>
+ <li>The model learned the <strong>noise</strong>, not the <strong>signal</strong></li>
+  </ul>
+</section>
+
+<!-- Slide 23: Underfitting -->
+<section>
+  <h2>Underfitting</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box" style="border-left-color: var(--mq-blue);">
+    <p>The model is <strong>too rigid</strong> to capture real patterns. A straight line through clearly curved data.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>Like the student who only read the chapter summaries</li>
+ <li>Training R² = 0.05 → "Hmm."
+      <ul><li>Test R² = 0.04 → "At least it's consistent... consistently bad."</li></ul>
+    </li>
+ <li>The model missed the <strong>real patterns</strong> in the data</li>
+  </ul>
+</section>
+
+<!-- Slide 24: The Sweet Spot -->
+<section>
+  <h2>The Sweet Spot</h2>
+  <div class="spacer"></div>
+
+  <!-- HTML/CSS overfitting curve -->
+  <div class="curve-container">
+    <svg viewBox="0 0 820 440">
+      <!-- Axes -->
+      <line x1="80" y1="380" x2="760" y2="380" stroke="#2D2D2D" stroke-width="2"/>
+      <line x1="80" y1="380" x2="80" y2="40" stroke="#2D2D2D" stroke-width="2"/>
+
+      <!-- X-axis labels -->
+      <text x="420" y="425" text-anchor="middle" font-size="16" font-weight="600" fill="#2D2D2D" font-family="Inter, sans-serif">Model Complexity →</text>
+      <text x="120" y="410" font-size="13" fill="#8C8C8C" font-family="Inter, sans-serif">Simple</text>
+      <text x="700" y="410" font-size="13" fill="#8C8C8C" font-family="Inter, sans-serif">Complex</text>
+
+      <!-- Y-axis label -->
+      <text x="24" y="210" text-anchor="middle" font-size="16" font-weight="600" fill="#2D2D2D" transform="rotate(-90, 24, 210)" font-family="Inter, sans-serif">Prediction Error</text>
+
+      <!-- Training error curve (blue, decreasing) -->
+      <path d="M 100,300 C 200,260 300,190 400,140 C 500,100 600,80 740,65" fill="none" stroke="#4A90D9" stroke-width="4" stroke-linecap="round" class="fragment" data-fragment-index="0"/>
+
+      <!-- Test error curve (red, U-shaped) -->
+      <path d="M 100,320 C 200,260 300,210 380,190 C 420,184 440,184 460,188 C 540,210 620,260 700,340 L 740,370" fill="none" stroke="#A71930" stroke-width="4" stroke-linecap="round" class="fragment" data-fragment-index="1"/>
+
+      <!-- Sweet spot -->
+      <circle cx="430" cy="185" r="10" fill="none" stroke="#5BA55B" stroke-width="3" class="fragment" data-fragment-index="2"/>
+      <line x1="430" y1="185" x2="430" y2="380" stroke="#5BA55B" stroke-width="2" stroke-dasharray="8,5" class="fragment" data-fragment-index="2"/>
+      <text x="430" y="50" text-anchor="middle" font-size="18" font-weight="700" fill="#5BA55B" font-family="Inter, sans-serif" class="fragment" data-fragment-index="2">Sweet Spot</text>
+
+      <!-- Zone labels -->
+      <text x="200" y="360" text-anchor="middle" font-size="15" fill="#8C8C8C" font-family="Inter, sans-serif" class="fragment" data-fragment-index="3">Underfitting</text>
+      <text x="650" y="360" text-anchor="middle" font-size="15" fill="#8C8C8C" font-family="Inter, sans-serif" class="fragment" data-fragment-index="3">Overfitting</text>
+
+      <!-- Legend (top-right, clear of curves) -->
+      <rect x="600" y="48" width="200" height="60" rx="8" fill="white" fill-opacity="0.9" stroke="#E0E0E0" stroke-width="1"/>
+      <line x1="616" y1="70" x2="652" y2="70" stroke="#4A90D9" stroke-width="4"/>
+      <text x="662" y="76" font-size="15" font-weight="600" fill="#4A90D9" font-family="Inter, sans-serif">Training error</text>
+      <line x1="616" y1="96" x2="652" y2="96" stroke="#A71930" stroke-width="4"/>
+      <text x="662" y="102" font-size="15" font-weight="600" fill="#A71930" font-family="Inter, sans-serif">Test error</text>
+    </svg>
+  </div>
+</section>
+
+<!-- Slide 25: Concrete Example — DASS -->
+<section>
+  <h2>A Concrete Example</h2>
+  <div class="spacer"></div>
+  <p>Using the synthetic DASS dataset from Week 2:</p>
+  <div class="spacer"></div>
+  <div class="highlight-box fragment" style="border-left-color: var(--mq-orange);">
+    <p><strong>Circular overfitting:</strong> If we include the individual DASS items (DASS_1, DASS_2, ... DASS_21) as features to predict DASS_Depression — the model "learns" the scoring formula. R² ≈ 1.0 on training data. But it hasn't learned anything about how <strong>lifestyle</strong> relates to depression.</p>
+  </div>
+  <div class="spacer"></div>
+  <div class="info-box fragment">
+    <p><strong>Clinical danger:</strong> A model appears to predict suicide risk with 95% accuracy in the training sample — but drops to 55% on new patients. A clinician relying on that model has <strong>false confidence</strong> in predictions barely better than a coin flip.</p>
+  </div>
+</section>
+
+<!-- Slide 26: Think About It #2 -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>Psychology traditionally uses relatively rigid models — t-tests, ANOVA, linear regression — that make strong assumptions.</p>
+  <div class="spacer"></div>
+  <p>ML offers far more flexible models.</p>
+  <div class="spacer"></div>
+  <p>When might a psychologist <strong>prefer a biased but stable model</strong> over a flexible but unstable one?</p>
+  <div class="spacer"></div>
+  <p style="font-size: 0.9em;">Think about: clinical decision-making, replication, and sample sizes.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 7: BIAS–VARIANCE TRADE-OFF  (Slides 27–31)
+     ============================================================ -->
+
+<!-- Slide 27: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-scales"></i></div>
+  <h2>The Bias–Variance<br>Trade-off</h2>
+  <p>The spectrum from too rigid to too flexible</p>
+</section>
+
+<!-- Slide 28: Bias -->
+<section>
+  <h2>Bias</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p><strong>Bias</strong> = how far off the model's predictions are <strong>on average</strong></p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>High bias → the model <strong>consistently misses the truth</strong>
+      <ul><li>A straight line fitted to a curved relationship</li></ul>
+    </li>
+ <li>High bias = <strong>underfitting</strong>
+      <ul><li>The model is too rigid to capture the real pattern</li></ul>
+    </li>
+ <li>Example: using only age to predict depression (ignoring sleep, exercise, social support...)
+      <ul><li>The model is systematically wrong because it's missing important information</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 29: Variance -->
+<section>
+  <h2>Variance</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box" style="border-left-color: var(--mq-orange);">
+    <p><strong>Variance</strong> = how much predictions <strong>change</strong> when trained on different samples</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>High variance → the model is <strong>unstable</strong>
+      <ul><li>A wiggly curve that changes dramatically with each new dataset</li></ul>
+    </li>
+ <li>High variance = <strong>overfitting</strong>
+      <ul><li>The model is fitting noise, not signal</li></ul>
+    </li>
+ <li>Example: a complex model using all 44 variables on a sample of 50
+      <ul><li>Train it on a different 50 people and you get completely different results</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 30: The Trade-off -->
+<section>
+  <h2>The Trade-off</h2>
+  <div class="spacer"></div>
+ <p>Reducing bias tends to <strong>increase</strong> variance, and vice versa. You can't minimise both at once.</p>
+  <div class="spacer"></div>
+
+  <!-- Bias-variance spectrum diagram -->
+ <div class="bv-spectrum">
+    <div class="bv-end" style="background: rgba(74,144,217,0.12);">
+      <h4 style="color: var(--mq-blue);">High Bias</h4>
+      <p style="color: var(--mq-blue);">Low Variance</p>
+      <p style="color: var(--mq-grey); font-size: 0.6em;">Underfitting</p>
+    </div>
+    <div class="bv-gradient">← The trade-off →</div>
+    <div class="bv-end" style="background: rgba(167,25,48,0.12);">
+      <h4 style="color: var(--mq-red);">Low Bias</h4>
+      <p style="color: var(--mq-red);">High Variance</p>
+      <p style="color: var(--mq-grey); font-size: 0.6em;">Overfitting</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+ <div class="two-col">
+    <div class="col">
+      <p><strong>Stats models you know:</strong><br>t-tests, ANOVA, linear regression</p>
+      <p class="small">High bias, low variance — strong assumptions, stable results, may miss patterns</p>
+    </div>
+    <div class="col">
+      <p><strong>Flexible ML models:</strong><br>neural networks, random forests</p>
+      <p class="small">Low bias, high variance — fewer assumptions, capture complexity, need more data</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 31: Replication crisis connection -->
+<section>
+  <h2>The Replication Crisis Connection</h2>
+  <div class="spacer"></div>
+ <div class="key-insight">
+    <p>Complex analyses on small samples = <strong>high variance</strong> = findings that don't replicate.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>Psychology's replication crisis is partly a <strong>bias–variance problem</strong>
+      <ul><li>Flexible analyses on small, noisy samples → results that look compelling but don't hold up</li></ul>
+    </li>
+ <li>ML makes this trade-off <strong>explicit</strong> rather than hiding it behind a single p-value
+      <ul><li>You can see the gap between training and test performance — that gap <em>is</em> the overfitting</li></ul>
+    </li>
+ <li>Cross-validation (coming up next) forces you to confront this directly</li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     SECTION 8: CROSS-VALIDATION  (Slides 32–36)
+     ============================================================ -->
+
+<!-- Slide 32: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-arrows-clockwise"></i></div>
+  <h2>Cross-Validation</h2>
+  <p>A more reliable way to evaluate</p>
+</section>
+
+<!-- Slide 33: The problem with a single split -->
+<section>
+  <h2>The Problem with a Single Split</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li>A single train/test split gives you <strong>one estimate</strong> of performance</li>
+ <li>What if you got a <strong>lucky</strong> split? Or an <strong>unlucky</strong> one?
+      <ul><li>Maybe the easy-to-predict participants all ended up in your test set</li></ul>
+    </li>
+ <li>Your result depends on <strong>which observations</strong> happened to land where</li>
+ <li>We need something more robust...</li>
+  </ul>
+</section>
+
+<!-- Slide 34: K-fold CV explanation -->
+<section>
+  <h2>K-Fold Cross-Validation</h2>
+  <div class="spacer"></div>
+  <ol>
+ <li>Split your data into <strong>K equal chunks</strong> (typically 5 or 10)</li>
+ <li>Train on <strong>K−1 chunks</strong>, test on the remaining one</li>
+ <li>Repeat <strong>K times</strong>, rotating which chunk is held out</li>
+ <li><strong>Average</strong> the K performance scores</li>
+  </ol>
+  <div class="spacer-lg"></div>
+ <div class="key-insight">
+    <p>Think of it like running your study <strong>K times</strong> with different random samples. Instead of one p-value, you get K estimates of performance — and you can see how much they vary.</p>
+  </div>
+</section>
+
+<!-- Slide 35: K-fold diagram -->
+<section>
+  <h2>5-Fold Cross-Validation</h2>
+  <div class="spacer"></div>
+
+  <!-- HTML K-fold grid -->
+  <div class="kfold-grid">
+    <!-- Row 1 -->
+    <div class="kfold-label fragment" data-fragment-index="0">Fold 1</div>
+    <div class="kfold-cell kfold-test fragment" data-fragment-index="0">Test</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="0">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="0">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="0">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="0">Train</div>
+    <div class="kfold-score fragment" data-fragment-index="0">→ R²₁</div>
+
+    <!-- Row 2 -->
+    <div class="kfold-label fragment" data-fragment-index="1">Fold 2</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="1">Train</div>
+    <div class="kfold-cell kfold-test fragment" data-fragment-index="1">Test</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="1">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="1">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="1">Train</div>
+    <div class="kfold-score fragment" data-fragment-index="1">→ R²₂</div>
+
+    <!-- Row 3 -->
+    <div class="kfold-label fragment" data-fragment-index="2">Fold 3</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="2">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="2">Train</div>
+    <div class="kfold-cell kfold-test fragment" data-fragment-index="2">Test</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="2">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="2">Train</div>
+    <div class="kfold-score fragment" data-fragment-index="2">→ R²₃</div>
+
+    <!-- Row 4 -->
+    <div class="kfold-label fragment" data-fragment-index="3">Fold 4</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="3">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="3">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="3">Train</div>
+    <div class="kfold-cell kfold-test fragment" data-fragment-index="3">Test</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="3">Train</div>
+    <div class="kfold-score fragment" data-fragment-index="3">→ R²₄</div>
+
+    <!-- Row 5 -->
+    <div class="kfold-label fragment" data-fragment-index="4">Fold 5</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="4">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="4">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="4">Train</div>
+    <div class="kfold-cell kfold-train fragment" data-fragment-index="4">Train</div>
+    <div class="kfold-cell kfold-test fragment" data-fragment-index="4">Test</div>
+    <div class="kfold-score fragment" data-fragment-index="4">→ R²₅</div>
+  </div>
+
+  <div class="spacer"></div>
+  <p class="fragment" data-fragment-index="5" style="text-align: center; font-weight: 700; color: var(--mq-green);">Final score = Average of R²₁ through R²₅</p>
+</section>
+
+<!-- Slide 36: CV practical tips -->
+<section>
+  <h2>Cross-Validation in Practice</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li><strong>K = 5 or K = 10</strong> are the most common choices
+      <ul><li>K = 5 is faster; K = 10 gives slightly better estimates</li></ul>
+    </li>
+ <li>If performance is <strong>consistent</strong> across folds → you can be more confident the model generalises</li>
+ <li>If performance <strong>swings wildly</strong> → something may be wrong
+      <ul><li>Too few observations? Data not representative? Model too complex?</li></ul>
+    </li>
+ <li><strong>Important:</strong> CV is for model <em>development</em> — comparing approaches, tuning settings
+      <ul><li>Still keep a final held-out test set you only touch at the very end</li></ul>
+    </li>
+  </ul>
+  <div class="spacer"></div>
+ <p class="small">Reference: <a href="https://doi.org/10.1177/2515245919898466">de Rooij &amp; Weeda (2020)</a> — "Cross-Validation: A Method Every Psychologist Should Know"</p>
+</section>
+
+<!-- Slide 37: Random Seeds -->
+<section>
+  <h2>A Note on Random Seeds</h2>
+  <div class="spacer"></div>
+  <p>Data splits are <strong>random</strong> — different rows land in training vs test each time you run the code.</p>
+  <div class="spacer"></div>
+  <ul>
+ <li><strong>Random seed</strong> = a number that makes randomness reproducible
+      <ul><li>Same seed → same split → same results every time</li></ul>
+    </li>
+ <li><strong>During development:</strong> fix your seed so results are stable while you build and compare models</li>
+ <li><strong>Before reporting:</strong> try a few different seeds and check your conclusions still hold
+      <ul><li>If results change dramatically with a different seed → warning sign</li></ul>
+    </li>
+  </ul>
+  <div class="spacer"></div>
+ <div class="highlight-box">
+    <p>This extends beyond splitting. Models like neural networks start from <strong>random initial weights</strong> — fixing those seeds makes your entire analysis reproducible. We'll revisit this in later weeks.</p>
+  </div>
+  <div class="spacer"></div>
+ <p style="font-family: monospace; font-size: 0.85em; color: var(--mq-blue); background: rgba(74, 144, 217, 0.06); padding: 12px 20px; border-radius: 8px; display: inline-block;">random_state=42 &nbsp; ← doing something important!</p>
+</section>
+
+<!-- ============================================================
+     SECTION 9: BASELINES & METRICS  (Slides 38–42)
+     ============================================================ -->
+
+<!-- Slide 37: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-chart-line"></i></div>
+  <h2>Baselines &amp; Metrics</h2>
+  <p>How to know if your model actually works</p>
+</section>
+
+<!-- Slide 38: Baseline models -->
+<section>
+  <h2>Baseline Models: "Am I Actually Learning Anything?"</h2>
+  <div class="spacer"></div>
+  <p>Before building anything complex, ask: <strong>what's the dumbest possible prediction?</strong></p>
+  <div class="spacer"></div>
+ <div class="highlight-box">
+    <p><strong>Mean prediction baseline:</strong> Predict the average target value for everyone.</p>
+    <p>In our synthetic DASS dataset, mean depression ≈ 14. If we predict 14 for every person, MAE ≈ 9 points.</p>
+    <p><strong>If your fancy model can't beat this, it hasn't learned anything useful.</strong></p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>Baselines keep you honest</li>
+ <li>R² = 0.15 sounds bad — until baseline is R² = 0.00 and theoretical max is ~0.30
+      <ul><li>Context matters enormously in behavioural science</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 39: Think About It #3 -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>A research team reports that their ML model predicts therapy outcomes with <strong>72% accuracy</strong>.</p>
+  <div class="spacer"></div>
+  <p>Sounds impressive — but what if <strong>70% of patients improve regardless</strong> of treatment?</p>
+  <div class="spacer"></div>
+  <p>Their model barely beats random guessing. Why do you think <strong>baseline comparisons are so rarely reported</strong> in published ML papers?</p>
+</section>
+
+<!-- Slide 40: Evaluation Metrics -->
+<section>
+  <h2>Evaluation Metrics for Regression</h2>
+  <div class="spacer"></div>
+  <div class="metric-grid">
+    <div class="metric-card fragment" style="border-top-color: var(--mq-blue);">
+      <h3 style="color: var(--mq-blue);">R²</h3>
+      <p class="metric-formula">Coefficient of determination</p>
+      <p>Proportion of variance explained</p>
+      <p><strong>R² = 0.30</strong> → model explains 30% of variation in depression scores</p>
+      <p class="small">Familiar from stats — but now calculated on <strong>test data</strong></p>
+    </div>
+    <div class="metric-card fragment" style="border-top-color: var(--mq-green);">
+      <h3 style="color: var(--mq-green);">MAE</h3>
+      <p class="metric-formula">Mean Absolute Error</p>
+      <p>Average prediction error, in same units as target</p>
+      <p><strong>MAE = 4.2</strong> → predictions off by ~4 points on the 0–42 DASS scale</p>
+      <p class="small">Intuitive — easy to explain to non-technical audiences</p>
+    </div>
+    <div class="metric-card fragment" style="border-top-color: var(--mq-orange);">
+      <h3 style="color: var(--mq-orange);">RMSE</h3>
+      <p class="metric-formula">Root Mean Squared Error</p>
+      <p>Like MAE but penalises large errors more</p>
+      <p><strong>RMSE &gt; MAE</strong> → some predictions are very far off</p>
+      <p class="small">Use when big mistakes are especially costly (e.g., clinical risk)</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="fragment small">Rule of thumb: report at least <strong>R²</strong> (relative performance) and <strong>MAE</strong> (practical accuracy). Classification metrics (accuracy, precision, recall) come in Week 5.</p>
+</section>
+
+<!-- Slide 41: What counts as good? -->
+<section>
+  <h2>What Counts as "Good"?</h2>
+  <div class="spacer"></div>
+ <p>It depends on the domain. In behavioural science:</p>
+  <div class="spacer"></div>
+  <ul>
+ <li><strong>R² = 0.10 – 0.15</strong> → small but meaningful
+      <ul><li>Predicting individual behaviour from a few survey items? That's real signal.</li></ul>
+    </li>
+ <li><strong>R² = 0.20 – 0.35</strong> → quite good for individual-level prediction
+      <ul><li>Human behaviour is inherently noisy — we're not predicting physics.</li></ul>
+    </li>
+ <li><strong>R² &gt; 0.50</strong> → check for data leakage or circular features
+      <ul><li>Suspiciously good? Make sure you're not accidentally cheating.</li></ul>
+    </li>
+  </ul>
+  <div class="spacer"></div>
+ <div class="key-insight">
+    <p>We're predicting what real, complex people do — not the trajectory of a billiard ball. Context matters.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 10: REGULARISATION PREVIEW  (Slides 42–45)
+     ============================================================ -->
+
+<!-- Slide 42: Section Divider -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-faders-horizontal"></i></div>
+  <h2>Regularisation</h2>
+  <p>A brief preview for Week 4</p>
+</section>
+
+<!-- Slide 43: What is regularisation? -->
+<section>
+  <h2>Fighting Overfitting with Regularisation</h2>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p><strong>Regularisation</strong> = adding a penalty that discourages the model from becoming too complex</p>
+  </div>
+  <div class="spacer"></div>
+  <div class="reg-compare">
+ <div class="reg-box" style="background: rgba(74,144,217,0.06); border: 2px solid var(--mq-blue); border-radius: 12px;">
+      <h3 style="color: var(--mq-blue);"><i class="ph ph-arrows-in"></i> Ridge (L2)</h3>
+      <ul>
+        <li><strong>Shrinks</strong> all coefficients toward zero</li>
+        <li>Keeps all features, but makes them smaller</li>
+        <li>"Don't let any single predictor dominate"</li>
+      </ul>
+    </div>
+ <div class="reg-box" style="background: rgba(232,135,61,0.06); border: 2px solid var(--mq-orange); border-radius: 12px;">
+      <h3 style="color: var(--mq-orange);"><i class="ph ph-x"></i> Lasso (L1)</h3>
+      <ul>
+        <li>Can shrink coefficients <strong>all the way to zero</strong></li>
+        <li>Effectively <strong>drops</strong> unimportant features</li>
+        <li>"Which predictors can I remove without losing much?"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 44: Stats connection -->
+<section>
+  <h2>Stats Connection: Stepwise Regression</h2>
+  <div class="spacer"></div>
+ <p>You may have encountered <strong>stepwise regression</strong> — adding or removing predictors based on significance.</p>
+  <div class="spacer"></div>
+ <div class="info-box">
+    <p><strong>Lasso</strong> does something similar but more principled — it simultaneously fits the model and selects features in a single step, rather than testing one predictor at a time.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>These are the models you'll <strong>build in Week 4's lab</strong></li>
+ <li>You'll compare: baseline → linear regression → Ridge → Lasso</li>
+ <li>The AI will help you write the code — you need to understand <strong>what</strong> the models do and <strong>why</strong></li>
+  </ul>
+</section>
+
+<!-- Slide 45: Think About It #4 -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-lightbulb"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>If a Lasso regression drops a feature entirely (sets its coefficient to zero), does that mean the feature is truly <strong>unrelated</strong> to the outcome?</p>
+  <div class="spacer"></div>
+  <p>Or could it mean something else?</p>
+  <div class="spacer"></div>
+  <p>Think about what happens when two features are <strong>highly correlated</strong> with each other.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 11: COMMON MISCONCEPTIONS  (Slide 46)
+     ============================================================ -->
+
+<!-- Slide 46: Common Misconceptions -->
+<section>
+  <h2>Common Misconceptions</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li><strong>"Higher R² is always better"</strong>
+      <ul><li>Not if it comes from overfitting. Training R² = 0.95 but test R² = 0.10 is a disaster.</li></ul>
+    </li>
+ <li><strong>"More features = better model"</strong>
+      <ul><li>Adding irrelevant features introduces noise. Sometimes less is more.</li></ul>
+    </li>
+ <li><strong>"R² = 0.25 means my model is bad"</strong>
+      <ul><li>In behavioural science, that's quite respectable for individual-level prediction.</li></ul>
+    </li>
+ <li><strong>"Cross-validation guarantees good performance"</strong>
+      <ul><li>It gives better estimates, but can still mislead with structured or clustered data.</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     SECTION 12: THE ML PIPELINE  (Slide 47)
+     ============================================================ -->
+
+<!-- Slide 47: The ML Pipeline -->
+<section>
+  <h2>The ML Pipeline — Putting It All Together</h2>
+  <div class="spacer"></div>
+
+  <!-- HTML pipeline flow -->
+  <div class="flow-diagram">
+ <div class="flow-step" style="background: rgba(74,144,217,0.1); border: 2px solid var(--mq-blue); color: var(--mq-blue);">
+      <i class="ph ph-database"></i> Data
+      <div class="step-subtitle">Features + Target</div>
+    </div>
+ <div class="flow-arrow">→</div>
+ <div class="flow-step" style="background: rgba(123,104,168,0.1); border: 2px solid var(--mq-purple); color: var(--mq-purple);">
+      <i class="ph ph-funnel"></i> Preprocess
+      <div class="step-subtitle">Clean, Scale, Encode</div>
+    </div>
+ <div class="flow-arrow">→</div>
+ <div class="flow-step" style="background: rgba(232,135,61,0.1); border: 2px solid var(--mq-orange); color: var(--mq-orange);">
+      <i class="ph ph-scissors"></i> Split
+      <div class="step-subtitle">Train / Test + CV</div>
+    </div>
+ <div class="flow-arrow">→</div>
+ <div class="flow-step" style="background: rgba(167,25,48,0.1); border: 2px solid var(--mq-red); color: var(--mq-red);">
+      <i class="ph ph-gear"></i> Train
+      <div class="step-subtitle">Fit Model</div>
+    </div>
+ <div class="flow-arrow">→</div>
+ <div class="flow-step" style="background: rgba(91,165,91,0.1); border: 2px solid var(--mq-green); color: var(--mq-green);">
+      <i class="ph ph-check-circle"></i> Evaluate
+      <div class="step-subtitle">R², MAE, RMSE</div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+ <p style="text-align: center;">This is the workflow you'll follow in every lab — <strong>Week 4</strong> will be your first time through it.</p>
+</section>
+
+<!-- ============================================================
+     SECTION 13: GETTING READY FOR WEEK 4  (Slides 48–49)
+     ============================================================ -->
+
+<!-- Slide 48: Getting Ready for Week 4 -->
+<section>
+  <h2>Getting Ready for Week 4</h2>
+  <div class="spacer"></div>
+  <p>Next week you'll put all of this into practice:</p>
+  <div class="spacer"></div>
+  <ul>
+ <li><i class="ph ph-database"></i> Build regression models on a <strong>real DASS dataset</strong>
+      <ul><li>39,775 real survey responses — not synthetic data this time</li></ul>
+    </li>
+ <li><i class="ph ph-code"></i> Use <strong>scikit-learn</strong> (<code>sklearn</code>) — the standard Python library for ML
+      <ul><li>Your AI assistant helps with the code — you focus on what and why</li></ul>
+    </li>
+ <li><i class="ph ph-scales"></i> Compare: <strong>Baseline → Linear Regression → Ridge → Lasso</strong>
+      <ul><li>Which model generalises best to held-out data?</li></ul>
+    </li>
+ <li><i class="ph ph-bug"></i> LLM skill focus: <strong>debugging</strong>
+      <ul><li>When code breaks, share the error with your AI and guide it to a fix</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 49: ML Vocabulary as Shared Language -->
+<section>
+  <h2>Your New Shared Language with AI</h2>
+  <div class="spacer"></div>
+  <p>The vocabulary from this week becomes your tool for communicating with AI coding assistants:</p>
+  <div class="spacer"></div>
+ <div class="prompt-good" style="font-size: 0.75em;">
+    <p style="margin-bottom: 0;">"My <strong>features</strong> are TIPI Extraversion and Emotional Stability. My <strong>target</strong> is DASS Depression. I want to <strong>train</strong> a <strong>Ridge regression</strong> with <strong>5-fold cross-validation</strong> and report <strong>MAE</strong> and <strong>R²</strong>."</p>
+  </div>
+  <div class="spacer"></div>
+ <p>The AI knows <strong>exactly</strong> what you mean. That's the power of speaking ML.</p>
+  <div class="spacer"></div>
+ <div class="info-box">
+    <p><strong>Before next week:</strong> Read the companion reading if you haven't already. Review the key terms. You don't need to memorise code — just the concepts.</p>
+  </div>
+  <div class="spacer"></div>
+ <div class="highlight-box" style="border-left-color: var(--mq-red);">
+    <p><strong>Homework:</strong> Download the Week 4 dataset <em>before</em> class!</p>
+    <p style="font-family: monospace; font-size: 0.75em; margin-top: 8px;">conda activate psyc4411-env<br>cd weeks/week-04-lab/data<br>python download_data.py</p>
+  </div>
+</section>
+
+<!-- Slide 50: Key References -->
+<section>
+  <h2>Key References</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li><strong>Yarkoni &amp; Westfall (2017)</strong> — Prediction vs explanation in psychology
+      <ul><li><a href="https://doi.org/10.1177/1745691617693393">doi.org/10.1177/1745691617693393</a> — Open access</li></ul>
+    </li>
+ <li><strong>de Rooij &amp; Weeda (2020)</strong> — Cross-validation for psychologists
+      <ul><li><a href="https://doi.org/10.1177/2515245919898466">doi.org/10.1177/2515245919898466</a> — Open access</li></ul>
+    </li>
+ <li><strong>Poldrack, Huckins &amp; Varoquaux (2020)</strong> — Best practices for prediction studies
+      <ul><li><a href="https://doi.org/10.1001/jamapsychiatry.2019.3671">doi.org/10.1001/jamapsychiatry.2019.3671</a> — Free via PMC</li></ul>
+    </li>
+ <li><strong>James et al. (2023)</strong> — <em>Intro to Statistical Learning (Python)</em>, Ch 2 &amp; 5
+      <ul><li><a href="https://www.statlearning.com">statlearning.com</a> — Free PDF</li></ul>
+    </li>
+  </ul>
+  <div class="spacer"></div>
+ <p class="small">Full reading list: <a href="../readings.md">readings.md</a></p>
+</section>
+
+<!-- Slide 51: End Slide -->
+<section class="end-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+  <h1>Questions?</h1>
+  <div class="spacer-lg"></div>
+  <p>Next week: Your First ML Pipeline — Regression with scikit-learn</p>
+  <div class="spacer"></div>
+  <p>PSYC4411 &middot; Macquarie University &middot; 2026</p>
+</section>
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<!-- reveal.js core -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+
+<!-- reveal.js plugins -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+
 <script>
   Reveal.initialize({
-    width: 1920, height: 1080, margin: 0,
-    center: false, controls: false,
-    slideNumber: false, progress: false,
-    transition: 'none', hash: false
+    // Presentation settings
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    minScale: 0.2,
+    maxScale: 1.5,
+
+    // Display
+    hash: true,
+    slideNumber: false,
+    progress: false,
+    center: false,
+    transition: 'slide',
+    transitionSpeed: 'default',
+
+    // Controls — arrows at far left/right edges
+    controls: true,
+    controlsLayout: 'edges',
+    controlsBackArrows: 'visible',
+
+    // Navigation
+    keyboard: true,
+    overview: true,
+    touch: true,
+
+    // Fragment animation
+ fragmentInURL: false,
+
+    // Plugins
+    plugins: [ RevealNotes ]
+  }).then(function () {
+    // === Custom Slide Navigation Bar ===
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var totalSlides = slides.length;
+
+    // Build nav bar
+    var nav = document.createElement('div');
+    nav.className = 'slide-nav';
+
+    // Collect slide titles for tooltips
+    function getSlideLabel(section, index) {
+      var h2 = section.querySelector('h2');
+      var h1 = section.querySelector('h1');
+      var title = (h2 && h2.textContent.trim()) || (h1 && h1.textContent.trim()) || '';
+      // Truncate long titles
+      if (title.length > 40) title = title.substring(0, 38) + '…';
+      return (index + 1) + (title ? '. ' + title : '');
+    }
+
+    for (var i = 0; i < totalSlides; i++) {
+      (function (idx) {
+        var pill = document.createElement('button');
+        pill.className = 'slide-nav-pill';
+        pill.textContent = idx + 1;
+        pill.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+
+        // Tooltip with slide title
+        var tooltip = document.createElement('span');
+        tooltip.className = 'nav-tooltip';
+        tooltip.textContent = getSlideLabel(slides[idx], idx);
+        pill.appendChild(tooltip);
+
+        pill.addEventListener('click', function () {
+          Reveal.slide(idx);
+        });
+        nav.appendChild(pill);
+      })(i);
+    }
+
+    document.body.appendChild(nav);
+
+    // Update active/visited state
+    function updateNav() {
+      var current = Reveal.getIndices().h;
+      var pills = nav.querySelectorAll('.slide-nav-pill');
+      for (var j = 0; j < pills.length; j++) {
+        pills[j].classList.toggle('active', j === current);
+        pills[j].classList.toggle('visited', j < current);
+      }
+    }
+
+    Reveal.on('slidechanged', updateNav);
+    updateNav();
+
+    // === Back to Repo Link (top-left) ===
+    var backLink = document.createElement('a');
+    backLink.className = 'back-to-repo';
+    backLink.href = 'https://github.com/xkiwilabs/Practical-AI-for-Behavioural-Science';
+    backLink.target = '_blank';
+    backLink.textContent = '\u2190 Back to Repo';
+    document.body.appendChild(backLink);
+
+    // === Live Clock (top-right) ===
+    var clock = document.createElement('div');
+    clock.className = 'live-clock';
+    document.body.appendChild(clock);
+
+    function updateClock() {
+      var now = new Date();
+      var h = now.getHours();
+      var m = now.getMinutes();
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12 = h % 12 || 12;
+      clock.textContent = h12 + ':' + (m < 10 ? '0' : '') + m + ' ' + ampm;
+    }
+
+    updateClock();
+    setInterval(updateClock, 15000);
+
+    // Adapt clock and back-link style for dark slides
+    function updateOverlayStyles() {
+      var current = Reveal.getCurrentSlide();
+      var isDark = current.classList.contains('section-divider') ||
+                   current.classList.contains('title-slide') ||
+                   current.classList.contains('think-slide') ||
+                   current.classList.contains('end-slide');
+      clock.style.color = isDark ? 'rgba(255,255,255,0.5)' : '';
+      clock.style.background = isDark ? 'rgba(0,0,0,0.3)' : '';
+      backLink.style.color = isDark ? 'rgba(255,255,255,0.5)' : '';
+      backLink.style.background = isDark ? 'rgba(0,0,0,0.3)' : '';
+    }
+
+    Reveal.on('slidechanged', updateOverlayStyles);
+    updateOverlayStyles();
   });
 </script>
 </body>
