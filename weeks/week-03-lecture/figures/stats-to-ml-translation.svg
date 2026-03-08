@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#8C8C8C"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" rx="12" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#2D2D2D">Statistics → Machine Learning</text>
+
+  <!-- Left column header: Stats -->
+  <rect x="40" y="56" width="300" height="36" rx="6" fill="#4A90D9" opacity="0.12"/>
+  <text x="190" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#4A90D9">What You Know (Stats)</text>
+
+  <!-- Right column header: ML -->
+  <rect x="460" y="56" width="300" height="36" rx="6" fill="#A71930" opacity="0.12"/>
+  <text x="610" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#A71930">What It's Called in ML</text>
+
+  <!-- Row 1 -->
+  <rect x="40" y="104" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="190" y="125" text-anchor="middle" font-size="13" fill="#2D2D2D">IV / Predictor</text>
+  <rect x="460" y="104" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="610" y="125" text-anchor="middle" font-size="13" font-weight="600" fill="#A71930">Feature</text>
+  <line x1="340" y1="120" x2="456" y2="120" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Row 2 -->
+  <rect x="40" y="148" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="190" y="169" text-anchor="middle" font-size="13" fill="#2D2D2D">DV / Outcome</text>
+  <rect x="460" y="148" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="610" y="169" text-anchor="middle" font-size="13" font-weight="600" fill="#A71930">Target / Label</text>
+  <line x1="340" y1="164" x2="456" y2="164" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Row 3 -->
+  <rect x="40" y="192" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="190" y="213" text-anchor="middle" font-size="13" fill="#2D2D2D">Fitting a Model / Running Regression</text>
+  <rect x="460" y="192" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="610" y="213" text-anchor="middle" font-size="13" font-weight="600" fill="#A71930">Training</text>
+  <line x1="340" y1="208" x2="456" y2="208" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Row 4 -->
+  <rect x="40" y="236" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="190" y="257" text-anchor="middle" font-size="13" fill="#2D2D2D">Your Sample</text>
+  <rect x="460" y="236" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="610" y="257" text-anchor="middle" font-size="13" font-weight="600" fill="#A71930">Training Data</text>
+  <line x1="340" y1="252" x2="456" y2="252" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Row 5 -->
+  <rect x="40" y="280" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="190" y="301" text-anchor="middle" font-size="13" fill="#2D2D2D">Population / Generalisation</text>
+  <rect x="460" y="280" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="610" y="301" text-anchor="middle" font-size="13" font-weight="600" fill="#A71930">Test Data (held-out)</text>
+  <line x1="340" y1="296" x2="456" y2="296" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Row 6 -->
+  <rect x="40" y="324" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="190" y="345" text-anchor="middle" font-size="13" fill="#2D2D2D">R², Adjusted R²</text>
+  <rect x="460" y="324" width="300" height="32" rx="4" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="610" y="345" text-anchor="middle" font-size="13" font-weight="600" fill="#A71930">Evaluation Metrics (on test data)</text>
+  <line x1="340" y1="340" x2="456" y2="340" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Footer note -->
+  <text x="400" y="386" text-anchor="middle" font-size="11" fill="#8C8C8C">Same concepts, different vocabulary — the biggest shift is evaluating on unseen data</text>
+</svg>

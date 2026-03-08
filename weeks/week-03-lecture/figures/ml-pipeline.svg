@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="pipeArrow" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8" fill="#8C8C8C"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" rx="12" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#2D2D2D">The ML Pipeline</text>
+
+  <!-- Step 1: Data -->
+  <rect x="30" y="60" width="120" height="60" rx="10" fill="#4A90D9" opacity="0.15" stroke="#4A90D9" stroke-width="2"/>
+  <text x="90" y="88" text-anchor="middle" font-size="13" font-weight="700" fill="#4A90D9">Raw Data</text>
+  <text x="90" y="106" text-anchor="middle" font-size="10" fill="#8C8C8C">Features + Target</text>
+
+  <!-- Arrow 1 -->
+  <line x1="155" y1="90" x2="185" y2="90" stroke="#8C8C8C" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+  <!-- Step 2: Preprocessing -->
+  <rect x="190" y="60" width="120" height="60" rx="10" fill="#7B68A8" opacity="0.15" stroke="#7B68A8" stroke-width="2"/>
+  <text x="250" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#7B68A8">Preprocess</text>
+  <text x="250" y="100" text-anchor="middle" font-size="9" fill="#8C8C8C">Clean, scale,</text>
+  <text x="250" y="112" text-anchor="middle" font-size="9" fill="#8C8C8C">encode categories</text>
+
+  <!-- Arrow 2 -->
+  <line x1="315" y1="90" x2="345" y2="90" stroke="#8C8C8C" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+  <!-- Step 3: Train/Test Split -->
+  <rect x="350" y="60" width="120" height="60" rx="10" fill="#E8873D" opacity="0.15" stroke="#E8873D" stroke-width="2"/>
+  <text x="410" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#E8873D">Split</text>
+  <text x="410" y="100" text-anchor="middle" font-size="9" fill="#8C8C8C">Train / Test</text>
+  <text x="410" y="112" text-anchor="middle" font-size="9" fill="#8C8C8C">(+ Cross-Validate)</text>
+
+  <!-- Arrow 3 -->
+  <line x1="475" y1="90" x2="505" y2="90" stroke="#8C8C8C" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+  <!-- Step 4: Model -->
+  <rect x="510" y="60" width="120" height="60" rx="10" fill="#A71930" opacity="0.15" stroke="#A71930" stroke-width="2"/>
+  <text x="570" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#A71930">Train Model</text>
+  <text x="570" y="100" text-anchor="middle" font-size="9" fill="#8C8C8C">Linear, Ridge,</text>
+  <text x="570" y="112" text-anchor="middle" font-size="9" fill="#8C8C8C">Lasso, etc.</text>
+
+  <!-- Arrow 4 -->
+  <line x1="635" y1="90" x2="665" y2="90" stroke="#8C8C8C" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+  <!-- Step 5: Evaluate -->
+  <rect x="670" y="60" width="110" height="60" rx="10" fill="#5BA55B" opacity="0.15" stroke="#5BA55B" stroke-width="2"/>
+  <text x="725" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#5BA55B">Evaluate</text>
+  <text x="725" y="100" text-anchor="middle" font-size="9" fill="#8C8C8C">R², MAE, RMSE</text>
+  <text x="725" y="112" text-anchor="middle" font-size="9" fill="#8C8C8C">on test data</text>
+
+  <!-- Iterate arrow (curved, going back from Evaluate to Model) -->
+  <path d="M 700,125 C 700,160 580,168 540,125" fill="none" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#pipeArrow)"/>
+  <text x="630" y="166" text-anchor="middle" font-size="10" fill="#8C8C8C">Iterate &amp; improve</text>
+
+  <!-- Footer -->
+  <text x="400" y="190" text-anchor="middle" font-size="11" fill="#8C8C8C">This is the workflow you'll follow in every lab — Week 4 will be your first time through it</text>
+</svg>

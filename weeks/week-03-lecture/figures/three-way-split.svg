@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <!-- Background -->
+  <rect width="800" height="280" rx="12" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#2D2D2D">Three-Way Split: Train / Validation / Test</text>
+
+  <!-- Full dataset label -->
+  <text x="400" y="56" text-anchor="middle" font-size="12" fill="#8C8C8C">Your full dataset</text>
+
+  <!-- Row 1: Simple two-way split -->
+  <text x="40" y="88" font-size="11" font-weight="600" fill="#8C8C8C">Basic split:</text>
+
+  <!-- Training portion (75%) -->
+  <rect x="120" y="72" width="435" height="28" rx="6" fill="#4A90D9" opacity="0.18"/>
+  <rect x="120" y="72" width="435" height="28" rx="6" fill="none" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="337" y="91" text-anchor="middle" font-size="12" font-weight="600" fill="#4A90D9">Training (~75%)</text>
+
+  <!-- Test portion (25%) -->
+  <rect x="555" y="72" width="210" height="28" rx="6" fill="#E8873D" opacity="0.18"/>
+  <rect x="555" y="72" width="210" height="28" rx="6" fill="none" stroke="#E8873D" stroke-width="1.5"/>
+  <text x="660" y="91" text-anchor="middle" font-size="12" font-weight="600" fill="#E8873D">Test (~25%)</text>
+
+  <!-- Arrow down -->
+  <text x="400" y="120" text-anchor="middle" font-size="14" fill="#8C8C8C">↓ better approach ↓</text>
+
+  <!-- Row 2: Three-way split -->
+  <text x="40" y="152" font-size="11" font-weight="600" fill="#8C8C8C">Three-way:</text>
+
+  <!-- Training portion (60%) -->
+  <rect x="120" y="136" width="348" height="28" rx="6" fill="#4A90D9" opacity="0.18"/>
+  <rect x="120" y="136" width="348" height="28" rx="6" fill="none" stroke="#4A90D9" stroke-width="2"/>
+  <text x="294" y="155" text-anchor="middle" font-size="12" font-weight="600" fill="#4A90D9">Training (~60%)</text>
+
+  <!-- Validation portion (15%) -->
+  <rect x="468" y="136" width="87" height="28" rx="6" fill="#7B68A8" opacity="0.18"/>
+  <rect x="468" y="136" width="87" height="28" rx="6" fill="none" stroke="#7B68A8" stroke-width="2"/>
+  <text x="511" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#7B68A8">Val (~15%)</text>
+
+  <!-- Test portion (25%) -->
+  <rect x="555" y="136" width="210" height="28" rx="6" fill="#E8873D" opacity="0.18"/>
+  <rect x="555" y="136" width="210" height="28" rx="6" fill="none" stroke="#E8873D" stroke-width="2"/>
+  <text x="660" y="155" text-anchor="middle" font-size="12" font-weight="600" fill="#E8873D">Test (~25%)</text>
+
+  <!-- Labels below each section -->
+  <text x="294" y="184" text-anchor="middle" font-size="10.5" fill="#4A90D9">Model learns</text>
+  <text x="294" y="197" text-anchor="middle" font-size="10.5" fill="#4A90D9">from this</text>
+
+  <text x="511" y="184" text-anchor="middle" font-size="10.5" fill="#7B68A8">Compare models,</text>
+  <text x="511" y="197" text-anchor="middle" font-size="10.5" fill="#7B68A8">tune settings</text>
+
+  <text x="660" y="184" text-anchor="middle" font-size="10.5" fill="#E8873D">Final evaluation</text>
+  <text x="660" y="197" text-anchor="middle" font-size="10.5" fill="#E8873D">only — don't peek!</text>
+
+  <!-- Lock icon on test -->
+  <rect x="622" y="210" width="76" height="24" rx="5" fill="#A71930" opacity="0.08" stroke="#A71930" stroke-width="1.2"/>
+  <text x="660" y="227" text-anchor="middle" font-size="10" font-weight="600" fill="#A71930">Locked</text>
+
+  <!-- Footer -->
+  <text x="400" y="265" text-anchor="middle" font-size="11" fill="#8C8C8C">The validation set lets you make development decisions without contaminating the test set</text>
+</svg>

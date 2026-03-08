@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <!-- Background -->
+  <rect width="800" height="440" rx="12" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#2D2D2D">The Overfitting Curve</text>
+
+  <!-- Axes -->
+  <line x1="100" y1="360" x2="720" y2="360" stroke="#2D2D2D" stroke-width="2"/>
+  <line x1="100" y1="360" x2="100" y2="60" stroke="#2D2D2D" stroke-width="2"/>
+
+  <!-- X-axis label -->
+  <text x="410" y="400" text-anchor="middle" font-size="14" font-weight="600" fill="#2D2D2D">Model Complexity →</text>
+  <text x="130" y="390" font-size="11" fill="#8C8C8C">Simple</text>
+  <text x="660" y="390" font-size="11" fill="#8C8C8C">Complex</text>
+
+  <!-- Y-axis label -->
+  <text x="40" y="210" text-anchor="middle" font-size="14" font-weight="600" fill="#2D2D2D" transform="rotate(-90, 40, 210)">Prediction Error →</text>
+
+  <!-- Grid lines (subtle) -->
+  <line x1="100" y1="160" x2="720" y2="160" stroke="#E0E0E0" stroke-width="0.5"/>
+  <line x1="100" y1="260" x2="720" y2="260" stroke="#E0E0E0" stroke-width="0.5"/>
+
+  <!-- Training error curve (always decreasing) — blue -->
+  <path d="M 120,280 C 200,240 280,180 360,140 C 440,110 520,90 600,80 C 640,76 680,74 700,73" fill="none" stroke="#4A90D9" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Test error curve (U-shaped) — orange/red -->
+  <path d="M 120,300 C 200,250 280,200 340,180 C 380,172 400,170 420,172 C 480,185 540,220 600,270 C 640,300 680,335 700,350" fill="none" stroke="#A71930" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Sweet spot marker -->
+  <circle cx="390" cy="170" r="8" fill="none" stroke="#5BA55B" stroke-width="2.5"/>
+  <line x1="390" y1="170" x2="390" y2="360" stroke="#5BA55B" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- Sweet spot label -->
+  <rect x="310" y="46" width="160" height="28" rx="6" fill="#5BA55B" opacity="0.12" stroke="#5BA55B" stroke-width="1.5"/>
+  <text x="390" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#5BA55B">Sweet Spot</text>
+
+  <!-- Underfitting zone label -->
+  <text x="200" y="340" text-anchor="middle" font-size="12" fill="#8C8C8C">Underfitting</text>
+  <text x="200" y="354" text-anchor="middle" font-size="10" fill="#8C8C8C">(too rigid)</text>
+
+  <!-- Overfitting zone label -->
+  <text x="620" y="340" text-anchor="middle" font-size="12" fill="#8C8C8C">Overfitting</text>
+  <text x="620" y="354" text-anchor="middle" font-size="10" fill="#8C8C8C">(memorising noise)</text>
+
+  <!-- Legend (top-right, clear of curves) -->
+  <rect x="600" y="52" width="170" height="52" rx="6" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <line x1="614" y1="70" x2="644" y2="70" stroke="#4A90D9" stroke-width="3"/>
+  <text x="652" y="74" font-size="12" font-weight="600" fill="#4A90D9">Training error</text>
+  <line x1="614" y1="92" x2="644" y2="92" stroke="#A71930" stroke-width="3"/>
+  <text x="652" y="96" font-size="12" font-weight="600" fill="#A71930">Test error</text>
+
+  <!-- Footer -->
+  <text x="400" y="428" text-anchor="middle" font-size="11" fill="#8C8C8C">Training error always improves with complexity — but test error rises when the model starts memorising noise</text>
+</svg>
