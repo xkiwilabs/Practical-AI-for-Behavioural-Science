@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 340" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="375" y="25" text-anchor="middle" font-size="16" font-weight="700" fill="#2D2D2D">The Perceptron: A Single Artificial Neuron</text>
+  <text x="375" y="45" text-anchor="middle" font-size="12" fill="#8C8C8C">inputs &#xd7; weights &#x2192; sum + bias &#x2192; activation function &#x2192; output</text>
+
+  <!-- Input nodes -->
+  <circle cx="80" cy="100" r="28" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="2"/>
+  <text x="80" y="96" text-anchor="middle" font-size="11" font-weight="600" fill="#4A90D9">x&#x2081;</text>
+  <text x="80" y="111" text-anchor="middle" font-size="9" fill="#8C8C8C">Sleep hrs</text>
+
+  <circle cx="80" cy="190" r="28" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="2"/>
+  <text x="80" y="186" text-anchor="middle" font-size="11" font-weight="600" fill="#4A90D9">x&#x2082;</text>
+  <text x="80" y="201" text-anchor="middle" font-size="9" fill="#8C8C8C">Exercise</text>
+
+  <circle cx="80" cy="280" r="28" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="2"/>
+  <text x="80" y="276" text-anchor="middle" font-size="11" font-weight="600" fill="#4A90D9">x&#x2083;</text>
+  <text x="80" y="291" text-anchor="middle" font-size="9" fill="#8C8C8C">Stress</text>
+
+  <text x="80" y="60" text-anchor="middle" font-size="12" font-weight="600" fill="#4A90D9">Inputs</text>
+
+  <!-- Weight labels on connections -->
+  <line x1="108" y1="100" x2="290" y2="170" stroke="#8C8C8C" stroke-width="1.5"/>
+  <text x="185" y="122" text-anchor="middle" font-size="10" fill="#C8972C" font-weight="600">w&#x2081; = 0.4</text>
+
+  <line x1="108" y1="190" x2="290" y2="185" stroke="#8C8C8C" stroke-width="1.5"/>
+  <text x="195" y="178" text-anchor="middle" font-size="10" fill="#C8972C" font-weight="600">w&#x2082; = &#x2212;0.3</text>
+
+  <line x1="108" y1="280" x2="290" y2="200" stroke="#8C8C8C" stroke-width="1.5"/>
+  <text x="185" y="255" text-anchor="middle" font-size="10" fill="#C8972C" font-weight="600">w&#x2083; = 0.7</text>
+
+  <!-- Summation node -->
+  <circle cx="320" cy="190" r="35" fill="#C8972C" fill-opacity="0.12" stroke="#C8972C" stroke-width="2"/>
+  <text x="320" y="185" text-anchor="middle" font-size="16" font-weight="700" fill="#C8972C">&#x2211;</text>
+  <text x="320" y="202" text-anchor="middle" font-size="9" fill="#8C8C8C">+ bias</text>
+
+  <!-- Arrow from sum to activation -->
+  <line x1="355" y1="190" x2="430" y2="190" stroke="#8C8C8C" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="393" y="180" text-anchor="middle" font-size="9" fill="#8C8C8C">weighted sum</text>
+
+  <!-- Activation function box -->
+  <rect x="435" y="155" width="130" height="70" rx="10" fill="#A71930" fill-opacity="0.1" stroke="#A71930" stroke-width="2"/>
+  <text x="500" y="180" text-anchor="middle" font-size="11" font-weight="600" fill="#A71930">Activation</text>
+  <text x="500" y="196" text-anchor="middle" font-size="11" font-weight="600" fill="#A71930">Function</text>
+  <text x="500" y="214" text-anchor="middle" font-size="9" fill="#8C8C8C">e.g. sigmoid, ReLU</text>
+
+  <!-- Arrow to output -->
+  <line x1="565" y1="190" x2="630" y2="190" stroke="#8C8C8C" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Output node -->
+  <circle cx="670" cy="190" r="30" fill="#5BA55B" fill-opacity="0.15" stroke="#5BA55B" stroke-width="2"/>
+  <text x="670" y="186" text-anchor="middle" font-size="11" font-weight="600" fill="#5BA55B">&#x177;</text>
+  <text x="670" y="201" text-anchor="middle" font-size="9" fill="#8C8C8C">Output</text>
+  <text x="670" y="235" text-anchor="middle" font-size="10" fill="#5BA55B" font-weight="600">Prediction</text>
+
+  <!-- Bottom equation -->
+  <rect x="100" y="315" width="550" height="22" rx="5" fill="#F8F8F8" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="375" y="331" text-anchor="middle" font-size="11" fill="#2D2D2D">output = activation( w&#x2081;x&#x2081; + w&#x2082;x&#x2082; + w&#x2083;x&#x2083; + bias ) &#x2014; exactly like logistic regression!</text>
+
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#8C8C8C"/>
+    </marker>
+  </defs>
+</svg>

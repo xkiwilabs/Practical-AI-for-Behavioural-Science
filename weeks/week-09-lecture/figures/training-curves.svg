@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 440" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="375" y="25" text-anchor="middle" font-size="16" font-weight="700" fill="#2D2D2D">Training vs Validation Loss: Your Most Important Diagnostic</text>
+  <text x="375" y="45" text-anchor="middle" font-size="12" fill="#8C8C8C">These curves tell you whether your network is learning, memorising, or barely trying</text>
+
+  <!-- === Panel 1: Good fit === -->
+  <rect x="15" y="60" width="230" height="220" rx="8" fill="#F8F8F8" stroke="#5BA55B" stroke-width="1.5"/>
+  <text x="130" y="82" text-anchor="middle" font-size="12" font-weight="600" fill="#5BA55B">Good Fit</text>
+
+  <!-- Axes -->
+  <line x1="45" y1="250" x2="225" y2="250" stroke="#8C8C8C" stroke-width="0.8"/>
+  <line x1="45" y1="100" x2="45" y2="255" stroke="#8C8C8C" stroke-width="0.8"/>
+  <text x="135" y="268" text-anchor="middle" font-size="8" fill="#8C8C8C">Epochs</text>
+  <text x="38" y="98" text-anchor="end" font-size="8" fill="#8C8C8C">Loss</text>
+
+  <!-- Training loss (drops and levels) -->
+  <path d="M 50,115 C 80,135 100,170 130,200 C 150,215 180,225 220,228" fill="none" stroke="#4A90D9" stroke-width="2"/>
+  <!-- Validation loss (tracks close to training) -->
+  <path d="M 50,120 C 80,140 100,175 130,205 C 150,220 180,230 220,233" fill="none" stroke="#A71930" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <text x="130" y="180" text-anchor="middle" font-size="8" fill="#5BA55B" font-weight="600">Both curves drop</text>
+  <text x="130" y="192" text-anchor="middle" font-size="8" fill="#5BA55B" font-weight="600">and stay close</text>
+
+  <!-- === Panel 2: Overfitting === -->
+  <rect x="260" y="60" width="230" height="220" rx="8" fill="#F8F8F8" stroke="#A71930" stroke-width="1.5"/>
+  <text x="375" y="82" text-anchor="middle" font-size="12" font-weight="600" fill="#A71930">Overfitting</text>
+
+  <!-- Axes -->
+  <line x1="290" y1="250" x2="470" y2="250" stroke="#8C8C8C" stroke-width="0.8"/>
+  <line x1="290" y1="100" x2="290" y2="255" stroke="#8C8C8C" stroke-width="0.8"/>
+  <text x="380" y="268" text-anchor="middle" font-size="8" fill="#8C8C8C">Epochs</text>
+
+  <!-- Training loss (keeps dropping) -->
+  <path d="M 295,115 C 320,135 340,170 360,200 C 380,220 410,235 465,245" fill="none" stroke="#4A90D9" stroke-width="2"/>
+  <!-- Validation loss (drops then rises!) -->
+  <path d="M 295,120 C 320,140 340,175 360,195 C 375,200 390,190 410,175 C 430,160 450,140 465,130" fill="none" stroke="#A71930" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <!-- Gap annotation -->
+  <line x1="420" y1="175" x2="420" y2="237" stroke="#C8972C" stroke-width="1.5"/>
+  <text x="440" y="203" text-anchor="start" font-size="8" fill="#C8972C" font-weight="600">Gap!</text>
+
+  <!-- Early stopping line -->
+  <line x1="360" y1="95" x2="360" y2="255" stroke="#5BA55B" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="360" y="93" text-anchor="middle" font-size="8" fill="#5BA55B" font-weight="600">&#x2190; Stop here</text>
+
+  <text x="375" y="180" text-anchor="middle" font-size="8" fill="#A71930" font-weight="600">Validation rises</text>
+  <text x="375" y="192" text-anchor="middle" font-size="8" fill="#A71930" font-weight="600">= memorising noise</text>
+
+  <!-- === Panel 3: Underfitting === -->
+  <rect x="505" y="60" width="230" height="220" rx="8" fill="#F8F8F8" stroke="#C8972C" stroke-width="1.5"/>
+  <text x="620" y="82" text-anchor="middle" font-size="12" font-weight="600" fill="#C8972C">Underfitting</text>
+
+  <!-- Axes -->
+  <line x1="535" y1="250" x2="715" y2="250" stroke="#8C8C8C" stroke-width="0.8"/>
+  <line x1="535" y1="100" x2="535" y2="255" stroke="#8C8C8C" stroke-width="0.8"/>
+  <text x="625" y="268" text-anchor="middle" font-size="8" fill="#8C8C8C">Epochs</text>
+
+  <!-- Training loss (barely drops) -->
+  <path d="M 540,120 C 570,128 600,133 640,136 C 670,138 700,139 710,139" fill="none" stroke="#4A90D9" stroke-width="2"/>
+  <!-- Validation loss (also high and flat) -->
+  <path d="M 540,125 C 570,132 600,137 640,140 C 670,142 700,143 710,143" fill="none" stroke="#A71930" stroke-width="2" stroke-dasharray="5,3"/>
+
+  <text x="620" y="175" text-anchor="middle" font-size="8" fill="#C8972C" font-weight="600">Both curves stay high</text>
+  <text x="620" y="187" text-anchor="middle" font-size="8" fill="#C8972C" font-weight="600">= not learning enough</text>
+
+  <!-- Legend -->
+  <line x1="200" y1="300" x2="230" y2="300" stroke="#4A90D9" stroke-width="2"/>
+  <text x="235" y="304" font-size="10" fill="#4A90D9">Training loss</text>
+  <line x1="330" y1="300" x2="360" y2="300" stroke="#A71930" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="365" y="304" font-size="10" fill="#A71930">Validation loss</text>
+
+  <!-- Bottom boxes: Three defences -->
+  <text x="375" y="332" text-anchor="middle" font-size="13" font-weight="600" fill="#2D2D2D">Three Defences Against Overfitting</text>
+
+  <rect x="30" y="345" width="210" height="80" rx="8" fill="#7B68A8" fill-opacity="0.08" stroke="#7B68A8" stroke-width="1"/>
+  <text x="135" y="367" text-anchor="middle" font-size="11" font-weight="600" fill="#7B68A8">Dropout</text>
+  <text x="135" y="383" text-anchor="middle" font-size="9" fill="#8C8C8C">Randomly disable neurons</text>
+  <text x="135" y="396" text-anchor="middle" font-size="9" fill="#8C8C8C">during training &#x2014; forces the</text>
+  <text x="135" y="409" text-anchor="middle" font-size="9" fill="#8C8C8C">network to spread knowledge</text>
+
+  <rect x="270" y="345" width="210" height="80" rx="8" fill="#5BA55B" fill-opacity="0.08" stroke="#5BA55B" stroke-width="1"/>
+  <text x="375" y="367" text-anchor="middle" font-size="11" font-weight="600" fill="#5BA55B">Early Stopping</text>
+  <text x="375" y="383" text-anchor="middle" font-size="9" fill="#8C8C8C">Stop training when validation</text>
+  <text x="375" y="396" text-anchor="middle" font-size="9" fill="#8C8C8C">loss starts rising &#x2014; even if</text>
+  <text x="375" y="409" text-anchor="middle" font-size="9" fill="#8C8C8C">training loss is still improving</text>
+
+  <rect x="510" y="345" width="210" height="80" rx="8" fill="#C8972C" fill-opacity="0.08" stroke="#C8972C" stroke-width="1"/>
+  <text x="615" y="367" text-anchor="middle" font-size="11" font-weight="600" fill="#C8972C">Weight Decay (L2)</text>
+  <text x="615" y="383" text-anchor="middle" font-size="9" fill="#8C8C8C">Penalise large weights &#x2014;</text>
+  <text x="615" y="396" text-anchor="middle" font-size="9" fill="#8C8C8C">same idea as Ridge regression</text>
+  <text x="615" y="409" text-anchor="middle" font-size="9" fill="#8C8C8C">from Week 3!</text>
+</svg>

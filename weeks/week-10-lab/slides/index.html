@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 10: Simple Neural Network, Training Diagnostics, and Baseline Comparison — PSYC4411</title>
+  <title>Week 10: Beat the Baseline — Neural Network Lab — PSYC4411</title>
 
   <!-- reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -20,28 +20,143 @@
 <div class="reveal">
 <div class="slides">
 
-  <section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 60px;">
-      <p style="font-size: 1.4em; color: rgba(255,255,255,0.5); margin-bottom: 12px; font-weight: 300;">PSYC4411 — Practical AI for Behavioural Science</p>
-      <p style="font-size: 1.1em; color: rgba(255,255,255,0.4); margin-bottom: 40px; font-weight: 300;">Week 10 — Challenge Lab</p>
-      <h1 style="font-size: 2.4em; color: white; margin-bottom: 40px; line-height: 1.2;">Simple Neural Network, Training Diagnostics, and Baseline Comparison</h1>
-      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px 48px; margin-top: 20px;">
-        <p style="font-size: 1.3em; color: rgba(255,255,255,0.7); margin: 0;"><i class="ph-bold ph-clock"></i>&ensp;Content coming soon</p>
-        <p style="font-size: 0.9em; color: rgba(255,255,255,0.4); margin-top: 8px;">Materials will be available on 11 May</p>
-      </div>
-      <p style="font-size: 0.85em; color: rgba(255,255,255,0.3); margin-top: 48px;">Prof. Michael Richardson — Macquarie University, 2026</p>
+<!-- Slide 1: Title -->
+<section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #A71930 100%)">
+  <div class="course-code">PSYC4411</div>
+  <h1>Beat the Baseline</h1>
+  <h2>Week 10 Challenge Lab</h2>
+  <div class="spacer-lg"></div>
+  <p class="subtitle">Neural Network Training &amp; Diagnostics on EEG Brain Signals</p>
+</section>
+
+<!-- Slide 2: Today's Challenge -->
+<section>
+  <h2>Today's Challenge</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li><i class="ph ph-brain"></i> <strong>Phase 1: Baseline (familiar)</strong>
+      <ul>
+        <li>Logistic regression on EEG motor imagery features</li>
+        <li>Report accuracy and F1 &mdash; this is your target to beat</li>
+      </ul>
+    </li>
+ <li><i class="ph ph-lightning"></i> <strong>Phase 2: Neural Network (new!)</strong>
+      <ul>
+        <li>Build a simple MLP in PyTorch &mdash; your first neural network</li>
+        <li>Train it, track the loss curves, diagnose issues</li>
+      </ul>
+    </li>
+ <li><i class="ph ph-scales"></i> <strong>Phase 3: Honest Comparison</strong>
+      <ul>
+        <li>Did the neural network beat the baseline?</li>
+        <li>Was the added complexity worth it?</li>
+      </ul>
+    </li>
+ <li><i class="ph ph-presentation-chart"></i> <strong>Present your results</strong> (1 slide, ~3 min)
+      <ul><li>Baseline vs MLP, loss curves, debugging story, was it worth it?</li></ul>
+    </li>
+  </ul>
+</section>
+
+<!-- Slide 3: The Dataset -->
+<section>
+  <h2>The Dataset: EEG Motor Imagery</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+ <li><strong>109 participants</strong> imagined moving their left or right hand</li>
+ <li><strong>64-channel EEG</strong> recorded brain activity at 160 Hz</li>
+ <li><strong>4,918 trials</strong> &mdash; ~45 per person, 3 runs each</li>
+ <li><strong>320 features</strong> per trial (64 channels &times; 5 frequency bands)</li>
+ <li><strong>Balanced:</strong> 50.4% left / 49.6% right</li>
+      </ul>
     </div>
-  </section>
+ <div class="col">
+      <div class="info-box">
+        <p><strong>This is real BCI data!</strong> The same type of signal used to help people with paralysis control prosthetic limbs and communicate through thought.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="highlight-box">
+        <p><strong>Expect ~60% accuracy.</strong> Chance is 50%. In BCI research, 60% on a binary task is a meaningful result. Don&rsquo;t expect 95%!</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div></div>
+<!-- Slide 4: New Skill — Complex Debugging -->
+<section>
+  <h2>New LLM Skill: Complex Debugging</h2>
+  <div class="spacer"></div>
+ <p>Week 2: <strong>Prompting</strong> &middot; Week 4: <strong>Debugging</strong> &middot; Week 6: <strong>Refactoring</strong> &middot; Week 8: <strong>Documentation</strong> &middot; Week 10: <strong>Complex Debugging</strong></p>
+  <div class="spacer"></div>
+  <div class="two-col">
+ <div class="col">
+      <div class="prompt-bad">
+        <p style="color: #dc3545; font-weight: 600; margin-bottom: 4px;"><i class="ph ph-x-circle"></i> Weak</p>
+        <p style="margin-bottom: 0;">&ldquo;My neural network doesn&rsquo;t work.&rdquo;</p>
+      </div>
+    </div>
+ <div class="col">
+      <div class="prompt-good">
+        <p style="color: #5BA55B; font-weight: 600; margin-bottom: 4px;"><i class="ph ph-check-circle"></i> Strong</p>
+        <p style="margin-bottom: 0; font-size: 0.8em;">&ldquo;Training loss stays flat at 0.693 (ln(2)) after 50 epochs. Accuracy hovers at 50%. I&rsquo;m using CrossEntropyLoss + Adam(lr=0.001), 320 input features, 64 hidden units, ReLU, dropout(0.3). Here&rsquo;s my full training loop: [paste]. What could be wrong?&rdquo;</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+ <div class="key-insight">
+    <p><strong>No traceback = no easy fix.</strong> When a neural network silently fails, you must describe the <em>symptoms</em> &mdash; loss curve shape, expected vs actual accuracy, data characteristics.</p>
+  </div>
+</section>
 
+<!-- Slide 5: Getting Started -->
+<section>
+  <h2>Getting Started</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3><i class="ph ph-rocket-launch"></i> Steps</h3>
+      <ol>
+ <li>Open <code>starter.ipynb</code> or <code>starter.py</code></li>
+ <li>Run cells 1&ndash;5 (data loaded, explored, split &amp; scaled)</li>
+ <li>Ask your AI to <strong>plan first</strong></li>
+ <li>Phase 1: LogReg baseline (sklearn)</li>
+ <li>Phase 2: Build &amp; train MLP (PyTorch)</li>
+ <li>Phase 3: Compare, diagnose, reflect, present</li>
+      </ol>
+    </div>
+ <div class="col">
+      <h3><i class="ph ph-chart-line-up"></i> Target Numbers</h3>
+      <div class="spacer"></div>
+      <div style="background: var(--mq-light-grey); border-radius: 10px; padding: 16px 20px;">
+        <p style="margin-bottom: 6px;"><strong>Chance:</strong> 50.0%</p>
+        <p style="margin-bottom: 6px;"><strong>LogReg baseline:</strong> ~60% accuracy</p>
+        <p style="margin-bottom: 6px;"><strong>Simple MLP:</strong> ~58&ndash;62% (may not beat LogReg!)</p>
+        <p style="margin-bottom: 0;"><strong>Key diagnostic:</strong> loss curve should decrease below 0.693</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<!-- reveal.js core -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+
 <script>
   Reveal.initialize({
-    width: 1920, height: 1080, margin: 0,
-    center: false, controls: false,
-    slideNumber: false, progress: false,
-    transition: 'none', hash: false
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    center: false,
+    controls: true,
+    controlsLayout: 'edges',
+    progress: false,
+    hash: true,
+    transition: 'slide',
+    plugins: []
   });
 </script>
 </body>

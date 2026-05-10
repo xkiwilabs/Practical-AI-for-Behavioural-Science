@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 9: Learning Representations: Neural Networks as Psychological Tools — PSYC4411</title>
+  <title>Week 9: Learning Representations — Neural Networks as Psychological Tools — PSYC4411</title>
 
   <!-- reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -15,34 +15,1138 @@
 
   <!-- MQ custom theme -->
   <link rel="stylesheet" href="css/mq-theme.css">
+
+  <!-- Week 9 specific styles -->
+  <style>
+    /* ===== Perceptron / MLP Diagram ===== */
+    .nn-diagram {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nn-layer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      z-index: 2;
+    }
+    .nn-node {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6em;
+      font-weight: 700;
+      color: white;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .nn-node-input { background: var(--mq-blue); }
+    .nn-node-hidden { background: var(--mq-purple); }
+    .nn-node-output { background: var(--mq-red); }
+    .nn-node-sum { background: var(--mq-charcoal); width: 58px; height: 58px; font-size: 1.2em; }
+    .nn-node-act { background: var(--mq-gold); width: 58px; height: 58px; font-size: 0.55em; }
+    .nn-node-bias { background: var(--mq-grey); width: 40px; height: 40px; font-size: 0.55em; }
+    .nn-node-dead {
+      background: #D0D0D0;
+      opacity: 0.4;
+    }
+    .nn-node-dead::after {
+      content: "\00D7";
+      position: absolute;
+      font-size: 1.8em;
+      color: var(--mq-red);
+      font-weight: 900;
+      opacity: 0.9;
+    }
+
+    .nn-layer-label {
+      font-size: 0.7em;
+      font-weight: 600;
+      color: var(--mq-grey);
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .nn-connections {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .nn-weight-label {
+      font-size: 0.55em;
+      font-weight: 600;
+      fill: var(--mq-charcoal);
+    }
+
+    /* ===== Activation Function Plots ===== */
+    .activation-plot {
+      position: relative;
+      width: 380px;
+      height: 260px;
+      margin: 0 auto;
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .activation-plot svg {
+      width: 100%;
+      height: 100%;
+    }
+    .activation-plot .axis-line {
+      stroke: var(--mq-grey);
+      stroke-width: 1.5;
+      opacity: 0.4;
+    }
+    .activation-plot .func-line {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+    .activation-plot .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      fill: var(--mq-charcoal);
+    }
+
+    /* ===== Loss Curve Chart ===== */
+    .loss-chart {
+      position: relative;
+      width: 700px;
+      height: 380px;
+      margin: 0 auto;
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .loss-chart svg {
+      width: 100%;
+      height: 100%;
+    }
+    .loss-curve-line {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .loss-chart .axis-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      fill: var(--mq-grey);
+    }
+
+    /* ===== Gradient Descent Landscape ===== */
+    .gd-landscape {
+      position: relative;
+      width: 700px;
+      height: 340px;
+      margin: 0 auto;
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .gd-landscape svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== Learning Rate Comparison Cards ===== */
+    .lr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .lr-card {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-align: center;
+      border-top: 4px solid transparent;
+    }
+    .lr-card h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.85em;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .lr-card p {
+      font-size: 0.72em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== Training Loop Pseudocode ===== */
+    .pseudocode {
+      background: var(--mq-near-black);
+      border-radius: 10px;
+      padding: 24px 28px;
+      font-family: var(--font-mono);
+      font-size: 0.65em;
+      line-height: 1.7;
+      color: #e0e0e0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .pseudocode .keyword { color: #C792EA; }
+    .pseudocode .comment { color: #546E7A; font-style: italic; }
+    .pseudocode .function { color: #82AAFF; }
+    .pseudocode .string { color: #C3E88D; }
+    .pseudocode .number { color: #F78C6C; }
+    .pseudocode .indent { padding-left: 2em; }
+    .pseudocode .indent2 { padding-left: 4em; }
+
+    /* ===== Decision Framework ===== */
+    .decision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .decision-card {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 20px 22px;
+      border-top: 4px solid transparent;
+    }
+    .decision-card h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.85em;
+      color: var(--mq-charcoal);
+      margin-bottom: 6px;
+    }
+    .decision-card p {
+      font-size: 0.72em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== Myth Buster Cards ===== */
+    .myth-card {
+      background: rgba(167, 25, 48, 0.06);
+      border: 2px solid rgba(167, 25, 48, 0.15);
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin: 10px 0;
+    }
+    .myth-card .myth-label {
+      font-size: 0.65em;
+      font-weight: 700;
+      color: var(--mq-red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+    .myth-card .myth-text {
+      font-size: 0.85em;
+      font-weight: 600;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .myth-card .reality-text {
+      font-size: 0.78em;
+      color: var(--mq-grey);
+    }
+
+    /* ===== Embedding Visualisation ===== */
+    .embed-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 20px;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .embed-panel {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .word-vector {
+      display: inline-block;
+      background: var(--mq-near-black);
+      color: #e0e0e0;
+      font-family: var(--font-mono);
+      font-size: 0.6em;
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin: 3px;
+    }
+
+    /* ===== Animated loss curves ===== */
+    @keyframes draw-train {
+      from { stroke-dashoffset: 1200; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes draw-val {
+      from { stroke-dashoffset: 1200; }
+      to { stroke-dashoffset: 0; }
+    }
+    .animate-line {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+    }
+    .fragment.visible .animate-line {
+      animation: draw-train 2s ease-out forwards;
+    }
+
+    /* ===== Application cards ===== */
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .app-card {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 18px 22px;
+      border-left: 4px solid var(--mq-blue);
+    }
+    .app-card h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.85em;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .app-card p {
+      font-size: 0.72em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+  </style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 
-  <section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 60px;">
-      <p style="font-size: 1.4em; color: rgba(255,255,255,0.5); margin-bottom: 12px; font-weight: 300;">PSYC4411 — Practical AI for Behavioural Science</p>
-      <p style="font-size: 1.1em; color: rgba(255,255,255,0.4); margin-bottom: 40px; font-weight: 300;">Week 9 — Lecture</p>
-      <h1 style="font-size: 2.4em; color: white; margin-bottom: 40px; line-height: 1.2;">Learning Representations: Neural Networks as Psychological Tools</h1>
-      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px 48px; margin-top: 20px;">
-        <p style="font-size: 1.3em; color: rgba(255,255,255,0.7); margin: 0;"><i class="ph-bold ph-clock"></i>&ensp;Content coming soon</p>
-        <p style="font-size: 0.9em; color: rgba(255,255,255,0.4); margin-top: 8px;">Materials will be available on 04 May</p>
+<!-- ============================================================
+     SLIDE 1: Title Slide
+     ============================================================ -->
+<section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #A71930 100%)">
+  <div class="course-code">PSYC4411</div>
+  <h1>Learning Representations</h1>
+  <h2>Neural Networks as Psychological Tools</h2>
+  <div class="spacer-lg"></div>
+  <p class="subtitle">Week 9 &middot; Semester 1, 2026</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 2: Agenda
+     ============================================================ -->
+<section>
+  <h2>Today&rsquo;s Plan</h2>
+  <div class="spacer"></div>
+  <ol>
+ <li>Perceptrons and multi-layer networks &mdash; what they look like</li>
+ <li>Activation functions &mdash; where the magic happens</li>
+ <li>How neural networks learn &mdash; forward pass, loss, backprop</li>
+ <li>Training in practice &mdash; epochs, batches, and validation</li>
+ <li>Overfitting in neural networks &mdash; when power becomes a problem</li>
+ <li>When to use NNs (and when not to)</li>
+ <li>NNs in psychology &mdash; real applications</li>
+ <li>Getting ready for Week 10 &mdash; PyTorch and complex debugging</li>
+  </ol>
+</section>
+
+<!-- ============================================================
+     SLIDE 3: Section Divider — What Is a Neural Network?
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #4A90D9 0%, #2A6AB8 100%)">
+  <div class="section-icon"><i class="ph-bold ph-graph"></i></div>
+  <h2>What Is a Neural Network?</h2>
+  <p>Starting with something you already know</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 6: The Perceptron — It's Just Logistic Regression
+     ============================================================ -->
+<section>
+  <h2>The Perceptron: You Already Know This</h2>
+  <div class="spacer"></div>
+  <p class="fragment">Remember logistic regression from Week 5?</p>
+  <div class="spacer"></div>
+  <div class="fragment" style="text-align: center;">
+    <img src="../figures/perceptron-diagram.png" alt="Perceptron diagram"
+         style="max-width: 92%; max-height: 340px;">
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight fragment">
+    <p>A single perceptron <strong>is</strong> logistic regression. Multiply inputs by weights, add a bias, apply sigmoid. That&rsquo;s it. A neural network is just <strong>many of these stacked together</strong>.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 7: From Logistic Regression to the Perceptron
+     ============================================================ -->
+<section>
+  <h2>The Connection to What You Know</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">Logistic Regression (Week 5)</h4>
+        <p style="font-size: 0.78em;">Multiply each feature by a weight</p>
+        <p style="font-size: 0.78em;">Add them up (plus a bias term)</p>
+        <p style="font-size: 0.78em;">Apply the sigmoid function</p>
+        <p style="font-size: 0.78em;">Get a probability between 0 and 1</p>
       </div>
-      <p style="font-size: 0.85em; color: rgba(255,255,255,0.3); margin-top: 48px;">Prof. Michael Richardson — Macquarie University, 2026</p>
     </div>
-  </section>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Perceptron (1958)</h4>
+        <p style="font-size: 0.78em;">Multiply each input by a weight</p>
+        <p style="font-size: 0.78em;">Add them up (plus a bias term)</p>
+        <p style="font-size: 0.78em;">Apply an activation function</p>
+        <p style="font-size: 0.78em;">Get an output</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+ <div>
+    <p style="font-size: 0.85em;">These are <strong>the same computation</strong> described in different vocabularies. The perceptron was invented by psychologist <strong>Frank Rosenblatt</strong> in 1958 &mdash; inspired by how neurons in the brain combine signals.</p>
+  </div>
+</section>
 
-</div></div>
+<!-- ============================================================
+     SLIDE 8: Multi-Layer Perceptron Architecture
+     ============================================================ -->
+<section>
+  <h2>Multi-Layer Perceptrons (MLPs)</h2>
+  <div class="spacer"></div>
+  <p>Stack multiple layers of perceptrons together:</p>
+  <div class="spacer"></div>
+  <div class="fragment" style="text-align: center;">
+    <img src="../figures/mlp-diagram.png" alt="Multi-layer perceptron architecture"
+         style="max-width: 95%; max-height: 420px;">
+  </div>
+</section>
 
+<!-- ============================================================
+     SLIDE 9: Universal Approximation
+     ============================================================ -->
+<section>
+  <h2>Why Layers Matter: Universal Approximation</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li>A single perceptron can only learn <strong>straight-line boundaries</strong> (like logistic regression)</li>
+ <li>Add a hidden layer &rarr; the network can learn <strong>curves</strong></li>
+ <li>Add more neurons/layers &rarr; it can learn <strong>any pattern</strong>, no matter how complex</li>
+  </ul>
+  <div class="spacer-lg"></div>
+ <div class="key-insight">
+    <p><strong>Universal approximation theorem:</strong> A neural network with just one hidden layer (and enough neurons) can approximate <em>any</em> mathematical function. In theory, it can learn anything.</p>
+  </div>
+  <div class="spacer"></div>
+ <div class="highlight-box">
+    <p>&ldquo;Can learn anything&rdquo; sounds great &mdash; but it also means neural networks can learn <strong>noise</strong> just as eagerly as signal. This is why overfitting is the central challenge.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 10: Think #1 — Neural Network Naming
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>These models were inspired by neurons in the brain &mdash; but they don&rsquo;t actually work like brains. Real neurons are vastly more complex.</p>
+  <div class="spacer"></div>
+  <p>Is calling these <strong>&ldquo;neural networks&rdquo;</strong> helpful? Does the brain analogy make them easier to understand &mdash; or does it create dangerous misconceptions about what AI can do?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 11: Section Divider — Activation Functions
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #C8972C 0%, #A67B1E 100%)">
+  <div class="section-icon"><i class="ph-bold ph-lightning"></i></div>
+  <h2>Activation Functions</h2>
+  <p>Where non-linearity enters the picture</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 12: Sigmoid vs ReLU
+     ============================================================ -->
+<section>
+  <h2>Two Activation Functions You Need to Know</h2>
+  <div class="spacer"></div>
+  <div class="fragment" style="text-align: center;">
+    <img src="../figures/activation-functions-pair.png" alt="Sigmoid and ReLU activation functions"
+         style="max-width: 80%; max-height: 360px;">
+  </div>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <p style="font-size: 0.78em; color: var(--mq-grey); text-align: center;">
+        <strong style="color: var(--mq-blue);">Sigmoid</strong> &mdash; squashes everything to 0&ndash;1.
+        You used this in logistic regression.
+      </p>
+    </div>
+    <div class="col">
+      <p style="font-size: 0.78em; color: var(--mq-grey); text-align: center;">
+        <strong style="color: var(--mq-red);">ReLU</strong> &mdash; if negative, output 0. If positive, pass through.
+        The workhorse of modern deep learning.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 13: Why Non-Linearity Matters
+     ============================================================ -->
+<section>
+  <h2>Why Non-Linearity Matters</h2>
+  <div class="spacer"></div>
+ <div class="highlight-box">
+    <p><strong>Without activation functions:</strong> Stacking 100 layers of linear math still gives you&hellip; a linear model. No matter how many layers, it collapses to one big multiply-and-add. You&rsquo;d just get fancy regression.</p>
+  </div>
+  <div class="spacer"></div>
+ <div class="info-box">
+    <p><strong>With activation functions:</strong> Each layer can <em>bend</em> the space. The network can learn curved boundaries, complex interactions, and patterns that no straight line could capture.</p>
+  </div>
+  <div class="spacer-lg"></div>
+ <div class="key-insight">
+    <p><strong>Analogy:</strong> Activation functions are like <em>joints</em> in a robotic arm. Without them, the arm is a rigid stick (linear). With them, it can reach anywhere (non-linear). More joints = more flexibility.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 14: Section Divider — How NNs Learn
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #5BA55B 0%, #3D8B3D 100%)">
+  <div class="section-icon"><i class="ph-bold ph-arrow-counter-clockwise"></i></div>
+  <h2>How Neural Networks Learn</h2>
+  <p>Forward, measure, backward, update</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 15: The Learning Loop
+     ============================================================ -->
+<section>
+  <h2>The Learning Loop</h2>
+  <div class="spacer"></div>
+  <div class="flow-diagram">
+    <div class="flow-step fragment" style="background: rgba(74,144,217,0.12); color: var(--mq-blue);">
+      <i class="ph-bold ph-arrow-right" style="font-size: 1.3em;"></i>
+      <div class="step-subtitle">Forward Pass</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step fragment" style="background: rgba(167,25,48,0.12); color: var(--mq-red);">
+      <i class="ph-bold ph-target" style="font-size: 1.3em;"></i>
+      <div class="step-subtitle">Compute Loss</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step fragment" style="background: rgba(123,104,168,0.12); color: var(--mq-purple);">
+      <i class="ph-bold ph-arrow-left" style="font-size: 1.3em;"></i>
+      <div class="step-subtitle">Backward Pass</div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step fragment" style="background: rgba(91,165,91,0.12); color: var(--mq-green);">
+      <i class="ph-bold ph-wrench" style="font-size: 1.3em;"></i>
+      <div class="step-subtitle">Update Weights</div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="two-col fragment">
+    <div class="col">
+      <ul>
+        <li><strong>Forward pass:</strong> data flows through the network, producing a prediction</li>
+        <li><strong>Loss:</strong> measure how wrong the prediction is (e.g., MSE, cross-entropy)</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul>
+        <li><strong>Backward pass:</strong> figure out which weights contributed most to the error</li>
+        <li><strong>Update:</strong> nudge each weight to reduce the error next time</li>
+      </ul>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="small fragment">This cycle repeats thousands of times. Each repetition makes the predictions slightly better.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 16: Gradient Descent — The Fog Analogy
+     ============================================================ -->
+<section>
+  <h2>Gradient Descent: Finding the Bottom</h2>
+  <div class="spacer"></div>
+  <div class="fragment" style="text-align: center;">
+    <img src="../figures/gradient-descent-landscape.png" alt="Gradient descent on a loss landscape"
+         style="max-width: 80%; max-height: 360px;">
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight fragment">
+    <p><strong>Analogy:</strong> You&rsquo;re standing on a misty hillside and can&rsquo;t see the valley below. You can only feel the slope under your feet. <strong>Gradient descent</strong> = always step downhill. Eventually you reach the bottom &mdash; or at least a dip.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 17: Learning Rate Comparison
+     ============================================================ -->
+<section>
+  <h2>Learning Rate: How Big Are Your Steps?</h2>
+  <div class="spacer"></div>
+  <div class="fragment" style="text-align: center;">
+    <img src="../figures/learning-rate-comparison.png" alt="Learning rate comparison: too large, just right, too small"
+         style="max-width: 90%; max-height: 380px;">
+  </div>
+  <div class="spacer"></div>
+  <p class="small fragment">The learning rate is one of the most important settings in neural network training. Getting it right is more art than science.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 18: Think #2 — NN vs LogReg
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>You build a neural network to predict depression severity from lifestyle factors. It achieves <strong>78% accuracy</strong>. Your logistic regression from Week 5 achieved <strong>74% accuracy</strong> on the same data.</p>
+  <div class="spacer"></div>
+  <p>Is the 4% improvement worth the extra complexity? What else would you want to know before choosing one model over the other?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 19: Section Divider — Training in Practice
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #7B68A8 0%, #5A4A8A 100%)">
+  <div class="section-icon"><i class="ph-bold ph-gear"></i></div>
+  <h2>Training in Practice</h2>
+  <p>Epochs, batches, and validation</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 20: Key Training Concepts
+     ============================================================ -->
+<section>
+  <h2>Key Training Concepts</h2>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col">
+      <div style="background: rgba(74,144,217,0.08); border-radius: 10px; padding: 16px 18px; border-top: 4px solid var(--mq-blue); height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">Epoch</h4>
+        <p style="font-size: 0.75em;">One full pass through the <strong>entire</strong> training dataset.</p>
+        <p style="font-size: 0.7em; color: var(--mq-grey);">Training typically runs for 10&ndash;100+ epochs. Like re-reading a textbook multiple times.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div style="background: rgba(167,25,48,0.08); border-radius: 10px; padding: 16px 18px; border-top: 4px solid var(--mq-red); height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Batch</h4>
+        <p style="font-size: 0.75em;">A small chunk of data processed at once (e.g., 32 participants).</p>
+        <p style="font-size: 0.7em; color: var(--mq-grey);">Instead of learning from all 3,000 rows at once, update weights after every 32. Faster and often better.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div style="background: rgba(91,165,91,0.08); border-radius: 10px; padding: 16px 18px; border-top: 4px solid var(--mq-green); height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-green); text-transform: none; letter-spacing: 0;">Learning Rate</h4>
+        <p style="font-size: 0.75em;">How much to adjust weights at each step.</p>
+        <p style="font-size: 0.7em; color: var(--mq-grey);">Too large = unstable. Too small = slow. Typical starting point: 0.001.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE: Training Loop Flow Chart (visual companion to pseudocode)
+     ============================================================ -->
+<section>
+  <h2>The Training Loop, as a Picture</h2>
+  <div class="spacer"></div>
+  <div style="text-align: center;">
+    <img src="../figures/training-loop-flow.png"
+         alt="Training loop flow chart: outer epoch loop, inner batch loop with Forward → Loss → Backward → Update, and validation step after each epoch"
+         style="max-width: 92%; max-height: 480px;">
+  </div>
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">Two nested loops: the inner <strong style="color: var(--mq-blue);">batch loop</strong> updates weights;
+  the outer <strong style="color: var(--mq-purple);">epoch loop</strong> repeats it many times, checking validation between epochs.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 21: Pseudocode Training Loop
+     ============================================================ -->
+<section>
+  <h2>A Training Loop in Plain English</h2>
+  <div class="spacer"></div>
+  <div class="pseudocode">
+    <span class="comment"># This is what happens inside model training</span><br>
+    <br>
+    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">50</span>): &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># re-read the textbook 50 times</span><br>
+    <br>
+    <div class="indent">
+      <span class="keyword">for</span> batch <span class="keyword">in</span> training_data: &nbsp;<span class="comment"># process 32 participants at a time</span><br>
+      <br>
+      <div class="indent">
+        predictions = <span class="function">model</span>(batch) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># forward pass: make predictions</span><br>
+        error = <span class="function">loss</span>(predictions, actual) &nbsp;<span class="comment"># how wrong were we?</span><br>
+        gradients = <span class="function">backward</span>(error) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># find which weights caused the error</span><br>
+        <span class="function">update_weights</span>(gradients) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># nudge weights to reduce error</span><br>
+      </div>
+    </div>
+    <br>
+    <div class="indent">
+      <span class="comment"># After each epoch, check validation set</span><br>
+      val_loss = <span class="function">evaluate</span>(model, val_data)<br>
+      <span class="function">print</span>(<span class="string">f"Epoch {epoch}: val_loss = {val_loss}"</span>)<br>
+    </div>
+  </div>
+  <div class="spacer"></div>
+ <p class="small">This is what PyTorch does under the hood. In Week 10, you&rsquo;ll write code that looks very similar to this.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 22: Validation Monitoring
+     ============================================================ -->
+<section>
+  <h2>Watching Training Progress</h2>
+  <div class="spacer"></div>
+  <p>Plot the loss after each epoch &mdash; separately for training and validation data:</p>
+  <div class="spacer"></div>
+  <div class="fragment" style="text-align: center;">
+    <img src="../figures/training-validation-loss.png" alt="Training and validation loss curves with overfitting"
+         style="max-width: 85%; max-height: 380px;">
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight fragment">
+    <p>When training loss keeps dropping but validation loss starts <strong>rising</strong>, the model is memorising the training data instead of learning general patterns. This is the moment to stop.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 23: Section Divider — Overfitting in NNs
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-warning"></i></div>
+  <h2>Overfitting in Neural Networks</h2>
+  <p>When too much power becomes a problem</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 24: Why NNs Overfit So Easily
+     ============================================================ -->
+<section>
+  <h2>Why Neural Networks Overfit So Easily</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li>Remember: NNs can learn <strong>any pattern</strong>, including noise</li>
+ <li>A typical NN has <strong>thousands of weights</strong> to adjust (parameters)</li>
+ <li>With 200 participants and 5,000 parameters, there&rsquo;s more than enough capacity to <strong>memorise every person</strong></li>
+ <li>This is the same bias-variance tradeoff from Week 3 &mdash; but amplified</li>
+  </ul>
+  <div class="spacer-lg"></div>
+ <div class="highlight-box">
+    <p><strong>Week 3 callback:</strong> Ridge and Lasso used regularisation to keep linear models honest. Neural networks need their own version of regularisation.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 25: Dropout Visualisation
+     ============================================================ -->
+<section>
+  <h2>Dropout: Randomly Switching Off Neurons</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <p style="font-size: 0.85em;" class="fragment">During each training step, randomly &ldquo;turn off&rdquo; some neurons (typically 20&ndash;50%).</p>
+      <div class="spacer"></div>
+      <ul>
+        <li class="fragment">Forces the network to <strong>not rely</strong> on any single neuron</li>
+        <li class="fragment">Like studying for an exam where any topic might be removed &mdash; you learn everything more broadly</li>
+        <li class="fragment">At test time, all neurons are active (no dropout)</li>
+      </ul>
+    </div>
+    <div class="col fragment" style="text-align: center;">
+      <img src="../figures/dropout-diagram.png" alt="Dropout: some hidden neurons disabled this step"
+           style="max-width: 100%; max-height: 280px;">
+      <p style="font-size: 0.72em; color: var(--mq-grey); text-align: center;">Grey crossed-out neurons are &ldquo;dropped&rdquo; this step</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 26: Early Stopping & Weight Decay
+     ============================================================ -->
+<section>
+  <h2>Three Defences Against Overfitting</h2>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col">
+ <div class="info-box" style="height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;"><i class="ph ph-stop-circle"></i> Early Stopping</h4>
+        <p style="font-size: 0.78em;">Stop training when validation loss starts rising.</p>
+        <p style="font-size: 0.72em; color: var(--mq-grey);">The simplest and often most effective defence. &ldquo;Quit while you&rsquo;re ahead.&rdquo;</p>
+      </div>
+    </div>
+    <div class="col">
+ <div class="highlight-box" style="height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;"><i class="ph ph-shuffle"></i> Dropout</h4>
+        <p style="font-size: 0.78em;">Randomly deactivate neurons during training.</p>
+        <p style="font-size: 0.72em; color: var(--mq-grey);">Forces distributed learning. Typical rate: 20&ndash;50% of hidden neurons dropped per step.</p>
+      </div>
+    </div>
+    <div class="col">
+ <div class="key-insight" style="height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-gold); text-transform: none; letter-spacing: 0;"><i class="ph ph-scales"></i> Weight Decay</h4>
+        <p style="font-size: 0.78em;">Penalise large weights (like Ridge regression from Week 3!).</p>
+        <p style="font-size: 0.72em; color: var(--mq-grey);">Keeps the model simpler. Same idea as regularisation, applied to neural networks.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+ <p class="small">In practice, you&rsquo;ll often use <strong>all three together</strong>. The tools are different from Week 3, but the principle is identical: <strong>constrain the model to generalise</strong>.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 27: Section Divider — When to Use NNs
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #4A90D9 0%, #2A6AB8 100%)">
+  <div class="section-icon"><i class="ph-bold ph-signpost"></i></div>
+  <h2>When to Use Neural Networks</h2>
+  <p>A decision framework</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 28: Decision Framework
+     ============================================================ -->
+<section>
+  <h2>The Decision Framework</h2>
+  <div class="spacer"></div>
+  <div class="decision-grid">
+ <div class="decision-card" style="border-top-color: var(--mq-green);">
+      <h4><i class="ph ph-check-circle" style="color: var(--mq-green);"></i> NNs Shine When&hellip;</h4>
+      <p style="font-size: 0.78em; color: var(--mq-charcoal);">Large datasets (thousands+ of observations)</p>
+      <p>High-dimensional inputs (images, EEG, fMRI, audio, text)</p>
+      <p>Complex non-linear patterns</p>
+      <p>You care about <strong>prediction accuracy</strong> more than interpretability</p>
+    </div>
+ <div class="decision-card" style="border-top-color: var(--mq-red);">
+      <h4><i class="ph ph-x-circle" style="color: var(--mq-red);"></i> Traditional ML Wins When&hellip;</h4>
+      <p style="font-size: 0.78em; color: var(--mq-charcoal);">Small datasets (< 500 participants)</p>
+      <p>Tabular data (rows and columns, like a spreadsheet)</p>
+      <p>You need to <strong>explain</strong> the model (which features drive predictions)</p>
+      <p>A simpler model performs almost as well</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 29: The Honest Truth
+     ============================================================ -->
+<section>
+  <h2>The Honest Truth About Neural Networks</h2>
+  <div class="spacer"></div>
+ <div class="highlight-box">
+    <p><strong>For typical psychology datasets</strong> &mdash; a few hundred participants, 10&ndash;50 survey items, tabular data &mdash; a well-tuned Random Forest or Ridge Regression will often <strong>match or beat</strong> a neural network.</p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li>NNs need more data to avoid overfitting</li>
+ <li>NNs need more tuning (architecture, learning rate, epochs, dropout&hellip;)</li>
+ <li>NNs are harder to interpret</li>
+ <li>NNs are computationally more expensive</li>
+  </ul>
+  <div class="spacer-lg"></div>
+ <div class="key-insight">
+    <p><strong>Rule of thumb:</strong> Try the simplest model first. If it works well enough, stop there. Use neural networks when you have the <strong>data</strong>, the <strong>complexity</strong>, and the <strong>reason</strong> to justify them.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 30: Think #3 — 200-Participant Study
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>A colleague says: &ldquo;We have 200 participants who completed a 30-item questionnaire. I want to use a deep neural network to predict their therapy outcomes.&rdquo;</p>
+  <div class="spacer"></div>
+  <p>What would you advise? What kind of model would you suggest instead, and why?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 31: Section Divider — NNs in Psychology
+     ============================================================ -->
+<!-- ============================================================
+     SLIDE: NNs in Psychology — Why It Matters
+     ============================================================ -->
+<section>
+  <h2>Where NNs Transform Psychology</h2>
+  <div class="spacer"></div>
+  <div class="app-grid">
+ <div class="app-card" style="border-left-color: var(--mq-red);">
+      <h4><i class="ph ph-brain"></i> Brain-Computer Interfaces</h4>
+      <p>Decode motor intentions from EEG signals. Enable paralysed patients to control devices with thought alone. <strong>Week 10 preview!</strong></p>
+    </div>
+ <div class="app-card" style="border-left-color: var(--mq-blue);">
+      <h4><i class="ph ph-scan"></i> Neuroimaging (fMRI)</h4>
+      <p>Classify mental states from brain scans. Detect patterns of neural activity associated with specific cognitive tasks or clinical conditions.</p>
+    </div>
+ <div class="app-card" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-git-branch"></i> Connectionist Models</h4>
+      <p>Simulate cognitive processes: language acquisition, reading, memory retrieval. NNs as theories of how the mind works &mdash; not just prediction tools.</p>
+    </div>
+ <div class="app-card" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-device-mobile"></i> Digital Phenotyping</h4>
+      <p>Predict mental health episodes from smartphone sensor data: movement patterns, typing speed, social media use, sleep&ndash;wake cycles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE: Think #4 — BCI Accuracy
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>A brain-computer interface uses a neural network to decode movement intentions from EEG. It&rsquo;s 92% accurate.</p>
+  <div class="spacer"></div>
+  <p>Should it be used to control a prosthetic limb? What level of accuracy would you need before you&rsquo;d trust it for <strong>medical</strong> use? What about for <strong>typing on a screen</strong>?</p>
+  <div class="spacer"></div>
+  <p>Does the acceptable error rate depend on the <strong>consequences</strong> of a mistake?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 35: Common Misconceptions — Myth 1
+     ============================================================ -->
+<section>
+  <h2>Common Misconceptions</h2>
+  <div class="spacer"></div>
+ <div class="myth-card">
+    <div class="myth-label">Myth #1</div>
+    <div class="myth-text">&ldquo;Neural networks work like brains.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> They share the <em>metaphor</em> of connected processing units, but biological neurons are vastly more complex. Real neurons use timing, chemistry, and structural changes that artificial neurons don&rsquo;t capture. The name is historical, not descriptive.</div>
+  </div>
+ <div class="myth-card">
+    <div class="myth-label">Myth #2</div>
+    <div class="myth-text">&ldquo;More layers = better model.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> Deeper networks are harder to train, need more data, and are more prone to overfitting. For most psychology datasets, 1&ndash;3 hidden layers is plenty. Depth without data is a recipe for noise-fitting.</div>
+  </div>
+ <div class="myth-card">
+    <div class="myth-label">Myth #3</div>
+    <div class="myth-text">&ldquo;Neural networks are always better than traditional ML.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> On tabular data with modest sample sizes, gradient-boosted trees (like XGBoost) and even linear models often <strong>outperform</strong> neural networks. NNs dominate for images, text, and audio &mdash; not spreadsheets.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 36: More Misconceptions
+     ============================================================ -->
+<section>
+  <h2>Two More to Watch For</h2>
+  <div class="spacer"></div>
+ <div class="myth-card">
+    <div class="myth-label">Myth #4</div>
+    <div class="myth-text">&ldquo;Neural networks are black boxes &mdash; you can never understand them.&rdquo;</div>
+    <div class="reality-text"><strong>Partial truth:</strong> NNs are harder to interpret than linear models, but techniques exist: feature importance, saliency maps, attention weights. The field of <strong>explainable AI (XAI)</strong> is growing rapidly. &ldquo;Hard to explain&rdquo; is not the same as &ldquo;impossible to explain.&rdquo;</div>
+  </div>
+ <div class="myth-card">
+    <div class="myth-label">Myth #5</div>
+    <div class="myth-text">&ldquo;You need a GPU and huge computing power.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> For the scale of data typical in psychology (hundreds to tens of thousands of rows, not millions), a laptop CPU is fine. You only need GPUs for large-scale image/text models or very deep architectures.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE: Why "Learning Representations" — the big idea
+     ============================================================ -->
+<section>
+  <h2>The Big Idea: Learning Representations</h2>
+  <div class="spacer"></div>
+  <p>Every model you&rsquo;ve built so far worked with features <em>you</em> chose &mdash; sleep hours, DASS items, big-five traits.</p>
+  <div class="spacer"></div>
+  <p>Neural networks are different. <strong>Each hidden layer learns its own representation</strong> of the data &mdash; a new way of describing each person, image, or signal. The network discovers what to pay attention to.</p>
+  <div class="spacer-lg"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">Early layers</h4>
+        <p style="font-size: 0.78em;">Capture simple patterns &mdash; e.g.&nbsp;&ldquo;high on items 3, 7, 12&rdquo;.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Later layers</h4>
+        <p style="font-size: 0.78em;">Combine those into higher-level concepts &mdash; e.g.&nbsp;&ldquo;anxious + sleep-deprived + isolated&rdquo;.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>This is the same idea behind <strong>word embeddings</strong> and <strong>large language models</strong> &mdash; we&rsquo;ll come back to it in Week 11.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE: Getting Ready for Week 10 (combined)
+     ============================================================ -->
+<section>
+  <h2>Week 10: Your First Neural Network in PyTorch</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+ <li><strong>PyTorch</strong> &mdash; the library we&rsquo;ll use; already installed in <code>psyc4411-env</code></li>
+ <li>New data type: <strong>tensors</strong> (like NumPy arrays, designed for NNs)</li>
+ <li>Same workflow: notebook + script, plan-first approach</li>
+ <li>Quick setup check before next week:
+      <pre style="font-size: 0.65em; margin-top: 4px;"><code>python -c "import torch; print(torch.__version__)"</code></pre>
+    </li>
+      </ul>
+    </div>
+ <div class="col">
+      <div class="pseudocode" style="font-size: 0.6em;">
+        <span class="comment"># A neural network in PyTorch</span><br>
+        <span class="keyword">import</span> torch<br>
+        <span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn<br>
+        <br>
+        model = nn.<span class="function">Sequential</span>(<br>
+        <div class="indent">
+          nn.<span class="function">Linear</span>(<span class="number">11</span>, <span class="number">64</span>), &nbsp;&nbsp;<span class="comment"># 11 features &rarr; 64 hidden</span><br>
+          nn.<span class="function">ReLU</span>(), &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># activation function</span><br>
+          nn.<span class="function">Dropout</span>(<span class="number">0.3</span>), &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># regularisation</span><br>
+          nn.<span class="function">Linear</span>(<span class="number">64</span>, <span class="number">1</span>), &nbsp;&nbsp;&nbsp;<span class="comment"># 64 hidden &rarr; 1 output</span><br>
+        </div>
+        )
+      </div>
+      <p style="font-size: 0.72em; color: var(--mq-grey); text-align: center; margin-top: 8px;">A complete neural network in 7 lines.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 44: New LLM Skill — Complex Debugging
+     ============================================================ -->
+<section>
+  <h2>New LLM Skill: Complex Debugging</h2>
+  <div class="spacer"></div>
+ <p>Neural network errors are often <strong>silent</strong> &mdash; the code runs, but the model doesn&rsquo;t learn. This requires a different debugging approach.</p>
+  <div class="spacer"></div>
+ <div class="two-col">
+    <div class="col">
+      <div class="prompt-bad">
+        <p style="font-size: 0.75em; color: #DC3545;"><strong>Weak prompt</strong></p>
+        <p style="font-size: 0.72em;">&ldquo;My neural network isn&rsquo;t working. Here&rsquo;s my code.&rdquo;</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="prompt-good">
+        <p style="font-size: 0.75em; color: var(--mq-green);"><strong>Strong prompt</strong></p>
+        <p style="font-size: 0.72em;">&ldquo;My PyTorch model trains for 50 epochs but validation loss stays at 0.69 (chance level for binary classification). Training loss drops to 0.02. Architecture: 11 &rarr; 64 &rarr; ReLU &rarr; 1. Learning rate 0.001. Batch size 32. Here&rsquo;s my training loop and loss plot. What could cause the val loss to plateau?&rdquo;</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+ <div class="key-insight">
+    <p>The key difference: share the <strong>behaviour</strong> (loss values, plots, what you expected vs. what happened), not just the code. Silent bugs need <strong>diagnostic context</strong>.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 45: LLM Skills Progression
+     ============================================================ -->
+<section>
+  <h2>LLM Skills Progression</h2>
+  <div class="spacer"></div>
+  <table style="font-size: 0.78em; width: 90%;">
+    <tr><th>Week</th><th>Skill</th><th>Core idea</th></tr>
+    <tr><td>2</td><td>Prompting</td><td>Give the AI enough context to write good code</td></tr>
+    <tr><td>4</td><td>Debugging</td><td>Share the full error context, not just the message</td></tr>
+    <tr><td>6</td><td>Refactoring</td><td>Make working code cleaner and more readable</td></tr>
+    <tr><td>8</td><td>Documentation</td><td>Write clear methods descriptions for your analysis</td></tr>
+    <tr style="background: rgba(167,25,48,0.08);"><td><strong>10</strong></td><td><strong>Complex Debugging</strong></td><td><strong>Diagnose silent failures using behaviour, not just errors</strong></td></tr>
+  </table>
+  <div class="spacer"></div>
+ <p class="small">Each skill builds on the last. By Week 10, you can prompt, debug, refactor, document, <strong>and diagnose silent model failures</strong>.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 46: End Slide
+     ============================================================ -->
+<section class="end-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #A71930 100%)">
+  <h1>Questions?</h1>
+  <div class="spacer-lg"></div>
+  <p>PSYC4411 &middot; Week 9</p>
+  <div class="spacer"></div>
+  <p>Week 10: Building your first neural network in PyTorch</p>
+  <p style="font-size: 0.65em; opacity: 0.5;">See you next week</p>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<!-- Fixed UI elements -->
+<a class="back-to-repo" href="../../README.md">&larr; Week 9</a>
+<div class="live-clock" id="clock"></div>
+
+<!-- Navigation bar -->
+<nav class="slide-nav" id="slideNav"></nav>
+
+<!-- reveal.js -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
-  Reveal.initialize({
-    width: 1920, height: 1080, margin: 0,
-    center: false, controls: false,
-    slideNumber: false, progress: false,
-    transition: 'none', hash: false
+  const deck = new Reveal({
+    hash: true,
+    slideNumber: false,
+    progress: false,
+    controls: true,
+    controlsTutorial: false,
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    center: false,
+    maxScale: 1.5,
+    pdfSeparateFragments: false,
   });
+  deck.initialize();
+
+  /* ---- Slide Nav Bar ---- */
+  function buildNav() {
+    const nav = document.getElementById('slideNav');
+    if (!nav) return;
+    const slides = deck.getSlides();
+    nav.innerHTML = '';
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'slide-nav-pill';
+      btn.textContent = i + 1;
+      btn.addEventListener('click', () => deck.slide(i));
+      nav.appendChild(btn);
+    });
+    updateNav();
+  }
+  function updateNav() {
+    const pills = document.querySelectorAll('.slide-nav-pill');
+    const cur = deck.getState().indexh;
+    pills.forEach((p, i) => {
+      p.classList.toggle('active', i === cur);
+      p.classList.toggle('visited', i < cur);
+    });
+  }
+  deck.on('ready', buildNav);
+  deck.on('slidechanged', updateNav);
+
+  /* ---- Live Clock ---- */
+  function tick() {
+    const el = document.getElementById('clock');
+    if (!el) return;
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: false });
+  }
+  tick();
+  setInterval(tick, 30000);
 </script>
 </body>
 </html>

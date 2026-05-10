@@ -1,0 +1,7 @@
+# Ignore downloaded data files (students download fresh via download_data.py)
+*.csv
+*.txt
+*.zip
+
+# But track the download script itself
+!download_data.py

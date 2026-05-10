@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 420" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="375" y="25" text-anchor="middle" font-size="16" font-weight="700" fill="#2D2D2D">Multi-Layer Perceptron (MLP)</text>
+  <text x="375" y="45" text-anchor="middle" font-size="12" fill="#8C8C8C">Hidden layers learn new representations of your data</text>
+
+  <!-- Layer labels -->
+  <text x="80" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#4A90D9">Input Layer</text>
+  <text x="80" y="92" text-anchor="middle" font-size="10" fill="#8C8C8C">(your features)</text>
+
+  <text x="300" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#C8972C">Hidden Layer 1</text>
+  <text x="300" y="92" text-anchor="middle" font-size="10" fill="#8C8C8C">(learned features)</text>
+
+  <text x="490" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#7B68A8">Hidden Layer 2</text>
+  <text x="490" y="92" text-anchor="middle" font-size="10" fill="#8C8C8C">(higher-level)</text>
+
+  <text x="670" y="75" text-anchor="middle" font-size="13" font-weight="600" fill="#5BA55B">Output</text>
+  <text x="670" y="92" text-anchor="middle" font-size="10" fill="#8C8C8C">(prediction)</text>
+
+  <!-- Input nodes (5) -->
+  <circle cx="80" cy="130" r="18" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="80" y="134" text-anchor="middle" font-size="9" fill="#4A90D9">x&#x2081;</text>
+  <circle cx="80" cy="185" r="18" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="80" y="189" text-anchor="middle" font-size="9" fill="#4A90D9">x&#x2082;</text>
+  <circle cx="80" cy="240" r="18" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="80" y="244" text-anchor="middle" font-size="9" fill="#4A90D9">x&#x2083;</text>
+  <circle cx="80" cy="295" r="18" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="80" y="299" text-anchor="middle" font-size="9" fill="#4A90D9">x&#x2084;</text>
+  <circle cx="80" cy="350" r="18" fill="#4A90D9" fill-opacity="0.15" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="80" y="354" text-anchor="middle" font-size="9" fill="#4A90D9">x&#x2085;</text>
+
+  <!-- Hidden layer 1 nodes (4) -->
+  <circle cx="300" cy="155" r="18" fill="#C8972C" fill-opacity="0.15" stroke="#C8972C" stroke-width="1.5"/>
+  <circle cx="300" cy="215" r="18" fill="#C8972C" fill-opacity="0.15" stroke="#C8972C" stroke-width="1.5"/>
+  <circle cx="300" cy="275" r="18" fill="#C8972C" fill-opacity="0.15" stroke="#C8972C" stroke-width="1.5"/>
+  <circle cx="300" cy="335" r="18" fill="#C8972C" fill-opacity="0.15" stroke="#C8972C" stroke-width="1.5"/>
+
+  <!-- Hidden layer 2 nodes (3) -->
+  <circle cx="490" cy="185" r="18" fill="#7B68A8" fill-opacity="0.15" stroke="#7B68A8" stroke-width="1.5"/>
+  <circle cx="490" cy="250" r="18" fill="#7B68A8" fill-opacity="0.15" stroke="#7B68A8" stroke-width="1.5"/>
+  <circle cx="490" cy="315" r="18" fill="#7B68A8" fill-opacity="0.15" stroke="#7B68A8" stroke-width="1.5"/>
+
+  <!-- Output nodes (2) -->
+  <circle cx="670" cy="215" r="22" fill="#5BA55B" fill-opacity="0.15" stroke="#5BA55B" stroke-width="2"/>
+  <text x="670" y="212" text-anchor="middle" font-size="9" fill="#5BA55B" font-weight="600">Left</text>
+  <text x="670" y="224" text-anchor="middle" font-size="9" fill="#5BA55B" font-weight="600">hand</text>
+  <circle cx="670" cy="285" r="22" fill="#A71930" fill-opacity="0.15" stroke="#A71930" stroke-width="2"/>
+  <text x="670" y="282" text-anchor="middle" font-size="9" fill="#A71930" font-weight="600">Right</text>
+  <text x="670" y="294" text-anchor="middle" font-size="9" fill="#A71930" font-weight="600">hand</text>
+
+  <!-- Connections: Input → Hidden 1 (draw a subset to avoid clutter) -->
+  <g opacity="0.2" stroke="#8C8C8C" stroke-width="0.8">
+    <!-- From each input to each hidden 1 -->
+    <line x1="98" y1="130" x2="282" y2="155"/>
+    <line x1="98" y1="130" x2="282" y2="215"/>
+    <line x1="98" y1="130" x2="282" y2="275"/>
+    <line x1="98" y1="130" x2="282" y2="335"/>
+    <line x1="98" y1="185" x2="282" y2="155"/>
+    <line x1="98" y1="185" x2="282" y2="215"/>
+    <line x1="98" y1="185" x2="282" y2="275"/>
+    <line x1="98" y1="185" x2="282" y2="335"/>
+    <line x1="98" y1="240" x2="282" y2="155"/>
+    <line x1="98" y1="240" x2="282" y2="215"/>
+    <line x1="98" y1="240" x2="282" y2="275"/>
+    <line x1="98" y1="240" x2="282" y2="335"/>
+    <line x1="98" y1="295" x2="282" y2="155"/>
+    <line x1="98" y1="295" x2="282" y2="215"/>
+    <line x1="98" y1="295" x2="282" y2="275"/>
+    <line x1="98" y1="295" x2="282" y2="335"/>
+    <line x1="98" y1="350" x2="282" y2="155"/>
+    <line x1="98" y1="350" x2="282" y2="215"/>
+    <line x1="98" y1="350" x2="282" y2="275"/>
+    <line x1="98" y1="350" x2="282" y2="335"/>
+  </g>
+
+  <!-- Connections: Hidden 1 → Hidden 2 -->
+  <g opacity="0.2" stroke="#8C8C8C" stroke-width="0.8">
+    <line x1="318" y1="155" x2="472" y2="185"/>
+    <line x1="318" y1="155" x2="472" y2="250"/>
+    <line x1="318" y1="155" x2="472" y2="315"/>
+    <line x1="318" y1="215" x2="472" y2="185"/>
+    <line x1="318" y1="215" x2="472" y2="250"/>
+    <line x1="318" y1="215" x2="472" y2="315"/>
+    <line x1="318" y1="275" x2="472" y2="185"/>
+    <line x1="318" y1="275" x2="472" y2="250"/>
+    <line x1="318" y1="275" x2="472" y2="315"/>
+    <line x1="318" y1="335" x2="472" y2="185"/>
+    <line x1="318" y1="335" x2="472" y2="250"/>
+    <line x1="318" y1="335" x2="472" y2="315"/>
+  </g>
+
+  <!-- Connections: Hidden 2 → Output -->
+  <g opacity="0.2" stroke="#8C8C8C" stroke-width="0.8">
+    <line x1="508" y1="185" x2="648" y2="215"/>
+    <line x1="508" y1="185" x2="648" y2="285"/>
+    <line x1="508" y1="250" x2="648" y2="215"/>
+    <line x1="508" y1="250" x2="648" y2="285"/>
+    <line x1="508" y1="315" x2="648" y2="215"/>
+    <line x1="508" y1="315" x2="648" y2="285"/>
+  </g>
+
+  <!-- Annotation box -->
+  <rect x="130" y="375" width="490" height="40" rx="8" fill="#4A90D9" fill-opacity="0.08" stroke="#4A90D9" stroke-width="1"/>
+  <text x="375" y="395" text-anchor="middle" font-size="11" fill="#2D2D2D">Each connection has a <tspan font-weight="600" fill="#C8972C">weight</tspan> that the network learns during training.</text>
+  <text x="375" y="410" text-anchor="middle" font-size="11" fill="#8C8C8C">5 inputs &#xd7; 4 hidden + 4 &#xd7; 3 hidden + 3 &#xd7; 2 output = 38 weights to learn (+ biases)</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 420" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="375" y="25" text-anchor="middle" font-size="16" font-weight="700" fill="#2D2D2D">Gradient Descent: Finding the Lowest Point in Fog</text>
+  <text x="375" y="45" text-anchor="middle" font-size="12" fill="#8C8C8C">The network adjusts weights to reduce prediction error, step by step</text>
+
+  <!-- === Left panel: The landscape === -->
+  <rect x="20" y="60" width="440" height="290" rx="10" fill="#F8F8F8" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="240" y="82" text-anchor="middle" font-size="13" font-weight="600" fill="#2D2D2D">Loss Landscape</text>
+
+  <!-- Loss landscape curve (hilly terrain) -->
+  <path d="M 40,280 C 60,200 80,170 120,200 C 145,218 155,220 170,190 C 190,150 220,120 260,140 C 280,148 290,160 310,135 C 340,100 370,160 400,200 C 430,235 440,260 440,280" fill="#4A90D9" fill-opacity="0.1" stroke="#4A90D9" stroke-width="2"/>
+
+  <!-- Gradient descent path (dots showing the journey) -->
+  <circle cx="95" cy="180" r="6" fill="#A71930"/>
+  <text x="95" y="170" text-anchor="middle" font-size="9" font-weight="600" fill="#A71930">Start</text>
+  <line x1="101" y1="183" x2="125" y2="198" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <circle cx="130" cy="201" r="5" fill="#A71930" fill-opacity="0.8"/>
+  <line x1="135" y1="203" x2="155" y2="210" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <circle cx="160" cy="210" r="4" fill="#A71930" fill-opacity="0.6"/>
+  <line x1="165" y1="208" x2="175" y2="195" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <circle cx="180" cy="190" r="4" fill="#A71930" fill-opacity="0.5"/>
+
+  <!-- Local minimum annotation -->
+  <circle cx="175" cy="192" r="10" fill="none" stroke="#C8972C" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="175" y="230" text-anchor="middle" font-size="9" fill="#C8972C" font-weight="600">Local minimum</text>
+  <text x="175" y="242" text-anchor="middle" font-size="8" fill="#8C8C8C">(stuck here!)</text>
+
+  <!-- Global minimum -->
+  <circle cx="315" cy="133" r="5" fill="#5BA55B"/>
+  <circle cx="315" cy="133" r="10" fill="none" stroke="#5BA55B" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="315" y="120" text-anchor="middle" font-size="9" fill="#5BA55B" font-weight="600">Global minimum</text>
+  <text x="315" y="108" text-anchor="middle" font-size="8" fill="#8C8C8C">(ideal, but hard to find)</text>
+
+  <!-- Axis labels -->
+  <text x="240" y="300" text-anchor="middle" font-size="10" fill="#8C8C8C">Weight values</text>
+  <text x="35" y="185" text-anchor="middle" font-size="10" fill="#8C8C8C" transform="rotate(-90, 35, 185)">Loss (error)</text>
+
+  <!-- Fog overlay -->
+  <rect x="40" y="90" width="400" height="50" fill="url(#fog)" opacity="0.6"/>
+
+  <defs>
+    <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F8F8F8" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#F8F8F8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Analogy text -->
+  <text x="240" y="325" text-anchor="middle" font-size="10" font-style="italic" fill="#8C8C8C">Imagine standing in thick fog on a hilly landscape.</text>
+  <text x="240" y="340" text-anchor="middle" font-size="10" font-style="italic" fill="#8C8C8C">Feel which way slopes downhill, take a small step, repeat.</text>
+
+  <!-- === Right panel: Learning rate comparison === -->
+  <rect x="490" y="60" width="240" height="290" rx="10" fill="#F8F8F8" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="610" y="82" text-anchor="middle" font-size="13" font-weight="600" fill="#2D2D2D">Learning Rate</text>
+
+  <!-- Too big -->
+  <rect x="505" y="95" width="210" height="70" rx="6" fill="#A71930" fill-opacity="0.05" stroke="#A71930" stroke-width="1"/>
+  <text x="610" y="112" text-anchor="middle" font-size="11" font-weight="600" fill="#A71930">Too big (lr = 0.1)</text>
+  <!-- Bouncing arrows -->
+  <polyline points="520,148 555,125 590,150 625,118 660,152 695,115" fill="none" stroke="#A71930" stroke-width="1.5"/>
+  <text x="610" y="160" text-anchor="middle" font-size="8" fill="#A71930">Overshoots &#x2014; bounces around, never settles</text>
+
+  <!-- Just right -->
+  <rect x="505" y="175" width="210" height="70" rx="6" fill="#5BA55B" fill-opacity="0.05" stroke="#5BA55B" stroke-width="1"/>
+  <text x="610" y="192" text-anchor="middle" font-size="11" font-weight="600" fill="#5BA55B">Just right (lr = 0.001)</text>
+  <!-- Smooth descent -->
+  <polyline points="520,235 555,225 590,218 625,213 660,211 695,210" fill="none" stroke="#5BA55B" stroke-width="1.5"/>
+  <circle cx="695" cy="210" r="3" fill="#5BA55B"/>
+  <text x="610" y="240" text-anchor="middle" font-size="8" fill="#5BA55B">Steady descent to a good minimum</text>
+
+  <!-- Too small -->
+  <rect x="505" y="255" width="210" height="70" rx="6" fill="#C8972C" fill-opacity="0.05" stroke="#C8972C" stroke-width="1"/>
+  <text x="610" y="272" text-anchor="middle" font-size="11" font-weight="600" fill="#C8972C">Too small (lr = 0.00001)</text>
+  <!-- Barely moving -->
+  <polyline points="520,310 540,309 560,308.5 580,308" fill="none" stroke="#C8972C" stroke-width="1.5"/>
+  <text x="610" y="320" text-anchor="middle" font-size="8" fill="#C8972C">Barely moves &#x2014; takes forever, might get stuck</text>
+
+  <!-- Bottom box: The training cycle -->
+  <rect x="20" y="360" width="710" height="50" rx="8" fill="#C8972C" fill-opacity="0.08" stroke="#C8972C" stroke-width="1.5"/>
+  <text x="375" y="380" text-anchor="middle" font-size="12" font-weight="600" fill="#2D2D2D">The Training Cycle (repeat thousands of times)</text>
+  <text x="375" y="398" text-anchor="middle" font-size="11" fill="#8C8C8C">
+    <tspan fill="#4A90D9" font-weight="600">1. Forward pass</tspan> &#x2192;
+    <tspan fill="#A71930" font-weight="600">2. Compute loss</tspan> &#x2192;
+    <tspan fill="#7B68A8" font-weight="600">3. Backward pass</tspan> &#x2192;
+    <tspan fill="#5BA55B" font-weight="600">4. Update weights</tspan>
+  </text>
+</svg>

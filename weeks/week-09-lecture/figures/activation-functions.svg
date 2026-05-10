@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 380" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="375" y="25" text-anchor="middle" font-size="16" font-weight="700" fill="#2D2D2D">Activation Functions: Adding Non-Linearity</text>
+  <text x="375" y="45" text-anchor="middle" font-size="12" fill="#8C8C8C">Without these, stacking layers does nothing &#x2014; it&#x2019;s still just a linear model</text>
+
+  <!-- === Left panel: Sigmoid === -->
+  <rect x="25" y="60" width="330" height="250" rx="10" fill="#F8F8F8" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="190" y="85" text-anchor="middle" font-size="14" font-weight="600" fill="#A71930">Sigmoid</text>
+  <text x="190" y="102" text-anchor="middle" font-size="10" fill="#8C8C8C">Squashes any value to between 0 and 1</text>
+
+  <!-- Axes -->
+  <line x1="70" y1="270" x2="330" y2="270" stroke="#8C8C8C" stroke-width="1"/>
+  <line x1="190" y1="130" x2="190" y2="280" stroke="#8C8C8C" stroke-width="1"/>
+  <text x="330" y="285" text-anchor="end" font-size="9" fill="#8C8C8C">input</text>
+  <text x="185" y="128" text-anchor="end" font-size="9" fill="#8C8C8C">output</text>
+
+  <!-- Y-axis labels -->
+  <text x="65" y="145" text-anchor="end" font-size="9" fill="#8C8C8C">1.0</text>
+  <line x1="67" y1="142" x2="73" y2="142" stroke="#8C8C8C" stroke-width="0.5"/>
+  <text x="65" y="210" text-anchor="end" font-size="9" fill="#8C8C8C">0.5</text>
+  <line x1="67" y1="207" x2="73" y2="207" stroke="#8C8C8C" stroke-width="0.5"/>
+  <text x="65" y="273" text-anchor="end" font-size="9" fill="#8C8C8C">0</text>
+
+  <!-- X-axis labels -->
+  <text x="110" y="285" text-anchor="middle" font-size="9" fill="#8C8C8C">&#x2212;4</text>
+  <text x="270" y="285" text-anchor="middle" font-size="9" fill="#8C8C8C">+4</text>
+
+  <!-- Sigmoid curve -->
+  <path d="M 75,268 C 100,268 120,265 140,258 C 155,250 170,235 180,215 C 186,200 190,190 195,180 C 200,165 210,150 225,145 C 245,140 270,138 310,137" fill="none" stroke="#A71930" stroke-width="2.5"/>
+
+  <!-- 0.5 line -->
+  <line x1="70" y1="207" x2="310" y2="207" stroke="#A71930" stroke-width="0.5" stroke-dasharray="4,3" opacity="0.4"/>
+
+  <!-- Annotation -->
+  <text x="190" y="305" text-anchor="middle" font-size="10" fill="#A71930" font-weight="600">You already know this from logistic regression!</text>
+
+  <!-- === Right panel: ReLU === -->
+  <rect x="395" y="60" width="330" height="250" rx="10" fill="#F8F8F8" stroke="#D0D0D0" stroke-width="1"/>
+  <text x="560" y="85" text-anchor="middle" font-size="14" font-weight="600" fill="#4A90D9">ReLU (Rectified Linear Unit)</text>
+  <text x="560" y="102" text-anchor="middle" font-size="10" fill="#8C8C8C">If positive, pass through. If negative, set to zero.</text>
+
+  <!-- Axes -->
+  <line x1="440" y1="270" x2="700" y2="270" stroke="#8C8C8C" stroke-width="1"/>
+  <line x1="560" y1="130" x2="560" y2="280" stroke="#8C8C8C" stroke-width="1"/>
+  <text x="700" y="285" text-anchor="end" font-size="9" fill="#8C8C8C">input</text>
+  <text x="555" y="128" text-anchor="end" font-size="9" fill="#8C8C8C">output</text>
+
+  <!-- Y-axis labels -->
+  <text x="435" y="148" text-anchor="end" font-size="9" fill="#8C8C8C">4</text>
+  <text x="435" y="210" text-anchor="end" font-size="9" fill="#8C8C8C">2</text>
+  <text x="435" y="273" text-anchor="end" font-size="9" fill="#8C8C8C">0</text>
+
+  <!-- X-axis labels -->
+  <text x="480" y="285" text-anchor="middle" font-size="9" fill="#8C8C8C">&#x2212;4</text>
+  <text x="640" y="285" text-anchor="middle" font-size="9" fill="#8C8C8C">+4</text>
+
+  <!-- ReLU: flat at zero for negatives, linear for positives -->
+  <line x1="445" y1="270" x2="560" y2="270" stroke="#4A90D9" stroke-width="2.5"/>
+  <line x1="560" y1="270" x2="690" y2="145" stroke="#4A90D9" stroke-width="2.5"/>
+
+  <!-- Annotation -->
+  <text x="560" y="305" text-anchor="middle" font-size="10" fill="#4A90D9" font-weight="600">Sounds crude, but trains faster and works great!</text>
+
+  <!-- Bottom comparison -->
+  <rect x="75" y="325" width="600" height="45" rx="8" fill="#5BA55B" fill-opacity="0.08" stroke="#5BA55B" stroke-width="1"/>
+  <text x="375" y="345" text-anchor="middle" font-size="11" font-weight="600" fill="#5BA55B">Why do we need these?</text>
+  <text x="375" y="362" text-anchor="middle" font-size="11" fill="#8C8C8C">Without activation functions, a 100-layer network is mathematically identical to a single linear model.</text>
+</svg>
