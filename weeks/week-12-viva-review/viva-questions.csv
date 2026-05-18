@@ -1,0 +1,10 @@
+Number,Method,Question
+1,Regression,"A researcher wants to predict DASS Depression scores from Big Five personality traits in a large student sample. Which ML regression approach would you use, and how would you check it's trustworthy?"
+2,Regression,"You have 60 self-report items and only 250 participants, and you want to predict perceived stress. Should you use Ridge or Lasso, and why?"
+3,Regression,"A colleague reports R² = 0.85 predicting wellbeing from lifestyle variables in their training data, but the model performs poorly on a new cohort. What's gone wrong, and what would you do differently?"
+4,Classification,"A university counselling service wants to flag students likely to be experiencing elevated depression (PHQ-9 ≥ 5) from a short survey. Which ML classification approach would you use, and which metric matters most?"
+5,Classification,Your classifier detects a rare clinical condition (~8% prevalence) and hits 92% accuracy. Why might you be more cautious than your supervisor?
+10,Dimensionality Reduction,"You want a 2D visualisation of participants in a high-dimensional symptom dataset to see whether clinical and non-clinical groups separate. Would you use PCA or UMAP, and why?"
+11,Neural Network,A colleague has 200 participants with personality questionnaire data and wants to use a deep neural network to predict wellbeing because 'deep learning is more powerful'. What would you recommend?
+13,Embeddings/LLM,"You have 400 interview transcripts about coping during the pandemic. How would you use embeddings to find recurring themes, and how would you check the themes are real?"
+18,LLM-Assisted Workflow,"A colleague used ChatGPT to do a 'thematic analysis' of their interview transcripts and pasted the output straight into their results section. What concerns would you raise, and how should they have done it instead?"

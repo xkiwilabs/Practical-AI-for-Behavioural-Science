@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" font-size="17" font-weight="700" fill="#2D2D2D">Architecture Matches Data</text>
+  <text x="450" y="48" text-anchor="middle" font-size="12" fill="#8C8C8C">Different shapes of network unlock different kinds of data</text>
+
+  <!-- ============ Panel 1: Tabular → MLP ============ -->
+  <rect x="30" y="78" width="260" height="330" rx="14" fill="#F7F9FC" stroke="#4A90D9" stroke-width="1.5"/>
+  <text x="160" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#4A90D9">Tabular data</text>
+  <text x="160" y="124" text-anchor="middle" font-size="11" fill="#8C8C8C">rows × columns (surveys, scores)</text>
+
+  <!-- mini table -->
+  <g transform="translate(60, 138)">
+    <rect x="0" y="0" width="200" height="22" fill="#4A90D9" fill-opacity="0.18"/>
+    <text x="100" y="15" text-anchor="middle" font-size="9" fill="#2D2D2D" font-weight="600">id  sleep  stress  PHQ-9</text>
+    <rect x="0" y="22" width="200" height="20" fill="white"/>
+    <text x="100" y="36" text-anchor="middle" font-size="9" fill="#2D2D2D">01    7.2     4.1      9</text>
+    <rect x="0" y="42" width="200" height="20" fill="#F0F4FA"/>
+    <text x="100" y="56" text-anchor="middle" font-size="9" fill="#2D2D2D">02    5.8     6.3     15</text>
+    <rect x="0" y="62" width="200" height="20" fill="white"/>
+    <text x="100" y="76" text-anchor="middle" font-size="9" fill="#2D2D2D">03    8.0     2.0      4</text>
+  </g>
+  <!-- arrow down -->
+  <path d="M160 240 L160 268" stroke="#8C8C8C" stroke-width="2" fill="none"/>
+  <polygon points="160,275 154,265 166,265" fill="#8C8C8C"/>
+
+  <!-- MLP mini diagram -->
+  <g transform="translate(60, 280)">
+    <text x="100" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="#2D2D2D">MLP</text>
+    <circle cx="20" cy="20" r="8" fill="#4A90D9" fill-opacity="0.3" stroke="#4A90D9"/>
+    <circle cx="20" cy="50" r="8" fill="#4A90D9" fill-opacity="0.3" stroke="#4A90D9"/>
+    <circle cx="20" cy="80" r="8" fill="#4A90D9" fill-opacity="0.3" stroke="#4A90D9"/>
+    <circle cx="100" cy="35" r="8" fill="#7B68A8" fill-opacity="0.3" stroke="#7B68A8"/>
+    <circle cx="100" cy="65" r="8" fill="#7B68A8" fill-opacity="0.3" stroke="#7B68A8"/>
+    <circle cx="180" cy="50" r="9" fill="#5BA55B" fill-opacity="0.3" stroke="#5BA55B"/>
+    <g opacity="0.3" stroke="#8C8C8C" stroke-width="0.8">
+      <line x1="28" y1="20" x2="92" y2="35"/><line x1="28" y1="20" x2="92" y2="65"/>
+      <line x1="28" y1="50" x2="92" y2="35"/><line x1="28" y1="50" x2="92" y2="65"/>
+      <line x1="28" y1="80" x2="92" y2="35"/><line x1="28" y1="80" x2="92" y2="65"/>
+      <line x1="108" y1="35" x2="172" y2="50"/><line x1="108" y1="65" x2="172" y2="50"/>
+    </g>
+  </g>
+
+  <!-- ============ Panel 2: Image → CNN ============ -->
+  <rect x="320" y="78" width="260" height="330" rx="14" fill="#FFF8EE" stroke="#C8972C" stroke-width="1.5"/>
+  <text x="450" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#C8972C">Image / video data</text>
+  <text x="450" y="124" text-anchor="middle" font-size="11" fill="#8C8C8C">grid of pixels (faces, scenes, pose)</text>
+
+  <!-- pixel grid -->
+  <g transform="translate(380, 142)">
+    <rect x="0" y="0" width="140" height="100" fill="white" stroke="#C8972C" stroke-width="1"/>
+    <g fill="#C8972C" fill-opacity="0.3">
+      <rect x="20" y="15" width="100" height="60" fill="#C8972C" fill-opacity="0.15"/>
+      <circle cx="55" cy="40" r="6" fill="#C8972C" fill-opacity="0.5"/>
+      <circle cx="85" cy="40" r="6" fill="#C8972C" fill-opacity="0.5"/>
+      <path d="M55 60 Q70 70 85 60" stroke="#C8972C" stroke-width="2" fill="none"/>
+    </g>
+    <text x="70" y="92" text-anchor="middle" font-size="8" fill="#8C8C8C" font-style="italic">2D structure matters</text>
+  </g>
+  <!-- arrow down -->
+  <path d="M450 254 L450 272" stroke="#8C8C8C" stroke-width="2" fill="none"/>
+  <polygon points="450,279 444,269 456,269" fill="#8C8C8C"/>
+
+  <!-- CNN mini -->
+  <g transform="translate(350, 286)">
+    <text x="100" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="#2D2D2D">CNN</text>
+    <!-- conv stack -->
+    <rect x="0" y="10" width="40" height="40" fill="#C8972C" fill-opacity="0.2" stroke="#C8972C"/>
+    <rect x="6" y="16" width="40" height="40" fill="#C8972C" fill-opacity="0.3" stroke="#C8972C"/>
+    <rect x="12" y="22" width="40" height="40" fill="#C8972C" fill-opacity="0.4" stroke="#C8972C"/>
+    <path d="M58 40 L82 40" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="80,36 88,40 80,44" fill="#8C8C8C"/>
+    <rect x="92" y="20" width="30" height="40" fill="#C8972C" fill-opacity="0.5" stroke="#C8972C"/>
+    <path d="M125 40 L150 40" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="148,36 156,40 148,44" fill="#8C8C8C"/>
+    <rect x="160" y="30" width="20" height="20" fill="#5BA55B" fill-opacity="0.3" stroke="#5BA55B"/>
+    <text x="100" y="80" text-anchor="middle" font-size="9" fill="#8C8C8C" font-style="italic">filters → maps → label</text>
+  </g>
+
+  <!-- ============ Panel 3: Sequence → RNN/Transformer ============ -->
+  <rect x="610" y="78" width="260" height="330" rx="14" fill="#F4F0F9" stroke="#7B68A8" stroke-width="1.5"/>
+  <text x="740" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#7B68A8">Sequence / language data</text>
+  <text x="740" y="124" text-anchor="middle" font-size="11" fill="#8C8C8C">order matters (speech, EEG, text)</text>
+
+  <!-- sequence stream -->
+  <g transform="translate(640, 145)">
+    <rect x="0" y="10" width="32" height="32" rx="6" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8"/>
+    <text x="16" y="30" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">I</text>
+    <rect x="40" y="10" width="32" height="32" rx="6" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8"/>
+    <text x="56" y="30" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">slept</text>
+    <rect x="80" y="10" width="40" height="32" rx="6" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8"/>
+    <text x="100" y="30" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">poorly</text>
+    <rect x="128" y="10" width="50" height="32" rx="6" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8"/>
+    <text x="153" y="30" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">today</text>
+    <text x="90" y="68" text-anchor="middle" font-size="9" fill="#8C8C8C" font-style="italic">order carries meaning</text>
+  </g>
+  <!-- arrow down -->
+  <path d="M740 250 L740 272" stroke="#8C8C8C" stroke-width="2" fill="none"/>
+  <polygon points="740,279 734,269 746,269" fill="#8C8C8C"/>
+
+  <!-- RNN / Transformer mini -->
+  <g transform="translate(640, 286)">
+    <text x="100" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="#2D2D2D">RNN / Transformer</text>
+    <rect x="0" y="20" width="40" height="32" rx="6" fill="#7B68A8" fill-opacity="0.3" stroke="#7B68A8"/>
+    <rect x="55" y="20" width="40" height="32" rx="6" fill="#7B68A8" fill-opacity="0.3" stroke="#7B68A8"/>
+    <rect x="110" y="20" width="40" height="32" rx="6" fill="#7B68A8" fill-opacity="0.3" stroke="#7B68A8"/>
+    <rect x="165" y="20" width="40" height="32" rx="6" fill="#7B68A8" fill-opacity="0.3" stroke="#7B68A8"/>
+    <!-- arrows between cells -->
+    <path d="M40 36 L55 36" stroke="#A71930" stroke-width="2"/>
+    <polygon points="53,32 60,36 53,40" fill="#A71930"/>
+    <path d="M95 36 L110 36" stroke="#A71930" stroke-width="2"/>
+    <polygon points="108,32 115,36 108,40" fill="#A71930"/>
+    <path d="M150 36 L165 36" stroke="#A71930" stroke-width="2"/>
+    <polygon points="163,32 170,36 163,40" fill="#A71930"/>
+    <text x="100" y="78" text-anchor="middle" font-size="9" fill="#8C8C8C" font-style="italic">memory / attention across time</text>
+  </g>
+</svg>

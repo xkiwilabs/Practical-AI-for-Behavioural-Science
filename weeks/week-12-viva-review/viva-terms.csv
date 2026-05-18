@@ -1,0 +1,41 @@
+Number,Term
+1,Artificial Intelligence (AI)
+2,Machine Learning (ML)
+3,Generalisation
+4,Prompt Engineering
+5,Context Engineering
+6,LLM Problem-Solving Loop
+7,Overfitting
+8,Underfitting
+9,Bias-Variance Tradeoff
+10,Cross-Validation
+11,Linear Regression
+12,Regularisation
+13,Lasso Regression (L1)
+14,Mean Absolute Error (MAE)
+15,Classification
+16,Decision Tree
+17,Random Forest
+18,Confusion Matrix
+19,ROC Curve / AUC (Receiver Operating Characteristic / Area Under the Curve)
+20,Ensemble Learning
+21,Feature Importance
+22,Classification Threshold
+23,Clustering
+24,K-Means
+25,Principal Component Analysis (PCA)
+26,Hyperparameter
+27,Cluster Stability
+28,Silhouette Score
+29,Neural Network (Artificial)
+30,Perceptron
+31,Activation Function
+32,Backpropagation
+33,Dropout
+34,Training Loop (Epoch and Batch)
+35,Loss Function
+36,Convolutional Neural Network (CNN)
+37,Transformer
+38,Embedding
+39,Self-Attention
+40,Hallucination (LLM)

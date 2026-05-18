@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Inter, -apple-system, sans-serif">
+  <!-- Plotting area -->
+  <rect x="40" y="40" width="1120" height="540" rx="14" fill="#FAFAFA" stroke="#D0D0D0" stroke-width="1"/>
+
+  <!-- Faint reference axes -->
+  <line x1="40" y1="310" x2="1160" y2="310" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="600" y1="40" x2="600" y2="580" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ==== CLUSTER 1: Emotions (purple, top-left) ==== -->
+  <ellipse cx="260" cy="190" rx="170" ry="100" fill="#7B68A8" fill-opacity="0.10" stroke="#7B68A8" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="260" y="100" text-anchor="middle" font-size="22" font-weight="700" fill="#7B68A8">Emotions</text>
+
+  <g font-size="20" fill="#2D2D2D" font-weight="600">
+    <circle cx="195" cy="170" r="6" fill="#7B68A8"/>
+    <text x="210" y="175">sad</text>
+    <circle cx="270" cy="155" r="6" fill="#7B68A8"/>
+    <text x="285" y="160">anxious</text>
+    <circle cx="200" cy="220" r="6" fill="#7B68A8"/>
+    <text x="215" y="225">depressed</text>
+    <circle cx="310" cy="220" r="6" fill="#7B68A8"/>
+    <text x="325" y="225">worried</text>
+    <circle cx="270" cy="245" r="6" fill="#7B68A8"/>
+    <text x="155" y="250">low mood</text>
+  </g>
+
+  <!-- ==== CLUSTER 2: Cognition (blue, top-right) ==== -->
+  <ellipse cx="930" cy="190" rx="185" ry="100" fill="#4A90D9" fill-opacity="0.10" stroke="#4A90D9" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="930" y="100" text-anchor="middle" font-size="22" font-weight="700" fill="#4A90D9">Cognition</text>
+
+  <g font-size="20" fill="#2D2D2D" font-weight="600">
+    <circle cx="850" cy="165" r="6" fill="#4A90D9"/>
+    <text x="865" y="170">memory</text>
+    <circle cx="940" cy="155" r="6" fill="#4A90D9"/>
+    <text x="955" y="160">attention</text>
+    <circle cx="870" cy="220" r="6" fill="#4A90D9"/>
+    <text x="885" y="225">reasoning</text>
+    <circle cx="975" cy="220" r="6" fill="#4A90D9"/>
+    <text x="990" y="225">learning</text>
+    <circle cx="910" cy="245" r="6" fill="#4A90D9"/>
+    <text x="800" y="252">perception</text>
+  </g>
+
+  <!-- ==== CLUSTER 3: Methods (gold, bottom-left) ==== -->
+  <ellipse cx="260" cy="460" rx="180" ry="90" fill="#C8972C" fill-opacity="0.10" stroke="#C8972C" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="260" y="395" text-anchor="middle" font-size="22" font-weight="700" fill="#C8972C">Statistical methods</text>
+
+  <g font-size="20" fill="#2D2D2D" font-weight="600">
+    <circle cx="180" cy="440" r="6" fill="#C8972C"/>
+    <text x="195" y="445">regression</text>
+    <circle cx="320" cy="440" r="6" fill="#C8972C"/>
+    <text x="335" y="445">ANOVA</text>
+    <circle cx="215" cy="490" r="6" fill="#C8972C"/>
+    <text x="115" y="495">clustering</text>
+    <circle cx="325" cy="490" r="6" fill="#C8972C"/>
+    <text x="340" y="495">PCA</text>
+  </g>
+
+  <!-- ==== CLUSTER 4: People (red, bottom-right) ==== -->
+  <ellipse cx="930" cy="460" rx="170" ry="90" fill="#A71930" fill-opacity="0.10" stroke="#A71930" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="930" y="395" text-anchor="middle" font-size="22" font-weight="700" fill="#A71930">People</text>
+
+  <g font-size="20" fill="#2D2D2D" font-weight="600">
+    <circle cx="850" cy="440" r="6" fill="#A71930"/>
+    <text x="865" y="445">patient</text>
+    <circle cx="965" cy="440" r="6" fill="#A71930"/>
+    <text x="980" y="445">clinician</text>
+    <circle cx="880" cy="490" r="6" fill="#A71930"/>
+    <text x="895" y="495">therapist</text>
+    <circle cx="980" cy="495" r="6" fill="#A71930"/>
+    <text x="785" y="502">participant</text>
+  </g>
+
+  <!-- Vector arithmetic centre callout -->
+  <g transform="translate(490, 320)">
+    <rect x="0" y="0" width="220" height="80" rx="10" fill="white" stroke="#C8972C" stroke-width="1.5"/>
+    <text x="110" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#C8972C">Vector arithmetic</text>
+    <text x="110" y="46" text-anchor="middle" font-size="16" fill="#2D2D2D" font-style="italic">king &minus; man + woman</text>
+    <text x="110" y="66" text-anchor="middle" font-size="16" fill="#2D2D2D" font-style="italic">&asymp; queen</text>
+  </g>
+
+  <!-- Bottom takeaway band -->
+  <rect x="40" y="610" width="1120" height="90" rx="12" fill="#FFF8EE" stroke="#C8972C" stroke-width="1.5"/>
+  <text x="600" y="645" text-anchor="middle" font-size="22" fill="#2D2D2D"><tspan font-weight="700" fill="#C8972C">Meaning lives in geometry.</tspan> Words and sentences are vectors; similarity is distance; relationships are directions.</text>
+  <text x="600" y="680" text-anchor="middle" font-size="18" fill="#8C8C8C">For research: cluster interview transcripts &middot; semantic search the literature &middot; code free-text responses at scale.</text>
+</svg>

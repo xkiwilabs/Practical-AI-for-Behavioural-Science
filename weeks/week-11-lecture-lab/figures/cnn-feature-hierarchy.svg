@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-size="17" font-weight="700" fill="#2D2D2D">CNN Feature Hierarchy</text>
+  <text x="400" y="48" text-anchor="middle" font-size="12" fill="#8C8C8C">Early layers learn simple patterns; deeper layers learn complex ones</text>
+
+  <!-- Stage 1: Input image -->
+  <g transform="translate(30, 90)">
+    <text x="80" y="0" text-anchor="middle" font-size="12" font-weight="600" fill="#2D2D2D">Input image</text>
+    <rect x="20" y="15" width="120" height="120" fill="#F4E1C5" stroke="#C8972C" stroke-width="1.5"/>
+    <!-- a stylised face -->
+    <circle cx="60" cy="55" r="10" fill="#FFF" stroke="#2D2D2D" stroke-width="1.5"/>
+    <circle cx="100" cy="55" r="10" fill="#FFF" stroke="#2D2D2D" stroke-width="1.5"/>
+    <circle cx="60" cy="55" r="3" fill="#2D2D2D"/>
+    <circle cx="100" cy="55" r="3" fill="#2D2D2D"/>
+    <path d="M55 100 Q80 115 105 100" stroke="#2D2D2D" stroke-width="2" fill="none"/>
+    <text x="80" y="155" text-anchor="middle" font-size="10" fill="#8C8C8C">pixels (raw)</text>
+  </g>
+
+  <!-- arrow 1 -->
+  <path d="M180 165 L222 165" stroke="#8C8C8C" stroke-width="2.2"/>
+  <polygon points="220,160 230,165 220,170" fill="#8C8C8C"/>
+  <text x="201" y="155" text-anchor="middle" font-size="9" fill="#8C8C8C">conv</text>
+
+  <!-- Stage 2: Edges -->
+  <g transform="translate(230, 90)">
+    <text x="80" y="0" text-anchor="middle" font-size="12" font-weight="600" fill="#4A90D9">Early layers</text>
+    <text x="80" y="16" text-anchor="middle" font-size="10" fill="#8C8C8C">edges, textures</text>
+    <rect x="20" y="30" width="120" height="105" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.5"/>
+    <!-- edge filters -->
+    <g stroke="#4A90D9" stroke-width="2.5">
+      <line x1="35" y1="48" x2="55" y2="48"/>
+      <line x1="60" y1="48" x2="80" y2="48"/>
+      <line x1="85" y1="48" x2="105" y2="48"/>
+      <line x1="110" y1="48" x2="125" y2="48"/>
+      <line x1="35" y1="70" x2="55" y2="90"/>
+      <line x1="60" y1="70" x2="80" y2="90"/>
+      <line x1="85" y1="70" x2="105" y2="90"/>
+      <line x1="110" y1="70" x2="125" y2="90"/>
+      <line x1="35" y1="115" x2="55" y2="95"/>
+      <line x1="60" y1="115" x2="80" y2="95"/>
+      <line x1="85" y1="115" x2="105" y2="95"/>
+      <line x1="110" y1="115" x2="125" y2="95"/>
+    </g>
+  </g>
+
+  <!-- arrow 2 -->
+  <path d="M380 165 L422 165" stroke="#8C8C8C" stroke-width="2.2"/>
+  <polygon points="420,160 430,165 420,170" fill="#8C8C8C"/>
+  <text x="401" y="155" text-anchor="middle" font-size="9" fill="#8C8C8C">conv</text>
+
+  <!-- Stage 3: Parts -->
+  <g transform="translate(430, 90)">
+    <text x="80" y="0" text-anchor="middle" font-size="12" font-weight="600" fill="#7B68A8">Middle layers</text>
+    <text x="80" y="16" text-anchor="middle" font-size="10" fill="#8C8C8C">parts (eyes, noses, mouths)</text>
+    <rect x="20" y="30" width="120" height="105" fill="#F4F0F9" stroke="#7B68A8" stroke-width="1.5"/>
+    <!-- eye patterns -->
+    <g fill="none" stroke="#7B68A8" stroke-width="1.8">
+      <ellipse cx="50" cy="50" rx="11" ry="6"/>
+      <circle cx="50" cy="50" r="3" fill="#7B68A8"/>
+      <ellipse cx="110" cy="50" rx="11" ry="6"/>
+      <circle cx="110" cy="50" r="3" fill="#7B68A8"/>
+      <path d="M40 85 Q55 95 70 85"/>
+      <path d="M90 85 Q105 95 120 85"/>
+      <path d="M50 115 Q80 125 110 115"/>
+      <line x1="78" y1="70" x2="82" y2="80"/>
+    </g>
+  </g>
+
+  <!-- arrow 3 -->
+  <path d="M580 165 L622 165" stroke="#8C8C8C" stroke-width="2.2"/>
+  <polygon points="620,160 630,165 620,170" fill="#8C8C8C"/>
+  <text x="601" y="155" text-anchor="middle" font-size="9" fill="#8C8C8C">conv</text>
+
+  <!-- Stage 4: Objects -->
+  <g transform="translate(630, 90)">
+    <text x="80" y="0" text-anchor="middle" font-size="12" font-weight="600" fill="#A71930">Deep layers</text>
+    <text x="80" y="16" text-anchor="middle" font-size="10" fill="#8C8C8C">whole faces, objects</text>
+    <rect x="20" y="30" width="120" height="105" fill="#FCEDEE" stroke="#A71930" stroke-width="1.5"/>
+    <!-- recognisable face -->
+    <circle cx="80" cy="80" r="35" fill="#FFE8B0" stroke="#A71930" stroke-width="1.5"/>
+    <circle cx="68" cy="73" r="3" fill="#2D2D2D"/>
+    <circle cx="92" cy="73" r="3" fill="#2D2D2D"/>
+    <path d="M68 92 Q80 99 92 92" stroke="#2D2D2D" stroke-width="1.5" fill="none"/>
+  </g>
+
+  <!-- Bottom band: takeaway -->
+  <rect x="60" y="245" width="680" height="40" rx="10" fill="#FFF8EE" stroke="#C8972C" stroke-width="1"/>
+  <text x="400" y="266" text-anchor="middle" font-size="12" fill="#2D2D2D"><tspan font-weight="700" fill="#C8972C">Hierarchy is learned, not hand-coded</tspan> — and the same hierarchy works across very different image tasks.</text>
+  <text x="400" y="280" text-anchor="middle" font-size="11" fill="#8C8C8C">From cats to skin cancer to facial action units — same machinery, different training data.</text>
+
+  <!-- Bottom band: applications -->
+  <text x="400" y="320" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">Behavioural-science uses:</text>
+  <text x="400" y="340" text-anchor="middle" font-size="11" fill="#8C8C8C">pose estimation (DeepLabCut, SLEAP, MediaPipe) · facial action coding · automated behaviour coding · action recognition</text>
+</svg>

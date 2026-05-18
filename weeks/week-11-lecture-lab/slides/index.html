@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 11: Meaning in Vectors: Embeddings and LLMs for Research Workflows — PSYC4411</title>
+  <title>Week 11: Beyond Tabular &mdash; Deep Learning, LLMs and Generative AI &mdash; PSYC4411</title>
 
   <!-- reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -15,34 +15,1864 @@
 
   <!-- MQ custom theme -->
   <link rel="stylesheet" href="css/mq-theme.css">
+
+  <!-- Week 11 specific styles -->
+  <style>
+    /* ===== Architecture-data mapping cards ===== */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+    }
+    .arch-card {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border-top: 4px solid var(--mq-blue);
+      text-align: center;
+    }
+    .arch-card .arch-icon {
+      font-size: 2.4em;
+      margin-bottom: 6px;
+    }
+    .arch-card h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.9em;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .arch-card p {
+      font-size: 0.7em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== Tokenisation visual ===== */
+    .token-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+    .token-chip {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.8em;
+      font-weight: 600;
+      color: white;
+    }
+    .token-blue { background: var(--mq-blue); }
+    .token-red { background: var(--mq-red); }
+    .token-green { background: var(--mq-green); }
+    .token-purple { background: var(--mq-purple); }
+    .token-gold { background: var(--mq-gold); }
+    .token-grey { background: var(--mq-grey); }
+
+    /* ===== Vector display ===== */
+    .vector-display {
+      display: inline-block;
+      background: var(--mq-near-black);
+      color: #e0e0e0;
+      font-family: var(--font-mono);
+      font-size: 0.55em;
+      padding: 8px 14px;
+      border-radius: 6px;
+      margin: 4px 2px;
+      letter-spacing: 0.04em;
+    }
+    .vector-display .v-label {
+      color: var(--mq-gold);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    /* ===== Q/K/V mini diagram ===== */
+    .qkv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .qkv-card {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-align: center;
+      border-top: 4px solid transparent;
+    }
+    .qkv-card .qkv-letter {
+      font-size: 2em;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .qkv-card h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.85em;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .qkv-card p {
+      font-size: 0.72em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== Transformer block stack ===== */
+    .block-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+      margin: 0 auto;
+      max-width: 420px;
+    }
+    .tx-block {
+      background: linear-gradient(135deg, rgba(74,144,217,0.15), rgba(123,104,168,0.15));
+      border: 2px solid var(--mq-blue);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.75em;
+      font-weight: 600;
+      color: var(--mq-charcoal);
+      text-align: center;
+      width: 320px;
+    }
+    .tx-block .tx-sub {
+      font-size: 0.78em;
+      color: var(--mq-grey);
+      font-weight: 400;
+    }
+    .tx-dots {
+      color: var(--mq-grey);
+      font-weight: 700;
+      letter-spacing: 4px;
+    }
+
+    /* ===== Pipeline stages (pre-train, instruct-tune, RLHF) ===== */
+    .pipeline {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 8px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pipeline-stage {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 18px 16px;
+      text-align: center;
+      border-top: 4px solid transparent;
+    }
+    .pipeline-stage h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.78em;
+      color: var(--mq-charcoal);
+      margin-bottom: 6px;
+    }
+    .pipeline-stage p {
+      font-size: 0.65em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+    .pipeline-arrow {
+      font-size: 1.4em;
+      color: var(--mq-grey);
+    }
+
+    /* ===== GenAI tour cards ===== */
+    .genai-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .genai-card {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 16px 20px;
+      border-left: 4px solid var(--mq-blue);
+    }
+    .genai-card h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.82em;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .genai-card p {
+      font-size: 0.7em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== App cards (matches Week 9 style) ===== */
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .app-card {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 18px 22px;
+      border-left: 4px solid var(--mq-blue);
+    }
+    .app-card h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.85em;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .app-card p {
+      font-size: 0.72em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== Misconception (myth) cards ===== */
+    .myth-card {
+      background: rgba(167, 25, 48, 0.06);
+      border: 2px solid rgba(167, 25, 48, 0.15);
+      border-radius: 12px;
+      padding: 14px 22px;
+      margin: 8px 0;
+    }
+    .myth-card .myth-label {
+      font-size: 0.6em;
+      font-weight: 700;
+      color: var(--mq-red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+    .myth-card .myth-text {
+      font-size: 0.78em;
+      font-weight: 600;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .myth-card .reality-text {
+      font-size: 0.7em;
+      color: var(--mq-grey);
+    }
+
+    /* ===== Workflow flow strip ===== */
+    .workflow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 6px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .workflow-step {
+      background: var(--mq-light-grey);
+      border-radius: 10px;
+      padding: 14px 10px;
+      text-align: center;
+      border-top: 3px solid var(--mq-blue);
+    }
+    .workflow-step .ws-icon {
+      font-size: 1.6em;
+      color: var(--mq-blue);
+      margin-bottom: 4px;
+    }
+    .workflow-step h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.72em;
+      color: var(--mq-charcoal);
+      margin-bottom: 2px;
+    }
+    .workflow-step p {
+      font-size: 0.6em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+    .workflow-arrow {
+      font-size: 1.3em;
+      color: var(--mq-grey);
+    }
+
+    /* ===== Embedding projector placeholder ===== */
+    .projector-box {
+      background: linear-gradient(135deg, rgba(74,144,217,0.12), rgba(123,104,168,0.12));
+      border: 2px dashed var(--mq-blue);
+      border-radius: 14px;
+      padding: 36px 28px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .projector-box .pb-icon {
+      font-size: 3em;
+      color: var(--mq-blue);
+      margin-bottom: 8px;
+    }
+    .projector-box h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--mq-charcoal);
+      font-size: 0.95em;
+      margin-bottom: 6px;
+    }
+    .projector-box p {
+      font-size: 0.75em;
+      color: var(--mq-grey);
+      margin-bottom: 6px;
+    }
+    .projector-box a {
+      font-family: var(--font-mono);
+      font-size: 0.78em;
+      color: var(--mq-red);
+      font-weight: 600;
+    }
+
+    /* ===== Half-divider (sub-section divider, smaller than section-divider) ===== */
+    .sub-divider {
+      text-align: center;
+      padding: 30px 0;
+    }
+    .sub-divider .sub-icon {
+      font-size: 3em;
+      color: var(--mq-red);
+      margin-bottom: 8px;
+    }
+
+    /* ===== Agenda halves ===== */
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .agenda-half {
+      background: var(--mq-light-grey);
+      border-radius: 14px;
+      padding: 22px 24px;
+      border-top: 5px solid var(--mq-red);
+    }
+    .agenda-half .ah-icon {
+      font-size: 2em;
+      color: var(--mq-red);
+      margin-bottom: 6px;
+    }
+    .agenda-half h3 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 1em;
+      color: var(--mq-charcoal);
+      margin-bottom: 8px;
+    }
+    .agenda-half ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .agenda-half li {
+      font-size: 0.72em;
+      color: var(--mq-grey);
+      margin-bottom: 4px;
+    }
+
+    /* ===== Pose-video placeholder ===== */
+    .video-placeholder {
+      background: var(--mq-light-grey);
+      border: 2px dashed var(--mq-grey);
+      border-radius: 14px;
+      padding: 60px 30px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .video-placeholder .vp-icon {
+      font-size: 3.6em;
+      color: var(--mq-grey);
+      margin-bottom: 10px;
+    }
+    .video-placeholder h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--mq-charcoal);
+      font-size: 1em;
+      margin-bottom: 6px;
+    }
+    .video-placeholder p {
+      font-size: 0.78em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== Course journey strip ===== */
+    .journey {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .journey-step {
+      background: var(--mq-light-grey);
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-align: center;
+      border-top: 4px solid var(--mq-blue);
+    }
+    .journey-step .js-week {
+      font-size: 0.6em;
+      font-weight: 700;
+      color: var(--mq-red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .journey-step h4 {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.85em;
+      color: var(--mq-charcoal);
+      margin-bottom: 4px;
+    }
+    .journey-step p {
+      font-size: 0.68em;
+      color: var(--mq-grey);
+      margin-bottom: 0;
+    }
+
+    /* ===== Inline citation small text ===== */
+    .cite-line {
+      font-size: 0.7em;
+      color: var(--mq-grey);
+      font-style: italic;
+      margin-top: 6px;
+    }
+    .cite-line a {
+      color: var(--mq-red);
+      text-decoration: none;
+    }
+    .cite-line a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 
-  <section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 60px;">
-      <p style="font-size: 1.4em; color: rgba(255,255,255,0.5); margin-bottom: 12px; font-weight: 300;">PSYC4411 — Practical AI for Behavioural Science</p>
-      <p style="font-size: 1.1em; color: rgba(255,255,255,0.4); margin-bottom: 40px; font-weight: 300;">Week 11 — Lecture + Challenge Lab</p>
-      <h1 style="font-size: 2.4em; color: white; margin-bottom: 40px; line-height: 1.2;">Meaning in Vectors: Embeddings and LLMs for Research Workflows</h1>
-      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px 48px; margin-top: 20px;">
-        <p style="font-size: 1.3em; color: rgba(255,255,255,0.7); margin: 0;"><i class="ph-bold ph-clock"></i>&ensp;Content coming soon</p>
-        <p style="font-size: 0.9em; color: rgba(255,255,255,0.4); margin-top: 8px;">Materials will be available on 18 May</p>
-      </div>
-      <p style="font-size: 0.85em; color: rgba(255,255,255,0.3); margin-top: 48px;">Prof. Michael Richardson — Macquarie University, 2026</p>
+<!-- ============================================================
+     SLIDE 1: Title Slide
+     ============================================================ -->
+<section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #A71930 100%)">
+  <div class="course-code">PSYC4411</div>
+  <h1>Beyond Tabular</h1>
+  <h2>Deep Learning, LLMs and Generative AI in Psychological Research</h2>
+  <div class="spacer-lg"></div>
+  <p class="subtitle">Week 11 &middot; Monday 18 May 2026</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 2: Agenda
+     ============================================================ -->
+<section>
+  <h2>Today&rsquo;s Plan</h2>
+  <div class="spacer"></div>
+  <div class="agenda-grid">
+    <div class="agenda-half">
+      <div class="ah-icon"><i class="ph-bold ph-stack"></i></div>
+      <h3>Deep Learning Architectures</h3>
+      <ul>
+        <li>Architectures match the data</li>
+        <li>CNNs &mdash; convolution, feature hierarchies</li>
+        <li>Behavioural science applications: pose, action, faces</li>
+        <li>RNNs and LSTMs &mdash; memory for sequences</li>
+        <li>Case study: pose estimation for cognitive load</li>
+      </ul>
     </div>
-  </section>
+    <div class="agenda-half" style="border-top-color: var(--mq-purple);">
+      <div class="ah-icon" style="color: var(--mq-purple);"><i class="ph-bold ph-brain"></i></div>
+      <h3>LLMs and Generative AI</h3>
+      <ul>
+        <li>What an LLM actually is</li>
+        <li>Tokens, embeddings, the geometry of meaning</li>
+        <li>Self-attention and the transformer block</li>
+        <li>Pre-training &rarr; instruction tuning &rarr; RLHF</li>
+        <li>Image, video, audio &mdash; the rest of GenAI</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-</div></div>
+<!-- ============================================================
+     SLIDE 3: Bridge from Week 9 / 10
+     ============================================================ -->
+<section>
+  <h2>Bridge from Weeks 9 and 10</h2>
+  <div class="spacer"></div>
+  <p>In Week 10 you trained an MLP &mdash; a stack of fully-connected neurons that takes a <strong>flat vector</strong> in and produces a prediction.</p>
+  <div class="spacer"></div>
+  <ul>
+    <li>Fine for tabular data &mdash; rows of participants, columns of variables</li>
+    <li>But real-world data has <strong>structure</strong> a flat MLP throws away</li>
+    <li>Images have <strong>spatial</strong> structure (nearby pixels belong together)</li>
+    <li>Speech, EEG, gesture have <strong>temporal</strong> structure (order matters)</li>
+    <li>Language has <strong>both</strong>, plus long-range dependencies</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>When the <strong>architecture matches the structure of the data</strong>, fewer parameters do more. The network can <em>learn</em> useful features instead of needing them engineered by hand.</p>
+  </div>
+</section>
 
+<!-- ============================================================
+     SLIDE 4: Section Divider — Deep Learning Architectures
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-stack"></i></div>
+  <h2>Deep Learning Architectures</h2>
+  <p>CNNs, RNNs, and the shape of behavioural data</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 5: Architectures match the data — intro
+     ============================================================ -->
+<section>
+  <h2>Three Data Types, Three Architectures</h2>
+  <div class="spacer"></div>
+  <div class="arch-grid">
+    <div class="arch-card" style="border-top-color: var(--mq-blue);">
+      <div class="arch-icon" style="color: var(--mq-blue);"><i class="ph-bold ph-table"></i></div>
+      <h4>Tabular</h4>
+      <p>Rows &times; columns. Order doesn&rsquo;t matter. <strong>MLP</strong> works fine.</p>
+    </div>
+    <div class="arch-card" style="border-top-color: var(--mq-red);">
+      <div class="arch-icon" style="color: var(--mq-red);"><i class="ph-bold ph-image"></i></div>
+      <h4>Images / Video</h4>
+      <p>Spatial structure. Nearby pixels matter. <strong>CNN</strong>.</p>
+    </div>
+    <div class="arch-card" style="border-top-color: var(--mq-purple);">
+      <div class="arch-icon" style="color: var(--mq-purple);"><i class="ph-bold ph-waveform"></i></div>
+      <h4>Sequences / Language</h4>
+      <p>Temporal structure. Order matters. <strong>RNN/LSTM</strong> &mdash; or <strong>Transformer</strong>.</p>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <p class="small">Same underlying maths (weights, activations, gradient descent) &mdash; different <em>wiring</em> to match the data.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 6: SVG — architectures overview
+     ============================================================ -->
+<section>
+  <h2>Architectures Overview</h2>
+  <div class="spacer"></div>
+  <div style="text-align: center;">
+    <img src="../figures/architectures-overview.svg"
+         alt="Three data types and the architectures that match them: tabular into MLP, images into CNN, sequences into Transformer"
+         style="max-width: 92%; max-height: 540px;">
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 7: What is a convolution? — animated mechanic
+     ============================================================ -->
+<section>
+  <style>
+    .conv-demo { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 18px; }
+    .conv-stage { text-align: center; }
+    .conv-stage-label { font-size: 0.6em; font-weight: 700; color: var(--mq-grey); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .conv-img { position: relative; display: grid; grid-template-columns: repeat(5, 44px); grid-template-rows: repeat(5, 44px); gap: 2px; }
+    .ci { width: 44px; height: 44px; background: #fff; border: 1px solid #d0d0d0; }
+    .ci.on { background: var(--mq-charcoal); }
+    .filter-box { position: absolute; width: 138px; height: 138px; border: 4px solid var(--mq-red); border-radius: 4px; pointer-events: none; transition: top 0.5s ease, left 0.5s ease; box-shadow: 0 0 0 2px rgba(167,25,48,0.18); }
+    .filter-box.pos-a { top: 0px; left: 0px; }
+    .filter-box.pos-b { top: 92px; left: 46px; }
+    .filter-box.pos-c { top: 138px; left: 138px; }
+    .conv-arrow { font-size: 2.2em; color: var(--mq-grey); align-self: center; }
+    .conv-kern { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 2px; }
+    .kc { width: 44px; height: 44px; background: #FCEDEE; border: 1px solid var(--mq-red); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9em; color: var(--mq-red); }
+    .conv-out { display: grid; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(3, 44px); gap: 2px; }
+    .oc { width: 44px; height: 44px; background: #fff; border: 1px solid #d0d0d0; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--mq-charcoal); font-size: 0.9em; }
+    .oc.lit { background: var(--mq-red); color: white; }
+  </style>
+  <h2>What Is a Convolution?</h2>
+  <p style="text-align: center; font-size: 0.85em; max-width: 1400px; margin: 0 auto;">A small <strong>learnable filter</strong> slides across the image. At each position it produces one number &mdash; how strongly its pattern is present there. Hundreds of filters per layer, all learned from data.</p>
+
+  <div class="conv-demo">
+    <div class="conv-stage">
+      <div class="conv-stage-label">Input image (5&times;5)</div>
+      <div class="conv-img">
+        <div class="ci"></div><div class="ci"></div><div class="ci"></div><div class="ci"></div><div class="ci"></div>
+        <div class="ci"></div><div class="ci on"></div><div class="ci on"></div><div class="ci on"></div><div class="ci"></div>
+        <div class="ci"></div><div class="ci on"></div><div class="ci on"></div><div class="ci on"></div><div class="ci"></div>
+        <div class="ci"></div><div class="ci on"></div><div class="ci on"></div><div class="ci on"></div><div class="ci"></div>
+        <div class="ci"></div><div class="ci"></div><div class="ci"></div><div class="ci"></div><div class="ci"></div>
+        <div class="filter-box pos-a" id="filterBox"></div>
+      </div>
+    </div>
+
+    <span class="conv-arrow">&rarr;</span>
+
+    <div class="conv-stage">
+      <div class="conv-stage-label">Filter (3&times;3)</div>
+      <div class="conv-kern">
+        <div class="kc">-1</div><div class="kc">0</div><div class="kc">+1</div>
+        <div class="kc">-1</div><div class="kc">0</div><div class="kc">+1</div>
+        <div class="kc">-1</div><div class="kc">0</div><div class="kc">+1</div>
+      </div>
+      <p class="small" style="margin-top: 8px;">a vertical-edge detector</p>
+    </div>
+
+    <span class="conv-arrow">&rarr;</span>
+
+    <div class="conv-stage">
+      <div class="conv-stage-label">Activation map (3&times;3)</div>
+      <div class="conv-out" id="convOut">
+        <div class="oc lit">+2</div><div class="oc">0</div><div class="oc">&minus;2</div>
+        <div class="oc">+3</div><div class="oc">0</div><div class="oc">&minus;3</div>
+        <div class="oc">+2</div><div class="oc">0</div><div class="oc">&minus;2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer-lg"></div>
+  <div class="key-insight">
+    <p style="font-size: 0.85em;"><strong>Bright = strong response.</strong> This filter responds strongly to vertical edges where the image goes from dark to light. Other filters (curves, textures, colour blobs) work the same way &mdash; they all get learned from data.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 9: Stacked layers → feature hierarchy
+     ============================================================ -->
+<section>
+  <h2>Stacked Layers Build a Hierarchy</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li><strong>Early layers</strong> detect edges, textures, colour blobs</li>
+    <li><strong>Middle layers</strong> combine those into <em>parts</em> &mdash; an eye, a wheel, a corner of a mouth</li>
+    <li><strong>Later layers</strong> combine parts into <em>whole objects</em> &mdash; a face, a car, a posture</li>
+    <li><strong>Pooling</strong> between layers compresses spatial information so deeper layers can &ldquo;see&rdquo; a wider region</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>Nobody designs these features. The network <strong>discovers</strong> them. This is representation learning (Week 9) applied to images.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 10: From edges to objects + ImageNet moment
+     ============================================================ -->
+<section>
+  <h2>From Edges to Objects</h2>
+  <div class="two-col-wide-left">
+    <div class="col">
+      <div style="text-align: center;">
+        <img src="../figures/cnn-feature-hierarchy.svg"
+             alt="A CNN feature hierarchy showing edges in early layers, parts in middle layers, and whole objects in the final layer"
+             style="max-width: 100%; max-height: 460px;">
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="text-transform: none; letter-spacing: 0; color: var(--mq-red);">ImageNet 2012</h4>
+        <p style="font-size: 0.78em;">CNNs were niche for decades. Then <a href="https://doi.org/10.1145/3065386" target="_blank">Krizhevsky, Sutskever &amp; Hinton (2012)</a> halved the error rate on <strong>1.2M images, 1,000 categories</strong>.</p>
+        <p style="font-size: 0.78em;">Within five years CNNs dominated every image task &mdash; and started spreading to medical imaging, video, and behavioural science.</p>
+      </div>
+    </div>
+  </div>
+  <p class="cite-line" style="text-align: center;">Krizhevsky, A., Sutskever, I., &amp; Hinton, G. (2012). ImageNet classification with deep CNNs. <em>Communications of the ACM</em>. <a href="https://doi.org/10.1145/3065386" target="_blank">doi.org/10.1145/3065386</a></p>
+</section>
+
+<!-- ============================================================
+     SLIDE 12: CNNs in behavioural science — pose estimation
+     ============================================================ -->
+<section>
+  <h2>CNNs in Behavioural Science: Pose Estimation</h2>
+  <div class="spacer"></div>
+  <p>Marker-less pose estimation: CNNs trained to localise body landmarks in video frames. No physical markers, no calibrated rigs &mdash; <strong>just a phone camera</strong>.</p>
+  <div class="spacer"></div>
+  <div class="app-grid">
+    <div class="app-card" style="border-left-color: var(--mq-red);">
+      <h4><i class="ph ph-person"></i> DeepLabCut</h4>
+      <p>Animal &amp; human pose tracking, the foundational tool in behavioural neuroscience.</p>
+      <p class="cite-line"><a href="https://doi.org/10.1038/s41593-018-0209-y" target="_blank">Mathis et al. (2018)</a></p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-blue);">
+      <h4><i class="ph ph-users-three"></i> SLEAP</h4>
+      <p>Multi-animal pose tracking. Built for social behaviour studies.</p>
+      <p class="cite-line"><a href="https://doi.org/10.1038/s41592-022-01426-1" target="_blank">Pereira et al. (2022)</a></p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-hand"></i> OpenPose</h4>
+      <p>Real-time multi-person 2D pose for humans. Workhorse of gesture and gait research.</p>
+      <p class="cite-line"><a href="https://doi.org/10.1109/TPAMI.2019.2929257" target="_blank">Cao et al. (2019)</a></p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-device-mobile"></i> MediaPipe</h4>
+      <p>Google&rsquo;s on-device pose, face, hand tracking. Runs in a browser, runs on a phone.</p>
+      <p class="cite-line">Free, open-source, no marker set-up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 12b: Top-down vs Bottom-up pose estimation
+     ============================================================ -->
+<section>
+  <style>
+    .pose-approach { background: var(--mq-light-grey); border-radius: 14px; padding: 22px 24px; height: 100%; box-sizing: border-box; }
+    .pose-approach.top-down { border-top: 5px solid var(--mq-blue); }
+    .pose-approach.bottom-up { border-top: 5px solid var(--mq-red); }
+    .pose-approach h3 { text-transform: none; letter-spacing: 0; font-size: 1.05em; margin-bottom: 10px; }
+    .pose-approach.top-down h3 { color: var(--mq-blue); }
+    .pose-approach.bottom-up h3 { color: var(--mq-red); }
+    .pose-stage-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 16px 0; }
+    .pose-frame { width: 110px; height: 130px; background: white; border: 2px solid var(--mq-grey); border-radius: 8px; position: relative; flex-shrink: 0; }
+    .pose-frame .bbox { position: absolute; border: 3px solid var(--mq-blue); border-radius: 4px; }
+    .pose-frame .bbox.a { top: 16px; left: 10px; width: 38px; height: 96px; }
+    .pose-frame .bbox.b { top: 22px; left: 60px; width: 38px; height: 90px; }
+    .pose-stick { position: absolute; }
+    .pose-stick .pt { position: absolute; width: 6px; height: 6px; background: var(--mq-red); border-radius: 50%; }
+    .pose-stick .seg { position: absolute; background: var(--mq-red); }
+    /* stick figure helpers */
+    .stick-fig { position: absolute; top: 20px; left: 14px; }
+    .stick-fig .head { position: absolute; top: 0; left: 12px; width: 14px; height: 14px; background: var(--mq-red); border-radius: 50%; }
+    .stick-fig .torso { position: absolute; top: 16px; left: 18px; width: 2px; height: 36px; background: var(--mq-red); }
+    .stick-fig .arm-l { position: absolute; top: 22px; left: 6px; width: 16px; height: 2px; background: var(--mq-red); transform: rotate(20deg); }
+    .stick-fig .arm-r { position: absolute; top: 22px; left: 20px; width: 16px; height: 2px; background: var(--mq-red); transform: rotate(-20deg); }
+    .stick-fig .leg-l { position: absolute; top: 52px; left: 14px; width: 2px; height: 26px; background: var(--mq-red); transform: rotate(15deg); }
+    .stick-fig .leg-r { position: absolute; top: 52px; left: 22px; width: 2px; height: 26px; background: var(--mq-red); transform: rotate(-15deg); }
+    .stick-fig.b { left: 64px; }
+    .scattered-pts { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+    .scattered-pts .p { position: absolute; width: 6px; height: 6px; background: var(--mq-red); border-radius: 50%; }
+    .pose-arrow { font-size: 1.6em; color: var(--mq-grey); }
+    .pose-step-label { font-size: 0.65em; color: var(--mq-grey); text-align: center; margin-top: 4px; font-weight: 600; }
+    .pose-bullets { font-size: 0.78em; margin-top: 8px; }
+    .pose-bullets li { margin-bottom: 6px; }
+  </style>
+  <h2>Two Ways to Estimate Pose</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="pose-approach top-down">
+        <h3><i class="ph-bold ph-arrow-down"></i> Top-Down</h3>
+        <p class="small" style="font-size: 0.78em;">Detect people first, then find keypoints inside each box.</p>
+        <div class="pose-stage-row">
+          <div class="pose-frame">
+            <div class="bbox a"></div>
+            <div class="bbox b"></div>
+          </div>
+          <span class="pose-arrow">&rarr;</span>
+          <div class="pose-frame">
+            <div class="bbox a"></div>
+            <div class="bbox b"></div>
+            <div class="stick-fig"><div class="head"></div><div class="torso"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div></div>
+            <div class="stick-fig b"><div class="head"></div><div class="torso"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-around;">
+          <div class="pose-step-label">1. Detect persons</div>
+          <div class="pose-step-label">2. Pose per person</div>
+        </div>
+        <ul class="pose-bullets">
+          <li>Examples: <strong>HRNet, AlphaPose, ViTPose</strong></li>
+          <li><strong>Accurate</strong> &mdash; each pose has its own crop</li>
+          <li><strong>Slower with many people</strong> (cost scales with N)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="pose-approach bottom-up">
+        <h3><i class="ph-bold ph-arrow-up"></i> Bottom-Up</h3>
+        <p class="small" style="font-size: 0.78em;">Find all keypoints first, then group them into people.</p>
+        <div class="pose-stage-row">
+          <div class="pose-frame">
+            <div class="scattered-pts">
+              <div class="p" style="top: 22px; left: 22px;"></div>
+              <div class="p" style="top: 38px; left: 18px;"></div>
+              <div class="p" style="top: 38px; left: 28px;"></div>
+              <div class="p" style="top: 56px; left: 16px;"></div>
+              <div class="p" style="top: 56px; left: 28px;"></div>
+              <div class="p" style="top: 78px; left: 22px;"></div>
+              <div class="p" style="top: 98px; left: 20px;"></div>
+              <div class="p" style="top: 98px; left: 28px;"></div>
+              <div class="p" style="top: 26px; left: 76px;"></div>
+              <div class="p" style="top: 40px; left: 72px;"></div>
+              <div class="p" style="top: 40px; left: 82px;"></div>
+              <div class="p" style="top: 58px; left: 70px;"></div>
+              <div class="p" style="top: 58px; left: 82px;"></div>
+              <div class="p" style="top: 80px; left: 76px;"></div>
+              <div class="p" style="top: 100px; left: 74px;"></div>
+              <div class="p" style="top: 100px; left: 82px;"></div>
+            </div>
+          </div>
+          <span class="pose-arrow">&rarr;</span>
+          <div class="pose-frame">
+            <div class="stick-fig"><div class="head"></div><div class="torso"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div></div>
+            <div class="stick-fig b"><div class="head"></div><div class="torso"></div><div class="arm-l"></div><div class="arm-r"></div><div class="leg-l"></div><div class="leg-r"></div></div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-around;">
+          <div class="pose-step-label">1. All keypoints</div>
+          <div class="pose-step-label">2. Group into people</div>
+        </div>
+        <ul class="pose-bullets">
+          <li>Examples: <strong>OpenPose, MediaPipe</strong></li>
+          <li><strong>Fast</strong> &mdash; cost is roughly constant with N</li>
+          <li><strong>Grouping is hard</strong> in crowded scenes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">Same end product (keypoints per person) &mdash; very different inside.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 13: CNNs — facial expressions & FACS
+     ============================================================ -->
+<section>
+  <h2>Facial Expression Analysis &amp; FACS</h2>
+  <div class="two-col-wide-right" style="margin-top: 14px;">
+    <div class="col">
+      <ul style="font-size: 0.82em;">
+        <li>Automated <strong>Facial Action Coding</strong> &mdash; CNN detects individual muscle movements (AUs)</li>
+        <li>Microexpression detection in real time</li>
+        <li>Emotion classification from combinations of AUs</li>
+        <li>In use in clinical psychology, marketing, deception research</li>
+      </ul>
+      <div class="highlight-box" style="margin-top: 14px;">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0; font-size: 0.95em;">Be sceptical of &ldquo;emotion&rdquo;</h4>
+        <p style="font-size: 0.75em; margin-bottom: 4px;"><a href="https://doi.org/10.1177/1529100619832930" target="_blank">Barrett et al. (2019)</a> &mdash; thorough critique of inferring discrete emotion categories from facial movements.</p>
+        <p style="font-size: 0.75em; margin-bottom: 0;">Action units are measurable. <em>&ldquo;Anger&rdquo;</em> as a face is contested.</p>
+      </div>
+    </div>
+    <div class="col" style="text-align: center;">
+      <img src="../figures/facs-action-units.png"
+           alt="FACS Action Units table from Barrett et al. 2019, Figure 5: each AU (1, 2, 4, 5, 6, etc.) with description, facial muscle, and example photograph"
+           style="max-height: 600px; max-width: 100%; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+      <p class="small" style="font-size: 0.65em; margin-top: 4px;">FACS Action Units (Ekman &amp; Friesen, 1978). Figure from <a href="https://doi.org/10.1177/1529100619832930" target="_blank">Barrett et al. (2019)</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 14: CNNs — automated behaviour coding
+     ============================================================ -->
+<section>
+  <h2>Automated Behaviour Coding</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li><strong>Action recognition</strong> &mdash; what is the person doing in this clip? Walking, reaching, gesturing, falling.</li>
+    <li><strong>Observational coding</strong> &mdash; replacing thousands of hours of manual video review</li>
+    <li><strong>Mother&ndash;infant interaction studies</strong> &mdash; automated gaze, touch, vocalisation coding</li>
+    <li><strong>Clinical contexts</strong> &mdash; autism behavioural markers, motor symptoms in Parkinson&rsquo;s, fall detection in aged care</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>One video clip in &rarr; one or more <strong>behavioural codes</strong> out. The CNN replaces (some of) the human rater. Speed and scale increase by orders of magnitude.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 15: Think About It #1
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>Pose estimation has made behavioural research dramatically cheaper and faster &mdash; a single laptop can now do what once needed an expensive motion-capture lab.</p>
+  <div class="spacer"></div>
+  <p>What does this mean for the kinds of studies that get done? Does it <strong>widen access</strong> to good methods, change <strong>which questions</strong> get asked, or both?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 16: Case study intro — Pose Estimation for Cognitive Load
+     ============================================================ -->
+<section>
+  <h2>Case Study: Pose Estimation for Cognitive Load</h2>
+  <div class="spacer"></div>
+  <p>Suppose you want to study <strong>cognitive load</strong>: when participants are mentally taxed, do their body movements change?</p>
+  <div class="spacer"></div>
+  <ul>
+    <li>Traditional approach: motion-capture suit, infrared markers, calibrated cameras &mdash; tens of thousands of dollars</li>
+    <li>New approach: phone camera + a CNN + a classical ML model on top</li>
+    <li>Same scientific question. Two orders of magnitude cheaper.</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>This is the <strong>integrated workflow</strong>: deep learning extracts features that classical ML then uses. Most applied behavioural pipelines look like this.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 17: Inside the study — OpenMATB design + workload effects (Patil et al. under review)
+     ============================================================ -->
+<section>
+  <h2>Inside the Study: OpenMATB + Pose</h2>
+  <div class="two-col-wide-right" style="margin-top: 10px;">
+    <div class="col">
+      <ul style="font-size: 0.78em;">
+        <li><strong>Task:</strong> OpenMATB &mdash; four concurrent sub-tasks (system monitoring, tracking, communications, resource management)</li>
+        <li><strong>Manipulation:</strong> Low / Moderate / High workload conditions, controlled across sessions</li>
+        <li><strong>Participants:</strong> N = 49, each tested across all three conditions</li>
+        <li><strong>Synchronised recording:</strong> task performance + eye-tracking + heart rate / SCR + webcam video for pose</li>
+        <li><strong>Pose features:</strong> head RMS rotation, blink aperture, postural sway, derived from MediaPipe keypoints</li>
+      </ul>
+      <div class="key-insight" style="margin-top: 10px;">
+        <p style="font-size: 0.78em;">Workload effects show up in <strong>every modality</strong> &mdash; performance, physiology, eye, <em>and</em> pose. Pose tracks workload as well as traditional physiological measures.</p>
+      </div>
+    </div>
+    <div class="col" style="text-align: center;">
+      <img src="../figures/matb-overview.png"
+           alt="Figure 1 from Patil et al.: OpenMATB sub-task layout, experimental setup with synchronised recording, and bar charts of representative task-performance, physiological, eye-tracking, and pose features across Low/Moderate/High workload"
+           style="max-width: 100%; max-height: 540px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+      <p class="cite-line">Patil et al. (under review) &mdash; <em>Pose Estimation for Cognitive Workload Classification</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 18: Workflow diagram
+     ============================================================ -->
+<section>
+  <h2>The Workflow</h2>
+  <div class="spacer"></div>
+  <div class="workflow">
+    <div class="workflow-step" style="border-top-color: var(--mq-red);">
+      <div class="ws-icon" style="color: var(--mq-red);"><i class="ph-bold ph-video-camera"></i></div>
+      <h4>1. Record</h4>
+      <p>Phone-camera video. No markers.</p>
+    </div>
+    <div class="workflow-arrow">&rarr;</div>
+    <div class="workflow-step" style="border-top-color: var(--mq-blue);">
+      <div class="ws-icon" style="color: var(--mq-blue);"><i class="ph-bold ph-stack"></i></div>
+      <h4>2. CNN Pose</h4>
+      <p>DeepLabCut / MediaPipe extracts keypoints.</p>
+    </div>
+    <div class="workflow-arrow">&rarr;</div>
+    <div class="workflow-step" style="border-top-color: var(--mq-purple);">
+      <div class="ws-icon" style="color: var(--mq-purple);"><i class="ph-bold ph-chart-line"></i></div>
+      <h4>3. Features</h4>
+      <p>Velocity, smoothness, postural sway, blink rate.</p>
+    </div>
+    <div class="workflow-arrow">&rarr;</div>
+    <div class="workflow-step" style="border-top-color: var(--mq-gold);">
+      <div class="ws-icon" style="color: var(--mq-gold);"><i class="ph-bold ph-tree-structure"></i></div>
+      <h4>4. Classical ML</h4>
+      <p>Random forest, logistic regression (Week 6).</p>
+    </div>
+    <div class="workflow-arrow">&rarr;</div>
+    <div class="workflow-step" style="border-top-color: var(--mq-green);">
+      <div class="ws-icon" style="color: var(--mq-green);"><i class="ph-bold ph-target"></i></div>
+      <h4>5. Predict</h4>
+      <p>Cognitive load state per trial.</p>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="key-insight">
+    <p>The <strong>CNN replaces the marker-tracking hardware</strong>. The downstream ML is the same code you wrote in Week 6.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 18: AFL pose detection — pre-recorded example
+     ============================================================ -->
+<section>
+  <style>
+    .video-card { position: relative; max-width: 1100px; margin: 0 auto; background: #000; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+    .video-card video { width: 100%; display: block; }
+    .video-caption { font-size: 0.78em; color: var(--mq-grey); text-align: center; margin-top: 10px; }
+  </style>
+  <h2>2D Pose Detection in Sport &mdash; AFL Example</h2>
+  <p style="text-align: center; font-size: 0.85em;">Real game footage &rarr; CNN detects and tracks every player&rsquo;s pose, in real time, no markers.</p>
+
+  <div class="video-card">
+    <video src="../figures/afl-detection-pose-example.mp4" autoplay muted loop playsinline></video>
+  </div>
+
+  <p class="video-caption">Multi-person 2D pose tracking on broadcast video. Same machinery, scaled from one webcam to a whole field of players.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 19: Live pose demo — webcam + MediaPipe
+     ============================================================ -->
+<section>
+  <style>
+    .demo-launch { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 30px; background: linear-gradient(135deg, #FCEDEE 0%, #FFF8EE 100%); border: 2px solid var(--mq-red); border-radius: 18px; max-width: 1000px; margin: 0 auto; }
+    .demo-launch .dl-icon { font-size: 4.4em; color: var(--mq-red); margin-bottom: 12px; }
+    .demo-launch h4 { font-size: 1.2em; text-transform: none; letter-spacing: 0; margin: 0 0 8px; color: var(--mq-charcoal); }
+    .demo-launch p { font-size: 0.85em; margin: 0 0 18px; color: var(--mq-grey); }
+    .demo-button { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--mq-red); color: white; border-radius: 10px; font-size: 1em; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(167,25,48,0.3); transition: transform 0.15s, box-shadow 0.15s; }
+    .demo-button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(167,25,48,0.45); color: white; }
+    .demo-button i { font-size: 1.3em; }
+  </style>
+  <h2>Live Demo: Webcam &rarr; CNN Pose</h2>
+  <p style="text-align: center; font-size: 0.85em;">Same machinery as the case study &mdash; running in your browser, on your webcam, in real time.</p>
+
+  <div class="demo-launch">
+    <div class="dl-icon"><i class="ph-bold ph-person-arms-spread"></i></div>
+    <h4>MediaPipe Pose &amp; Face Mesh</h4>
+    <p>Webcam stream &rarr; CNN extracts body / face keypoints &rarr; overlay drawn on top.</p>
+    <a href="../pose-demo/index.html" target="_blank" class="demo-button">
+      <i class="ph-bold ph-play-circle"></i> Launch live demo (new tab)
+    </a>
+  </div>
+
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">Watching the CNN tag joints in real time is a useful sanity check &mdash; you can see which parts the model finds easy or hard.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 19: Think About It #2 (CNN replacing human raters)
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>A research team uses a CNN to score facial expressions in clinical interviews, replacing two human raters. The model agrees with humans <strong>85% of the time</strong>. They publish faster, sample more participants, and improve statistical power.</p>
+  <div class="spacer"></div>
+  <p>What is <strong>lost</strong>? What is <strong>gained</strong>? When would you trust the model over the humans &mdash; and does the answer change if the model was trained on a population that doesn&rsquo;t look like yours?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 20: How a vanilla RNN works — inside one cell
+     ============================================================ -->
+<section>
+  <h2>Inside One RNN Cell</h2>
+  <p style="text-align: center; font-size: 0.85em;">For sequences &mdash; speech, EEG, gestures &mdash; the network needs <strong>memory</strong>. The hidden state is that memory.</p>
+
+  <div style="text-align: center; margin: 14px 0;">
+    <img src="../figures/rnn-cell.svg"
+         alt="Inside one RNN cell at time t: the previous hidden state h_{t-1} enters from the left, the current input x_t from below; the cell produces an output y_t upward and a new hidden state h_t to the right, which is passed to the next time step"
+         style="max-width: 70%; max-height: 480px;">
+  </div>
+
+  <p style="text-align: center; font-size: 0.85em;">One machine. Applied step by step. The <strong style="color: var(--mq-red);">hidden state</strong> threads through every step, carrying a running summary of everything seen.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 18: SVG — RNN unrolling
+     ============================================================ -->
+<section>
+  <h2>An RNN Unrolled Across Time</h2>
+  <div class="spacer"></div>
+  <div style="text-align: center;">
+    <img src="../figures/rnn-unrolling.svg"
+         alt="An RNN unrolled across time steps showing how a hidden state is passed from one step to the next"
+         style="max-width: 92%; max-height: 480px;">
+  </div>
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">The same network repeated &mdash; with a hidden state threading through all the steps.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 19: Vanishing / exploding gradients
+     ============================================================ -->
+<section>
+  <h2>Vanishing and Exploding Gradients</h2>
+  <div class="spacer"></div>
+  <p>Conceptually elegant. Practically, vanilla RNNs have a problem.</p>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box" style="border-left-color: var(--mq-blue);">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">Vanishing gradients</h4>
+        <p style="font-size: 0.78em;">When the network looks back across many steps, the learning signal shrinks toward zero &mdash; the RNN can&rsquo;t learn long-range dependencies. It <strong>forgets</strong>.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Exploding gradients</h4>
+        <p style="font-size: 0.78em;">Or the opposite &mdash; the signal grows uncontrollably and training becomes unstable. The network <strong>blows up</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="key-insight">
+    <p>Vanilla RNNs work fine on short sequences (10&ndash;20 steps) but struggle past that. We need <strong>gated memory</strong>.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 20: LSTM gates — inside the cell
+     ============================================================ -->
+<section>
+  <h2>Inside an LSTM Cell</h2>
+  <p style="text-align: center; font-size: 0.85em;"><a href="https://doi.org/10.1162/neco.1997.9.8.1735" target="_blank">Hochreiter &amp; Schmidhuber (1997)</a> &mdash; a memory cell with three learned gates running along a <strong style="color: var(--mq-gold);">cell-state highway</strong>.</p>
+
+  <div style="text-align: center; margin: 14px 0;">
+    <img src="../figures/lstm-cell.svg"
+         alt="Inside one LSTM cell at time t: a cell-state highway runs along the top, with three learned gates (forget, input, output) below it. Inputs h_{t-1} and x_t enter from the left and bottom; outputs h_t and y_t exit to the right and top"
+         style="max-width: 85%; max-height: 540px;">
+  </div>
+
+  <p style="text-align: center; font-size: 0.85em;"><strong>All three gates are learned from data.</strong> The network discovers what to remember, forget, share &mdash; and the cell-state highway lets gradients flow back through long sequences without vanishing.</p>
+  <p class="cite-line" style="text-align: center;">Hochreiter, S., &amp; Schmidhuber, J. (1997). Long short-term memory. <em>Neural Computation</em>. <a href="https://doi.org/10.1162/neco.1997.9.8.1735" target="_blank">doi.org/10.1162/neco.1997.9.8.1735</a></p>
+</section>
+
+<!-- ============================================================
+     SLIDE 21: Sequence applications
+     ============================================================ -->
+<section>
+  <h2>Sequence Models in Psychological Research</h2>
+  <div class="spacer"></div>
+  <div class="app-grid">
+    <div class="app-card" style="border-left-color: var(--mq-red);">
+      <h4><i class="ph ph-microphone-stage"></i> Speech Recognition</h4>
+      <p>Until around 2020, all major speech systems were RNN/LSTM-based. Now used in clinical voice analysis, child language research.</p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-blue);">
+      <h4><i class="ph ph-pulse"></i> EEG &amp; Physiological Signals</h4>
+      <p>Sequence classifiers for brain&ndash;computer interface, sleep staging, seizure detection. LSTMs still dominate medical signals.</p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-person-arms-spread"></i> Gesture &amp; Gait</h4>
+      <p>Classify movements over time, predict next movements. Fall prediction in aged care, intent prediction in BCI.</p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-users-four"></i> Herding Behaviour</h4>
+      <p><a href="https://doi.org/10.1038/s41598-023-31807-1" target="_blank">Auletta et al. (2023)</a> &mdash; LSTM + SHAP predicted players&rsquo; next target <em>before</em> their conscious intent.</p>
+    </div>
+  </div>
+  <p class="cite-line">Auletta, F., Kallen, R. W., di Bernardo, M., &amp; Richardson, M. J. (2023). Predicting and understanding human action decisions. <em>Scientific Reports</em>. <a href="https://doi.org/10.1038/s41598-023-31807-1" target="_blank">doi.org/10.1038/s41598-023-31807-1</a></p>
+</section>
+
+<!-- ============================================================
+     SLIDE 22: Inside the study — Herding (Auletta et al. 2023)
+     ============================================================ -->
+<section>
+  <h2>Inside the Study: Predicting Herding Decisions</h2>
+  <p style="text-align: center; font-size: 0.85em; margin-bottom: 8px;"><a href="https://doi.org/10.1038/s41598-023-31807-1" target="_blank">Auletta et al. (2023)</a> &mdash; an LSTM that predicts which target a player will pursue next, sometimes before they consciously decide.</p>
+
+  <div class="two-col" style="margin-top: 6px;">
+    <div class="col">
+      <div style="text-align: center;">
+        <img src="../figures/auletta-setup.jpg"
+             alt="Auletta et al. herding setup: two players around a touch-table; the playback interface showing tracked targets and goal zones"
+             style="max-width: 100%; max-height: 280px; border-radius: 6px;">
+        <p class="small" style="font-size: 0.65em; margin-top: 2px;">(a) Two players around a multi-touch table herding targets &nbsp;&middot;&nbsp; (b) Playback &amp; classification interface</p>
+      </div>
+      <ul style="font-size: 0.74em; margin-top: 8px;">
+        <li><strong>Task:</strong> two players cooperatively corral 4 moving targets into a containment zone</li>
+        <li><strong>Data:</strong> player kinematics (position, velocity) + target states at 60 Hz</li>
+        <li><strong>Model:</strong> LSTM trained on short sequence windows to predict each player&rsquo;s next target selection</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div style="text-align: center;">
+        <img src="../figures/auletta-confusion-matrix.jpg"
+             alt="Auletta et al. confusion matrices: classification accuracy of the LSTM at predicting next-target choice for expert and novice pairs, at two prediction horizons. Diagonal accuracies range from 0.90 to 0.97."
+             style="max-width: 100%; max-height: 290px; border-radius: 6px;">
+        <p class="small" style="font-size: 0.65em; margin-top: 2px;">Confusion matrices: expert vs novice pairs, at &tau;<sub>hor</sub> = 16 and 32 (longer horizon).</p>
+      </div>
+      <div class="key-insight" style="margin-top: 8px;">
+        <p style="font-size: 0.78em;"><strong>Results:</strong> 90&ndash;97% accuracy across both skill levels and both horizons. The LSTM&rsquo;s prediction often <em>precedes</em> the player&rsquo;s reported conscious decision &mdash; movement gives away intent before the chooser knows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 22: Transformer teaser
+     ============================================================ -->
+<section>
+  <h2>Transformer Teaser: Self-Attention</h2>
+  <div class="spacer"></div>
+  <p>The architecture that has eaten the world over the past five years is the <strong>transformer</strong>.</p>
+  <div class="spacer"></div>
+  <ul>
+    <li>For each element, look at <strong>every other element</strong> and learn how much each one matters</li>
+    <li>No recurrence &mdash; <strong>fully parallel on a GPU</strong></li>
+    <li>No fixed-distance limit &mdash; any element can attend to any other</li>
+    <li>Replaced RNNs/LSTMs for most language tasks after <a href="https://arxiv.org/abs/1706.03762" target="_blank">Vaswani et al. (2017)</a></li>
+    <li>Via the <strong>Vision Transformer</strong>, increasingly replacing CNNs too</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="info-box">
+    <p>Full treatment of attention is coming up &mdash; it&rsquo;s the engine inside every LLM.</p>
+  </div>
+  <p class="cite-line">Vaswani et al. (2017). Attention is all you need. <em>NeurIPS</em>. <a href="https://arxiv.org/abs/1706.03762" target="_blank">arxiv.org/abs/1706.03762</a></p>
+</section>
+
+<!-- (Case study + Think About It #2 moved earlier — see after Think About It #1) -->
+
+<!-- ============================================================
+     SLIDE 25: Section Divider — LLMs and Generative AI
+     ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-brain"></i></div>
+  <h2>LLMs and Generative AI</h2>
+  <p>Behind the curtain of ChatGPT</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 26: What an LLM actually is
+     ============================================================ -->
+<section>
+  <h2>What an LLM Actually Is</h2>
+  <div class="spacer"></div>
+  <p>Three ingredients, one outcome.</p>
+  <div class="spacer"></div>
+  <div class="three-col">
+    <div class="col">
+      <div class="info-box" style="height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">1. Transformer</h4>
+        <p style="font-size: 0.78em;">The architecture from earlier in the lecture. Self-attention, stacked many times.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box" style="height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">2. Next-token prediction</h4>
+        <p style="font-size: 0.78em;">Given the text so far, predict the next token. That&rsquo;s the entire training objective.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="key-insight" style="height: 100%; box-sizing: border-box;">
+        <h4 style="color: var(--mq-gold); text-transform: none; letter-spacing: 0;">3. Scale</h4>
+        <p style="font-size: 0.78em;">Billions of parameters, trillions of training tokens, thousands of GPUs.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <p><strong>That&rsquo;s it.</strong> ChatGPT is &ldquo;next token, but really big&rdquo;. Everything else &mdash; helpfulness, refusal, formatting &mdash; comes from the <em>post-training</em> we&rsquo;ll cover in a few slides.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 31: Tokenisation
+     ============================================================ -->
+<section>
+  <h2>Tokenisation: Chopping Up Text</h2>
+  <div class="spacer"></div>
+  <p>An LLM doesn&rsquo;t process letters or whole words &mdash; it processes <strong>tokens</strong>, which are typically <em>subwords</em>.</p>
+  <div class="spacer"></div>
+  <ul>
+    <li>Common words like <code>the</code> are a single token</li>
+    <li>Rare or long words get split into pieces: <code>psychology</code> &rarr; <code>psych</code> + <code>ology</code></li>
+    <li>Subword tokenisation handles new compounds and rare words <strong>gracefully</strong></li>
+    <li>A typical model has a vocabulary of <strong>30,000&ndash;100,000 tokens</strong></li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="info-box">
+    <p>Why does this matter? Tokens are the <strong>discrete units</strong> that get mapped to embeddings. The model never sees the text directly &mdash; it sees a sequence of integers.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 32: Tokenisation example
+     ============================================================ -->
+<section>
+  <h2>Tokenisation in Action</h2>
+  <div class="spacer"></div>
+  <p style="text-align: center; font-size: 0.95em;">Input sentence:</p>
+  <div class="token-row">
+    <span class="token-chip token-grey">&ldquo;Studying psychology is rewarding.&rdquo;</span>
+  </div>
+  <div class="spacer"></div>
+  <p style="text-align: center; font-size: 0.9em;">After tokenisation:</p>
+  <div class="token-row">
+    <span class="token-chip token-blue">Study</span>
+    <span class="token-chip token-blue">ing</span>
+    <span class="token-chip token-red">&nbsp;psych</span>
+    <span class="token-chip token-red">ology</span>
+    <span class="token-chip token-green">&nbsp;is</span>
+    <span class="token-chip token-purple">&nbsp;reward</span>
+    <span class="token-chip token-purple">ing</span>
+    <span class="token-chip token-gold">.</span>
+  </div>
+  <div class="spacer"></div>
+  <p style="text-align: center; font-size: 0.9em;">Each chip is one token &rarr; one integer ID:</p>
+  <div class="token-row">
+    <span class="vector-display">14025</span>
+    <span class="vector-display">278</span>
+    <span class="vector-display">31735</span>
+    <span class="vector-display">2508</span>
+    <span class="vector-display">374</span>
+    <span class="vector-display">9889</span>
+    <span class="vector-display">278</span>
+    <span class="vector-display">13</span>
+  </div>
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">From here on, the LLM is doing maths on integers, not letters.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 33: Embeddings — words as vectors
+     ============================================================ -->
+<section>
+  <h2>Embeddings: Words as Vectors</h2>
+  <div class="spacer"></div>
+  <p>Each token ID is mapped to a <strong>dense vector</strong> of numbers &mdash; typically <strong>768 to 4,096 dimensions</strong> long.</p>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <p style="font-size: 0.85em;">
+        <span class="vector-display"><span class="v-label">cat</span> [0.12, -0.43, 0.88, &hellip;, 0.05]</span>
+      </p>
+      <p style="font-size: 0.85em;">
+        <span class="vector-display"><span class="v-label">dog</span> [0.18, -0.39, 0.85, &hellip;, 0.07]</span>
+      </p>
+      <p style="font-size: 0.85em;">
+        <span class="vector-display"><span class="v-label">Tuesday</span> [-0.72, 0.31, 0.04, &hellip;, -0.89]</span>
+      </p>
+    </div>
+    <div class="col">
+      <div class="key-insight">
+        <p>Vectors are learned so that <strong>similar tokens end up close together in space</strong>.</p>
+        <p style="font-size: 0.78em;">&ldquo;cat&rdquo; sits near &ldquo;dog&rdquo;. Far from &ldquo;Tuesday&rdquo;. &ldquo;depressed&rdquo; sits near &ldquo;sad&rdquo;, &ldquo;lonely&rdquo;, &ldquo;anhedonic&rdquo;. Far from &ldquo;rollerblade&rdquo;.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="highlight-box">
+    <p>The <strong>closeness of vectors</strong> <em>is</em> the model&rsquo;s representation of meaning. Nothing is stored about the letters &mdash; only about which other tokens this one tends to appear near.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 34: SVG — embedding space
+     ============================================================ -->
+<section>
+  <h2 style="font-size: 1.6em;">Meaning as Geometry</h2>
+  <div style="text-align: center; margin-top: 12px;">
+    <img src="../figures/embedding-space.svg"
+         alt="A 2D projection of embedding space showing four labelled clusters — Emotions, Cognition, Statistical methods, People — with vector arithmetic shown in the centre (king − man + woman ≈ queen)"
+         style="max-width: 100%; max-height: 760px;">
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 35: Vector arithmetic
+     ============================================================ -->
+<section>
+  <h2>Vector Arithmetic on Meaning</h2>
+  <div class="spacer"></div>
+  <p>If meaning lives in geometry, you can do <strong>arithmetic on concepts</strong>.</p>
+  <div class="spacer"></div>
+  <div style="text-align: center; font-size: 1.4em; font-family: var(--font-mono); padding: 24px 0;">
+    <span style="color: var(--mq-blue);">vec(<strong>king</strong>)</span>
+    <span style="color: var(--mq-grey);"> &minus; </span>
+    <span style="color: var(--mq-red);">vec(<strong>man</strong>)</span>
+    <span style="color: var(--mq-grey);"> + </span>
+    <span style="color: var(--mq-purple);">vec(<strong>woman</strong>)</span>
+    <span style="color: var(--mq-grey);"> &approx; </span>
+    <span style="color: var(--mq-green);">vec(<strong>queen</strong>)</span>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li>Famous example from <a href="https://arxiv.org/abs/1301.3781" target="_blank">Mikolov et al. (2013)</a></li>
+    <li>Relationships between concepts show up as <strong>consistent vector directions</strong></li>
+    <li><code>Paris &minus; France + Italy &approx; Rome</code></li>
+    <li>The representations have <em>structure</em> &mdash; and that structure looks like the structure of meaning</li>
+  </ul>
+  <p class="cite-line">Mikolov, T., Chen, K., Corrado, G., &amp; Dean, J. (2013). Efficient estimation of word representations in vector space. <a href="https://arxiv.org/abs/1301.3781" target="_blank">arxiv.org/abs/1301.3781</a></p>
+</section>
+
+<!-- ============================================================
+     SLIDE 36: Sentence and document embeddings
+     ============================================================ -->
+<section>
+  <h2>Sentence and Document Embeddings</h2>
+  <div class="spacer"></div>
+  <p>Pool the token embeddings for a whole interview transcript and you get <strong>one vector per document</strong>.</p>
+  <div class="spacer"></div>
+  <p>Now you can do quantitative things to qualitative data:</p>
+  <div class="spacer"></div>
+  <div class="app-grid">
+    <div class="app-card" style="border-left-color: var(--mq-red);">
+      <h4><i class="ph ph-circles-three-plus"></i> Cluster Transcripts</h4>
+      <p>Quantitative thematic analysis &mdash; group similar interviews automatically.</p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-blue);">
+      <h4><i class="ph ph-magnifying-glass"></i> Semantic Search</h4>
+      <p>Find responses similar to a target answer, even if they share no exact words.</p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-clock-counter-clockwise"></i> Track Change Over Time</h4>
+      <p>Measure shifts in how someone describes their experience across sessions or years.</p>
+    </div>
+    <div class="app-card" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-tag"></i> Auto-Coding Support</h4>
+      <p>Pre-label transcript chunks for human review. Speeds qualitative analysis dramatically.</p>
+    </div>
+  </div>
+  <p class="cite-line">See <a href="https://doi.org/10.1038/s44159-023-00241-5" target="_blank">Demszky et al. (2023)</a> for a thorough review of LLMs in psychology. <em>Nature Reviews Psychology</em>. <a href="https://doi.org/10.1038/s44159-023-00241-5" target="_blank">doi.org/10.1038/s44159-023-00241-5</a></p>
+</section>
+
+<!-- ============================================================
+     SLIDE 37: TensorFlow Embedding Projector
+     ============================================================ -->
+<section>
+  <h2>Play With This Yourself</h2>
+  <div class="spacer"></div>
+  <div class="projector-box">
+    <div class="pb-icon"><i class="ph-bold ph-cube"></i></div>
+    <h4>TensorFlow Embedding Projector</h4>
+    <p>Hover over any word and see its <strong>nearest neighbours</strong> in 3D embedding space.</p>
+    <p>A surprisingly effective intuition pump for the &ldquo;meaning is geometry&rdquo; idea.</p>
+    <a href="https://projector.tensorflow.org/" target="_blank">projector.tensorflow.org</a>
+  </div>
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">Try the Word2Vec 10K demo. Type &ldquo;depression&rdquo; into the search box. Look at what comes up.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 38: Think About It #3
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>If an LLM &ldquo;knows&rdquo; that depression is related to insomnia because their embeddings sit near each other in a high-dimensional space, is that the <strong>same kind of knowing</strong> that a clinical psychologist has?</p>
+  <div class="spacer"></div>
+  <p>What does the model <em>not</em> have access to that the clinician does &mdash; lived experience, embodied affect, the relational context of a session &mdash; and does it matter for what we use the model for?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 39: Self-attention intuition
+     ============================================================ -->
+<section>
+  <h2>Self-Attention: The Intuition</h2>
+  <div class="spacer"></div>
+  <p>For each token in the input, the model asks:</p>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p style="font-size: 1.1em;"><strong>&ldquo;Which other tokens should I pay attention to?&rdquo;</strong></p>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+    <li>In <em>&ldquo;The cat sat on the mat because <strong>it</strong> was tired&rdquo;</em>, the word &ldquo;it&rdquo; needs to attend to &ldquo;cat&rdquo; (not &ldquo;mat&rdquo;) to resolve the pronoun</li>
+    <li>In <em>&ldquo;The bank by the river was steep&rdquo;</em>, &ldquo;bank&rdquo; needs to attend to &ldquo;river&rdquo; to pick the right meaning</li>
+    <li>The model <strong>learns these attention patterns from data</strong> &mdash; nobody writes them</li>
+    <li>Attention patterns turn out to be <strong>interpretable</strong>: pronoun resolution, syntactic links, semantic groupings</li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     SLIDE 40: SVG — attention pattern
+     ============================================================ -->
+<section>
+  <h2>An Attention Pattern, Visualised</h2>
+  <div class="spacer"></div>
+  <div style="text-align: center;">
+    <img src="../figures/attention-pattern.svg"
+         alt="A short sentence with self-attention weights visualised as line thickness between words"
+         style="max-width: 88%; max-height: 520px;">
+  </div>
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">Line thickness = attention weight. Some tokens attend strongly to one or two others; some spread their attention more evenly.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 41: Q, K, V intuition
+     ============================================================ -->
+<section>
+  <h2>Q, K, V &mdash; Without Maths</h2>
+  <div class="spacer"></div>
+  <p>Each token is projected into <strong>three vectors</strong>:</p>
+  <div class="spacer"></div>
+  <div class="qkv-grid">
+    <div class="qkv-card" style="border-top-color: var(--mq-blue);">
+      <div class="qkv-letter" style="color: var(--mq-blue);">Q</div>
+      <h4>Query</h4>
+      <p>&ldquo;What am I looking for?&rdquo;</p>
+    </div>
+    <div class="qkv-card" style="border-top-color: var(--mq-red);">
+      <div class="qkv-letter" style="color: var(--mq-red);">K</div>
+      <h4>Key</h4>
+      <p>&ldquo;What do I offer?&rdquo;</p>
+    </div>
+    <div class="qkv-card" style="border-top-color: var(--mq-purple);">
+      <div class="qkv-letter" style="color: var(--mq-purple);">V</div>
+      <h4>Value</h4>
+      <p>&ldquo;What do I carry?&rdquo;</p>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <ul>
+    <li>Compare each token&rsquo;s <strong>Q</strong> to every other token&rsquo;s <strong>K</strong> &rarr; attention scores</li>
+    <li>Use those scores to weight the <strong>V</strong> vectors</li>
+    <li>Result: a new representation for each token, mixed from the tokens it most needed to attend to</li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     SLIDE 42: Multi-head & stacked blocks
+     ============================================================ -->
+<section>
+  <h2>Multi-Head Attention &amp; Stacked Blocks</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+        <li><strong>Multi-head:</strong> several attention &ldquo;channels&rdquo; in parallel, each learning a different kind of relationship</li>
+        <li>One head might learn pronoun&ndash;referent links</li>
+        <li>Another might learn subject&ndash;verb agreement</li>
+        <li>A <strong>transformer block</strong> = one multi-head attention + a small feedforward network</li>
+        <li>Modern LLMs stack <strong>30&ndash;100+ blocks</strong></li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="block-stack">
+        <div class="tx-block">Transformer Block N<div class="tx-sub">attention + feedforward</div></div>
+        <div class="tx-dots">&middot; &middot; &middot;</div>
+        <div class="tx-block">Transformer Block 3<div class="tx-sub">attention + feedforward</div></div>
+        <div class="tx-block">Transformer Block 2<div class="tx-sub">attention + feedforward</div></div>
+        <div class="tx-block">Transformer Block 1<div class="tx-sub">attention + feedforward</div></div>
+        <div class="tx-block" style="background: var(--mq-light-grey); border-color: var(--mq-grey); color: var(--mq-grey);">Token Embeddings In</div>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="small" style="text-align: center;">Each block builds a richer representation. The output of block N is the input to block N+1.</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 43: From pre-training to ChatGPT — pipeline + Stage 1 detail
+     ============================================================ -->
+<section>
+  <h2>From Pre-Training to ChatGPT</h2>
+  <p style="text-align: center; font-size: 0.9em;">ChatGPT is not one training run. It is <strong>three stages</strong>, stacked.</p>
+
+  <div class="pipeline" style="margin-top: 14px;">
+    <div class="pipeline-stage" style="border-top-color: var(--mq-blue);">
+      <h4>1. Pre-training</h4>
+      <p>Billions of pages of internet text. Predict the next token. <strong>No human labels.</strong></p>
+    </div>
+    <div class="pipeline-arrow">&rarr;</div>
+    <div class="pipeline-stage" style="border-top-color: var(--mq-purple);">
+      <h4>2. Instruction Tuning</h4>
+      <p>Fine-tune on (question, helpful answer) pairs written by humans.</p>
+    </div>
+    <div class="pipeline-arrow">&rarr;</div>
+    <div class="pipeline-stage" style="border-top-color: var(--mq-red);">
+      <h4>3. RLHF</h4>
+      <p>Humans rank outputs. Model learns to produce what humans prefer.</p>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top: 18px;">
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="text-transform: none; letter-spacing: 0; color: var(--mq-blue);">After Stage 1</h4>
+        <p style="font-size: 0.78em;">The model is <em>excellent at predicting plausible text</em> but <strong>not at following instructions</strong>. Ask raw GPT &ldquo;What is the capital of France?&rdquo; and it might continue with &ldquo;What is the capital of Germany?&rdquo;.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="key-insight">
+        <p style="font-size: 0.85em;"><strong>&ldquo;What ChatGPT knows&rdquo;</strong> &rarr; pre-training.<br><strong>&ldquo;How ChatGPT behaves&rdquo;</strong> &rarr; instruction tuning + RLHF.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 45: Instruction tuning + RLHF
+     ============================================================ -->
+<section>
+  <h2>Stages 2 &amp; 3: Making It a Helpful Assistant</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="color: var(--mq-purple); text-transform: none; letter-spacing: 0;">2. Instruction Tuning</h4>
+        <p style="font-size: 0.78em;">Fine-tune on <strong>(question, helpful answer)</strong> pairs written by humans.</p>
+        <p style="font-size: 0.78em;">The model learns the <em>form</em> of being a helpful assistant.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">3. RLHF</h4>
+        <p style="font-size: 0.78em;"><strong>Reinforcement Learning from Human Feedback</strong>.</p>
+        <p style="font-size: 0.78em;">Humans rank pairs of model outputs. Model trained to produce outputs humans prefer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <ul>
+    <li>RLHF makes ChatGPT polite, helpful, and <strong>risk-averse</strong></li>
+    <li>It is also why ChatGPT sometimes refuses reasonable requests or hedges excessively &mdash; same training signal</li>
+    <li>The original recipe is in <a href="https://arxiv.org/abs/2203.02155" target="_blank">Ouyang et al. (2022)</a> &mdash; the InstructGPT paper</li>
+  </ul>
+  <p class="cite-line">Ouyang et al. (2022). Training language models to follow instructions with human feedback. <a href="https://arxiv.org/abs/2203.02155" target="_blank">arxiv.org/abs/2203.02155</a></p>
+</section>
+
+<!-- ============================================================
+     SLIDE 46: Hallucinations, context window, tool use
+     ============================================================ -->
+<section>
+  <h2>What LLMs Can and Can&rsquo;t Do</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li><strong>Hallucinations are not a bug &mdash; they&rsquo;re a property of the architecture.</strong> The model predicts <em>plausible</em> next tokens, not <em>true</em> ones.</li>
+    <li><strong>Context window</strong> &mdash; how much the model can attend to at once. Modern models: <strong>8,000 to 1,000,000 tokens</strong>.</li>
+    <li><strong>Tool use</strong> &mdash; newer models call out to calculators, search engines, code interpreters, partially mitigating hallucinations on facts and arithmetic.</li>
+  </ul>
+  <div class="spacer-lg"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box" style="border-left-color: var(--mq-green);">
+        <h4 style="color: var(--mq-green); text-transform: none; letter-spacing: 0;">Good at</h4>
+        <p style="font-size: 0.72em;">Coding help, summarising, drafting, brainstorming, semantic search, qualitative coding support.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Bad at</h4>
+        <p style="font-size: 0.72em;">Verifiable factual recall without a tool. Anything where the cost of being wrong is high and you can&rsquo;t independently verify.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 47: Vision-language models — example + 2-col cards
+     ============================================================ -->
+<section>
+  <style>
+    .vlm-row { display: grid; grid-template-columns: 360px 1fr; gap: 20px; align-items: center; max-width: 1500px; margin: 10px auto 0; }
+    .vlm-img-wrap img { width: 100%; height: 240px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: block; }
+    .vlm-img-wrap .img-cap { font-size: 0.62em; color: var(--mq-grey); text-align: center; margin-top: 4px; }
+    .vlm-qa { display: flex; flex-direction: column; gap: 8px; }
+    .vlm-bub { background: white; border-radius: 10px; padding: 10px 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); font-size: 0.74em; line-height: 1.4; }
+    .vlm-bub .lbl { font-size: 0.62em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+    .vlm-bub.user { border-left: 4px solid var(--mq-blue); }
+    .vlm-bub.ai   { border-left: 4px solid var(--mq-purple); }
+    .vlm-bub.user .lbl { color: var(--mq-blue); }
+    .vlm-bub.ai .lbl   { color: var(--mq-purple); }
+    .vlm-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 1500px; margin: 14px auto 0; }
+    .vlm-card { background: white; border-radius: 10px; padding: 12px 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.06); border-left: 4px solid var(--mq-grey); }
+    .vlm-card h4 { text-transform: none; letter-spacing: 0; margin: 0 0 4px; font-size: 0.92em; }
+    .vlm-card p  { margin: 0; font-size: 0.74em; color: var(--mq-charcoal); line-height: 1.4; }
+  </style>
+
+  <h2>Vision-Language Models</h2>
+  <p style="text-align: center; font-size: 0.78em;">Text and image share <strong>one context window</strong>: the model sees both and reasons about them together.</p>
+
+  <div class="vlm-row">
+    <div class="vlm-img-wrap">
+      <img src="../figures/vlm-example.jpg" alt="A wooden dock extending into a calm lake, surrounded by forest and mountains — the canonical LLaVA demo image">
+      <div class="img-cap">Image: LLaVA team demo (<a href="https://llava-vl.github.io/" target="_blank">llava-vl.github.io</a>)</div>
+    </div>
+    <div class="vlm-qa">
+      <div class="vlm-bub user">
+        <div class="lbl">You</div>
+        What&rsquo;s in this image, and what would I want to keep in mind if I went there?
+      </div>
+      <div class="vlm-bub ai">
+        <div class="lbl">Vision-language model</div>
+        A wooden dock extends into a calm lake surrounded by forest and mountains. Conditions look chilly and the water is glassy &mdash; great for photography. Bring layers, watch your footing on the boards (looks wet), and check for biting insects at dusk.
+      </div>
+    </div>
+  </div>
+
+  <div class="vlm-cards-grid">
+    <div class="vlm-card" style="border-left-color: var(--mq-red);">
+      <h4><i class="ph ph-eye"></i> GPT-4o (OpenAI)</h4>
+      <p>Reads screenshots, diagrams, scanned documents, charts.</p>
+    </div>
+    <div class="vlm-card" style="border-left-color: var(--mq-blue);">
+      <h4><i class="ph ph-sparkle"></i> Gemini (Google)</h4>
+      <p>Long context (1M+ tokens), strong document and chart understanding.</p>
+    </div>
+    <div class="vlm-card" style="border-left-color: var(--mq-purple);">
+      <h4><i class="ph ph-chat-circle"></i> Claude (Anthropic)</h4>
+      <p>Vision + reasoning, screenshot interpretation, document parsing.</p>
+    </div>
+    <div class="vlm-card" style="border-left-color: var(--mq-green);">
+      <h4><i class="ph ph-stack"></i> Open-source: LLaVA, Qwen-VL</h4>
+      <p>Comparable open-weight models you can run locally &mdash; essential when data can&rsquo;t leave your machine.</p>
+    </div>
+    <div class="vlm-card" style="border-left-color: var(--mq-gold);">
+      <h4><i class="ph ph-flask"></i> Research uses</h4>
+      <p>Auto-code behavioural images, score facial expressions, parse scanned questionnaires, accessibility tools.</p>
+    </div>
+    <div class="vlm-card" style="border-left-color: var(--mq-charcoal);">
+      <h4><i class="ph ph-warning"></i> Caveats</h4>
+      <p>Same risks as text LLMs &mdash; hallucinations, bias, confident wrong answers on edge cases. Verify before trusting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 50: Think About It #4
+     ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>A vision-language model can now look at a photo of a participant&rsquo;s face and produce a paragraph describing their probable mood, attention, and demographics &mdash; in seconds, at scale.</p>
+  <div class="spacer"></div>
+  <p>What kinds of psychological studies does this <strong>enable</strong>? What kinds of <strong>mistakes</strong> would worry you most? Would you use it to <em>generate</em> participant labels for training another model, or only as one signal among several?</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 51: Common misconceptions
+     ============================================================ -->
+<section>
+  <h2>Common Misconceptions</h2>
+  <div class="spacer"></div>
+  <div class="myth-card">
+    <div class="myth-label">Myth #1</div>
+    <div class="myth-text">&ldquo;LLMs understand what they say.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> They predict next tokens consistent with patterns in their training data. Whether that constitutes &ldquo;understanding&rdquo; is philosophically contested &mdash; see <a href="https://doi.org/10.1145/3442188.3445922" target="_blank">Bender et al. (2021)</a> for the influential sceptical view. Treat it operationally as sophisticated pattern matching unless you have a reason to do otherwise.</div>
+  </div>
+  <div class="myth-card">
+    <div class="myth-label">Myth #2</div>
+    <div class="myth-text">&ldquo;Bigger is always better.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> Scaling helps up to a point &mdash; but quality of training data, instruction tuning, and RLHF matter at least as much. A well-tuned smaller model often beats a poorly-tuned giant one.</div>
+  </div>
+  <div class="myth-card">
+    <div class="myth-label">Myth #3</div>
+    <div class="myth-text">&ldquo;Open-source LLMs are a year behind.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> Closer to three to six months on most benchmarks &mdash; and they run on a laptop (Llama, Mistral, Qwen). Critical for research where you can&rsquo;t send participant data to a third-party API.</div>
+  </div>
+  <div class="myth-card">
+    <div class="myth-label">Myth #4</div>
+    <div class="myth-text">&ldquo;GenAI for images and text are the same thing.&rdquo;</div>
+    <div class="reality-text"><strong>Reality:</strong> They are not. Autoregressive transformers and diffusion models are different objects that share an &ldquo;ingest a prompt, produce content&rdquo; interface but work very differently inside.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 52: Course wrap — journey
+     ============================================================ -->
+<section>
+  <h2>What You&rsquo;ve Built Over 11 Weeks</h2>
+  <div class="spacer"></div>
+  <div class="journey">
+    <div class="journey-step" style="border-top-color: var(--mq-blue);">
+      <div class="js-week">Weeks 1&ndash;6</div>
+      <h4>Supervised ML</h4>
+      <p>Regression, regularisation, classification, trees, random forests.</p>
+    </div>
+    <div class="journey-step" style="border-top-color: var(--mq-purple);">
+      <div class="js-week">Weeks 7&ndash;8</div>
+      <h4>Unsupervised ML</h4>
+      <p>Clustering, PCA, UMAP &mdash; finding structure without labels.</p>
+    </div>
+    <div class="journey-step" style="border-top-color: var(--mq-gold);">
+      <div class="js-week">Weeks 9&ndash;10</div>
+      <h4>Neural Networks</h4>
+      <p>From perceptron to MLP to a working PyTorch model on real EEG data.</p>
+    </div>
+    <div class="journey-step" style="border-top-color: var(--mq-red);">
+      <div class="js-week">Week 11</div>
+      <h4>Deep Learning &amp; LLMs</h4>
+      <p>CNNs, RNNs, transformers, embeddings &mdash; the map of everything-else.</p>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="key-insight">
+    <p>You started this course with no coding and no ML background. You finish it with a <strong>working understanding</strong> of every major area of modern data science &mdash; and the LLM skills to keep going.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 53: Course wrap — viva preview
+     ============================================================ -->
+<section>
+  <h2>Week 12: The Viva</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <ul>
+        <li><strong>Viva definition pool</strong> &mdash; released today in <code>weeks/week-12-viva-review/</code></li>
+        <li><strong>Short-answer pool</strong> &mdash; also released today</li>
+        <li>Questions drawn from across all 11 weeks</li>
+        <li>Format: short, structured, focused on <strong>understanding</strong> not memorisation</li>
+        <li><strong>Week 13</strong> &mdash; a discussion seminar on where the field is going and how to use these tools responsibly in your honours project</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">How to study</h4>
+        <p style="font-size: 0.78em;">Skim each week&rsquo;s companion reading. Walk through the slide deck&rsquo;s key figures.</p>
+        <p style="font-size: 0.78em;">For lab weeks, re-open your notebooks &mdash; the act of running a cell brings the concept back.</p>
+        <p style="font-size: 0.78em;">Use the AI as your study partner. Ask it to quiz you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 54: End slide
+     ============================================================ -->
+<section class="end-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #A71930 100%)">
+  <h1>Questions?</h1>
+  <div class="spacer-lg"></div>
+  <p>PSYC4411 &middot; Week 11</p>
+  <div class="spacer"></div>
+  <p>Thank you &mdash; see you for the viva in Week 12.</p>
+  <p style="font-size: 0.65em; opacity: 0.5;">Beyond Tabular &middot; 18 May 2026</p>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<!-- Fixed UI elements -->
+<a class="back-to-repo" href="../../README.md">&larr; Week 11</a>
+<div class="live-clock" id="clock"></div>
+
+<!-- Navigation bar -->
+<nav class="slide-nav" id="slideNav"></nav>
+
+<!-- reveal.js -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
-  Reveal.initialize({
-    width: 1920, height: 1080, margin: 0,
-    center: false, controls: false,
-    slideNumber: false, progress: false,
-    transition: 'none', hash: false
+  const deck = new Reveal({
+    hash: true,
+    slideNumber: false,
+    progress: false,
+    controls: true,
+    controlsTutorial: false,
+    transition: 'fade',
+    transitionSpeed: 'fast',
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    center: false,
+    maxScale: 1.5,
+    pdfSeparateFragments: false,
   });
+  deck.initialize();
+
+  /* ---- Slide Nav Bar ---- */
+  function buildNav() {
+    const nav = document.getElementById('slideNav');
+    if (!nav) return;
+    const slides = deck.getSlides();
+    while (nav.firstChild) { nav.removeChild(nav.firstChild); }
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'slide-nav-pill';
+      btn.textContent = String(i + 1);
+      btn.addEventListener('click', () => deck.slide(i));
+      nav.appendChild(btn);
+    });
+    updateNav();
+  }
+  function updateNav() {
+    const pills = document.querySelectorAll('.slide-nav-pill');
+    const cur = deck.getState().indexh;
+    pills.forEach((p, i) => {
+      p.classList.toggle('active', i === cur);
+      p.classList.toggle('visited', i < cur);
+    });
+  }
+  deck.on('ready', buildNav);
+  deck.on('slidechanged', updateNav);
+
+  /* ---- Live Clock ---- */
+  function tick() {
+    const el = document.getElementById('clock');
+    if (!el) return;
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: false });
+  }
+  tick();
+  setInterval(tick, 30000);
 </script>
 </body>
 </html>

@@ -14,7 +14,7 @@ This is an in-person exam, no exceptions. The exam will be administered and grad
 
 **Maximum 4 points per question · 10 questions = 40 points total**
 
-You will be required to provide clear, concise one-sentence definitions for key concepts related to machine learning, AI, and LLM-assisted research methods covered in this class. Each student will be given 10 concepts, randomly selected from a pool of 40, to define.
+You will be required to provide clear, concise one-sentence definitions for key concepts related to machine learning, AI, and LLM-assisted research methods covered in this class. Each student will be given **10 concepts to define**, drawn at random from a pool of 40.
 
 **Time:** Maximum of 20 seconds to think about and provide an answer for each concept.
 
@@ -28,15 +28,19 @@ You will be required to provide clear, concise one-sentence definitions for key 
 
 **Maximum 12 points per question · 3 questions = 36 points total**
 
-You will be presented with research scenarios or data analysis problems and asked to provide 1-minute responses about which ML/AI methods would be appropriate and how you would apply them. Questions will be limited to methods, techniques, and concepts addressed in class (Weeks 1–11).
+You will be presented with research scenarios or data analysis problems and asked which ML/AI methods would be appropriate and how you would apply them. Questions will be limited to methods, techniques, and concepts addressed in class (Weeks 1–11).
 
-**Time:** 30 seconds to contemplate and plan your answer, then maximum 1-minute response.
+> **A note on the bar.** This section is designed to test your **general understanding** of the methods and materials covered in the course — **not** PhD-level technical depth. We are looking for evidence that you have engaged with the methods, can pick a reasonable approach for a given research scenario, and can talk through what you would do and what you would be cautious about. A clear, structured one-minute answer that touches the main ideas is plenty — you do not need to get every detail right, you do not need to recite textbook definitions of every metric or model, and you do not need to be perfect. Show us you can reason about the methods, and that is what we are after.
 
-### Example Question Types
+**Time:** 30 seconds to plan, then maximum 1 minute to respond.
 
-- "A researcher has survey data and wants to predict which students are at risk of dropping out. What approach would you recommend and why?"
-- "You have response time data from 200 participants and want to see if there are distinct subgroups. What methods would you use and what would you be cautious about?"
-- "A colleague shows you a classification model with 95% accuracy on their training data. What questions would you ask before trusting this result?"
+**Question pool:** **9 example questions** are released to students for practice (see `weeks/week-12-viva-review/viva-questions.csv` and `short-answer-examples.md`). Your actual 3 exam questions are drawn from a separate test pool you do not see in advance, but the test questions cover the same kinds of ML reasoning skills as the released examples. Every prompt is ML-directive — it tells you which family of methods you need to reason about.
+
+Part 2 of `weeks/week-12-viva-review/concept-list.md` provides **additional course concepts** (method names, metrics, and tools used throughout the course) with definitions. These are not asked as Section 1 definitions, but you should be comfortable using them when you talk about the methods you've learned.
+
+### Example of a question type
+
+> A clinical researcher wants to predict DASS Depression scores from Big Five personality traits and demographics in a large student sample. **Which ML regression approach would you choose, and why?** How would you train and evaluate it, and what would you report so a reader knows the model is trustworthy?
 
 **Grading Criteria:**
 - **Clarity and conciseness (40%):** Ability to answer clearly and straightforwardly, with main points easily understandable and presented within the allotted time

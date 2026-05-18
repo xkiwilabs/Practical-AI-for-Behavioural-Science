@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <marker id="rnn-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2D2D2D"/>
+    </marker>
+  </defs>
+
+  <!-- RNN Cell box (centre) -->
+  <rect x="320" y="180" width="260" height="160" rx="22" fill="#F4F0F9" stroke="#7B68A8" stroke-width="3"/>
+  <text x="450" y="252" text-anchor="middle" font-size="22" font-weight="700" fill="#7B68A8">RNN cell</text>
+  <text x="450" y="278" text-anchor="middle" font-size="13" fill="#8C8C8C">same weights, every step</text>
+
+  <!-- h_{t-1} label and arrow from LEFT -->
+  <g>
+    <text x="120" y="245" text-anchor="middle" font-size="22" font-weight="700" fill="#A71930">
+      h<tspan font-size="14" baseline-shift="sub">t&#8722;1</tspan>
+    </text>
+    <text x="120" y="275" text-anchor="middle" font-size="12" fill="#8C8C8C" font-style="italic">previous hidden state</text>
+    <line x1="180" y1="260" x2="312" y2="260" stroke="#2D2D2D" stroke-width="3" marker-end="url(#rnn-arrow)"/>
+  </g>
+
+  <!-- x_t label and arrow from BOTTOM -->
+  <g>
+    <text x="450" y="448" text-anchor="middle" font-size="22" font-weight="700" fill="#4A90D9">
+      x<tspan font-size="14" baseline-shift="sub">t</tspan>
+    </text>
+    <text x="450" y="472" text-anchor="middle" font-size="12" fill="#8C8C8C" font-style="italic">input at time t</text>
+    <line x1="450" y1="425" x2="450" y2="348" stroke="#2D2D2D" stroke-width="3" marker-end="url(#rnn-arrow)"/>
+  </g>
+
+  <!-- h_t label and arrow to RIGHT -->
+  <g>
+    <line x1="588" y1="260" x2="720" y2="260" stroke="#2D2D2D" stroke-width="3" marker-end="url(#rnn-arrow)"/>
+    <text x="780" y="245" text-anchor="middle" font-size="22" font-weight="700" fill="#A71930">
+      h<tspan font-size="14" baseline-shift="sub">t</tspan>
+    </text>
+    <text x="780" y="275" text-anchor="middle" font-size="12" fill="#8C8C8C" font-style="italic">new hidden state</text>
+    <text x="780" y="292" text-anchor="middle" font-size="11" fill="#8C8C8C">→ next step</text>
+  </g>
+
+  <!-- y_t label and arrow UP -->
+  <g>
+    <line x1="450" y1="172" x2="450" y2="95" stroke="#2D2D2D" stroke-width="3" marker-end="url(#rnn-arrow)"/>
+    <text x="450" y="80" text-anchor="middle" font-size="22" font-weight="700" fill="#5BA55B">
+      y<tspan font-size="14" baseline-shift="sub">t</tspan>
+    </text>
+    <text x="450" y="60" text-anchor="middle" font-size="12" fill="#8C8C8C" font-style="italic">output at time t</text>
+  </g>
+</svg>

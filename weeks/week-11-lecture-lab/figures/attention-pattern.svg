@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" font-family="Inter, -apple-system, sans-serif">
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-size="17" font-weight="700" fill="#2D2D2D">Self-Attention</text>
+  <text x="400" y="48" text-anchor="middle" font-size="12" fill="#8C8C8C">For each word, the model learns which other words to focus on</text>
+
+  <!-- Sentence row -->
+  <g transform="translate(40, 100)">
+    <!-- The -->
+    <rect x="0" y="0" width="60" height="32" rx="6" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.2"/>
+    <text x="30" y="21" text-anchor="middle" font-size="13" fill="#2D2D2D" font-weight="600">The</text>
+    <!-- patient -->
+    <rect x="70" y="0" width="90" height="32" rx="6" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.2"/>
+    <text x="115" y="21" text-anchor="middle" font-size="13" fill="#2D2D2D" font-weight="600">patient</text>
+    <!-- said -->
+    <rect x="170" y="0" width="60" height="32" rx="6" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.2"/>
+    <text x="200" y="21" text-anchor="middle" font-size="13" fill="#2D2D2D" font-weight="600">said</text>
+    <!-- they -->
+    <rect x="240" y="0" width="70" height="32" rx="6" fill="#FCEDEE" stroke="#A71930" stroke-width="2"/>
+    <text x="275" y="21" text-anchor="middle" font-size="13" fill="#A71930" font-weight="700">they</text>
+    <!-- felt -->
+    <rect x="320" y="0" width="60" height="32" rx="6" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.2"/>
+    <text x="350" y="21" text-anchor="middle" font-size="13" fill="#2D2D2D" font-weight="600">felt</text>
+    <!-- tired -->
+    <rect x="390" y="0" width="70" height="32" rx="6" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.2"/>
+    <text x="425" y="21" text-anchor="middle" font-size="13" fill="#2D2D2D" font-weight="600">tired</text>
+    <!-- after -->
+    <rect x="470" y="0" width="70" height="32" rx="6" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.2"/>
+    <text x="505" y="21" text-anchor="middle" font-size="13" fill="#2D2D2D" font-weight="600">after</text>
+    <!-- treatment -->
+    <rect x="550" y="0" width="120" height="32" rx="6" fill="#F0F4FA" stroke="#4A90D9" stroke-width="1.2"/>
+    <text x="610" y="21" text-anchor="middle" font-size="13" fill="#2D2D2D" font-weight="600">treatment</text>
+  </g>
+
+  <!-- "they" focuses on the other words; show attention with thickness varying -->
+  <g transform="translate(40, 100)">
+    <!-- they → patient (strongest) -->
+    <path d="M275 0 Q190 -50 115 0" stroke="#A71930" stroke-width="5" fill="none" opacity="0.7"/>
+    <!-- they → The (weak) -->
+    <path d="M275 0 Q150 -80 30 0" stroke="#A71930" stroke-width="1" fill="none" opacity="0.4"/>
+    <!-- they → said (medium) -->
+    <path d="M275 0 Q240 -30 200 0" stroke="#A71930" stroke-width="2.5" fill="none" opacity="0.55"/>
+    <!-- they → felt (medium) -->
+    <path d="M275 32 Q310 70 350 32" stroke="#A71930" stroke-width="2" fill="none" opacity="0.5"/>
+    <!-- they → tired (medium-weak) -->
+    <path d="M275 32 Q350 80 425 32" stroke="#A71930" stroke-width="1.5" fill="none" opacity="0.45"/>
+    <!-- they → after (weak) -->
+    <path d="M275 32 Q390 90 505 32" stroke="#A71930" stroke-width="1" fill="none" opacity="0.35"/>
+    <!-- they → treatment (medium-strong) -->
+    <path d="M275 32 Q450 110 610 32" stroke="#A71930" stroke-width="3.5" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- Annotation: word being analysed -->
+  <text x="315" y="200" font-size="12" fill="#A71930" font-weight="600">For the word "they":</text>
+  <text x="315" y="219" font-size="11" fill="#2D2D2D">→ heavy attention on <tspan font-weight="700" fill="#A71930">"patient"</tspan> (it's who "they" refers to)</text>
+  <text x="315" y="236" font-size="11" fill="#2D2D2D">→ moderate attention on <tspan font-weight="700" fill="#A71930">"treatment"</tspan> (the relevant event)</text>
+  <text x="315" y="253" font-size="11" fill="#2D2D2D">→ weak attention on filler words ("the", "after")</text>
+
+  <!-- Bottom takeaway -->
+  <rect x="60" y="280" width="680" height="60" rx="10" fill="#FCEDEE" stroke="#A71930" stroke-width="1"/>
+  <text x="400" y="302" text-anchor="middle" font-size="12" fill="#2D2D2D"><tspan font-weight="700" fill="#A71930">Self-attention is learned, not hard-coded.</tspan> Every word can attend to every other word — no fixed distance limit.</text>
+  <text x="400" y="322" text-anchor="middle" font-size="11" fill="#8C8C8C">This is why transformers handle long-range dependencies that RNNs struggle with (and why they parallelise so well).</text>
+</svg>

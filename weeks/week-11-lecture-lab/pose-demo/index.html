@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Pose Demo — PSYC4411 Week 11</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+
+  <style>
+    :root {
+      --mq-red:       #A71930;
+      --mq-red-dark:  #8B1428;
+      --mq-charcoal:  #2D2D2D;
+      --mq-grey:      #8C8C8C;
+      --mq-light:     #F5F5F5;
+      --mq-blue:      #4A90D9;
+      --mq-gold:      #C8972C;
+      --mq-green:     #5BA55B;
+      --mq-purple:    #7B68A8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+      color: var(--mq-charcoal);
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+    header {
+      background: linear-gradient(135deg, var(--mq-red) 0%, var(--mq-red-dark) 100%);
+      color: white;
+      padding: 26px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    header p {
+      margin: 4px 0 0;
+      font-size: 0.85em;
+      opacity: 0.92;
+    }
+    header .back {
+      color: white;
+      text-decoration: none;
+      font-size: 0.85em;
+      font-weight: 600;
+      opacity: 0.85;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+    header .back:hover { background: rgba(255,255,255,0.15); }
+    main { padding: 28px 36px 36px; }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 16px 20px;
+      background: var(--mq-light);
+      border-radius: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      font-family: inherit;
+      font-size: 0.95em;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
+    }
+    .btn-primary { background: var(--mq-red); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--mq-red-dark); box-shadow: 0 4px 10px rgba(167,25,48,0.35); }
+    .btn-secondary { background: var(--mq-charcoal); color: white; }
+    .btn-secondary:hover:not(:disabled) { background: #1a1a1a; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .toggle-row { display: inline-flex; align-items: center; gap: 18px; margin-left: 12px; }
+    .toggle-row label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9em; font-weight: 500; cursor: pointer; }
+    .toggle-row input { accent-color: var(--mq-red); width: 16px; height: 16px; }
+
+    .canvas-wrap {
+      position: relative;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      max-width: 100%;
+    }
+    #video, #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #video { transform: scaleX(-1); } /* mirror so movements feel natural */
+    #overlay { transform: scaleX(-1); pointer-events: none; }
+    .placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.55);
+      font-size: 1em;
+      text-align: center;
+      padding: 30px;
+    }
+    .placeholder .ph-icon {
+      font-size: 4em;
+      color: var(--mq-red);
+      margin-bottom: 14px;
+    }
+    .placeholder.hidden { display: none; }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .status {
+      font-size: 0.85em;
+      color: var(--mq-grey);
+    }
+    .status.error { color: var(--mq-red); font-weight: 600; }
+    .stat-pills {
+      display: inline-flex;
+      gap: 8px;
+    }
+    .stat-pill {
+      background: var(--mq-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78em;
+      color: var(--mq-charcoal);
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+    }
+    .stat-pill .label { color: var(--mq-grey); margin-right: 6px; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .info-card {
+      background: var(--mq-light);
+      padding: 18px 20px;
+      border-radius: 12px;
+      border-left: 4px solid var(--mq-red);
+    }
+    .info-card h4 {
+      margin: 0 0 6px;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--mq-red);
+    }
+    .info-card p {
+      margin: 0;
+      font-size: 0.82em;
+      color: var(--mq-charcoal);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 720px) {
+      header { padding: 20px 22px; }
+      main { padding: 22px; }
+      .controls { padding: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1><i class="ph-bold ph-person-arms-spread"></i> Live Pose Demo</h1>
+      <p>MediaPipe Tasks · runs in your browser · webcam never leaves your machine</p>
+    </div>
+    <a href="../slides/index.html" class="back"><i class="ph ph-arrow-left"></i> Back to slides</a>
+  </header>
+
+  <main>
+    <div class="controls">
+      <button id="startBtn" class="btn btn-primary">
+        <i class="ph-bold ph-play"></i> Start camera
+      </button>
+      <button id="stopBtn" class="btn btn-secondary" disabled>
+        <i class="ph-bold ph-stop"></i> Stop
+      </button>
+      <div class="toggle-row">
+        <label><input type="checkbox" id="togglePose" checked> Body pose</label>
+        <label><input type="checkbox" id="toggleFace"> Face mesh</label>
+        <label><input type="checkbox" id="toggleHands"> Hands</label>
+      </div>
+    </div>
+
+    <div class="canvas-wrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div class="placeholder" id="placeholder">
+        <div class="ph-icon"><i class="ph-bold ph-video-camera"></i></div>
+        <div><strong>Click "Start camera"</strong> to grant access.</div>
+        <div style="margin-top: 8px; font-size: 0.85em;">Your browser will ask for permission. The video stream is processed entirely on this device.</div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <div class="status" id="status">Ready.</div>
+      <div class="stat-pills">
+        <div class="stat-pill"><span class="label">FPS:</span><span id="fps">&mdash;</span></div>
+        <div class="stat-pill"><span class="label">Detections:</span><span id="detCount">0</span></div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card" style="border-left-color: var(--mq-red);">
+        <h4>Body pose</h4>
+        <p>MediaPipe Pose Landmarker. 33 body landmarks per person, running at ~30 FPS on a modern laptop GPU.</p>
+      </div>
+      <div class="info-card" style="border-left-color: var(--mq-blue);">
+        <h4>Face mesh</h4>
+        <p>MediaPipe Face Landmarker. 478 facial landmarks — enough for action-unit-level analysis.</p>
+      </div>
+      <div class="info-card" style="border-left-color: var(--mq-purple);">
+        <h4>Hands</h4>
+        <p>MediaPipe Hand Landmarker. 21 keypoints per hand. Used heavily in gesture and sign-language research.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module">
+  import {
+    FilesetResolver,
+    PoseLandmarker,
+    FaceLandmarker,
+    HandLandmarker,
+    DrawingUtils
+  } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/+esm";
+
+  // DOM refs
+  const video       = document.getElementById('video');
+  const overlay     = document.getElementById('overlay');
+  const ctx         = overlay.getContext('2d');
+  const startBtn    = document.getElementById('startBtn');
+  const stopBtn     = document.getElementById('stopBtn');
+  const togglePose  = document.getElementById('togglePose');
+  const toggleFace  = document.getElementById('toggleFace');
+  const toggleHands = document.getElementById('toggleHands');
+  const placeholder = document.getElementById('placeholder');
+  const statusEl    = document.getElementById('status');
+  const fpsEl       = document.getElementById('fps');
+  const detCountEl  = document.getElementById('detCount');
+
+  // State
+  let stream      = null;
+  let running     = false;
+  let lastTime    = 0;
+  let fpsHistory  = [];
+  let poseLandmarker = null;
+  let faceLandmarker = null;
+  let handLandmarker = null;
+  let drawingUtils   = null;
+
+  function setStatus(msg, isError = false) {
+    statusEl.textContent = msg;
+    statusEl.classList.toggle('error', isError);
+  }
+
+  async function ensureLandmarkers() {
+    if (poseLandmarker) return; // already loaded
+    setStatus('Loading model files…');
+    const vision = await FilesetResolver.forVisionTasks(
+      "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm"
+    );
+    poseLandmarker = await PoseLandmarker.createFromOptions(vision, {
+      baseOptions: {
+        modelAssetPath: "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task",
+        delegate: "GPU"
+      },
+      runningMode: "VIDEO",
+      numPoses: 2
+    });
+    faceLandmarker = await FaceLandmarker.createFromOptions(vision, {
+      baseOptions: {
+        modelAssetPath: "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+        delegate: "GPU"
+      },
+      runningMode: "VIDEO",
+      numFaces: 1,
+      outputFaceBlendshapes: false
+    });
+    handLandmarker = await HandLandmarker.createFromOptions(vision, {
+      baseOptions: {
+        modelAssetPath: "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task",
+        delegate: "GPU"
+      },
+      runningMode: "VIDEO",
+      numHands: 2
+    });
+    drawingUtils = new DrawingUtils(ctx);
+    setStatus('Models loaded.');
+  }
+
+  async function startCamera() {
+    try {
+      startBtn.disabled = true;
+      setStatus('Requesting camera…');
+      await ensureLandmarkers();
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { width: { ideal: 1280 }, height: { ideal: 720 } },
+        audio: false
+      });
+      video.srcObject = stream;
+      await video.play();
+      placeholder.classList.add('hidden');
+      stopBtn.disabled = false;
+      running = true;
+      lastTime = performance.now();
+      setStatus('Running.');
+      requestAnimationFrame(loop);
+    } catch (err) {
+      setStatus('Could not start: ' + (err.message || err), true);
+      startBtn.disabled = false;
+    }
+  }
+
+  function stopCamera() {
+    running = false;
+    if (stream) {
+      stream.getTracks().forEach((t) => t.stop());
+      stream = null;
+    }
+    video.srcObject = null;
+    ctx.clearRect(0, 0, overlay.width, overlay.height);
+    placeholder.classList.remove('hidden');
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    fpsEl.textContent = '—';
+    detCountEl.textContent = '0';
+    setStatus('Stopped.');
+  }
+
+  function resizeOverlay() {
+    if (!video.videoWidth) return;
+    overlay.width = video.videoWidth;
+    overlay.height = video.videoHeight;
+  }
+
+  function loop() {
+    if (!running) return;
+    if (video.readyState >= 2) {
+      if (overlay.width !== video.videoWidth) resizeOverlay();
+      const t = performance.now();
+
+      ctx.save();
+      ctx.clearRect(0, 0, overlay.width, overlay.height);
+
+      let detTotal = 0;
+
+      if (togglePose.checked && poseLandmarker) {
+        const res = poseLandmarker.detectForVideo(video, t);
+        if (res?.landmarks) {
+          for (const lm of res.landmarks) {
+            drawingUtils.drawConnectors(lm, PoseLandmarker.POSE_CONNECTIONS, { color: '#A71930', lineWidth: 3 });
+            drawingUtils.drawLandmarks(lm, { color: '#FFFFFF', fillColor: '#A71930', lineWidth: 1, radius: 4 });
+            detTotal += lm.length;
+          }
+        }
+      }
+      if (toggleFace.checked && faceLandmarker) {
+        const res = faceLandmarker.detectForVideo(video, t);
+        if (res?.faceLandmarks) {
+          for (const lm of res.faceLandmarks) {
+            drawingUtils.drawConnectors(lm, FaceLandmarker.FACE_LANDMARKS_TESSELATION, { color: '#4A90D9', lineWidth: 0.4 });
+            drawingUtils.drawConnectors(lm, FaceLandmarker.FACE_LANDMARKS_RIGHT_EYE,    { color: '#C8972C', lineWidth: 1.4 });
+            drawingUtils.drawConnectors(lm, FaceLandmarker.FACE_LANDMARKS_LEFT_EYE,     { color: '#C8972C', lineWidth: 1.4 });
+            drawingUtils.drawConnectors(lm, FaceLandmarker.FACE_LANDMARKS_LIPS,         { color: '#A71930', lineWidth: 1.4 });
+            drawingUtils.drawConnectors(lm, FaceLandmarker.FACE_LANDMARKS_FACE_OVAL,    { color: '#7B68A8', lineWidth: 1.4 });
+            detTotal += lm.length;
+          }
+        }
+      }
+      if (toggleHands.checked && handLandmarker) {
+        const res = handLandmarker.detectForVideo(video, t);
+        if (res?.landmarks) {
+          for (const lm of res.landmarks) {
+            drawingUtils.drawConnectors(lm, HandLandmarker.HAND_CONNECTIONS, { color: '#5BA55B', lineWidth: 3 });
+            drawingUtils.drawLandmarks(lm, { color: '#FFFFFF', fillColor: '#5BA55B', lineWidth: 1, radius: 4 });
+            detTotal += lm.length;
+          }
+        }
+      }
+      ctx.restore();
+
+      // FPS (moving average over 30 frames)
+      const dt = t - lastTime;
+      lastTime = t;
+      if (dt > 0) {
+        fpsHistory.push(1000 / dt);
+        if (fpsHistory.length > 30) fpsHistory.shift();
+        const avg = fpsHistory.reduce((a, b) => a + b, 0) / fpsHistory.length;
+        fpsEl.textContent = avg.toFixed(1);
+      }
+      detCountEl.textContent = String(detTotal);
+    }
+    requestAnimationFrame(loop);
+  }
+
+  startBtn.addEventListener('click', startCamera);
+  stopBtn.addEventListener('click', stopCamera);
+
+  // Graceful handling: if permissions API tells us camera is denied, prompt the user clearly.
+  if (navigator.permissions && navigator.permissions.query) {
+    navigator.permissions.query({ name: 'camera' }).catch(() => null);
+  }
+</script>
+</body>
+</html>

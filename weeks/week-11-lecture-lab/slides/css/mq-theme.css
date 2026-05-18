@@ -213,6 +213,11 @@
   margin: 0 auto;
 }
 
+.reveal .think-slide strong {
+  color: var(--mq-white);
+  font-weight: 700;
+}
+
 /* ===== Image Slides ===== */
 .reveal .image-full {
   text-align: center;

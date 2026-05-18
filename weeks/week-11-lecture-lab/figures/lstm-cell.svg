@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <marker id="lstm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2D2D2D"/>
+    </marker>
+    <marker id="lstm-arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#C8972C"/>
+    </marker>
+  </defs>
+
+  <!-- Outer LSTM cell rounded box -->
+  <rect x="180" y="120" width="840" height="360" rx="26" fill="#FAFAFA" stroke="#2D2D2D" stroke-width="2.5"/>
+  <text x="200" y="148" font-size="13" font-weight="700" fill="#8C8C8C" letter-spacing="1.5">LSTM CELL</text>
+
+  <!-- Cell-state highway (top inside cell) -->
+  <text x="600" y="178" text-anchor="middle" font-size="14" font-weight="700" fill="#C8972C">cell state — the long-term memory highway</text>
+  <line x1="220" y1="205" x2="980" y2="205" stroke="#C8972C" stroke-width="9" stroke-linecap="round"/>
+  <line x1="220" y1="205" x2="980" y2="205" stroke="#C8972C" stroke-width="9" marker-end="url(#lstm-arrow-gold)"/>
+
+  <!-- Forget gate -->
+  <rect x="260" y="280" width="170" height="120" rx="12" fill="white" stroke="#A71930" stroke-width="2" filter=""/>
+  <rect x="260" y="280" width="170" height="6" rx="3" fill="#A71930"/>
+  <text x="345" y="318" text-anchor="middle" font-size="16" font-weight="700" fill="#A71930">Forget gate</text>
+  <text x="345" y="346" text-anchor="middle" font-size="12" fill="#4A4A4A">what to</text>
+  <text x="345" y="364" text-anchor="middle" font-size="14" font-weight="700" fill="#2D2D2D">drop</text>
+  <text x="345" y="384" text-anchor="middle" font-size="12" fill="#4A4A4A">from memory</text>
+
+  <!-- Input gate -->
+  <rect x="515" y="280" width="170" height="120" rx="12" fill="white" stroke="#4A90D9" stroke-width="2"/>
+  <rect x="515" y="280" width="170" height="6" rx="3" fill="#4A90D9"/>
+  <text x="600" y="318" text-anchor="middle" font-size="16" font-weight="700" fill="#4A90D9">Input gate</text>
+  <text x="600" y="346" text-anchor="middle" font-size="12" fill="#4A4A4A">what to</text>
+  <text x="600" y="364" text-anchor="middle" font-size="14" font-weight="700" fill="#2D2D2D">write</text>
+  <text x="600" y="384" text-anchor="middle" font-size="12" fill="#4A4A4A">to memory</text>
+
+  <!-- Output gate -->
+  <rect x="770" y="280" width="170" height="120" rx="12" fill="white" stroke="#C8972C" stroke-width="2"/>
+  <rect x="770" y="280" width="170" height="6" rx="3" fill="#C8972C"/>
+  <text x="855" y="318" text-anchor="middle" font-size="16" font-weight="700" fill="#C8972C">Output gate</text>
+  <text x="855" y="346" text-anchor="middle" font-size="12" fill="#4A4A4A">what to</text>
+  <text x="855" y="364" text-anchor="middle" font-size="14" font-weight="700" fill="#2D2D2D">expose</text>
+  <text x="855" y="384" text-anchor="middle" font-size="12" fill="#4A4A4A">as h<tspan font-size="10" baseline-shift="sub">t</tspan></text>
+
+  <!-- Arrows from each gate up to the cell-state highway -->
+  <line x1="345" y1="280" x2="345" y2="215" stroke="#A71930" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="600" y1="280" x2="600" y2="215" stroke="#4A90D9" stroke-width="2" stroke-dasharray="4,3"/>
+  <line x1="855" y1="280" x2="855" y2="215" stroke="#C8972C" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- Port labels OUTSIDE the cell -->
+  <!-- x_t below -->
+  <g>
+    <line x1="450" y1="540" x2="450" y2="402" stroke="#2D2D2D" stroke-width="3" marker-end="url(#lstm-arrow)"/>
+    <text x="450" y="568" text-anchor="middle" font-size="20" font-weight="700" fill="#4A90D9">
+      x<tspan font-size="13" baseline-shift="sub">t</tspan>
+    </text>
+    <text x="450" y="586" text-anchor="middle" font-size="11" fill="#8C8C8C" font-style="italic">input</text>
+  </g>
+  <!-- h_{t-1} from left -->
+  <g>
+    <text x="85" y="335" text-anchor="middle" font-size="20" font-weight="700" fill="#A71930">
+      h<tspan font-size="13" baseline-shift="sub">t&#8722;1</tspan>
+    </text>
+    <text x="85" y="362" text-anchor="middle" font-size="11" fill="#8C8C8C" font-style="italic">prev. hidden</text>
+    <line x1="130" y1="340" x2="252" y2="340" stroke="#2D2D2D" stroke-width="3" marker-end="url(#lstm-arrow)"/>
+  </g>
+  <!-- h_t to right -->
+  <g>
+    <line x1="948" y1="340" x2="1070" y2="340" stroke="#2D2D2D" stroke-width="3" marker-end="url(#lstm-arrow)"/>
+    <text x="1115" y="335" text-anchor="middle" font-size="20" font-weight="700" fill="#A71930">
+      h<tspan font-size="13" baseline-shift="sub">t</tspan>
+    </text>
+    <text x="1115" y="362" text-anchor="middle" font-size="11" fill="#8C8C8C" font-style="italic">new hidden</text>
+  </g>
+  <!-- y_t up -->
+  <g>
+    <line x1="750" y1="112" x2="750" y2="68" stroke="#2D2D2D" stroke-width="3" marker-end="url(#lstm-arrow)"/>
+    <text x="780" y="56" text-anchor="middle" font-size="20" font-weight="700" fill="#5BA55B">
+      y<tspan font-size="13" baseline-shift="sub">t</tspan>
+    </text>
+    <text x="800" y="36" text-anchor="middle" font-size="11" fill="#8C8C8C" font-style="italic">output</text>
+  </g>
+</svg>
