@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSYC4411 Viva Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --mq-red:#A71930; --mq-red-dark:#7e1224; --ink:#222; --muted:#666; --bg:#f4f4f4; --warn:#d6342c; }
+  * { box-sizing:border-box; }
+  body { font-family:'Inter','Helvetica Neue',Arial,sans-serif; margin:0; min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center; align-items:center; background:var(--bg); color:var(--ink); }
+  .container { text-align:center; padding:32px; max-width:1000px; width:100%; }
+  h1 { font-size:3em; margin:0 0 .3em; color:var(--mq-red); }
+  h2 { font-size:1.9em; margin:0 0 .5em; }
+  p.lead { font-size:1.3em; color:var(--muted); line-height:1.5; }
+  .button { display:inline-block; padding:16px 40px; margin:20px 8px 0; font-size:1.3em; font-weight:600;
+    color:#fff; background:var(--mq-red); border:none; border-radius:8px; cursor:pointer; text-decoration:none; }
+  .button:hover { background:var(--mq-red-dark); }
+  .button.secondary { background:#555; } .button.secondary:hover { background:#333; }
+  table.terms { margin:0 auto; border-collapse:collapse; font-size:1.6em; }
+  table.terms th, table.terms td { border:1px solid #ddd; padding:10px 18px; text-align:left; }
+  table.terms th { background:var(--mq-red); color:#fff; }
+  table.terms td.num { text-align:center; color:var(--muted); width:3em; }
+  .question { font-size:2em; line-height:1.35; margin:24px auto; max-width:880px; }
+  .qmeta { font-size:1.15em; color:var(--muted); letter-spacing:.04em; }
+  .phase { font-size:1.3em; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-top:16px; }
+  .timer { font-size:4em; font-weight:700; font-variant-numeric:tabular-nums; margin:16px 0 8px; }
+  .timer.red { color:var(--warn); }
+  .rec-row { margin-top:14px; font-size:1.05em; color:var(--warn); }
+  .rec-dot { display:inline-block; width:12px; height:12px; border-radius:50%; background:var(--warn);
+    margin-right:6px; vertical-align:middle; animation:pulse 1.2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+  .playback { text-align:center; max-width:640px; margin:16px auto 0; }
+  .playback .pb { margin:14px 0; }
+  .playback label { font-weight:600; display:block; margin-bottom:6px; }
+  .playback audio { display:block; margin:0 auto; }
+  .toggle { margin-top:18px; font-size:1.05em; color:var(--muted); }
+  .note { background:#fff; border-left:4px solid var(--mq-red); padding:14px 18px; text-align:left;
+    max-width:760px; margin:20px auto 0; font-size:1.05em; line-height:1.5; }
+  .meter-wrap { max-width:520px; margin:14px auto 0; text-align:left; }
+  .meter-wrap .dev { font-size:.95em; color:var(--muted); margin-bottom:6px; }
+  .meter-track { height:18px; background:#e3e3e3; border-radius:9px; overflow:hidden; }
+  .meter-bar { height:100%; width:0%; background:#bbb; transition:width .06s linear; }
+  .meter-hint { font-size:.9em; color:var(--muted); margin-top:6px; }
+  .rec-meter { display:inline-block; width:160px; height:12px; background:#e3e3e3; border-radius:6px;
+    overflow:hidden; vertical-align:middle; margin-left:10px; }
+  .rec-meter .meter-bar { transition:width .06s linear; }
+</style>
+</head>
+<body>
+<div class="container" id="app"></div>
+
+<script src="practice-data.js"></script>
+<script>
+"use strict";
+
+const app = document.getElementById("app");
+
+// Safe DOM builder — all dynamic text goes through textContent / text nodes,
+// so course content (term names, questions) is never parsed as HTML.
+function h(tag, props, children) {
+  const e = document.createElement(tag);
+  props = props || {};
+  for (const k in props) {
+    if (k === "class") e.className = props[k];
+    else if (k === "text") e.textContent = props[k];
+    else if (k === "onclick") e.onclick = props[k];
+    else e.setAttribute(k, props[k]);
+  }
+  (children || []).forEach(c => {
+    if (c == null) return;
+    e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  });
+  return e;
+}
+function render(nodes) {
+  while (app.firstChild) app.removeChild(app.firstChild);
+  nodes.forEach(n => n && app.appendChild(n));
+}
+
+function sample(arr, n) {
+  const c = arr.slice();
+  for (let i = c.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [c[i], c[j]] = [c[j], c[i]];
+  }
+  return c.slice(0, n);
+}
+function byBand(items, band) { return items.filter(x => x.band === band); }
+function fmt(s) { const m = Math.floor(s/60), x = s%60; return `${m}:${x<10?'0':''}${x}`; }
+
+// This run's draw — mirror the real exam mix without showing bands:
+// 4 Easy + 4 Medium + 2 Hard terms; 1 Easy + 1 Medium + 1 Hard questions.
+function drawTerms() {
+  const t = [...sample(byBand(VIVA_PRACTICE_DATA.terms,"E"),4),
+             ...sample(byBand(VIVA_PRACTICE_DATA.terms,"M"),4),
+             ...sample(byBand(VIVA_PRACTICE_DATA.terms,"H"),2)];
+  return sample(t, t.length).map(x => x.term);
+}
+function drawQuestions() {
+  const q = [...sample(byBand(VIVA_PRACTICE_DATA.questions,"E"),1),
+             ...sample(byBand(VIVA_PRACTICE_DATA.questions,"M"),1),
+             ...sample(byBand(VIVA_PRACTICE_DATA.questions,"H"),1)];
+  return sample(q, q.length);
+}
+
+// Optional self-review recording — stays entirely in the browser.
+let recordEnabled = false, stream = null, mediaRecorder = null, chunks = [];
+const recordings = {};   // label -> { url, bytes }
+async function ensureMic() {
+  if (stream) return true;
+  try { stream = await navigator.mediaDevices.getUserMedia({audio:true}); return true; }
+  catch (e) { console.error(e); return false; }
+}
+function startRec() {
+  if (!recordEnabled || !stream) return;
+  chunks = [];
+  // No explicit mimeType — each browser uses a container it can record (webm on
+  // Chrome/Firefox, mp4 on Safari). We read the actual type back when building
+  // the blob, so playback always uses the right decoder.
+  mediaRecorder = new MediaRecorder(stream);
+  mediaRecorder.ondataavailable = e => { if (e.data.size>0) chunks.push(e.data); };
+  mediaRecorder.start();
+}
+function stopRec(label) {
+  return new Promise(res => {
+    if (!mediaRecorder || mediaRecorder.state === "inactive") { res(); return; }
+    mediaRecorder.onstop = () => {
+      // Use the recorder's ACTUAL mime type. Hardcoding audio/webm makes Safari
+      // recordings (which are audio/mp4) play back silent.
+      const blob = new Blob(chunks, { type: mediaRecorder.mimeType || "audio/webm" });
+      recordings[label] = { url: URL.createObjectURL(blob), bytes: blob.size };
+      res();
+    };
+    mediaRecorder.stop();
+  });
+}
+
+// Live input-level meter — reads the same stream that records, so a flat bar
+// means no audio is reaching the browser (a mic/permission problem, not the app).
+// One analyser loop runs for the whole session; we just re-point `meterBar` at
+// the bar element of whichever screen is currently showing.
+let audioCtx = null, analyser = null, meterRAF = null, meterBar = null, meterData = null;
+function setMeterBar(barEl, devEl) {
+  meterBar = barEl || null;
+  if (devEl && stream) {
+    const t = stream.getAudioTracks()[0];
+    devEl.textContent = "Microphone: " + (t && t.label ? t.label : "default device");
+  }
+}
+function ensureMeterLoop() {
+  if (!stream || analyser) return;   // no mic yet, or already running
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  audioCtx = new Ctx();
+  if (audioCtx.state === "suspended") audioCtx.resume();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 512;
+  audioCtx.createMediaStreamSource(stream).connect(analyser);
+  meterData = new Uint8Array(analyser.fftSize);
+  let peak = 0;
+  (function tick() {
+    if (!analyser) return;
+    analyser.getByteTimeDomainData(meterData);
+    let sum = 0;
+    for (let i = 0; i < meterData.length; i++) { const v = (meterData[i]-128)/128; sum += v*v; }
+    const level = Math.min(1, Math.sqrt(sum/meterData.length) * 3);  // RMS, scaled for visibility
+    peak = Math.max(peak * 0.9, level);
+    if (meterBar) {
+      meterBar.style.width = (peak*100).toFixed(0) + "%";
+      meterBar.style.background = peak > 0.04 ? "var(--mq-red)" : "#bbb";
+    }
+    meterRAF = requestAnimationFrame(tick);
+  })();
+}
+function stopMeter() {
+  if (meterRAF) { cancelAnimationFrame(meterRAF); meterRAF = null; }
+  if (audioCtx) { audioCtx.close().catch(() => {}); audioCtx = null; }
+  analyser = null; meterBar = null; meterData = null;
+}
+
+// Multi-phase countdown.
+let activeTimer = null;
+function runTimer(el, phaseEl, phases) {
+  let idx = 0, remaining = phases[0].seconds;
+  function draw() {
+    el.textContent = fmt(remaining);
+    el.classList.toggle("red", remaining <= phases[idx].redAt);
+    if (phaseEl) phaseEl.textContent = phases[idx].label;
+  }
+  draw();
+  clearInterval(activeTimer);
+  activeTimer = setInterval(() => {
+    remaining--;
+    if (remaining < 0) {
+      idx++;
+      if (idx >= phases.length) { clearInterval(activeTimer); el.textContent = "Time's up"; return; }
+      remaining = phases[idx].seconds; draw(); return;
+    }
+    draw();
+  }, 1000);
+}
+
+let TERMS = [], QUESTIONS = [];
+
+function recRow() {
+  if (!recordEnabled) return null;
+  // A slim live meter on every section so you always see your recording volume.
+  const bar = h("div", {class:"meter-bar"});
+  setMeterBar(bar);
+  return h("div", {class:"rec-row"}, [
+    h("span", {class:"rec-dot"}), "Recording",
+    h("span", {class:"rec-meter"}, [bar]),
+  ]);
+}
+function nextButton(label, onclick) {
+  return h("div", {}, [h("button", {class:"button", onclick}, [label])]);
+}
+
+function welcome() {
+  clearInterval(activeTimer);
+  stopMeter();
+  const rec = h("input", {type:"checkbox", id:"rec"});
+  const bar = h("div", {class:"meter-bar"});
+  const dev = h("div", {class:"dev"});
+  const meter = h("div", {class:"meter-wrap", style:"display:none"}, [
+    dev,
+    h("div", {class:"meter-track"}, [bar]),
+    h("div", {class:"meter-hint", text:"Speak now — the bar should move when it hears you. If it stays flat, " +
+      "your microphone isn't reaching the browser (on a Mac, check System Settings → Privacy & Security → Microphone)."}),
+  ]);
+  rec.onchange = async () => {
+    if (rec.checked) {
+      if (await ensureMic()) { meter.style.display = ""; setMeterBar(bar, dev); ensureMeterLoop(); }
+      else { rec.checked = false; alert("Couldn't access the microphone. Check that your browser is allowed to use it."); }
+    } else {
+      stopMeter();
+      meter.style.display = "none";
+    }
+  };
+  const start = h("button", {class:"button"}, ["Start Practice"]);
+  start.onclick = async () => {
+    recordEnabled = rec.checked;
+    if (recordEnabled && !(await ensureMic())) {
+      recordEnabled = false;
+      alert("Couldn't access the microphone — continuing without recording.");
+    }
+    // Keep the meter loop alive for the run; each section re-points it at its own bar.
+    if (recordEnabled) ensureMeterLoop(); else stopMeter();
+    TERMS = drawTerms();
+    QUESTIONS = drawQuestions();
+    definitions();
+  };
+  render([
+    h("h1", {text:"Viva Practice"}),
+    h("p", {class:"lead"}, ["A full timed run-through of the three viva sections, just like the real thing. ",
+      h("br"), "Practise out loud — speak your answers as if the examiner were listening."]),
+    h("div", {class:"note"}, [
+      h("b", {text:"What happens: "}),
+      "10 definitions (about 4 minutes in total), then 3 short-answer questions (15 seconds to read, " +
+      "30 to plan, 1 minute to answer each), then your 2-minute study-proposal pitch and a 30-second " +
+      "reflection on how you used an LLM. Terms and questions are drawn at random each run."]),
+    h("div", {class:"toggle"}, [h("label", {}, [rec,
+      " Record my voice so I can play it back afterwards (stays on this device — nothing is uploaded)"])]),
+    meter,
+    start,
+  ]);
+}
+
+function definitions() {
+  startRec();
+  const tbody = [h("tr", {}, [h("th",{text:"#"}), h("th",{text:"Term"})])];
+  TERMS.forEach((t, i) => tbody.push(h("tr", {}, [
+    h("td", {class:"num", text:String(i+1)}), h("td", {text:t})])));
+  const timer = h("div", {class:"timer", id:"timer"});
+  render([
+    h("h2", {text:"Section 1 — Define the term"}),
+    h("p", {class:"qmeta", text:"Say a clear one-sentence definition for each — about 20 seconds per term"}),
+    h("table", {class:"terms"}, tbody),
+    timer,
+    recRow(),
+    nextButton("Next: Short Answer →", async () => { await stopRec("Section 1 — Definitions"); shortAnswer(0); }),
+  ]);
+  runTimer(timer, null, [{label:"", seconds:240, redAt:30}]);   // 4:00 with buffer
+}
+
+function shortAnswer(i) {
+  startRec();
+  const q = QUESTIONS[i];
+  const last = i === QUESTIONS.length - 1;
+  const timer = h("div", {class:"timer", id:"timer"});
+  const phase = h("div", {class:"phase", id:"phase"});
+  render([
+    h("h2", {text:"Section 2 — Short Answer"}),
+    h("p", {class:"qmeta", text:`Question ${i+1} of ${QUESTIONS.length} · ${q.method}`}),
+    h("div", {class:"question", text:q.question}),
+    phase, timer, recRow(),
+    nextButton(last ? "Next: Study Pitch →" : "Next Question →", async () => {
+      await stopRec(`Section 2 — Question ${i+1}`);
+      last ? pitch() : shortAnswer(i+1);
+    }),
+  ]);
+  runTimer(timer, phase, [{label:"Reading", seconds:15, redAt:-1},
+    {label:"Planning", seconds:30, redAt:-1}, {label:"Answer", seconds:60, redAt:15}]);
+}
+
+function pitch() {
+  startRec();
+  const timer = h("div", {class:"timer", id:"timer"});
+  const phase = h("div", {class:"phase", id:"phase"});
+  render([
+    h("h2", {text:"Section 3 — Study Proposal Pitch"}),
+    h("p", {class:"qmeta", text:"A 2-minute pitch for a study using a method from the course, then 30 seconds on your LLM use"}),
+    phase, timer, recRow(),
+    nextButton("Finish →", async () => { await stopRec("Section 3 — Pitch"); done(); }),
+  ]);
+  runTimer(timer, phase, [{label:"Get ready", seconds:10, redAt:-1},
+    {label:"Pitch", seconds:120, redAt:20}, {label:"LLM Reflection", seconds:30, redAt:10}]);
+}
+
+function done() {
+  clearInterval(activeTimer);
+  stopMeter();
+  const children = [
+    h("h1", {text:"Nice work"}),
+    h("p", {class:"lead", text:"That's a full run-through. Try again with a fresh random draw, or review the study guide if anything felt shaky."}),
+  ];
+  const labels = Object.keys(recordings);
+  if (labels.length) {
+    const pb = [h("h2", {style:"font-size:1.3em", text:"Play back your answers"})];
+    if (labels.every(l => recordings[l].bytes < 2000)) {
+      pb.push(h("p", {class:"note", text:
+        "⚠ These recordings are nearly empty, so no sound was captured. Check that your " +
+        "microphone is unmuted and that your browser is allowed to use it " +
+        "(on a Mac: System Settings → Privacy & Security → Microphone)."}));
+    }
+    labels.forEach(l => pb.push(h("div", {class:"pb"}, [
+      h("label", {text:`${l} — ${(recordings[l].bytes/1024).toFixed(0)} KB`}),
+      h("audio", {controls:"", src:recordings[l].url})])));
+    children.push(h("div", {class:"playback"}, pb));
+  }
+  const again = h("button", {class:"button"}, ["Practise Again"]);
+  again.onclick = () => {
+    labels.forEach(k => { URL.revokeObjectURL(recordings[k].url); delete recordings[k]; });
+    welcome();
+  };
+  children.push(h("div", {}, [again,
+    h("a", {class:"button secondary", href:"../README.md"}, ["Back to Study Guide"])]));
+  render(children);
+}
+
+if (typeof VIVA_PRACTICE_DATA === "undefined") {
+  render([
+    h("h1", {text:"Couldn't load the practice data"}),
+    h("p", {class:"lead"}, ["Make sure ", h("code",{text:"practice-data.js"}),
+      " is in the same folder as this page, and open ", h("code",{text:"index.html"}),
+      " directly in your browser."]),
+  ]);
+} else {
+  welcome();
+}
+</script>
+</body>
+</html>

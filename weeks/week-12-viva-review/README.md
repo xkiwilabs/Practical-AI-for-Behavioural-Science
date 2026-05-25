@@ -2,13 +2,15 @@
 
 This is your study hub for the **viva oral exam** (30% of your final grade). The exam is 15 minutes, individual, and in person — you can't bring notes or slides. The three sections, the timing, and the rubric are all spelled out in [assessments/viva-exam.md](../../assessments/viva-exam.md). This page focuses on **how to prepare**.
 
-You'll find two practice files alongside this README:
+You'll find these study materials alongside this README:
 
 - **[`concept-list.md`](concept-list.md)** — your **single study reference** for the viva. It has two parts:
   - **Part 1** lists the **40 testable concepts** for Section 1 (you'll be asked to define **10** at random). Definitions are not shown — practise giving them aloud in 20 seconds each.
   - **Part 2** lists **additional course concepts** with definitions (method names, metrics, and tools used throughout the course — R², UMAP, cosine similarity, MediaPipe, etc.). These are not asked in Section 1, but you should be comfortable using them when you talk about the methods you've learned.
 - **[`viva-terms.csv`](viva-terms.csv)** — the same 40 testable terms in CSV form (terms only).
 - **[`short-answer-examples.md`](short-answer-examples.md)** / **[`viva-questions.csv`](viva-questions.csv)** — **9 example short-answer questions** released for practice. The markdown shows each question with an example narrative response so you can calibrate length and structure; the CSV is the same questions for tools or apps. Your actual 3 exam questions are drawn from a separate test pool you do not see in advance — but the test questions cover the same kinds of ML reasoning skills as the examples, so practising on the examples genuinely prepares you for the exam.
+- **[`practice-app/`](practice-app/)** — a **practice tool** you open by double-clicking `index.html`. It runs a full **timed mock viva** (all three sections, with the real time limits) using random terms and example questions each run, and can optionally record your voice so you can play it back. No install needed. See its [README](practice-app/README.md).
+- **[`slides/`](slides/index.html)** — the Week 12 review slides (the viva format, the three sections, and how to use the practice app).
 
 For Section 1, prepare the whole 40-term pool — you do not see your specific 10 in advance. For Section 2, practise on the 9 examples; the test questions sit in the same space of ML decisions but with different research scenarios (different population, instrument, deployment context). Read Part 2 of the concept reference to refresh the broader course terminology before the exam.
 
