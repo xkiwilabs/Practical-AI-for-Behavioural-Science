@@ -105,7 +105,7 @@ Materials are released on the Monday of each class week. The dates below show wh
 | 9 | 04 May | Lecture | [Learning Representations: Neural Networks as Psychological Tools](weeks/week-09-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-09-lecture/slides/index.html" target="_blank">Slides</a> |
 | 10 | 11 May | Lab | [Simple Neural Network, Training Diagnostics, and Baseline Comparison](weeks/week-10-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-10-lab/slides/index.html" target="_blank">Slides</a> |
 | 11 | 18 May | Lecture + Lab | [Meaning in Vectors: Embeddings and LLMs for Research Workflows](weeks/week-11-lecture-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-11-lecture-lab/slides/index.html" target="_blank">Slides</a> |
-| 12 | 25 May | Review | [Viva Review: Consolidation, Q&A, and Practice Defenses](weeks/week-12-viva-review/) | — |
+| 12 | 25 May | Review | [Viva Review: Consolidation, Q&A, and Practice Defenses](weeks/week-12-viva-review/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-12-viva-review/slides/index.html" target="_blank">Slides</a> |
 | 13 | 01 Jun | Discussion | [Limits, Ethics, Reproducibility, and Reasoned Conclusions](weeks/week-13-discussion/) | — |
 
 ---
