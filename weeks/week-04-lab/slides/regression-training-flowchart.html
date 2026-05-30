@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Training Loop — PSYC4411</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mq-red: #A71930;
+      --mq-charcoal: #2D2D2D;
+      --mq-blue: #4A90D9;
+      --mq-green: #5BA55B;
+      --mq-orange: #E8873D;
+      --mq-purple: #7B68A8;
+      --mq-gold: #C8972C;
+      --mq-grey: #8C8C8C;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      background: white;
+      padding: 52px 72px 40px;
+      display: flex;
+      flex-direction: column;
+      transform-origin: top center;
+    }
+    @media (max-width: 1960px) { .slide { transform: scale(0.82); margin: -100px 0; } }
+    @media (max-width: 1600px) { .slide { transform: scale(0.65); margin: -190px 0; } }
+    @media (max-width: 1200px) { .slide { transform: scale(0.5); margin: -270px 0; } }
+    h2 {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--mq-red);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 21px;
+      color: var(--mq-grey);
+      margin-bottom: 16px;
+    }
+    .flowchart { flex: 1; display: flex; align-items: center; justify-content: center; }
+    svg text { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body>
+<div class="slide">
+  <h2>The Training Loop</h2>
+  <p class="subtitle">How the model finds the best weights by iterating over the training data</p>
+
+  <div class="flowchart">
+    <svg viewBox="0 0 1780 920" width="1780" height="920">
+      <defs>
+        <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0L10 5L0 10z" fill="#8C8C8C"/>
+        </marker>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0L10 5L0 10z" fill="#A71930"/>
+        </marker>
+        <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0L10 5L0 10z" fill="#5BA55B"/>
+        </marker>
+        <filter id="sh" x="-3%" y="-6%" width="106%" height="118%">
+          <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.07"/>
+        </filter>
+      </defs>
+
+      <!-- ===== LEFT: START ===== -->
+      <g transform="translate(60, 340)">
+        <rect width="260" height="110" rx="14" fill="#F0F4FA" stroke="#4A90D9" stroke-width="2.5" filter="url(#sh)"/>
+        <text x="130" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#4A90D9" letter-spacing="0.1em">START</text>
+        <text x="130" y="66" text-anchor="middle" font-size="21" font-weight="700" fill="#2D2D2D">Initialise Weights</text>
+        <text x="130" y="92" text-anchor="middle" font-size="15" fill="#8C8C8C">Start with random guesses</text>
+      </g>
+
+      <!-- Arrow → Step 1 -->
+      <line x1="320" y1="395" x2="400" y2="395" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#a)"/>
+
+      <!-- ===== THE LOOP — background highlight ===== -->
+      <rect x="390" y="80" width="920" height="720" rx="24" fill="rgba(167,25,48,0.025)" stroke="#A71930" stroke-width="2" stroke-dasharray="10,6" opacity="0.6"/>
+      <text x="850" y="118" text-anchor="middle" font-size="18" font-weight="800" fill="#A71930" letter-spacing="0.12em" opacity="0.5">TRAINING LOOP — REPEAT UNTIL WEIGHTS CONVERGE</text>
+
+      <!-- ===== STEP 1: PREDICT ===== -->
+      <g transform="translate(420, 170)">
+        <rect width="340" height="140" rx="14" fill="rgba(232,135,61,0.08)" stroke="#E8873D" stroke-width="2.5" filter="url(#sh)"/>
+        <text x="170" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#E8873D" letter-spacing="0.1em">STEP 1</text>
+        <text x="170" y="66" text-anchor="middle" font-size="23" font-weight="700" fill="#2D2D2D">Predict</text>
+        <text x="170" y="94" text-anchor="middle" font-size="16" fill="#8C8C8C">Use current weights to predict</text>
+        <text x="170" y="116" text-anchor="middle" font-size="16" fill="#8C8C8C">depression scores for everyone</text>
+        <text x="170" y="136" text-anchor="middle" font-size="14" font-weight="600" fill="#E8873D">score = w₁×Stability + w₂×Agreeable + ...</text>
+      </g>
+
+      <!-- Arrow 1 → 2 -->
+      <line x1="760" y1="240" x2="870" y2="240" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#a)"/>
+
+      <!-- ===== STEP 2: MEASURE ERROR ===== -->
+      <g transform="translate(890, 170)">
+        <rect width="340" height="140" rx="14" fill="rgba(123,104,168,0.08)" stroke="#7B68A8" stroke-width="2.5" filter="url(#sh)"/>
+        <text x="170" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#7B68A8" letter-spacing="0.1em">STEP 2</text>
+        <text x="170" y="66" text-anchor="middle" font-size="23" font-weight="700" fill="#2D2D2D">Measure Error</text>
+        <text x="170" y="94" text-anchor="middle" font-size="16" fill="#8C8C8C">How far off were the predictions?</text>
+        <text x="170" y="116" text-anchor="middle" font-size="16" fill="#8C8C8C">Compare predicted vs actual scores</text>
+        <text x="170" y="136" text-anchor="middle" font-size="14" font-weight="600" fill="#7B68A8">error = predicted − actual</text>
+      </g>
+
+      <!-- Arrow 2 → 3 (down) -->
+      <line x1="1060" y1="310" x2="1060" y2="420" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#a)"/>
+
+      <!-- ===== STEP 3: ADJUST WEIGHTS ===== -->
+      <g transform="translate(890, 440)">
+        <rect width="340" height="140" rx="14" fill="rgba(167,25,48,0.07)" stroke="#A71930" stroke-width="2.5" filter="url(#sh)"/>
+        <text x="170" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#A71930" letter-spacing="0.1em">STEP 3</text>
+        <text x="170" y="66" text-anchor="middle" font-size="23" font-weight="700" fill="#2D2D2D">Adjust Weights</text>
+        <text x="170" y="94" text-anchor="middle" font-size="16" fill="#8C8C8C">Nudge each weight in the direction</text>
+        <text x="170" y="116" text-anchor="middle" font-size="16" fill="#8C8C8C">that reduces the error</text>
+        <text x="170" y="136" text-anchor="middle" font-size="14" font-weight="600" fill="#A71930">Small step — don't overcorrect</text>
+      </g>
+
+      <!-- ===== STEP 4: CONVERGED? (diamond) ===== -->
+      <g transform="translate(420, 440)">
+        <rect width="340" height="140" rx="14" fill="rgba(200,151,44,0.1)" stroke="#C8972C" stroke-width="2.5" filter="url(#sh)"/>
+        <text x="170" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#C8972C" letter-spacing="0.1em">STEP 4</text>
+        <text x="170" y="66" text-anchor="middle" font-size="23" font-weight="700" fill="#2D2D2D">Error still shrinking?</text>
+        <text x="170" y="96" text-anchor="middle" font-size="16" fill="#8C8C8C">Are the weights still changing?</text>
+        <text x="170" y="118" text-anchor="middle" font-size="16" fill="#8C8C8C">Is the error still going down?</text>
+      </g>
+
+      <!-- Arrow 3 → 4 (left) -->
+      <line x1="890" y1="510" x2="760" y2="510" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#a)"/>
+
+      <!-- ===== LOOP-BACK: YES → back to Step 1 ===== -->
+      <path d="M 420 510 L 380 510 Q 360 510 360 490 L 360 240 Q 360 220 380 220 L 420 220"
+            stroke="#A71930" stroke-width="3" fill="none" stroke-dasharray="8,5" marker-end="url(#ar)"/>
+      <rect x="338" y="348" width="48" height="28" rx="6" fill="rgba(167,25,48,0.12)"/>
+      <text x="362" y="368" text-anchor="middle" font-size="16" font-weight="700" fill="#A71930">YES</text>
+      <text x="362" y="332" text-anchor="middle" font-size="13" fill="#A71930">Keep going</text>
+
+      <!-- ===== EXIT: NO → weights converged ===== -->
+      <line x1="590" y1="580" x2="590" y2="665" stroke="#5BA55B" stroke-width="3" marker-end="url(#ag)"/>
+      <rect x="555" y="615" width="72" height="28" rx="6" fill="rgba(91,165,91,0.12)"/>
+      <text x="591" y="635" text-anchor="middle" font-size="16" font-weight="700" fill="#5BA55B">NO</text>
+      <text x="591" y="605" text-anchor="middle" font-size="13" fill="#5BA55B">Converged!</text>
+
+      <!-- ===== BEST WEIGHTS FOUND ===== -->
+      <g transform="translate(420, 680)">
+        <rect width="340" height="100" rx="14" fill="rgba(91,165,91,0.08)" stroke="#5BA55B" stroke-width="2.5" filter="url(#sh)"/>
+        <text x="170" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#5BA55B" letter-spacing="0.1em">DONE TRAINING</text>
+        <text x="170" y="66" text-anchor="middle" font-size="21" font-weight="700" fill="#2D2D2D">Best Weights Found</text>
+        <text x="170" y="90" text-anchor="middle" font-size="15" fill="#8C8C8C">e.g. Stability = −3.4, Agreeable = −1.2 ...</text>
+      </g>
+
+      <!-- Arrow → Final test -->
+      <line x1="760" y1="730" x2="870" y2="730" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#a)"/>
+
+      <!-- ===== FINAL: TEST SET ===== -->
+      <g transform="translate(890, 670)">
+        <rect width="380" height="120" rx="14" fill="rgba(74,144,217,0.08)" stroke="#4A90D9" stroke-width="3" filter="url(#sh)"/>
+        <text x="190" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#4A90D9" letter-spacing="0.1em">FINAL EVALUATION</text>
+        <text x="190" y="66" text-anchor="middle" font-size="21" font-weight="700" fill="#2D2D2D">Test on Held-Out Data</text>
+        <text x="190" y="92" text-anchor="middle" font-size="16" fill="#8C8C8C">Apply best weights to the 20% test set</text>
+        <text x="190" y="114" text-anchor="middle" font-size="16" font-weight="600" fill="#4A90D9">MAE ≈ 8.2 · R² ≈ 0.34 → Report this</text>
+      </g>
+
+      <!-- ===== RIGHT SIDE ANNOTATIONS ===== -->
+
+      <!-- Analogy box -->
+      <g transform="translate(1380, 160)">
+        <rect width="370" height="200" rx="14" fill="#FFFBF0" stroke="#C8972C" stroke-width="1.5" filter="url(#sh)"/>
+        <text x="24" y="34" font-size="15" font-weight="700" fill="#C8972C" letter-spacing="0.06em">ANALOGY</text>
+        <text x="24" y="64" font-size="17" font-weight="600" fill="#2D2D2D">Like tuning a recipe</text>
+        <text x="24" y="92" font-size="15" fill="#8C8C8C">You taste the soup (measure error),</text>
+        <text x="24" y="114" font-size="15" fill="#8C8C8C">add a pinch more salt (adjust weights),</text>
+        <text x="24" y="136" font-size="15" fill="#8C8C8C">taste again, adjust again...</text>
+        <text x="24" y="164" font-size="15" font-weight="600" fill="#C8972C">until it tastes right (error stops</text>
+        <text x="24" y="186" font-size="15" font-weight="600" fill="#C8972C">shrinking) — those are your weights.</text>
+      </g>
+
+      <!-- Iteration count note -->
+      <g transform="translate(1380, 400)">
+        <rect width="370" height="140" rx="14" fill="#F8F4FC" stroke="#7B68A8" stroke-width="1.5" filter="url(#sh)"/>
+        <text x="24" y="34" font-size="15" font-weight="700" fill="#7B68A8" letter-spacing="0.06em">HOW MANY LOOPS?</text>
+        <text x="24" y="64" font-size="16" fill="#2D2D2D">Typically <tspan font-weight="700">hundreds to thousands</tspan></text>
+        <text x="24" y="90" font-size="15" fill="#8C8C8C">of iterations — but the computer</text>
+        <text x="24" y="112" font-size="15" fill="#8C8C8C">does this in under a second.</text>
+        <text x="24" y="134" font-size="15" font-weight="500" fill="#7B68A8">You just call <tspan font-family="JetBrains Mono, monospace" font-size="14">model.fit(X, y)</tspan></text>
+      </g>
+
+      <!-- Test set note -->
+      <g transform="translate(1380, 580)">
+        <rect width="370" height="150" rx="14" fill="#F0F7F0" stroke="#5BA55B" stroke-width="1.5" filter="url(#sh)"/>
+        <text x="24" y="34" font-size="15" font-weight="700" fill="#5BA55B" letter-spacing="0.06em">WHY A SEPARATE TEST SET?</text>
+        <text x="24" y="64" font-size="16" fill="#2D2D2D">The model has <tspan font-weight="700">already seen</tspan> the</text>
+        <text x="24" y="86" font-size="16" fill="#2D2D2D">training data — of course it fits!</text>
+        <text x="24" y="114" font-size="15" fill="#8C8C8C">The test set is data it has never</text>
+        <text x="24" y="136" font-size="15" fill="#8C8C8C">seen. If it predicts well here too,</text>
+        <text x="24" y="158" font-size="15" font-weight="600" fill="#5BA55B">the patterns are real, not memorised.</text>
+      </g>
+
+    </svg>
+  </div>
+</div>
+</body>
+</html>

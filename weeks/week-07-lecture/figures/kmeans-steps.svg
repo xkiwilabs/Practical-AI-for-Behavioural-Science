@@ -37,7 +37,7 @@
   <!-- Coloured points (assigned to nearest centroid) -->
   <circle cx="240" cy="110" r="3.5" fill="#A71930" fill-opacity="0.5"/>
   <circle cx="255" cy="130" r="3.5" fill="#A71930" fill-opacity="0.5"/>
-  <circle cx="245" cy="150" r="3.5" fill="#5BA55B" fill-opacity="0.5"/>
+  <circle cx="250" cy="160" r="3.5" fill="#5BA55B" fill-opacity="0.5"/>
   <circle cx="270" cy="95" r="3.5" fill="#A71930" fill-opacity="0.5"/>
   <circle cx="285" cy="140" r="3.5" fill="#4A90D9" fill-opacity="0.5"/>
   <circle cx="295" cy="120" r="3.5" fill="#4A90D9" fill-opacity="0.5"/>

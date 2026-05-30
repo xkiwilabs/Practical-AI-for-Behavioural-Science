@@ -1,90 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="Inter, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Inter, -apple-system, sans-serif">
   <!-- Title -->
   <text x="400" y="28" text-anchor="middle" font-size="17" font-weight="700" fill="#2D2D2D">RNN Unrolled Across Time</text>
   <text x="400" y="48" text-anchor="middle" font-size="12" fill="#8C8C8C">Hidden state carries information from earlier steps to later ones</text>
 
   <!-- Time axis -->
-  <line x1="60" y1="320" x2="740" y2="320" stroke="#8C8C8C" stroke-width="1.5"/>
-  <polygon points="740,320 730,316 730,324" fill="#8C8C8C"/>
-  <text x="745" y="334" font-size="11" fill="#8C8C8C">time</text>
+  <line x1="60" y1="358" x2="740" y2="358" stroke="#8C8C8C" stroke-width="1.5"/>
+  <polygon points="740,358 730,354 730,362" fill="#8C8C8C"/>
+  <text x="745" y="372" font-size="11" fill="#8C8C8C">time</text>
 
   <!-- t1 cell -->
   <g transform="translate(80, 130)">
-    <!-- input x_t -->
-    <rect x="0" y="0" width="50" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
-    <text x="25" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">"I"</text>
-    <text x="25" y="-6" text-anchor="middle" font-size="10" fill="#8C8C8C">x₁</text>
+    <!-- output y_t (top) -->
+    <rect x="20" y="0" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
+    <text x="50" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₁</text>
 
-    <!-- arrow up to cell -->
-    <line x1="25" y1="32" x2="25" y2="60" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="22,55 28,55 25,62" fill="#8C8C8C"/>
+    <!-- arrow up from cell to output -->
+    <line x1="50" y1="60" x2="50" y2="34" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="47,39 53,39 50,32" fill="#8C8C8C"/>
 
     <!-- RNN cell -->
     <rect x="0" y="65" width="100" height="60" rx="10" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8" stroke-width="2"/>
     <text x="50" y="92" text-anchor="middle" font-size="12" font-weight="700" fill="#7B68A8">RNN</text>
     <text x="50" y="108" text-anchor="middle" font-size="10" fill="#8C8C8C">cell</text>
 
-    <!-- arrow up to output -->
-    <line x1="50" y1="125" x2="50" y2="150" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="47,145 53,145 50,152" fill="#8C8C8C"/>
+    <!-- arrow up from input to cell -->
+    <line x1="25" y1="150" x2="25" y2="127" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="22,132 28,132 25,125" fill="#8C8C8C"/>
 
-    <!-- output y_t -->
-    <rect x="20" y="155" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
-    <text x="50" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₁</text>
+    <!-- input x_t (bottom) -->
+    <rect x="0" y="155" width="50" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
+    <text x="25" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">"I"</text>
+    <text x="25" y="197" text-anchor="middle" font-size="10" fill="#8C8C8C">x₁</text>
 
     <!-- time label below -->
-    <text x="50" y="208" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 1</text>
+    <text x="50" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 1</text>
   </g>
 
   <!-- t2 cell -->
   <g transform="translate(260, 130)">
-    <rect x="0" y="0" width="50" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
-    <text x="25" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">slept</text>
-    <text x="25" y="-6" text-anchor="middle" font-size="10" fill="#8C8C8C">x₂</text>
-    <line x1="25" y1="32" x2="25" y2="60" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="22,55 28,55 25,62" fill="#8C8C8C"/>
+    <rect x="20" y="0" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
+    <text x="50" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₂</text>
+    <line x1="50" y1="60" x2="50" y2="34" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="47,39 53,39 50,32" fill="#8C8C8C"/>
     <rect x="0" y="65" width="100" height="60" rx="10" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8" stroke-width="2"/>
     <text x="50" y="92" text-anchor="middle" font-size="12" font-weight="700" fill="#7B68A8">RNN</text>
     <text x="50" y="108" text-anchor="middle" font-size="10" fill="#8C8C8C">cell</text>
-    <line x1="50" y1="125" x2="50" y2="150" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="47,145 53,145 50,152" fill="#8C8C8C"/>
-    <rect x="20" y="155" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
-    <text x="50" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₂</text>
-    <text x="50" y="208" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 2</text>
+    <line x1="25" y1="150" x2="25" y2="127" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="22,132 28,132 25,125" fill="#8C8C8C"/>
+    <rect x="0" y="155" width="50" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
+    <text x="25" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">slept</text>
+    <text x="25" y="197" text-anchor="middle" font-size="10" fill="#8C8C8C">x₂</text>
+    <text x="50" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 2</text>
   </g>
 
   <!-- t3 cell -->
   <g transform="translate(440, 130)">
-    <rect x="0" y="0" width="60" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
-    <text x="30" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">poorly</text>
-    <text x="30" y="-6" text-anchor="middle" font-size="10" fill="#8C8C8C">x₃</text>
-    <line x1="30" y1="32" x2="30" y2="60" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="27,55 33,55 30,62" fill="#8C8C8C"/>
+    <rect x="15" y="0" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
+    <text x="45" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₃</text>
+    <line x1="45" y1="60" x2="45" y2="34" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="42,39 48,39 45,32" fill="#8C8C8C"/>
     <rect x="-5" y="65" width="100" height="60" rx="10" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8" stroke-width="2"/>
     <text x="45" y="92" text-anchor="middle" font-size="12" font-weight="700" fill="#7B68A8">RNN</text>
     <text x="45" y="108" text-anchor="middle" font-size="10" fill="#8C8C8C">cell</text>
-    <line x1="45" y1="125" x2="45" y2="150" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="42,145 48,145 45,152" fill="#8C8C8C"/>
-    <rect x="15" y="155" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
-    <text x="45" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₃</text>
-    <text x="45" y="208" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 3</text>
+    <line x1="30" y1="150" x2="30" y2="127" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="27,132 33,132 30,125" fill="#8C8C8C"/>
+    <rect x="0" y="155" width="60" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
+    <text x="30" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">poorly</text>
+    <text x="30" y="197" text-anchor="middle" font-size="10" fill="#8C8C8C">x₃</text>
+    <text x="45" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 3</text>
   </g>
 
   <!-- t4 cell -->
   <g transform="translate(620, 130)">
-    <rect x="0" y="0" width="60" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
-    <text x="30" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">today</text>
-    <text x="30" y="-6" text-anchor="middle" font-size="10" fill="#8C8C8C">x₄</text>
-    <line x1="30" y1="32" x2="30" y2="60" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="27,55 33,55 30,62" fill="#8C8C8C"/>
+    <rect x="15" y="0" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
+    <text x="45" y="18" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₄</text>
+    <line x1="45" y1="60" x2="45" y2="34" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="42,39 48,39 45,32" fill="#8C8C8C"/>
     <rect x="-5" y="65" width="100" height="60" rx="10" fill="#7B68A8" fill-opacity="0.2" stroke="#7B68A8" stroke-width="2"/>
     <text x="45" y="92" text-anchor="middle" font-size="12" font-weight="700" fill="#7B68A8">RNN</text>
     <text x="45" y="108" text-anchor="middle" font-size="10" fill="#8C8C8C">cell</text>
-    <line x1="45" y1="125" x2="45" y2="150" stroke="#8C8C8C" stroke-width="1.5"/>
-    <polygon points="42,145 48,145 45,152" fill="#8C8C8C"/>
-    <rect x="15" y="155" width="60" height="28" rx="6" fill="#5BA55B" fill-opacity="0.2" stroke="#5BA55B" stroke-width="1.5"/>
-    <text x="45" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">y₄</text>
-    <text x="45" y="208" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 4</text>
+    <line x1="30" y1="150" x2="30" y2="127" stroke="#8C8C8C" stroke-width="1.5"/>
+    <polygon points="27,132 33,132 30,125" fill="#8C8C8C"/>
+    <rect x="0" y="155" width="60" height="28" rx="6" fill="#4A90D9" fill-opacity="0.2" stroke="#4A90D9" stroke-width="1.5"/>
+    <text x="30" y="173" text-anchor="middle" font-size="11" fill="#2D2D2D" font-weight="600">today</text>
+    <text x="30" y="197" text-anchor="middle" font-size="10" fill="#8C8C8C">x₄</text>
+    <text x="45" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#2D2D2D">t = 4</text>
   </g>
 
   <!-- Hidden state arrows -->
@@ -103,6 +103,6 @@
   <text x="575" y="215" text-anchor="middle" font-size="10" font-weight="600" fill="#A71930">hidden state h</text>
 
   <!-- Bottom takeaway -->
-  <rect x="60" y="338" width="680" height="32" rx="8" fill="#F4F0F9" stroke="#7B68A8" stroke-width="1"/>
-  <text x="400" y="358" text-anchor="middle" font-size="11" fill="#2D2D2D">The <tspan font-weight="700" fill="#A71930">hidden state</tspan> at each step is a compressed summary of everything seen so far — that's what gives the network memory.</text>
+  <rect x="60" y="368" width="680" height="28" rx="8" fill="#F4F0F9" stroke="#7B68A8" stroke-width="1"/>
+  <text x="400" y="386" text-anchor="middle" font-size="11" fill="#2D2D2D">The <tspan font-weight="700" fill="#A71930">hidden state</tspan> at each step is a compressed summary of everything seen so far — that's what gives the network memory.</text>
 </svg>

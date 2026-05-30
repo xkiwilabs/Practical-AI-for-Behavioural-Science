@@ -781,7 +781,20 @@
   box-sizing: border-box;
 }
 
-/* --- HTML Timeline --- */
+/* --- Roller-coaster timeline (inline SVG) --- */
+.coaster-timeline {
+  margin: 4px 0 2px;
+  text-align: center;
+}
+.coaster-timeline svg {
+  height: 108px;
+  width: auto;
+  max-width: 100%;
+  display: inline-block;
+  overflow: visible;
+}
+
+/* --- HTML Timeline (legacy flat row, kept for reference) --- */
 .timeline {
   position: relative;
   display: flex;

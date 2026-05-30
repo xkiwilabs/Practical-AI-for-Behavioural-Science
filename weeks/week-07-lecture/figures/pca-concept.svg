@@ -78,15 +78,15 @@
   <circle cx="440" cy="220" r="4" fill="#4A90D9" fill-opacity="0.6"/>
   <circle cx="475" cy="165" r="4" fill="#4A90D9" fill-opacity="0.6"/>
 
-  <!-- Variance explained bar -->
-  <rect x="400" y="250" width="186" height="16" rx="4" fill="#A71930" fill-opacity="0.3"/>
-  <text x="493" y="262" text-anchor="middle" font-size="9" font-weight="600" fill="#A71930">PC1: 45%</text>
-  <rect x="590" y="250" width="29" height="16" rx="4" fill="#C8972C" fill-opacity="0.3"/>
-  <text x="604" y="262" text-anchor="middle" font-size="9" font-weight="600" fill="#C8972C">7%</text>
-  <rect x="623" y="250" width="16" height="16" rx="4" fill="#5BA55B" fill-opacity="0.3"/>
-  <text x="631" y="262" text-anchor="middle" font-size="8" font-weight="600" fill="#5BA55B">4%</text>
-  <rect x="643" y="250" width="67" height="16" rx="4" fill="#D0D0D0" fill-opacity="0.3"/>
-  <text x="676" y="262" text-anchor="middle" font-size="9" fill="#8C8C8C">rest</text>
+  <!-- Variance explained bar (segment widths proportional to % of variance: 45 / 7 / 4 / 44) -->
+  <rect x="400" y="250" width="134" height="16" rx="4" fill="#A71930" fill-opacity="0.3"/>
+  <text x="467" y="262" text-anchor="middle" font-size="9" font-weight="600" fill="#A71930">PC1: 45%</text>
+  <rect x="538" y="250" width="21" height="16" rx="4" fill="#C8972C" fill-opacity="0.3"/>
+  <text x="548" y="262" text-anchor="middle" font-size="8" font-weight="600" fill="#C8972C">7%</text>
+  <rect x="563" y="250" width="12" height="16" rx="4" fill="#5BA55B" fill-opacity="0.3"/>
+  <text x="569" y="245" text-anchor="middle" font-size="8" font-weight="600" fill="#5BA55B">4%</text>
+  <rect x="579" y="250" width="131" height="16" rx="4" fill="#D0D0D0" fill-opacity="0.3"/>
+  <text x="644" y="262" text-anchor="middle" font-size="9" fill="#8C8C8C">rest (44%)</text>
   <text x="555" y="280" text-anchor="middle" font-size="9" fill="#8C8C8C">Variance captured by each component</text>
 
   <!-- Bottom annotation -->

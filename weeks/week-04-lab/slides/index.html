@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 4: Regression Pipeline, Cross-Validation, and Interpretation — PSYC4411</title>
+  <title>Week 4 Challenge Lab: Predict &amp; Explain — PSYC4411</title>
 
   <!-- reveal.js core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -20,28 +20,160 @@
 <div class="reveal">
 <div class="slides">
 
-  <section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; padding: 60px;">
-      <p style="font-size: 1.4em; color: rgba(255,255,255,0.5); margin-bottom: 12px; font-weight: 300;">PSYC4411 — Practical AI for Behavioural Science</p>
-      <p style="font-size: 1.1em; color: rgba(255,255,255,0.4); margin-bottom: 40px; font-weight: 300;">Week 4 — Challenge Lab</p>
-      <h1 style="font-size: 2.4em; color: white; margin-bottom: 40px; line-height: 1.2;">Regression Pipeline, Cross-Validation, and Interpretation</h1>
-      <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px 48px; margin-top: 20px;">
-        <p style="font-size: 1.3em; color: rgba(255,255,255,0.7); margin: 0;"><i class="ph-bold ph-clock"></i>&ensp;Content coming soon</p>
-        <p style="font-size: 0.9em; color: rgba(255,255,255,0.4); margin-top: 8px;">Materials will be available on 16 March</p>
-      </div>
-      <p style="font-size: 0.85em; color: rgba(255,255,255,0.3); margin-top: 48px;">Prof. Michael Richardson — Macquarie University, 2026</p>
+<!-- ============================================================
+     SLIDE 1: TITLE
+     ============================================================ -->
+<section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+  <div class="course-code">PSYC4411</div>
+  <h1>Challenge Lab: Predict &amp; Explain<br>Regression on Real DASS Data</h1>
+  <div class="spacer-lg"></div>
+  <p class="subtitle">Week 4 &middot; Semester 1, 2026</p>
+  <p class="subtitle">Current Advances in Psychological Methods &amp; Analyses</p>
+</section>
+
+<!-- ============================================================
+     SLIDE 2: TODAY'S CHALLENGE
+     ============================================================ -->
+<section>
+  <h2><i class="ph ph-target"></i> Today's Challenge</h2>
+  <div class="spacer"></div>
+  <ul>
+ <li>Build <strong>regression models</strong> to predict DASS Depression scores from personality and demographics
+      <ul><li>Baseline &rarr; Linear Regression &rarr; Ridge &rarr; Lasso</li></ul>
+    </li>
+ <li>Report <strong>cross-validated MAE and R&sup2;</strong> &mdash; no peeking at the test set until the end
+      <ul><li>Remember from Week 3: the test set stays locked until your final evaluation</li></ul>
+    </li>
+ <li><strong>Interpret the coefficients</strong> &mdash; which personality traits predict depression? Does the model match psychological theory?
+    </li>
+ <li>Prepare <strong>1 HTML slide</strong> (~3 min) for Week 5
+    </li>
+  </ul>
+</section>
+
+<!-- ============================================================
+     SLIDE 3: THE DATASET
+     ============================================================ -->
+<section>
+  <h2><i class="ph ph-database"></i> The Dataset</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3>OpenPsychometrics DASS-42</h3>
+      <ul>
+ <li><strong>39,775</strong> real respondents from around the world
+        </li>
+ <li><strong>172 columns:</strong> DASS-42 items, Big Five personality (TIPI), demographics, response times, vocabulary check
+        </li>
+ <li><strong>Target:</strong> DASS Depression subscale (14 items, scored 0&ndash;42)
+        </li>
+ <li><strong>Features:</strong> Big Five personality traits + demographics (age, gender, education, ...)
+        </li>
+      </ul>
     </div>
-  </section>
+    <div class="col">
+      <h3>Data Quality Challenges</h3>
+      <ul>
+ <li>Some ages are clearly wrong (e.g., 1998 &mdash; a birth year, not an age)
+        </li>
+ <li>~76% female, ~54% from Malaysia &mdash; not a representative sample
+        </li>
+ <li>Vocabulary check with fake words to catch careless responders
+        </li>
+ <li>Tab-separated file &mdash; use <code>sep="\t"</code> when loading
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-</div></div>
+<!-- ============================================================
+     SLIDE 4: NEW SKILL — DEBUGGING
+     ============================================================ -->
+<section>
+  <h2><i class="ph ph-bug"></i> New Skill: Debugging with AI</h2>
+  <div class="spacer"></div>
+  <p>Week 2 was about <strong>prompting</strong>. This week is about <strong>debugging</strong> &mdash; when code breaks, how to get useful help from your AI assistant.</p>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="prompt-bad">
+        <strong style="color: #dc3545;">Weak:</strong><br>
+        "My code doesn't work. Fix it."
+      </div>
+    </div>
+    <div class="col">
+      <div class="prompt-good">
+        <strong style="color: #5BA55B;">Strong:</strong><br>
+        "I'm getting <code>ValueError: could not convert string to float: 'Female'</code> when fitting Ridge regression. My features include Gender (coded 1/2/3). I expected numeric values but something went wrong. What caused this and how do I fix it?"
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <ul>
+ <li><strong>Share the full error</strong> &mdash; copy the entire traceback, not just the last line</li>
+ <li><strong>Describe expected vs actual</strong> &mdash; "I expected X but got Y"</li>
+ <li><strong>Ask for explanation</strong> &mdash; "Why did this happen?" not just "Fix this"</li>
+  </ul>
+</section>
 
+<!-- ============================================================
+     SLIDE 5: GETTING STARTED
+     ============================================================ -->
+<section>
+  <h2><i class="ph ph-rocket-launch"></i> Getting Started</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <h3>Open your starter file</h3>
+      <ol>
+ <li><code>starter.ipynb</code> (notebook) or <code>starter.py</code> (script)</li>
+ <li>Run the setup cells &mdash; imports, data loading, basic cleaning are done for you</li>
+ <li><strong>Ask the AI to plan first</strong> &mdash; don't jump straight to modelling</li>
+      </ol>
+      <div class="spacer"></div>
+      <h3>Your job</h3>
+      <ol start="4">
+ <li>Score the DASS &amp; TIPI (with AI help)</li>
+ <li>Build &amp; cross-validate models</li>
+ <li>Interpret coefficients</li>
+ <li>Final test set evaluation</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h3>Key numbers to aim for</h3>
+      <div class="spacer-sm"></div>
+      <div style="background: var(--mq-light-grey); border-radius: 12px; padding: 20px 28px; font-size: 0.85em;">
+        <p style="margin-bottom: 0.3em;"><strong>Baseline MAE:</strong> ~10.6</p>
+        <p style="margin-bottom: 0.3em;"><strong>Good model MAE:</strong> ~8.2</p>
+        <p style="margin-bottom: 0.3em;"><strong>Good model R&sup2;:</strong> ~0.34</p>
+        <p style="margin-bottom: 0; font-size: 0.85em; color: var(--mq-grey);">R&sup2; of 0.34 is strong for behavioural science &mdash; personality explains about a third of the variance in depression scores</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="highlight-box">
+        <p><strong>Full details in the challenge brief:</strong><br>
+        <code>weeks/week-04-lab/README.md</code></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<!-- reveal.js -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
   Reveal.initialize({
-    width: 1920, height: 1080, margin: 0,
-    center: false, controls: false,
-    slideNumber: false, progress: false,
-    transition: 'none', hash: false
+    hash: true,
+    slideNumber: 'c/t',
+    width: 1920,
+    height: 1080,
+    margin: 0.04,
+    transition: 'slide',
+    transitionSpeed: 'default',
+    center: false,
+    pdfSeparateFragments: false
   });
 </script>
 </body>

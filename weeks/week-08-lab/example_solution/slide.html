@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 8 Challenge Lab — Example Solution</title>
+
+  <!-- reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+
+  <!-- MQ theme -->
+  <link rel="stylesheet" href="css/mq-theme.css">
+
+  <style>
+    .fig-toggle-btn {
+      border: none; border-radius: 4px; padding: 4px 10px;
+      font-size: 0.42em; font-weight: 600; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .fig-toggle-btn.active { background: #4A90D9; color: white; }
+    .fig-toggle-btn.inactive { background: rgba(0,0,0,0.15); color: #555; }
+    .fig-panel { text-align: center; }
+    .fig-panel img { max-width: 100%; max-height: 480px; border-radius: 4px; }
+    .fig-panel p { color: #666; font-size: 0.38em; margin-top: 6px; }
+    .info-card {
+      background: rgba(255,255,255,0.12); border-radius: 0 8px 8px 0;
+      padding: 8px 12px;
+    }
+    .info-card h4 {
+      font-size: 0.5em; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; margin-bottom: 3px;
+    }
+    .info-card p {
+      color: #FFFFFF; font-size: 0.48em;
+      line-height: 1.4; margin: 0;
+    }
+    .info-card strong {
+      color: #FFD966; font-weight: 700;
+    }
+    .info-card code {
+      color: #FFFFFF; background: rgba(255,255,255,0.15);
+      padding: 1px 4px; border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- SLIDE -->
+  <section data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+
+    <!-- Title area -->
+    <div style="text-align: center; margin-bottom: 8px;">
+      <p style="color: rgba(255,255,255,0.5); font-size: 0.45em; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px;">PSYC4411 Week 8 Challenge Lab</p>
+      <h2 style="color: white; font-size: 1.2em; font-weight: 800; margin-bottom: 2px;">
+        Find Structure, Don't Fabricate It
+      </h2>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.55em;">
+        Example Group &mdash; Week 8
+      </p>
+    </div>
+
+    <!-- Content: Figure + 5 info panels -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; margin-top: 6px; align-items: stretch; flex: 1;">
+
+      <!-- Left: The figure (toggleable) -->
+      <div style="background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <!-- Toggle buttons -->
+        <div style="display: flex; gap: 5px; margin-bottom: 6px;">
+          <button id="btn-scree" class="fig-toggle-btn active" onclick="showFigure('scree')">Scree Plot</button>
+          <button id="btn-loadings" class="fig-toggle-btn inactive" onclick="showFigure('loadings')">PCA Loadings</button>
+          <button id="btn-umap" class="fig-toggle-btn inactive" onclick="showFigure('umap')">UMAP</button>
+          <button id="btn-clusters" class="fig-toggle-btn inactive" onclick="showFigure('clusters')">Cluster Profiles</button>
+          <button id="btn-stability" class="fig-toggle-btn inactive" onclick="showFigure('stability')">Stability</button>
+        </div>
+        <!-- Scree plot -->
+        <div id="fig-scree" class="fig-panel">
+          <img src="images/scree_plot.png" alt="PCA scree plot showing variance explained per component">
+          <p>PC1 captures 44.8% of variance alone &mdash; a dominant general distress factor</p>
+        </div>
+        <!-- Loadings -->
+        <div id="fig-loadings" class="fig-panel" style="display: none;">
+          <img src="images/pca_loadings.png" alt="Heatmap of PCA loadings for first 3 components">
+          <p>Items sorted by subscale &mdash; PC2 separates Depression from Anxiety, PC3 captures Stress</p>
+        </div>
+        <!-- UMAP -->
+        <div id="fig-umap" class="fig-panel" style="display: none;">
+          <img src="images/umap_depression.png" alt="UMAP 2D projection coloured by depression severity">
+          <p>Depression severity forms a gradient, not discrete clusters &mdash; consistent with dimensional models</p>
+        </div>
+        <!-- Cluster profiles -->
+        <div id="fig-clusters" class="fig-panel" style="display: none;">
+          <img src="images/cluster_profiles.png" alt="Bar chart of standardised feature means per cluster">
+          <p>k=2: Low distress (green) vs High distress (red) &mdash; differing on all features</p>
+        </div>
+        <!-- Stability -->
+        <div id="fig-stability" class="fig-panel" style="display: none;">
+          <img src="images/stability_check.png" alt="Bar chart showing cluster agreement across random seeds">
+          <p>99.9% average agreement across 5 random seeds &mdash; extremely stable</p>
+        </div>
+      </div>
+
+      <!-- Right: 5 info cards stacked -->
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+
+        <!-- Card 1: PCA -->
+        <div class="info-card" style="border-left: 4px solid #4A90D9;">
+          <h4 style="color: #4A90D9;">PCA Results</h4>
+          <p><strong>3 components</strong> explain <strong>55.4%</strong> of variance. PC1 (44.8%) = general distress. PC2 (6.7%) separates Depression from Anxiety. PC3 (3.8%) captures Stress.</p>
+        </div>
+
+        <!-- Card 2: Clustering -->
+        <div class="info-card" style="border-left: 4px solid #5BA55B;">
+          <h4 style="color: #5BA55B;">Best Cluster Solution</h4>
+          <p>k=<strong>2</strong> (silhouette = <strong>0.240</strong>). Low distress (N=16,908, Dep=11.8) vs High distress (N=17,668, Dep=29.7). Silhouette drops to 0.150 at k=3 &mdash; no evidence for more than 2 groups.</p>
+        </div>
+
+        <!-- Card 3: Stability -->
+        <div class="info-card" style="border-left: 4px solid #C8972C;">
+          <h4 style="color: #C8972C;">Stability Check</h4>
+          <p><strong>99.9%</strong> average agreement across 5 random seeds. Fewer than 0.35% of participants changed cluster in any run. These clusters are real &mdash; but they may be splitting a continuum, not discovering types.</p>
+        </div>
+
+        <!-- Card 4: Documentation correction -->
+        <div class="info-card" style="border-left: 4px solid #7B68A8;">
+          <h4 style="color: #7B68A8;">Documentation Correction</h4>
+          <p>The AI wrote: &ldquo;3 components explaining <strong>56%</strong> of variance&rdquo; &mdash; the actual value is <strong>55.36%</strong>. It also omitted the careless responder filtering step. Small errors in methods sections can undermine credibility.</p>
+        </div>
+
+        <!-- Card 5: Key takeaway -->
+        <div class="info-card" style="border-left: 4px solid #A71930;">
+          <h4 style="color: #A71930;">Key Takeaway</h4>
+          <p>Distress is <strong>dimensional</strong>, not categorical. The strongest structure is a single severity gradient (PC1 = 45%). Clustering finds stable groups, but they&rsquo;re cuts on a continuum &mdash; not distinct &ldquo;types&rdquo; of distress.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1920, height: 1080, margin: 0, center: false,
+    controls: false, progress: false, hash: false,
+    transition: 'none', plugins: []
+  });
+
+  function showFigure(name) {
+    const figures = ['scree', 'loadings', 'umap', 'clusters', 'stability'];
+    figures.forEach(f => {
+      document.getElementById('fig-' + f).style.display = (f === name) ? '' : 'none';
+      document.getElementById('btn-' + f).className = 'fig-toggle-btn ' + (f === name ? 'active' : 'inactive');
+    });
+  }
+</script>
+</body>
+</html>

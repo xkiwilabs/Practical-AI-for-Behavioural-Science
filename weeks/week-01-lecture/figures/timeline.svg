@@ -1,57 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" font-family="Inter, Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="Inter, Helvetica, Arial, sans-serif">
   <!-- Title -->
-  <text x="450" y="24" font-size="16" font-weight="700" fill="#2D2D2D" text-anchor="middle">The Roller-Coaster Ride of AI</text>
+  <text x="450" y="22" font-size="16" font-weight="700" fill="#2D2D2D" text-anchor="middle">The Roller-Coaster Ride of AI</text>
 
-  <!-- Horizontal line -->
-  <line x1="60" y1="80" x2="840" y2="80" stroke="#D0D0D0" stroke-width="2"/>
+  <defs>
+    <!-- Track colour climbs from grey (early years) to red (today) -->
+    <linearGradient id="coaster" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C4C4C4"/>
+      <stop offset="55%" stop-color="#9AA0A6"/>
+      <stop offset="100%" stop-color="#A71930"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Roller-coaster track: rises with the early hype, plunges into the AI winter, then climbs to the present -->
+  <path d="M 60,130 C 68.3,128 78.3,125 110,118 C 141.7,111 206.7,83 250,88 C 293.3,93 330,145.5 370,148 C 410,150.5 455,113.5 490,103 C 525,92.5 550,90.2 580,85 C 610,79.8 635,76.2 670,72 C 705,67.8 761.7,63.3 790,60 C 818.3,56.7 831.7,53.3 840,52"
+        fill="none" stroke="url(#coaster)" stroke-width="3.5" stroke-linecap="round"/>
 
   <!-- 1950s -->
-  <circle cx="110" cy="80" r="10" fill="#4A90D9"/>
-  <text x="110" y="60" font-size="14" font-weight="700" fill="#4A90D9" text-anchor="middle">1950s</text>
-  <text x="110" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Turing asks</text>
-  <text x="110" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">"Can machines think?"</text>
+  <circle cx="110" cy="118" r="10" fill="#4A90D9"/>
+  <text x="110" y="96" font-size="14" font-weight="700" fill="#4A90D9" text-anchor="middle">1950s</text>
+  <text x="110" y="144" font-size="12" fill="#2D2D2D" text-anchor="middle">Turing asks</text>
+  <text x="110" y="159" font-size="12" fill="#2D2D2D" text-anchor="middle">"Can machines think?"</text>
 
   <!-- 1980s -->
-  <circle cx="250" cy="80" r="10" fill="#E8873D"/>
-  <text x="250" y="60" font-size="14" font-weight="700" fill="#E8873D" text-anchor="middle">1980s</text>
-  <text x="250" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Expert systems</text>
-  <text x="250" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">encode human rules</text>
+  <circle cx="250" cy="88" r="10" fill="#E8873D"/>
+  <text x="250" y="66" font-size="14" font-weight="700" fill="#E8873D" text-anchor="middle">1980s</text>
+  <text x="250" y="114" font-size="12" fill="#2D2D2D" text-anchor="middle">Expert systems</text>
+  <text x="250" y="129" font-size="12" fill="#2D2D2D" text-anchor="middle">encode human rules</text>
 
-  <!-- 1990s -->
-  <circle cx="370" cy="80" r="10" fill="#8C8C8C"/>
-  <text x="370" y="60" font-size="14" font-weight="700" fill="#8C8C8C" text-anchor="middle">1990s</text>
-  <text x="370" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">"AI winters"</text>
-  <text x="370" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">hype then disappointment</text>
+  <!-- 1990s (the dip) -->
+  <circle cx="370" cy="148" r="10" fill="#8C8C8C"/>
+  <text x="370" y="126" font-size="14" font-weight="700" fill="#8C8C8C" text-anchor="middle">1990s</text>
+  <text x="370" y="174" font-size="12" fill="#2D2D2D" text-anchor="middle">"AI winters"</text>
+  <text x="370" y="189" font-size="12" fill="#2D2D2D" text-anchor="middle">hype then disappointment</text>
 
   <!-- 2012 -->
-  <circle cx="490" cy="80" r="10" fill="#5BA55B"/>
-  <text x="490" y="60" font-size="14" font-weight="700" fill="#5BA55B" text-anchor="middle">2012</text>
-  <text x="490" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Deep learning wins</text>
-  <text x="490" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">ImageNet</text>
+  <circle cx="490" cy="103" r="10" fill="#5BA55B"/>
+  <text x="490" y="81" font-size="14" font-weight="700" fill="#5BA55B" text-anchor="middle">2012</text>
+  <text x="490" y="129" font-size="12" fill="#2D2D2D" text-anchor="middle">Deep learning wins</text>
+  <text x="490" y="144" font-size="12" fill="#2D2D2D" text-anchor="middle">ImageNet</text>
 
   <!-- 2017 -->
-  <circle cx="580" cy="80" r="10" fill="#7B68A8"/>
-  <text x="580" y="60" font-size="14" font-weight="700" fill="#7B68A8" text-anchor="middle">2017</text>
-  <text x="580" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Transformer</text>
-  <text x="580" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">architecture</text>
+  <circle cx="580" cy="85" r="10" fill="#7B68A8"/>
+  <text x="580" y="63" font-size="14" font-weight="700" fill="#7B68A8" text-anchor="middle">2017</text>
+  <text x="580" y="111" font-size="12" fill="#2D2D2D" text-anchor="middle">Transformer</text>
+  <text x="580" y="126" font-size="12" fill="#2D2D2D" text-anchor="middle">architecture</text>
 
   <!-- 2022 -->
-  <circle cx="670" cy="80" r="10" fill="#E8873D"/>
-  <text x="670" y="60" font-size="14" font-weight="700" fill="#E8873D" text-anchor="middle">2022</text>
-  <text x="670" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">ChatGPT</text>
-  <text x="670" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">launches</text>
+  <circle cx="670" cy="72" r="10" fill="#E8873D"/>
+  <text x="670" y="50" font-size="14" font-weight="700" fill="#E8873D" text-anchor="middle">2022</text>
+  <text x="670" y="98" font-size="12" fill="#2D2D2D" text-anchor="middle">ChatGPT</text>
+  <text x="670" y="113" font-size="12" fill="#2D2D2D" text-anchor="middle">launches</text>
 
-  <!-- 2025-26 -->
-  <circle cx="790" cy="80" r="10" fill="#A71930"/>
-  <text x="790" y="60" font-size="14" font-weight="700" fill="#A71930" text-anchor="middle">2025-26</text>
-  <text x="790" y="110" font-size="12" fill="#2D2D2D" text-anchor="middle">Vibe coding +</text>
-  <text x="790" y="125" font-size="12" fill="#2D2D2D" text-anchor="middle">agentic AI</text>
+  <!-- 2025-26 (the peak) -->
+  <circle cx="790" cy="60" r="10" fill="#A71930"/>
+  <text x="790" y="38" font-size="14" font-weight="700" fill="#A71930" text-anchor="middle">2025-26</text>
+  <text x="790" y="86" font-size="12" fill="#2D2D2D" text-anchor="middle">Vibe coding +</text>
+  <text x="790" y="101" font-size="12" fill="#2D2D2D" text-anchor="middle">agentic AI</text>
 
   <!-- Bottom note -->
-  <rect x="200" y="155" width="500" height="50" rx="10" fill="#A71930" fill-opacity="0.06" stroke="#A71930" stroke-width="2"/>
-  <text x="450" y="178" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">Most of the AI tools you'll use in this course</text>
-  <text x="450" y="196" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">didn't exist two years ago.</text>
+  <rect x="200" y="212" width="500" height="50" rx="10" fill="#A71930" fill-opacity="0.06" stroke="#A71930" stroke-width="2"/>
+  <text x="450" y="235" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">Most of the AI tools you'll use in this course</text>
+  <text x="450" y="253" font-size="13" font-weight="600" fill="#A71930" text-anchor="middle">didn't exist two years ago.</text>
 
   <!-- Caption -->
-  <text x="450" y="240" font-size="12" fill="#8C8C8C" text-anchor="middle" font-style="italic">The pace of change is unprecedented</text>
+  <text x="450" y="295" font-size="12" fill="#8C8C8C" text-anchor="middle" font-style="italic">The pace of change is unprecedented</text>
 </svg>

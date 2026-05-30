@@ -692,30 +692,30 @@
       <text x="120" y="410" font-size="13" fill="#8C8C8C" font-family="Inter, sans-serif">Simple</text>
       <text x="700" y="410" font-size="13" fill="#8C8C8C" font-family="Inter, sans-serif">Complex</text>
 
-      <!-- Y-axis label -->
-      <text x="24" y="210" text-anchor="middle" font-size="16" font-weight="600" fill="#2D2D2D" transform="rotate(-90, 24, 210)" font-family="Inter, sans-serif">Prediction Error</text>
+      <!-- Y-axis label (error increases upward) -->
+      <text x="24" y="210" text-anchor="middle" font-size="16" font-weight="600" fill="#2D2D2D" transform="rotate(-90, 24, 210)" font-family="Inter, sans-serif">Prediction Error →</text>
 
-      <!-- Training error curve (blue, decreasing) -->
-      <path d="M 100,300 C 200,260 300,190 400,140 C 500,100 600,80 740,65" fill="none" stroke="#4A90D9" stroke-width="4" stroke-linecap="round" class="fragment" data-fragment-index="0"/>
+      <!-- Training error curve (blue, always decreasing) -->
+      <path d="M 100,150 C 220,225 330,285 440,310 C 540,333 640,348 740,353" fill="none" stroke="#4A90D9" stroke-width="4" stroke-linecap="round" class="fragment" data-fragment-index="0"/>
 
-      <!-- Test error curve (red, U-shaped) -->
-      <path d="M 100,320 C 200,260 300,210 380,190 C 420,184 440,184 460,188 C 540,210 620,260 700,340 L 740,370" fill="none" stroke="#A71930" stroke-width="4" stroke-linecap="round" class="fragment" data-fragment-index="1"/>
+      <!-- Test error curve (red, U-shaped: high, dips to a minimum, then rises) -->
+      <path d="M 100,130 C 220,215 340,300 430,308 C 510,300 620,220 740,110" fill="none" stroke="#A71930" stroke-width="4" stroke-linecap="round" class="fragment" data-fragment-index="1"/>
 
-      <!-- Sweet spot -->
-      <circle cx="430" cy="185" r="10" fill="none" stroke="#5BA55B" stroke-width="3" class="fragment" data-fragment-index="2"/>
-      <line x1="430" y1="185" x2="430" y2="380" stroke="#5BA55B" stroke-width="2" stroke-dasharray="8,5" class="fragment" data-fragment-index="2"/>
+      <!-- Sweet spot (minimum of the test-error curve) -->
+      <circle cx="430" cy="308" r="10" fill="none" stroke="#5BA55B" stroke-width="3" class="fragment" data-fragment-index="2"/>
+      <line x1="430" y1="60" x2="430" y2="380" stroke="#5BA55B" stroke-width="2" stroke-dasharray="8,5" class="fragment" data-fragment-index="2"/>
       <text x="430" y="50" text-anchor="middle" font-size="18" font-weight="700" fill="#5BA55B" font-family="Inter, sans-serif" class="fragment" data-fragment-index="2">Sweet Spot</text>
 
       <!-- Zone labels -->
       <text x="200" y="360" text-anchor="middle" font-size="15" fill="#8C8C8C" font-family="Inter, sans-serif" class="fragment" data-fragment-index="3">Underfitting</text>
       <text x="650" y="360" text-anchor="middle" font-size="15" fill="#8C8C8C" font-family="Inter, sans-serif" class="fragment" data-fragment-index="3">Overfitting</text>
 
-      <!-- Legend (top-right, clear of curves) -->
-      <rect x="600" y="48" width="200" height="60" rx="8" fill="white" fill-opacity="0.9" stroke="#E0E0E0" stroke-width="1"/>
-      <line x1="616" y1="70" x2="652" y2="70" stroke="#4A90D9" stroke-width="4"/>
-      <text x="662" y="76" font-size="15" font-weight="600" fill="#4A90D9" font-family="Inter, sans-serif">Training error</text>
-      <line x1="616" y1="96" x2="652" y2="96" stroke="#A71930" stroke-width="4"/>
-      <text x="662" y="102" font-size="15" font-weight="600" fill="#A71930" font-family="Inter, sans-serif">Test error</text>
+      <!-- Legend (top-left, clear of curves) -->
+      <rect x="100" y="56" width="200" height="60" rx="8" fill="white" fill-opacity="0.9" stroke="#E0E0E0" stroke-width="1"/>
+      <line x1="116" y1="78" x2="152" y2="78" stroke="#4A90D9" stroke-width="4"/>
+      <text x="162" y="84" font-size="15" font-weight="600" fill="#4A90D9" font-family="Inter, sans-serif">Training error</text>
+      <line x1="116" y1="104" x2="152" y2="104" stroke="#A71930" stroke-width="4"/>
+      <text x="162" y="110" font-size="15" font-weight="600" fill="#A71930" font-family="Inter, sans-serif">Test error</text>
     </svg>
   </div>
 </section>

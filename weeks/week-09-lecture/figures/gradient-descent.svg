@@ -7,29 +7,31 @@
   <rect x="20" y="60" width="440" height="290" rx="10" fill="#F8F8F8" stroke="#D0D0D0" stroke-width="1"/>
   <text x="240" y="82" text-anchor="middle" font-size="13" font-weight="600" fill="#2D2D2D">Loss Landscape</text>
 
-  <!-- Loss landscape curve (hilly terrain) -->
-  <path d="M 40,280 C 60,200 80,170 120,200 C 145,218 155,220 170,190 C 190,150 220,120 260,140 C 280,148 290,160 310,135 C 340,100 370,160 400,200 C 430,235 440,260 440,280" fill="#4A90D9" fill-opacity="0.1" stroke="#4A90D9" stroke-width="2"/>
+  <!-- Loss landscape: terrain fill (valleys = low loss, sit at the bottom) -->
+  <path d="M 40,290 L 40,150 C 75,205 105,215 130,215 C 165,215 200,160 230,125 C 265,165 300,250 335,250 C 370,250 410,205 440,160 L 440,290 Z" fill="#4A90D9" fill-opacity="0.1" stroke="none"/>
+  <!-- Loss landscape curve (two valleys: a shallow local minimum and a deeper global minimum) -->
+  <path d="M 40,150 C 75,205 105,215 130,215 C 165,215 200,160 230,125 C 265,165 300,250 335,250 C 370,250 410,205 440,160" fill="none" stroke="#4A90D9" stroke-width="2"/>
 
-  <!-- Gradient descent path (dots showing the journey) -->
-  <circle cx="95" cy="180" r="6" fill="#A71930"/>
-  <text x="95" y="170" text-anchor="middle" font-size="9" font-weight="600" fill="#A71930">Start</text>
-  <line x1="101" y1="183" x2="125" y2="198" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <circle cx="130" cy="201" r="5" fill="#A71930" fill-opacity="0.8"/>
-  <line x1="135" y1="203" x2="155" y2="210" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <circle cx="160" cy="210" r="4" fill="#A71930" fill-opacity="0.6"/>
-  <line x1="165" y1="208" x2="175" y2="195" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <circle cx="180" cy="190" r="4" fill="#A71930" fill-opacity="0.5"/>
+  <!-- Gradient descent path (dots walking downhill into the nearest valley) -->
+  <circle cx="58" cy="170" r="6" fill="#A71930"/>
+  <text x="58" y="158" text-anchor="middle" font-size="9" font-weight="600" fill="#A71930">Start</text>
+  <line x1="63" y1="174" x2="84" y2="189" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <circle cx="88" cy="193" r="5" fill="#A71930" fill-opacity="0.8"/>
+  <line x1="93" y1="196" x2="110" y2="205" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <circle cx="114" cy="208" r="4" fill="#A71930" fill-opacity="0.6"/>
+  <line x1="118" y1="210" x2="126" y2="213" stroke="#A71930" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <circle cx="130" cy="215" r="4" fill="#A71930" fill-opacity="0.5"/>
 
-  <!-- Local minimum annotation -->
-  <circle cx="175" cy="192" r="10" fill="none" stroke="#C8972C" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="175" y="230" text-anchor="middle" font-size="9" fill="#C8972C" font-weight="600">Local minimum</text>
-  <text x="175" y="242" text-anchor="middle" font-size="8" fill="#8C8C8C">(stuck here!)</text>
+  <!-- Local minimum annotation (the shallower valley the path gets stuck in) -->
+  <circle cx="130" cy="215" r="11" fill="none" stroke="#C8972C" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="130" y="240" text-anchor="middle" font-size="9" fill="#C8972C" font-weight="600">Local minimum</text>
+  <text x="130" y="252" text-anchor="middle" font-size="8" fill="#8C8C8C">(stuck here!)</text>
 
-  <!-- Global minimum -->
-  <circle cx="315" cy="133" r="5" fill="#5BA55B"/>
-  <circle cx="315" cy="133" r="10" fill="none" stroke="#5BA55B" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="315" y="120" text-anchor="middle" font-size="9" fill="#5BA55B" font-weight="600">Global minimum</text>
-  <text x="315" y="108" text-anchor="middle" font-size="8" fill="#8C8C8C">(ideal, but hard to find)</text>
+  <!-- Global minimum (the deepest valley = lowest loss) -->
+  <circle cx="335" cy="250" r="5" fill="#5BA55B"/>
+  <circle cx="335" cy="250" r="11" fill="none" stroke="#5BA55B" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="335" y="232" text-anchor="middle" font-size="9" fill="#5BA55B" font-weight="600">Global minimum</text>
+  <text x="335" y="220" text-anchor="middle" font-size="8" fill="#8C8C8C">(ideal, but hard to find)</text>
 
   <!-- Axis labels -->
   <text x="240" y="300" text-anchor="middle" font-size="10" fill="#8C8C8C">Weight values</text>

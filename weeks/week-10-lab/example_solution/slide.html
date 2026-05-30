@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 10 Challenge Lab — Example Solution</title>
+
+  <!-- reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+
+  <!-- MQ theme -->
+  <link rel="stylesheet" href="css/mq-theme.css">
+
+  <style>
+    .fig-toggle-btn {
+      border: none; border-radius: 4px; padding: 4px 10px;
+      font-size: 0.42em; font-weight: 600; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .fig-toggle-btn.active { background: #4A90D9; color: white; }
+    .fig-toggle-btn.inactive { background: rgba(0,0,0,0.15); color: #555; }
+    .fig-panel { text-align: center; }
+    .fig-panel img { max-width: 100%; max-height: 480px; border-radius: 4px; }
+    .fig-panel p { color: #666; font-size: 0.38em; margin-top: 6px; }
+    .info-card {
+      background: rgba(255,255,255,0.12); border-radius: 0 8px 8px 0;
+      padding: 8px 12px;
+    }
+    .info-card h4 {
+      font-size: 0.5em; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; margin-bottom: 3px;
+    }
+    .info-card p {
+      color: #FFFFFF; font-size: 0.48em;
+      line-height: 1.4; margin: 0;
+    }
+    .info-card strong {
+      color: #FFD966; font-weight: 700;
+    }
+    .info-card code {
+      color: #FFFFFF; background: rgba(255,255,255,0.15);
+      padding: 1px 4px; border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- SLIDE -->
+  <section data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #8B1428 100%)">
+
+    <!-- Title area -->
+    <div style="text-align: center; margin-bottom: 8px;">
+      <p style="color: rgba(255,255,255,0.5); font-size: 0.45em; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px;">PSYC4411 Week 10 Challenge Lab</p>
+      <h2 style="color: white; font-size: 1.2em; font-weight: 800; margin-bottom: 2px;">
+        Beat the Baseline &mdash; Neural Network vs LogReg
+      </h2>
+      <p style="color: rgba(255,255,255,0.6); font-size: 0.55em;">
+        Example Group &mdash; Week 10
+      </p>
+    </div>
+
+    <!-- Content: Figure + 5 info panels -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; margin-top: 6px; align-items: stretch; flex: 1;">
+
+      <!-- Left: The figure (toggleable) -->
+      <div style="background: rgba(255,255,255,0.95); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <!-- Toggle buttons -->
+        <div style="display: flex; gap: 5px; margin-bottom: 6px;">
+          <button id="btn-comparison" class="fig-toggle-btn active" onclick="showFigure('comparison')">Model Comparison</button>
+          <button id="btn-loss" class="fig-toggle-btn inactive" onclick="showFigure('loss')">Loss Curves</button>
+          <button id="btn-diagnostics" class="fig-toggle-btn inactive" onclick="showFigure('diagnostics')">Loss Diagnostics</button>
+          <button id="btn-importance" class="fig-toggle-btn inactive" onclick="showFigure('importance')">Feature Importance</button>
+          <button id="btn-confusion" class="fig-toggle-btn inactive" onclick="showFigure('confusion')">Confusion Matrices</button>
+        </div>
+        <!-- Model comparison -->
+        <div id="fig-comparison" class="fig-panel">
+          <img src="images/model_comparison.png" alt="Bar chart comparing Logistic Regression and Simple MLP accuracy and F1">
+          <p>Accuracy and F1 for LogReg vs MLP (4,918 trials, 320 features)</p>
+        </div>
+        <!-- Loss curves -->
+        <div id="fig-loss" class="fig-panel" style="display: none;">
+          <img src="images/loss_curves.png" alt="Training and validation loss curves over 100 epochs">
+          <p>Training and validation loss &mdash; both decrease below chance (0.693) but converge near the same value</p>
+        </div>
+        <!-- Loss diagnostics (annotated) -->
+        <div id="fig-diagnostics" class="fig-panel" style="display: none;">
+          <img src="images/loss_diagnostics.png" alt="Annotated loss curve showing learning phases and overfitting">
+          <p>Annotated loss diagnostics &mdash; the network learns but can&rsquo;t beat the linear model</p>
+        </div>
+        <!-- Feature importance -->
+        <div id="fig-importance" class="fig-panel" style="display: none;">
+          <img src="images/feature_importance.png" alt="Top 15 logistic regression feature coefficients">
+          <p>Top 15 features by LogReg coefficient &mdash; motor cortex channels highlighted in red</p>
+        </div>
+        <!-- Confusion matrices -->
+        <div id="fig-confusion" class="fig-panel" style="display: none;">
+          <img src="images/confusion_matrices.png" alt="Side-by-side confusion matrices for LogReg and MLP">
+          <p>Confusion matrices &mdash; both models show similar patterns of errors</p>
+        </div>
+      </div>
+
+      <!-- Right: Info panels stacked -->
+      <div style="display: flex; flex-direction: column; justify-content: space-between;">
+
+        <!-- Baseline vs MLP -->
+        <div class="info-card" style="border-left: 4px solid #4A90D9;">
+          <h4 style="color: #4A90D9;">Baseline Performance</h4>
+          <p>
+            <strong>Logistic Regression</strong> achieved <strong>60.2% accuracy</strong> and F1 0.583 on 320 EEG features. This is a meaningful result for BCI motor imagery &mdash; chance is 50%, and 60% is typical in the literature for cross-subject classification.
+          </p>
+        </div>
+
+        <!-- Training Diagnostics -->
+        <div class="info-card" style="border-left: 4px solid #C8972C;">
+          <h4 style="color: #C8972C;">Training Diagnostics</h4>
+          <p>
+            Training loss decreased below <strong>0.693</strong> (the ln(2) random-guessing threshold), confirming the network learned <em>something</em>. Validation loss tracked closely, showing minimal overfitting with dropout at 0.3. But the improvement was marginal &mdash; the signal is genuinely weak.
+          </p>
+        </div>
+
+        <!-- Was It Worth It? -->
+        <div class="info-card" style="border-left: 4px solid #5BA55B;">
+          <h4 style="color: #5BA55B;">Was It Worth It?</h4>
+          <p>
+            <strong>No.</strong> The MLP matched but did not beat logistic regression. LogReg: ~5 lines of code. MLP: ~30 lines, a new framework, tensor conversions, training loops, and harder debugging. For pre-extracted tabular features with weak signal, the added complexity was <strong>not justified</strong>.
+          </p>
+        </div>
+
+        <!-- Debugging Story -->
+        <div class="info-card" style="border-left: 4px solid #A771A8;">
+          <h4 style="color: #A771A8;">Key Insight</h4>
+          <p>
+            Neural networks shine when they can <strong>learn representations</strong> from raw data (images, text, raw EEG waveforms). Here, we gave both models the same hand-crafted features &mdash; so the MLP had no advantage. The lesson: <strong>more complex ≠ more accurate</strong>.
+          </p>
+        </div>
+
+        <!-- Ethical Consideration -->
+        <div class="info-card" style="border-left: 4px solid #E74C3C;">
+          <h4 style="color: #E74C3C;">BCI Ethics</h4>
+          <p>
+            A 60% accurate BCI means <strong>4 in 10 commands are wrong</strong>. Before deployment, BCI systems need personalised calibration (per-subject training), clear uncertainty feedback, and testing across diverse populations. A &ldquo;mind-reading&rdquo; system that&rsquo;s wrong 40% of the time could cause real harm.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+</div>
+</div>
+
+<!-- reveal.js core -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+
+<script>
+  Reveal.initialize({
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    center: false,
+    controls: false,
+    progress: false,
+    hash: false,
+    transition: 'none'
+  });
+
+  var figIds = ['comparison', 'loss', 'diagnostics', 'importance', 'confusion'];
+
+  function showFigure(which) {
+    figIds.forEach(function(id) {
+      var fig = document.getElementById('fig-' + id);
+      var btn = document.getElementById('btn-' + id);
+      if (id === which) {
+        fig.style.display = 'block';
+        btn.className = 'fig-toggle-btn active';
+      } else {
+        fig.style.display = 'none';
+        btn.className = 'fig-toggle-btn inactive';
+      }
+    });
+  }
+</script>
+</body>
+</html>
