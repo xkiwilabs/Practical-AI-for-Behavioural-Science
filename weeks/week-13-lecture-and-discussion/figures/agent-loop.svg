@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect width="800" height="320" rx="12" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="28" y="34" font-size="18" font-weight="700" fill="#2D2D2D">The Agent Loop</text>
+
+  <defs>
+    <marker id="ah" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#8C8C8C"/>
+    </marker>
+    <marker id="ahg" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#5BA55B"/>
+    </marker>
+  </defs>
+
+  <!-- Done pill (centred directly above Observe) -->
+  <rect x="600" y="40" width="174" height="46" rx="12" fill="#5BA55B"/>
+  <text x="687" y="61" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Goal met → Done</text>
+  <text x="687" y="78" text-anchor="middle" font-size="10" fill="#EAF5EA">hand back to the human</text>
+
+  <!-- Four steps -->
+  <!-- Perceive -->
+  <rect x="24" y="120" width="162" height="66" rx="10" fill="#4A90D9"/>
+  <text x="105" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Perceive</text>
+  <text x="105" y="169" text-anchor="middle" font-size="10.5" fill="#EAF2FB">read the goal &amp; state</text>
+  <!-- Plan -->
+  <rect x="216" y="120" width="150" height="66" rx="10" fill="#E8873D"/>
+  <text x="291" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Plan</text>
+  <text x="291" y="169" text-anchor="middle" font-size="10.5" fill="#FDF0E6">decide next step</text>
+  <!-- Act -->
+  <rect x="398" y="120" width="168" height="66" rx="10" fill="#2B8A8A"/>
+  <text x="482" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Act</text>
+  <text x="482" y="169" text-anchor="middle" font-size="10.5" fill="#E4F1F1">use a tool</text>
+  <!-- Observe -->
+  <rect x="598" y="120" width="178" height="66" rx="10" fill="#7B68A8"/>
+  <text x="687" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Observe</text>
+  <text x="687" y="169" text-anchor="middle" font-size="10.5" fill="#F0ECF6">check the result</text>
+
+  <!-- Forward arrows -->
+  <line x1="188" y1="153" x2="214" y2="153" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#ah)"/>
+  <line x1="368" y1="153" x2="396" y2="153" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#ah)"/>
+  <line x1="568" y1="153" x2="596" y2="153" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#ah)"/>
+
+  <!-- Goal-met branch: straight arrow from Observe up to the Done pill -->
+  <line x1="687" y1="118" x2="687" y2="89" stroke="#5BA55B" stroke-width="2.5" marker-end="url(#ahg)"/>
+  <text x="699" y="106" font-size="10" font-weight="600" fill="#5BA55B">yes</text>
+
+  <!-- Not-done return loop: Observe down and back to Perceive -->
+  <path d="M 687,186 C 687,250 687,266 560,266 L 240,266 C 105,266 105,250 105,188" fill="none" stroke="#8C8C8C" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#ah)"/>
+  <text x="400" y="282" text-anchor="middle" font-size="11.5" font-weight="600" fill="#8C8C8C">not yet — keep going (the agent repeats on its own)</text>
+
+  <!-- Centre caption -->
+  <text x="400" y="108" text-anchor="middle" font-size="11" fill="#8C8C8C">An agent pursues a goal by running this loop many times, choosing its own next step each round.</text>
+</svg>

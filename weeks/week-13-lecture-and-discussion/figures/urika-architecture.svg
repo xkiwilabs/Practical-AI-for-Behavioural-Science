@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 380" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect width="840" height="380" rx="12" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="28" y="32" font-size="18" font-weight="700" fill="#2D2D2D">Inside Urika: the Experiment Loop</text>
+  <text x="28" y="52" font-size="11.5" fill="#8C8C8C">A deterministic orchestrator calls specialist agents in sequence; they share state through the filesystem.</text>
+
+  <defs>
+    <marker id="u-ah" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#8C8C8C"/>
+    </marker>
+    <marker id="u-ahd" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#A71930"/>
+    </marker>
+    <marker id="u-ahg" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#5BA55B"/>
+    </marker>
+  </defs>
+
+  <!-- Return arrow (next experiment) above the loop -->
+  <path d="M 740,96 C 740,74 740,68 640,68 L 150,68 C 60,68 60,74 60,96" fill="none" stroke="#A71930" stroke-width="2" stroke-dasharray="7,5" marker-end="url(#u-ahd)"/>
+  <text x="400" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#A71930">repeat — next experiment</text>
+
+  <!-- Loop boxes -->
+  <rect x="24" y="98" width="160" height="62" rx="10" fill="#4A90D9"/>
+  <text x="104" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Planning</text>
+  <text x="104" y="145" text-anchor="middle" font-size="10" fill="#EAF2FB">design the method</text>
+
+  <rect x="226" y="98" width="170" height="62" rx="10" fill="#2B8A8A"/>
+  <text x="311" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Task</text>
+  <text x="311" y="145" text-anchor="middle" font-size="10" fill="#E4F1F1">write &amp; run the code</text>
+
+  <rect x="438" y="98" width="160" height="62" rx="10" fill="#7B68A8"/>
+  <text x="518" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Evaluator</text>
+  <text x="518" y="145" text-anchor="middle" font-size="10" fill="#F0ECF6">score the result</text>
+
+  <rect x="640" y="98" width="176" height="62" rx="10" fill="#E8873D"/>
+  <text x="728" y="126" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Advisor</text>
+  <text x="728" y="145" text-anchor="middle" font-size="10" fill="#FDF0E6">decide what to try next</text>
+
+  <!-- Forward arrows -->
+  <line x1="184" y1="129" x2="224" y2="129" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#u-ah)"/>
+  <line x1="396" y1="129" x2="436" y2="129" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#u-ah)"/>
+  <line x1="598" y1="129" x2="638" y2="129" stroke="#8C8C8C" stroke-width="2.5" marker-end="url(#u-ah)"/>
+
+  <!-- Filesystem rail -->
+  <rect x="24" y="226" width="600" height="44" rx="10" fill="#fff" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="324" y="248" text-anchor="middle" font-size="11.5" font-weight="600" fill="#5A5A5A">Shared filesystem</text>
+  <text x="324" y="263" text-anchor="middle" font-size="10" fill="#8C8C8C">progress.json · methods.json · suggestions/ — agents read &amp; write</text>
+
+  <!-- Agents read/write the filesystem -->
+  <line x1="104" y1="160" x2="104" y2="224" stroke="#8C8C8C" stroke-width="1.6" marker-end="url(#u-ah)"/>
+  <line x1="311" y1="160" x2="311" y2="224" stroke="#8C8C8C" stroke-width="1.6" marker-end="url(#u-ah)"/>
+  <line x1="518" y1="160" x2="518" y2="224" stroke="#8C8C8C" stroke-width="1.6" marker-end="url(#u-ah)"/>
+
+  <!-- Outputs -->
+  <rect x="656" y="222" width="160" height="52" rx="10" fill="#5BA55B"/>
+  <text x="736" y="245" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Outputs</text>
+  <text x="736" y="262" text-anchor="middle" font-size="9.5" fill="#EAF5EA">labbook · report · slides</text>
+  <line x1="728" y1="160" x2="730" y2="220" stroke="#5BA55B" stroke-width="2" marker-end="url(#u-ahg)"/>
+
+  <!-- Helper note -->
+  <text x="28" y="300" font-size="10.5" fill="#8C8C8C">Helper agents join on demand: <tspan font-weight="700" fill="#5A5A5A">Literature</tspan> (find papers), <tspan font-weight="700" fill="#5A5A5A">Tool Builder</tspan> (make a custom tool), <tspan font-weight="700" fill="#5A5A5A">Report</tspan> &amp; <tspan font-weight="700" fill="#5A5A5A">Presentation</tspan> (write it up).</text>
+  <text x="28" y="320" font-size="10.5" fill="#8C8C8C">Twelve specialised agents in all — each with one job and its own read/write permissions.</text>
+</svg>

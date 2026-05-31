@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 330" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <rect width="820" height="330" rx="12" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="28" y="34" font-size="18" font-weight="700" fill="#2D2D2D">A Multi-Agent System</text>
+
+  <defs>
+    <marker id="m-ah" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#8C8C8C"/>
+    </marker>
+    <marker id="m-ah2" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="9 0, 0 3.5, 9 7" fill="#8C8C8C"/>
+    </marker>
+    <marker id="m-ahg" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#5BA55B"/>
+    </marker>
+  </defs>
+
+  <!-- Orchestrator -->
+  <rect x="180" y="50" width="210" height="58" rx="10" fill="#A71930"/>
+  <text x="285" y="76" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Orchestrator</text>
+  <text x="285" y="94" text-anchor="middle" font-size="10.5" fill="#F6E3E7">plans · delegates · reviews</text>
+
+  <!-- Outputs -->
+  <rect x="470" y="50" width="320" height="58" rx="10" fill="#5BA55B"/>
+  <text x="630" y="76" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Outputs</text>
+  <text x="630" y="94" text-anchor="middle" font-size="10.5" fill="#EAF5EA">labbook · report · figures · slides</text>
+  <line x1="390" y1="79" x2="468" y2="79" stroke="#5BA55B" stroke-width="2.5" marker-end="url(#m-ahg)"/>
+
+  <!-- Specialist agents -->
+  <rect x="24" y="160" width="165" height="64" rx="10" fill="#4A90D9"/>
+  <text x="106" y="188" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Planner</text>
+  <text x="106" y="206" text-anchor="middle" font-size="10" fill="#EAF2FB">breaks down the task</text>
+
+  <rect x="216" y="160" width="165" height="64" rx="10" fill="#2B8A8A"/>
+  <text x="298" y="188" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Analyst</text>
+  <text x="298" y="206" text-anchor="middle" font-size="10" fill="#E4F1F1">runs the analysis</text>
+
+  <rect x="408" y="160" width="165" height="64" rx="10" fill="#7B68A8"/>
+  <text x="490" y="188" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Critic</text>
+  <text x="490" y="206" text-anchor="middle" font-size="10" fill="#F0ECF6">checks the work</text>
+
+  <rect x="600" y="160" width="176" height="64" rx="10" fill="#E8873D"/>
+  <text x="688" y="188" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Literature</text>
+  <text x="688" y="206" text-anchor="middle" font-size="10" fill="#FDF0E6">finds relevant papers</text>
+
+  <!-- Fan-out arrows (orchestrator delegates, agents report back) -->
+  <line x1="265" y1="108" x2="120" y2="158" stroke="#8C8C8C" stroke-width="2" marker-end="url(#m-ah)" marker-start="url(#m-ah2)"/>
+  <line x1="280" y1="108" x2="300" y2="158" stroke="#8C8C8C" stroke-width="2" marker-end="url(#m-ah)" marker-start="url(#m-ah2)"/>
+  <line x1="300" y1="108" x2="478" y2="158" stroke="#8C8C8C" stroke-width="2" marker-end="url(#m-ah)" marker-start="url(#m-ah2)"/>
+  <line x1="320" y1="108" x2="660" y2="158" stroke="#8C8C8C" stroke-width="2" marker-end="url(#m-ah)" marker-start="url(#m-ah2)"/>
+
+  <!-- Tools & data rail -->
+  <rect x="24" y="262" width="752" height="44" rx="10" fill="#fff" stroke="#8C8C8C" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="400" y="289" text-anchor="middle" font-size="12" font-weight="600" fill="#5A5A5A">Shared tools &amp; data — run code · search literature · read/write files · call APIs</text>
+
+  <!-- Specialists reach into tools -->
+  <line x1="106" y1="224" x2="106" y2="260" stroke="#8C8C8C" stroke-width="1.8" marker-end="url(#m-ah)"/>
+  <line x1="298" y1="224" x2="298" y2="260" stroke="#8C8C8C" stroke-width="1.8" marker-end="url(#m-ah)"/>
+  <line x1="490" y1="224" x2="490" y2="260" stroke="#8C8C8C" stroke-width="1.8" marker-end="url(#m-ah)"/>
+  <line x1="688" y1="224" x2="688" y2="260" stroke="#8C8C8C" stroke-width="1.8" marker-end="url(#m-ah)"/>
+</svg>

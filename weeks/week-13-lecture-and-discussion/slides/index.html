@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 13: Agents, Ethics &amp; Looking Back — PSYC4411</title>
+
+  <!-- reveal.js core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+
+  <!-- MQ custom theme -->
+  <link rel="stylesheet" href="css/mq-theme.css">
+
+  <!-- Week 13 specific styles -->
+  <style>
+    .w13-arc { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+    .w13-arc .step {
+      background: #fff; border: 2px solid #E0E0E0; border-radius: 10px;
+      padding: 10px 14px; font-size: 0.6em; line-height: 1.3; flex: 1; min-width: 120px;
+    }
+    .w13-arc .step strong { color: var(--mq-charcoal); }
+    .w13-arc .step span { color: var(--mq-grey); display: block; }
+    .w13-arc .arrow { align-self: center; color: var(--mq-grey); font-weight: 700; font-size: 0.9em; }
+
+    .w13-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .w13-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .w13-card {
+      background: #fff; border: 1px solid #E0E0E0; border-radius: 12px;
+      padding: 14px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .w13-card h4 { margin: 0 0 4px; text-transform: none; letter-spacing: 0; font-size: 0.86em; color: var(--mq-charcoal); }
+    .w13-card p { margin: 0; font-size: 0.68em; color: var(--mq-grey); line-height: 1.35; }
+
+    .fig-center { text-align: center; }
+    .fig-center img { max-width: 90%; max-height: 430px; }
+
+    .survey-cta {
+      display: flex; gap: 40px; align-items: center; justify-content: center; margin-top: 10px;
+    }
+    .qr-box {
+      width: 200px; height: 200px; border: 3px dashed var(--mq-grey); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: var(--mq-grey); font-size: 0.6em; padding: 10px;
+    }
+    .survey-link {
+      display: inline-block; background: var(--mq-red); color: #fff; font-weight: 700;
+      padding: 0.4em 1em; border-radius: 8px; font-size: 0.8em; text-decoration: none;
+    }
+    /* On dark/colour section dividers, keep the icon and bold text light */
+    .reveal .section-divider .section-icon { color: rgba(255,255,255,0.92); }
+    .reveal .section-divider strong { color: #fff; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ============================================================ SLIDE 1: Title ============================================================ -->
+<section class="title-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #A71930 100%)">
+  <div class="course-code">PSYC4411</div>
+  <h1>Agents, Ethics &amp; Looking Back</h1>
+  <h2>From using AI to directing it &mdash; and the responsibilities that come with it</h2>
+  <div class="spacer-lg"></div>
+  <p class="subtitle">Week 13 &middot; Final Session &middot; Semester 1, 2026</p>
+</section>
+
+<!-- ============================================================ SLIDE 2: Today's Plan ============================================================ -->
+<section>
+  <h2>Today&rsquo;s Plan</h2>
+  <div class="spacer"></div>
+  <p style="color: var(--mq-grey);">Two hours, two halves.</p>
+  <div class="spacer"></div>
+  <ol>
+    <li><strong>A quick look back</strong> &mdash; the thirteen-week arc and the skills you actually built</li>
+    <li><strong>AI agents</strong> &mdash; how they work, and how they can help your research</li>
+    <li><strong>The ethics of modern AI</strong> &mdash; in research, in education, and in society</li>
+    <li><strong>Open discussion</strong> &mdash; the second hour is yours: what worked, what didn&rsquo;t, plus the post-class survey</li>
+  </ol>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>The first hour is a lecture. The <strong>second hour is a conversation</strong> &mdash; we genuinely want your honest take on this course.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 3: Recap divider ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #4A4A4A 0%, #2D2D2D 100%)">
+  <div class="section-icon"><i class="ph-bold ph-path"></i></div>
+  <h2>Where We&rsquo;ve Been</h2>
+  <p>Thirteen weeks in one breath</p>
+</section>
+
+<!-- ============================================================ SLIDE 4: The arc ============================================================ -->
+<section>
+  <h2>The Journey</h2>
+  <div class="spacer"></div>
+  <div class="w13-arc">
+    <div class="step"><strong>Foundations</strong><span>W1 &middot; the ML mindset; prediction vs explanation</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step"><strong>Regression</strong><span>W2&ndash;4 &middot; exploring data, predicting a number</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step"><strong>Classification</strong><span>W5&ndash;6 &middot; logistic regression, trees, forests</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step"><strong>Structure</strong><span>W7&ndash;8 &middot; clustering &amp; dimensionality reduction</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step"><strong>Neural nets</strong><span>W9&ndash;10 &middot; how networks learn; PyTorch</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step"><strong>Embeddings &amp; LLMs</strong><span>W11 &middot; meaning in vectors</span></div>
+    <div class="arrow">&rarr;</div>
+    <div class="step"><strong>Viva</strong><span>W12 &middot; defending what you did</span></div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="key-insight">
+    <p>Through every week, one constant: <strong>AI as a collaborator you direct and check</strong> &mdash; not an oracle you trust blindly.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 5: Meta-skills ============================================================ -->
+<section>
+  <h2>The Skills That Outlast the Tools</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">The LLM Problem-Solving Loop</h4>
+        <p style="font-size: 0.74em;"><strong>Outer:</strong> Plan &rarr; Execute &rarr; Evaluate &rarr; Document</p>
+        <p style="font-size: 0.74em;"><strong>Inner:</strong> Engineer &rarr; Plan &rarr; Generate &rarr; Verify &rarr; Refine</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Two core crafts</h4>
+        <p style="font-size: 0.74em;"><strong>Prompt engineering</strong> &mdash; asking clearly enough to get useful output</p>
+        <p style="font-size: 0.74em;"><strong>Context engineering</strong> &mdash; giving the model the right information to work with</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>The specific models will change &mdash; probably within months. The <strong>loop is what lasts</strong>: plan, generate, and above all <strong>verify</strong>.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 5b: The AI skills you built ============================================================ -->
+<section>
+  <h2>The AI Skills You Built</h2>
+  <div class="spacer"></div>
+  <p style="color: var(--mq-grey);">Most weeks added a new way of working with AI &mdash; a ladder you&rsquo;ve been climbing all semester:</p>
+  <div class="spacer"></div>
+  <table style="font-size: 0.82em; width: 94%;">
+    <tr><th>Week</th><th>Skill</th><th>Core idea</th></tr>
+    <tr><td>2</td><td>Prompting</td><td>Give the AI enough context to write good code</td></tr>
+    <tr><td>4</td><td>Debugging</td><td>Share the full error context, not just the message</td></tr>
+    <tr><td>6</td><td>Refactoring</td><td>Make working code cleaner and easier to read</td></tr>
+    <tr><td>8</td><td>Documentation</td><td>Write clear methods descriptions for your analysis</td></tr>
+    <tr><td>10</td><td>Complex debugging</td><td>Diagnose silent failures from behaviour, not errors</td></tr>
+    <tr style="background: rgba(167,25,48,0.08);"><td><strong>13</strong></td><td><strong>Directing agents</strong></td><td><strong>Set the goal, supervise the loop, and verify the output</strong></td></tr>
+  </table>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>Today&rsquo;s capstone skill: <strong>directing and verifying autonomous agents</strong> &mdash; the natural next step once the AI can act on its own.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 6: From using to directing ============================================================ -->
+<section>
+  <h2>From <em>Using</em> AI to <em>Directing</em> It</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">So far &mdash; single steps</h4>
+        <p style="font-size: 0.78em;">You write a prompt</p>
+        <p style="font-size: 0.78em;">It returns code or an answer</p>
+        <p style="font-size: 0.78em;">You run it and check the result</p>
+        <p style="font-size: 0.78em;">You decide the next step yourself</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Today &mdash; agents</h4>
+        <p style="font-size: 0.78em;">You give a <strong>goal</strong></p>
+        <p style="font-size: 0.78em;">The system plans the steps</p>
+        <p style="font-size: 0.78em;">It acts, checks, and <strong>repeats on its own</strong></p>
+        <p style="font-size: 0.78em;">You <strong>supervise</strong> rather than drive each step</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 7: Agents divider ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #4A90D9 0%, #2A6AB8 100%)">
+  <div class="section-icon"><i class="ph-bold ph-robot"></i></div>
+  <h2>AI Agents: From Answering to Acting</h2>
+  <p>What happens when AI can take steps on its own</p>
+</section>
+
+<!-- ============================================================ SLIDE 8: What is an agent ============================================================ -->
+<section>
+  <h2>What Is an Agent?</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="color: var(--mq-grey); text-transform: none; letter-spacing: 0;">A chatbot</h4>
+        <p style="font-size: 0.8em;">You ask &rarr; it answers &rarr; done. <strong>One turn.</strong></p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">An agent</h4>
+        <p style="font-size: 0.8em;">You give a goal &rarr; it plans, acts, and checks &rarr; over <strong>many turns</strong>, until the goal is met.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="key-insight">
+    <p>An agent is just <strong>a language model + tools + a loop + memory</strong>, pointed at a goal. Nothing magic &mdash; but the loop changes what&rsquo;s possible.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 9: The agent loop (figure) ============================================================ -->
+<section>
+  <h2>The Agent Loop</h2>
+  <div class="spacer"></div>
+  <div class="fig-center">
+    <img src="../figures/agent-loop.svg" alt="The agent loop: Perceive, Plan, Act, Observe, repeating until the goal is met">
+  </div>
+  <div class="spacer"></div>
+  <p style="font-size: 0.82em; text-align: center; color: var(--mq-grey);">The same loop you have been running by hand &mdash; the agent now runs it for itself, deciding each next step.</p>
+</section>
+
+<!-- ============================================================ SLIDE 10: Tools ============================================================ -->
+<section>
+  <h2>Tools: How an Agent <em>Acts</em></h2>
+  <div class="spacer"></div>
+  <p>On its own, a language model can only produce text. <strong>Tools</strong> let it actually do things:</p>
+  <div class="spacer"></div>
+  <ul>
+    <li><strong>Search</strong> the web or a literature database</li>
+    <li><strong>Run code</strong> &mdash; clean data, fit a model, make a plot</li>
+    <li><strong>Read and write files</strong> &mdash; datasets, notes, a draft report</li>
+    <li><strong>Call other software</strong> through APIs (e.g.&nbsp;a survey platform, a stats package)</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>Without tools, an agent can only <em>talk</em>. With tools, it can <strong>investigate, compute, and produce</strong> &mdash; and then read back what happened.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 11: Memory & context ============================================================ -->
+<section>
+  <h2>Memory &amp; Context</h2>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col">
+      <div class="info-box">
+        <h4 style="color: var(--mq-blue); text-transform: none; letter-spacing: 0;">Short-term</h4>
+        <p style="font-size: 0.78em;">The <strong>context window</strong> &mdash; what the model can &ldquo;see&rdquo; right now. Limited, like working memory.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="highlight-box">
+        <h4 style="color: var(--mq-red); text-transform: none; letter-spacing: 0;">Long-term</h4>
+        <p style="font-size: 0.78em;">Notes, files, or a database the agent can <strong>write to and re-read later</strong> &mdash; so it doesn&rsquo;t forget across many steps.</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>This is <strong>context engineering</strong> again (Weeks 1 &amp; 11) &mdash; now the agent manages its own context as it works.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 12: Multi-agent (figure) ============================================================ -->
+<section>
+  <h2>Many Agents, One Job</h2>
+  <div class="spacer"></div>
+  <div class="fig-center">
+    <img src="../figures/multi-agent.svg" alt="A multi-agent system: an orchestrator delegating to planner, analyst, critic and literature agents over shared tools">
+  </div>
+  <div class="spacer"></div>
+  <p style="font-size: 0.82em; text-align: center; color: var(--mq-grey);">Split a big task across specialists &mdash; and let a <strong>critic</strong> agent check the work. It mirrors how a research team divides labour.</p>
+</section>
+
+<!-- ============================================================ SLIDE 13: Agents for research ============================================================ -->
+<section>
+  <h2>Agents for Behavioural Research</h2>
+  <div class="spacer"></div>
+  <div class="w13-grid">
+    <div class="w13-card"><h4><i class="ph-bold ph-books"></i> Literature review</h4><p>Search, screen, and synthesise papers into a cited summary you then check.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-broom"></i> Data &amp; analysis pipelines</h4><p>Clean a messy dataset, fit several models, and compare them &mdash; end to end.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-chart-line-up"></i> Model sweeps</h4><p>Automate the &ldquo;beat the baseline&rdquo; search across many model variants.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-file-text"></i> Drafting outputs</h4><p>Generate figures, tables, and first-draft methods sections for you to revise.</p></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>Some teams even use agents to <strong>simulate participants</strong> for piloting a design &mdash; useful, but treat it with real caution (it is not data about real people).</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 14: Mini worked example ============================================================ -->
+<section>
+  <h2>A Mini Example: &ldquo;Analyse This and Write It Up&rdquo;</h2>
+  <div class="spacer"></div>
+  <p>You hand an agent a dataset and a research question. It might:</p>
+  <div class="spacer"></div>
+  <ol style="font-size: 0.92em;">
+    <li>Plan the analysis</li>
+    <li>Search the literature for relevant methods and findings</li>
+    <li>Clean the data and check assumptions</li>
+    <li>Fit several models and compare them</li>
+    <li>Evaluate honestly &mdash; on held-out data</li>
+    <li>Draft a report with figures and a methods section</li>
+  </ol>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>&hellip;with a <strong>human checkpoint</strong> before anything is trusted. The agent does the legwork; <strong>you remain the scientist</strong>.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 15: Urika 1 ============================================================ -->
+<section>
+  <h2>Urika: Agents for Science (Open Source)</h2>
+  <div class="spacer"></div>
+  <div class="fig-center"><img src="../figures/urika-header.svg" alt="Urika — multi-agent scientific analysis platform" style="max-width: 64%; max-height: 180px; border-radius: 8px;"></div>
+  <div class="spacer"></div>
+  <p><strong>Urika</strong> is a multi-agent scientific analysis platform &mdash; from our own lab (<code>xkiwilabs/Urika</code>).</p>
+  <div class="spacer"></div>
+  <ul style="font-size: 0.88em;">
+    <li>Creates experiments, tries different methods, and <strong>evaluates the results</strong></li>
+    <li>Searches the relevant literature and <strong>builds custom tools</strong> when it needs them</li>
+    <li>Documents everything automatically &mdash; <strong>labbooks, reports, key findings, and slide decks</strong></li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>It is exactly the <strong>loop</strong> and the <strong>multi-agent</strong> ideas from the last few slides, made real for research.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 16: Urika architecture ============================================================ -->
+<section>
+  <h2>Inside Urika</h2>
+  <div class="spacer"></div>
+  <div class="fig-center"><img src="../figures/urika-architecture.svg" alt="Urika's experiment loop: a deterministic orchestrator calls Planning, Task, Evaluator and Advisor agents that share state through the filesystem" style="max-width: 92%; max-height: 440px;"></div>
+  <div class="spacer"></div>
+  <p style="font-size: 0.8em; text-align: center; color: var(--mq-grey);">The same loop you learned &mdash; planning, acting, evaluating, deciding what&rsquo;s next &mdash; run by a team of specialist agents.</p>
+</section>
+
+<!-- ============================================================ SLIDE 17: Urika 2 ============================================================ -->
+<section>
+  <h2>Urika, in Practice</h2>
+  <div class="spacer"></div>
+  <p style="font-size: 0.9em;">Three interfaces over the same project &mdash; a <strong>CLI</strong> for scripts and batch jobs, plus:</p>
+  <div class="spacer"></div>
+  <div class="two-col">
+    <div class="col" style="text-align: center;">
+      <img src="../figures/urika-tui.png" alt="Urika terminal UI showing projects and orchestrator chat" style="max-height: 380px; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.18);">
+      <p style="font-size: 0.72em; color: var(--mq-grey); margin-top: 8px;"><strong>TUI</strong> &mdash; chat with the orchestrator &amp; watch a run live</p>
+    </div>
+    <div class="col" style="text-align: center;">
+      <img src="../figures/urika-dashboard.png" alt="Urika browser dashboard showing an experiment live log" style="max-height: 380px; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.18);">
+      <p style="font-size: 0.72em; color: var(--mq-grey); margin-top: 8px;"><strong>Dashboard</strong> &mdash; monitor long runs &amp; share results in a browser</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p style="font-size: 0.72em; color: var(--mq-grey); text-align: center;">Cross-platform · runs on <strong>local, private models</strong> via Ollama · <span class="tag tag-orange">early development</span> · <code>github.com/xkiwilabs/Urika</code></p>
+</section>
+
+<!-- ============================================================ SLIDE 17: Open-source landscape ============================================================ -->
+<section>
+  <h2>Other Open-Source Options</h2>
+  <div class="spacer"></div>
+  <div class="w13-grid">
+    <div class="w13-card"><h4><i class="ph-bold ph-magnifying-glass"></i> GPT-Researcher</h4><p>Autonomous web &amp; literature research that returns a cited report.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-code"></i> OpenHands</h4><p>An autonomous coding agent &mdash; writes and runs code to complete a task.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-cube"></i> smolagents</h4><p>A lightweight Hugging Face framework for building your own simple agents.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-flask"></i> Urika</h4><p>Multi-agent science &mdash; the research-focused option we just saw.</p></div>
+  </div>
+  <div class="spacer"></div>
+  <p style="font-size: 0.8em; text-align: center; color: var(--mq-grey);">Most are free and open &mdash; you can try them today. Start small, and always keep a human in the loop.</p>
+</section>
+
+<!-- ============================================================ SLIDE 18: Reality check ============================================================ -->
+<section>
+  <h2>A Reality Check</h2>
+  <div class="spacer"></div>
+  <p>Agents are powerful. They are also <strong>fallible in ways that matter</strong>:</p>
+  <div class="spacer"></div>
+  <ul>
+    <li>They <strong>hallucinate</strong> &mdash; including confident, fake citations</li>
+    <li>Small errors <strong>compound</strong> across many autonomous steps</li>
+    <li>They cost real <strong>money, time, and compute</strong></li>
+    <li>They can act on a misunderstanding faster than you can catch it</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>The more autonomy you give, the <strong>more important the Verify step becomes</strong> &mdash; not less. A human stays accountable for the result.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 19: Think About It (agents) ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>Picture a research task of <strong>your own</strong>.</p>
+  <div class="spacer"></div>
+  <p>Which part would you happily hand to an agent &mdash; and which part would you <strong>never</strong> hand over, no matter how good it got?</p>
+</section>
+
+<!-- ============================================================ SLIDE 20: Ethics divider ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #A71930 0%, #8B1428 100%)">
+  <div class="section-icon"><i class="ph-bold ph-scales"></i></div>
+  <h2>The Harder Questions</h2>
+  <p>The ethics of modern AI</p>
+</section>
+
+<!-- ============================================================ SLIDE 21: Framing ============================================================ -->
+<section>
+  <h2>Three Arenas</h2>
+  <div class="spacer"></div>
+  <div class="w13-grid three">
+    <div class="w13-card"><h4><i class="ph-bold ph-flask"></i> Research</h4><p>Integrity, authorship, privacy, reproducibility.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-student"></i> Education</h4><p>Learning vs offloading; fairness of access.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-globe-hemisphere-west"></i> Society</h4><p>Bias, labour, environment, power, truth.</p></div>
+  </div>
+  <div class="spacer-lg"></div>
+  <div class="key-insight">
+    <p>The through-line for all three: <strong>capability is not the same as permission</strong>. Just because AI <em>can</em> doesn&rsquo;t mean you <em>should</em>.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 22: Research integrity 1 ============================================================ -->
+<section>
+  <h2>Research Integrity (1): Honesty</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li><strong>Authorship &amp; accountability</strong> &mdash; AI is a tool, not an author. <em>You</em> sign off on the work and are responsible for it.</li>
+    <li><strong>Transparency</strong> &mdash; disclose how you used AI. This course models that: every commit carries a <code>Co-Authored-By</code> line.</li>
+    <li><strong>Hallucinated citations</strong> &mdash; AI invents plausible-looking references. Every citation must be checked against the real source.</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>A fabricated reference in your thesis is still <strong>your</strong> fabricated reference &mdash; &ldquo;the AI wrote it&rdquo; is not a defence.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 23: Research integrity 2 ============================================================ -->
+<section>
+  <h2>Research Integrity (2): Data &amp; Reproducibility</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li><strong>Data privacy</strong> &mdash; never paste participant data into a cloud model without consent and ethics approval. For sensitive data, use <strong>local/private models</strong>.</li>
+    <li><strong>Reproducibility</strong> &mdash; prompts, model versions, and random seeds all drift over time. Record them, or your &ldquo;method&rdquo; can&rsquo;t be repeated.</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>&ldquo;I asked ChatGPT&rdquo; is not a method. <strong>Which model, which version, what prompt, what data</strong> &mdash; that is a method.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 24: Agentic p-hacking ============================================================ -->
+<section>
+  <h2>Agentic p-Hacking</h2>
+  <div class="spacer"></div>
+  <p>An agent can run <strong>thousands of analyses</strong> while you sleep &mdash; the garden of forking paths (Week 3) on fast-forward.</p>
+  <div class="fig-center"><img src="../figures/forking-paths.svg" alt="One dataset branches into many analysis choices; most are non-significant, but one subgroup analysis crosses p < .05 by chance" style="max-width: 78%; max-height: 320px;"></div>
+  <div class="key-insight">
+    <p>So automation makes <strong>pre-registration and held-out test sets matter <em>more</em>, not less</strong>. Decide your analysis <em>before</em> you let the agent loose.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 25: Education ============================================================ -->
+<section>
+  <h2>Education: Learning vs Offloading</h2>
+  <div class="spacer"></div>
+  <ul>
+    <li><strong>Productive struggle</strong> &mdash; if AI does all the thinking, you don&rsquo;t build the understanding. The hard part is often where the learning lives.</li>
+    <li><strong>Academic integrity</strong> &mdash; using AI to <em>learn</em> differs from using it to <em>fake</em> learning.</li>
+    <li><strong>Equity of access</strong> &mdash; the best tools cost money. Who gets left behind?</li>
+    <li><strong>Augment, don&rsquo;t atrophy</strong> &mdash; keep the judgment; let AI take the busywork.</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="highlight-box">
+    <p>This course&rsquo;s bet: learn <strong>with</strong> AI from day one, while keeping the judgment to know when it&rsquo;s wrong.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 26: Society ============================================================ -->
+<section>
+  <h2>Society: The Wider Picture</h2>
+  <div class="spacer"></div>
+  <div class="w13-grid">
+    <div class="w13-card"><h4><i class="ph-bold ph-scales"></i> Bias &amp; fairness</h4><p>Models learn our biases from data (Week 5) &mdash; and can scale them up.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-briefcase"></i> Labour</h4><p>Which jobs change, which disappear, and who decides?</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-leaf"></i> Environment</h4><p>Training and running large models uses real energy and water.</p></div>
+    <div class="w13-card"><h4><i class="ph-bold ph-warning"></i> Truth &amp; power</h4><p>Misinformation, deepfakes, and a few firms holding the capability.</p></div>
+  </div>
+  <div class="spacer"></div>
+  <p style="font-size: 0.78em; text-align: center; color: var(--mq-grey);">As researchers, you will help shape how these tools are used &mdash; and studied.</p>
+</section>
+
+<!-- ============================================================ SLIDE 27: Responsible AI checklist ============================================================ -->
+<section>
+  <h2>Responsible AI for Research: A Checklist</h2>
+  <div class="spacer"></div>
+  <ul style="font-size: 0.92em;">
+    <li><i class="ph-bold ph-check-circle" style="color: var(--mq-green);"></i> <strong>Disclose</strong> how you used AI</li>
+    <li><i class="ph-bold ph-check-circle" style="color: var(--mq-green);"></i> <strong>Verify</strong> every claim and every citation</li>
+    <li><i class="ph-bold ph-check-circle" style="color: var(--mq-green);"></i> <strong>Protect</strong> participant data &mdash; consent, ethics, private models</li>
+    <li><i class="ph-bold ph-check-circle" style="color: var(--mq-green);"></i> Keep a <strong>human accountable</strong> for the result</li>
+    <li><i class="ph-bold ph-check-circle" style="color: var(--mq-green);"></i> <strong>Pre-register</strong> the analysis you intend to run</li>
+    <li><i class="ph-bold ph-check-circle" style="color: var(--mq-green);"></i> <strong>Record</strong> the model, version, and prompts</li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="key-insight">
+    <p>None of this is new ethics &mdash; it&rsquo;s <strong>good science</strong>, applied honestly to a powerful new tool.</p>
+  </div>
+</section>
+
+<!-- ============================================================ SLIDE 28: Think About It (ethics) ============================================================ -->
+<section class="think-slide" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 100%)">
+  <h2><i class="ph-bold ph-chat-teardrop-text"></i> Think About It</h2>
+  <div class="spacer-lg"></div>
+  <p>Where is <strong>your</strong> line?</p>
+  <div class="spacer"></div>
+  <p>What use of AI in research feels clearly fine to you &mdash; and what feels clearly over the line? What sits uncomfortably in between?</p>
+  <div class="spacer"></div>
+  <p style="font-size: 0.8em; color: rgba(255,255,255,0.6);">Hold that thought &mdash; it&rsquo;s where our discussion begins.</p>
+</section>
+
+<!-- ============================================================ SLIDE 29: Discussion divider ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #C8972C 0%, #A67B1E 100%)">
+  <div class="section-icon"><i class="ph-bold ph-chats-circle"></i></div>
+  <h2>Your Turn</h2>
+  <p>An open conversation with the teaching team &amp; guests</p>
+</section>
+
+<!-- ============================================================ SLIDE 30: Discussion prompts ============================================================ -->
+<section>
+  <h2>How Did This Go?</h2>
+  <div class="spacer"></div>
+  <p style="color: var(--mq-grey);">No right answers &mdash; we want the honest version.</p>
+  <div class="spacer"></div>
+  <ul>
+    <li>What <strong>worked</strong> for you this semester &mdash; and what <strong>didn&rsquo;t</strong>?</li>
+    <li>What <strong>surprised</strong> you about learning to use AI for research?</li>
+    <li>The <strong>LLM-assisted format</strong> &mdash; did it help your learning, or get in the way?</li>
+    <li>Has your <strong>confidence</strong> with data and AI shifted? In which direction?</li>
+    <li>What would you <strong>change</strong> for next year&rsquo;s cohort?</li>
+  </ul>
+</section>
+
+<!-- ============================================================ SLIDE 31: Survey CTA ============================================================ -->
+<section>
+  <h2>Post-Class Survey</h2>
+  <div class="spacer"></div>
+  <p style="text-align: center;">Your feedback directly shapes next year&rsquo;s course. Please take a few minutes now.</p>
+  <div class="spacer"></div>
+  <div class="survey-cta">
+    <a class="survey-link" href="https://mqedu.qualtrics.com/jfe/form/SV_83047akpZ0xSTYy">Open the survey</a>
+    <img src="../figures/survey-qr.svg" alt="QR code linking to the post-class survey" style="width: 200px; height: 200px;">
+  </div>
+  <div class="spacer"></div>
+  <p style="font-size: 0.74em; text-align: center; color: var(--mq-grey);">Anonymous &middot; takes about 5 minutes &middot; <code>mqedu.qualtrics.com/jfe/form/SV_83047akpZ0xSTYy</code></p>
+</section>
+
+<!-- ============================================================ SLIDE 31b: MQ Student Life Survey ============================================================ -->
+<section>
+  <h2>And One More: The MQ Student Life Survey</h2>
+  <div class="spacer"></div>
+  <p style="text-align: center; font-size: 0.9em;">While you&rsquo;re at it &mdash; Macquarie&rsquo;s university-wide student survey. Scan the QR code on the flyer to take part.</p>
+  <div class="spacer"></div>
+  <div class="fig-center"><img src="../figures/mq-student-life-survey.png" alt="Macquarie University Student Life Survey flyer — open until 31 May 2026, with a QR code" style="max-width: 70%; max-height: 560px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.18);"></div>
+</section>
+
+<!-- ============================================================ SLIDE 32: Closing ============================================================ -->
+<section class="section-divider" data-background-gradient="linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #A71930 100%)">
+  <div class="section-icon"><i class="ph-bold ph-graduation-cap"></i></div>
+  <h2>Thank You</h2>
+  <p>You came in having (mostly) never written a line of code. You leave as <strong>AI-literate researchers</strong>.</p>
+  <div class="spacer"></div>
+  <p style="font-size: 0.8em; color: rgba(255,255,255,0.75);">Keep running the loop: Plan &rarr; Prompt &rarr; Verify &rarr; Refine &rarr; Document.</p>
+  <div class="spacer"></div>
+  <p style="font-size: 0.7em; color: rgba(255,255,255,0.6);">Course repo &middot; <code>xkiwilabs/Urika</code> &middot; this week&rsquo;s readings</p>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<!-- Fixed UI elements -->
+<a class="back-to-repo" href="../../README.md">&larr; Week 13</a>
+<div class="live-clock" id="clock"></div>
+
+<!-- Navigation bar -->
+<nav class="slide-nav" id="slideNav"></nav>
+
+<!-- reveal.js -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  const deck = new Reveal({
+    hash: true,
+    slideNumber: false,
+    progress: false,
+    controls: true,
+    controlsTutorial: false,
+    transition: 'none',
+    transitionSpeed: 'fast',
+    width: 1920,
+    height: 1080,
+    margin: 0,
+    center: false,
+    maxScale: 1.5,
+    pdfSeparateFragments: false,
+  });
+  deck.initialize();
+
+  /* ---- Slide Nav Bar ---- */
+  function buildNav() {
+    const nav = document.getElementById('slideNav');
+    if (!nav) return;
+    const slides = deck.getSlides();
+    nav.innerHTML = '';
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'slide-nav-pill';
+      btn.textContent = i + 1;
+      btn.addEventListener('click', () => deck.slide(i));
+      nav.appendChild(btn);
+    });
+    updateNav();
+  }
+  function updateNav() {
+    const pills = document.querySelectorAll('.slide-nav-pill');
+    const cur = deck.getState().indexh;
+    pills.forEach((p, i) => {
+      p.classList.toggle('active', i === cur);
+      p.classList.toggle('visited', i < cur);
+    });
+  }
+  deck.on('ready', buildNav);
+  deck.on('slidechanged', updateNav);
+
+  /* ---- Live Clock ---- */
+  function tick() {
+    const el = document.getElementById('clock');
+    if (!el) return;
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit', hour12: false });
+  }
+  tick();
+  setInterval(tick, 30000);
+</script>
+</body>
+</html>
