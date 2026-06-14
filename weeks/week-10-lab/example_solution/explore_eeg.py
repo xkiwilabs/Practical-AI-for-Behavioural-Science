@@ -6,7 +6,7 @@ This script loads and explores the pre-extracted EEG motor imagery features.
 Run this to understand the data before building any models.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     python example_solution/explore_eeg.py
 """
 

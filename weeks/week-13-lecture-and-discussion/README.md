@@ -65,7 +65,7 @@ An open, honest conversation. Some prompts to get us going:
 
 ## Post-class survey
 
-Please complete the short post-class survey — it's anonymous, takes about five minutes, and directly shapes next year's course. *(Link provided in class and on iLearn.)*
+Please complete the short post-class survey — it's anonymous, takes about five minutes, and directly shapes future iterations of the course. *(Link provided in class.)*
 
 ## What you can claim
 

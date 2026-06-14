@@ -28,7 +28,7 @@ This is a worked example of how the Week 10 challenge could be completed. There 
 ## How to Run
 
 ```bash
-conda activate psyc4411-env
+conda activate ai-behsci
 
 # Download the data first (if not already done)
 cd weeks/week-10-lab/data

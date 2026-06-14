@@ -7,7 +7,7 @@ personality, then runs PCA and UMAP to explore the structure of distress.
 Generates scree plot, loadings heatmap, and UMAP visualisation.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-08-lab/example_solution
     python explore_structure.py
 """

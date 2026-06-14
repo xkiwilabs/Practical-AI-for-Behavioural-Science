@@ -61,7 +61,7 @@ Average agreement across 5 random seeds: **99.9%** — the k=2 solution is very 
 ## Running the Code
 
 ```bash
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-08-lab/example_solution
 
 # Script workflow

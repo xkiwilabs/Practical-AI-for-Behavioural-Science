@@ -6,7 +6,7 @@ This script builds and compares a logistic regression baseline with a
 PyTorch neural network (MLP) for EEG motor imagery classification.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     python example_solution/train_classifier.py
 """
 

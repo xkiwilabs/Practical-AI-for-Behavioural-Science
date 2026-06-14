@@ -7,7 +7,7 @@ DASS subscale profiles (8 features), evaluates cluster quality, profiles
 the best solution, and checks stability across random seeds.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-08-lab/example_solution
     python cluster_profiles.py
 
