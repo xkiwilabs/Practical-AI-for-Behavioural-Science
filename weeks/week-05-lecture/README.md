@@ -173,7 +173,7 @@ Next week, you'll build classifiers on real mental health survey data from the B
 
 **Before class, download the data:**
 ```
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-06-lab/data
 python download_data.py
 ```

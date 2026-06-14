@@ -1,6 +1,6 @@
 # Practical AI for Behavioural Science
 
-### PSYC4411: Current Advances in Psychological Methods and Analyses, Macquarie University, Semester 1 2026
+### Machine Learning & AI for Psychological and Cognitive Science — Macquarie University
 
 A hands-on course introducing machine learning and AI tools to psychological and cognitive science research. No coding or technical background required.
 
@@ -60,7 +60,7 @@ If you couldn't get Python/VS Code working on your laptop, use **GitHub Codespac
 
 1. Go to this repository (you're already here)
 2. Click the green **Code** button (top-right) → **Codespaces** → **Create codespace on main**
-3. Wait 2–3 minutes. VS Code opens in your browser with everything ready to go. Click the Python kernel dropdown (top-right) and select **psyc4411** if prompted.
+3. Wait 2–3 minutes. VS Code opens in your browser with everything ready to go. Click the Python kernel dropdown (top-right) and select **AI for Behavioural Science** if prompted.
 
 That's it. You can now:
 - Open Jupyter notebooks (`.ipynb` files)
@@ -89,36 +89,23 @@ Struggled with local setup in Week 2? You're not alone, and there are solutions:
 
 ## Weekly Materials
 
-Materials are released on the Monday of each class week. The dates below show when each topic goes live. By the end of semester, all weeks will be available here.
+The course runs over 13 topics — alternating lecture weeks (with a companion reading and slides) and challenge-lab weeks (with a brief, starter notebook, and dataset).
 
-| Week | Date | Type | Topic | Slides |
-|------|------|------|-------|--------|
-| 1 | 23 Feb | Lecture | [Why ML and AI Belongs in the Cognitive, Psychological and Behavioural Sciences](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
-| 2 | 02 Mar | Lab | [Setup, Plotting, and the LLM Problem-Solving Loop](weeks/week-02-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-02-lab/slides/index.html" target="_blank">Slides</a> |
-| 3 | 09 Mar | Lecture | [Models, Not Magic: Generalisation, Overfitting, and How ML Misleads](weeks/week-03-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-03-lecture/slides/index.html" target="_blank">Slides</a> |
-| 4 | 16 Mar | Lab | [Regression Pipeline, Cross-Validation, and Interpretation](weeks/week-04-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-04-lab/slides/index.html" target="_blank">Slides</a> |
-| 5 | 23 Mar | Lecture | [Prediction with Accountability: Classification, Uncertainty, and Evaluation](weeks/week-05-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-05-lecture/slides/index.html" target="_blank">Slides</a> |
-| 6 | 30 Mar | Lab | [Trees, Ensembles, Feature Importance, and Error Analysis](weeks/week-06-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-06-lab/slides/index.html" target="_blank">Slides</a> |
-| — | 06–19 Apr | Break | Mid-Semester Break | — |
-| 7 | 20 Apr | Lecture | [Discovering Structure: Clustering and Dimensionality Reduction](weeks/week-07-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-07-lecture/slides/index.html" target="_blank">Slides</a> |
-| 8 | 27 Apr | Lab | [PCA/UMAP, Clustering, and Stability Checks](weeks/week-08-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-08-lab/slides/index.html" target="_blank">Slides</a> |
-| 9 | 04 May | Lecture | [Learning Representations: Neural Networks as Psychological Tools](weeks/week-09-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-09-lecture/slides/index.html" target="_blank">Slides</a> |
-| 10 | 11 May | Lab | [Simple Neural Network, Training Diagnostics, and Baseline Comparison](weeks/week-10-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-10-lab/slides/index.html" target="_blank">Slides</a> |
-| 11 | 18 May | Lecture + Lab | [Meaning in Vectors: Embeddings and LLMs for Research Workflows](weeks/week-11-lecture-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-11-lecture-lab/slides/index.html" target="_blank">Slides</a> |
-| 12 | 25 May | Review | [Viva Review: Consolidation, Q&A, and Practice Defenses](weeks/week-12-viva-review/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-12-viva-review/slides/index.html" target="_blank">Slides</a> |
-| 13 | 01 Jun | Discussion | [Limits, Ethics, Reproducibility, and Reasoned Conclusions](weeks/week-13-discussion/) | — |
-
----
-
-## Assessments
-
-| Assessment | Weight | Format | Due |
-|------------|--------|--------|-----|
-| [Paper Presentation](assessments/presentation.md) | 25% | 3-min talk + 1 HTML slide (PDF submission) | Weeks 4, 6, 8, or 10 |
-| [Written Assignment](assessments/written-assignment.md) | 45% | Popular science article + LLM chat history | Sunday 19 Apr, 11:55pm |
-| [Viva Exam](assessments/viva-exam.md) | 30% | 15-min oral exam (3 sections) | Weeks 12–13 |
-
-See the [assessments folder](assessments/) for full details, rubrics, and tips.
+| Week | Type | Topic | Slides |
+|------|------|-------|--------|
+| 1 | Lecture | [Why ML and AI Belongs in the Cognitive, Psychological and Behavioural Sciences](weeks/week-01-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-01-lecture/slides/index.html" target="_blank">Slides</a> |
+| 2 | Lab | [Setup, Plotting, and the LLM Problem-Solving Loop](weeks/week-02-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-02-lab/slides/index.html" target="_blank">Slides</a> |
+| 3 | Lecture | [Models, Not Magic: Generalisation, Overfitting, and How ML Misleads](weeks/week-03-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-03-lecture/slides/index.html" target="_blank">Slides</a> |
+| 4 | Lab | [Regression Pipeline, Cross-Validation, and Interpretation](weeks/week-04-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-04-lab/slides/index.html" target="_blank">Slides</a> |
+| 5 | Lecture | [Prediction with Accountability: Classification, Uncertainty, and Evaluation](weeks/week-05-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-05-lecture/slides/index.html" target="_blank">Slides</a> |
+| 6 | Lab | [Trees, Ensembles, Feature Importance, and Error Analysis](weeks/week-06-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-06-lab/slides/index.html" target="_blank">Slides</a> |
+| 7 | Lecture | [Discovering Structure: Clustering and Dimensionality Reduction](weeks/week-07-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-07-lecture/slides/index.html" target="_blank">Slides</a> |
+| 8 | Lab | [PCA/UMAP, Clustering, and Stability Checks](weeks/week-08-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-08-lab/slides/index.html" target="_blank">Slides</a> |
+| 9 | Lecture | [Learning Representations: Neural Networks as Psychological Tools](weeks/week-09-lecture/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-09-lecture/slides/index.html" target="_blank">Slides</a> |
+| 10 | Lab | [Simple Neural Network, Training Diagnostics, and Baseline Comparison](weeks/week-10-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-10-lab/slides/index.html" target="_blank">Slides</a> |
+| 11 | Lecture + Lab | [Meaning in Vectors: Embeddings and LLMs for Research Workflows](weeks/week-11-lecture-lab/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-11-lecture-lab/slides/index.html" target="_blank">Slides</a> |
+| 12 | Review | [Course Review: Consolidation, Concept Practice, and Q&A](weeks/week-12-viva-review/) | <a href="https://xkiwilabs.github.io/Practical-AI-for-Behavioural-Science/weeks/week-12-viva-review/slides/index.html" target="_blank">Slides</a> |
+| 13 | Discussion | [Limits, Ethics, Reproducibility, and Reasoned Conclusions](weeks/week-13-discussion/) | — |
 
 ---
 
@@ -126,13 +113,13 @@ See the [assessments folder](assessments/) for full details, rubrics, and tips.
 
 Guides and references for tools used in this course, all written for beginners:
 
-- **[AI Tools guide](resources/ai-tools-guide.md)** — Overview of AI tools in 2026: conversational AI, coding assistants, research tools, local models
+- **[AI Tools guide](resources/ai-tools-guide.md)** — Overview of AI tools: conversational AI, coding assistants, research tools, local models
 - **[Prompt Engineering guide](resources/prompt-engineering-guide.md)** — Writing effective prompts: patterns, examples, and common mistakes
 - **[VS Code guide](resources/vscode-guide.md)** — Navigate the interface, install extensions, use the terminal
 - **[Jupyter Notebooks guide](resources/jupyter-guide.md)** — Cells, kernels, execution order, common mistakes
 - **[GitHub guide](resources/github-guide.md)** — Account setup, navigating repos, Student Developer Pack
 - **[Markdown guide](resources/markdown-guide.md)** — Formatting syntax for notebooks and READMEs
-- **[HTML Slides guide](resources/html-slides-guide.md)** — Creating your presentation slide with reveal.js
+- **[HTML Slides guide](resources/html-slides-guide.md)** — Creating slides with reveal.js
 - **[Presentation template](resources/presentation-template/)** — Ready-to-use HTML slide template
 
 See the [resources folder](resources/) for the full list.
@@ -178,7 +165,7 @@ I use LLMs and generative AI tools for virtually all aspects of my work: researc
 
 Here's the thing: using AI tools well is a skill, not a shortcut. It requires critical thinking, domain knowledge, and the ability to evaluate whether what the AI gives you is actually correct. That's what this course teaches. The use of AI should be praised, encouraged, and talked about openly, not hidden or treated as something to be ashamed of. We're all figuring out how to work with these tools, and the students who lean into that process will be better researchers for it.
 
-In that spirit, I include an AI disclosure statement for nearly everything in this repository, and **I expect you to do the same for all work you submit in this course.** Transparency about AI use is not a confession; it's good scientific practice. Below is a template you can adapt for your own assignments and submissions.
+In that spirit, I include an AI disclosure statement for nearly everything in this repository, and **I encourage you to do the same for any work you produce or share.** Transparency about AI use is not a confession; it's good scientific practice. Below is a template you can adapt for your own work.
 
 ### AI Disclosure Template
 
@@ -197,7 +184,7 @@ In that spirit, I include an AI disclosure statement for nearly everything in th
 >
 > **What I verified:** [e.g., "Checked all plot outputs against the raw data, confirmed model accuracy metrics by hand, verified that the references cited by the AI actually exist"]
 
-Use this template (or something similar) for every piece of assessed work you submit. Be specific about what you used and what you checked. The goal isn't to limit your AI use; it's to make you a thoughtful, transparent user of these tools.
+Use this template (or something similar) for any work you produce with AI assistance. Be specific about what you used and what you checked. The goal isn't to limit your AI use; it's to make you a thoughtful, transparent user of these tools.
 
 ### Course Materials Disclosure
 

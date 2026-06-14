@@ -1,6 +1,6 @@
 # Python Packages Glossary
 
-A quick-reference guide to the Python packages you'll use in PSYC4411.
+A quick-reference guide to the Python packages you’ll use in this course.
 
 We've chosen **well-known, well-documented, and widely-used packages** for this course — the same tools used by data scientists and researchers around the world. That means when you ask an AI assistant for help, it will know these packages well and give you reliable answers.
 

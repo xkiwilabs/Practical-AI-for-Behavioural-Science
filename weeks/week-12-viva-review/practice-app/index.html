@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PSYC4411 Viva Practice</title>
+<title>Course Review Practice</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -91,7 +91,7 @@ function sample(arr, n) {
 function byBand(items, band) { return items.filter(x => x.band === band); }
 function fmt(s) { const m = Math.floor(s/60), x = s%60; return `${m}:${x<10?'0':''}${x}`; }
 
-// This run's draw — mirror the real exam mix without showing bands:
+// This run's draw — a balanced mix across difficulty without showing bands:
 // 4 Easy + 4 Medium + 2 Hard terms; 1 Easy + 1 Medium + 1 Hard questions.
 function drawTerms() {
   const t = [...sample(byBand(VIVA_PRACTICE_DATA.terms,"E"),4),
@@ -253,9 +253,9 @@ function welcome() {
     definitions();
   };
   render([
-    h("h1", {text:"Viva Practice"}),
-    h("p", {class:"lead"}, ["A full timed run-through of the three viva sections, just like the real thing. ",
-      h("br"), "Practise out loud — speak your answers as if the examiner were listening."]),
+    h("h1", {text:"Course Review Practice"}),
+    h("p", {class:"lead"}, ["A full timed run-through of the three practice sections — concept definitions, short answers, and a study pitch. ",
+      h("br"), "Practise out loud — speak your answers as if you were explaining them to someone."]),
     h("div", {class:"note"}, [
       h("b", {text:"What happens: "}),
       "10 definitions (about 4 minutes in total), then 3 short-answer questions (15 seconds to read, " +

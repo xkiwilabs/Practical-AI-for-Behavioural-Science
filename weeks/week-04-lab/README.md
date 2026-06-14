@@ -4,7 +4,7 @@
 
 Build regression models to **predict depression scores** from personality traits and demographics using real survey data from nearly 40,000 people. Compare a baseline model, linear regression, Ridge, and Lasso — report cross-validated MAE and R². Then **explain** what the model tells you: which personality traits matter most for predicting depression, and does this match what you'd expect from psychology?
 
-This is a group challenge. You'll work together during class and prepare a 1-slide, ~3-minute presentation for Week 5.
+This is a group challenge. You'll work together and prepare a 1-slide, ~3-minute presentation to share with the class.
 
 ## Background
 
@@ -26,7 +26,7 @@ There are no rules about which AI tools you use for this challenge. Use whatever
 The data is in [`data/dass42_data.csv`](data/dass42_data.csv) — **real survey data** from the OpenPsychometrics project. If the file isn't there yet, run the download script first:
 
 ```bash
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-04-lab/data
 python download_data.py
 ```
@@ -134,11 +134,7 @@ Open [`starter.ipynb`](starter.ipynb) for a scaffolded notebook with imports and
 
 ## What to Present
 
-Prepare **1 HTML slide** summarising your group's solution for the start of Week 5 (~3 min per group). Build it using <a href="https://revealjs.com" target="_blank">reveal.js</a> with the help of any AI tool — a browser chatbot (ChatGPT, Gemini, Claude), VS Code with Copilot, or anything else. A <a href="../../resources/presentation-template/">starter template</a> and <a href="../../resources/html-slides-guide.md">step-by-step guide</a> are provided, but you can design it however you like.
-
-**Submitting your slide:** Put your HTML file, `css/` folder (if used), and any images into a folder named `GroupN_Week4` (e.g., `Group3_Week4`). Zip the folder and have **one group member** email it to **michael.j.richardson@mq.edu.au** with subject line `PSYC4411 Challenge Lab - Group N - Week 4`. **Deadline: 12pm (noon) Monday of Week 5.** No PDF needed for challenge lab presentations.
-
-**Tip:** Test before sending — email the zip to yourself first, download it, unzip it, and open the HTML file in your browser. If it displays as you expect, you're good to send.
+Prepare **1 HTML slide** summarising your group's solution (~3 min per group) to present to the class. Build it using <a href="https://revealjs.com" target="_blank">reveal.js</a> with the help of any AI tool — a browser chatbot (ChatGPT, Gemini, Claude), VS Code with Copilot, or anything else. A <a href="../../resources/presentation-template/">starter template</a> and <a href="../../resources/html-slides-guide.md">step-by-step guide</a> are provided, but you can design it however you like.
 
 Your slide should include:
 

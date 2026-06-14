@@ -1,16 +1,16 @@
-# PSYC4411 Viva — Short-Answer Example Questions
+# Course Review — Short-Answer Example Questions
 
-These are the **9 example short-answer questions** released for your Section 2 practice. They span the major method families covered in the course. Your actual 3 exam questions will be drawn from a separate test pool you do not see in advance — but the test questions cover the same kinds of ML reasoning skills as these examples, so practising on these examples genuinely prepares you for the exam.
+These are **9 example short-answer questions** for self-practice. They span the major method families covered in the course, so working through them is a good way to check you can reason about which method fits a given research scenario.
 
-> **A note on the bar — read this first.** This section is testing your **general understanding** of the methods, **not** PhD-level technical depth. We want to see that you've engaged with the material, can pick a reasonable approach for a given scenario, and can talk through what you'd do and what you'd be cautious about. Reasonable choices, reasonable caveats, in your own words — that's the whole bar. You do not need to memorise formulas, recite every metric, or be perfect. This section is designed to be approachable, not to stress you out.
+> **A note on the bar — read this first.** These questions are about your **general understanding** of the methods, **not** PhD-level technical depth. The aim is to check that you've engaged with the material, can pick a reasonable approach for a given scenario, and can talk through what you'd do and what you'd be cautious about. Reasonable choices, reasonable caveats, in your own words — that's the whole point. You do not need to memorise formulas, recite every metric, or be perfect. This is meant to be approachable, not stressful.
 
 Each entry below shows:
 
-- The **question prompt** as it would appear in the exam.
+- The **question prompt**.
 
-- An **example narrative response** — what a strong ~60-second spoken answer might sound like for an honours student who has just learned these methods. Use it to calibrate **length and structure**; you do not need to memorise the wording, and your own answer should reflect your own thinking. If your answer hits the same main points in your own voice, you're in good shape.
+- An **example narrative response** — what a strong ~60-second spoken answer might sound like for someone who has just learned these methods. Use it to calibrate **length and structure**; you do not need to memorise the wording, and your own answer should reflect your own thinking. If your answer hits the same main points in your own voice, you're in good shape.
 
-**Format:** 30 seconds to plan + up to 60 seconds to answer. Practise out loud, with a timer.
+**Suggested format for self-practice:** give yourself 30 seconds to plan, then up to 60 seconds to answer aloud, with a timer.
 
 **Supporting terminology** is in Part 2 of [`concept-list.md`](concept-list.md) — review it before practising so the vocabulary is comfortable.
 

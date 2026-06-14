@@ -1,16 +1,16 @@
-# PSYC4411 Conda Environment
+# Conda Environment
 # This file defines all the packages needed for the course.
 #
 # To create the environment:
 #   conda env create -f environment.yml
 #
 # To activate it:
-#   conda activate psyc4411
+#   conda activate ai-behsci
 #
 # To update it (if packages are added later):
 #   conda env update -f environment.yml --prune
 
-name: psyc4411
+name: ai-behsci
 channels:
   - defaults
   - conda-forge

@@ -12,7 +12,7 @@ How to use this file:
     2. Review and revise the plan until you're happy with it
     3. Have the AI edit THIS file (or create a new .py file) with the code
     4. Run from the terminal:
-         conda activate psyc4411-env
+         conda activate ai-behsci
          python starter.py
 
 Dataset: Boston College COVID-19 Sleep & Well-Being Study

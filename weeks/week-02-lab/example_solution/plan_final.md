@@ -63,4 +63,4 @@ Splitting exploration and visualisation into separate scripts is a common patter
 ## Tools Used
 
 - pandas, numpy, matplotlib, seaborn
-- Ran with: `conda activate psyc4411-env && python explore_data.py && python visualise_key_variables.py`
+- Ran with: `conda activate ai-behsci && python explore_data.py && python visualise_key_variables.py`

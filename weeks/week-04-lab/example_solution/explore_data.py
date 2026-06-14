@@ -7,7 +7,7 @@ cleaning, scores the DASS subscales and TIPI Big Five, and prints summary
 statistics. Run this first to understand the data before modelling.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-04-lab/example_solution
     python explore_data.py
 """

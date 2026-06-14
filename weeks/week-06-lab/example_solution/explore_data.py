@@ -8,7 +8,7 @@ merges everything, and prints summary statistics. Run this first to
 understand the data before classification.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-06-lab/example_solution
     python explore_data.py
 """

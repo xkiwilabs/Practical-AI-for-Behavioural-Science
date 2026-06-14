@@ -189,7 +189,7 @@ The vocabulary from this week becomes your shared language with the AI. When you
 **Before next class**, please download the Week 4 dataset by running the download script. Open your terminal, activate your environment, and run:
 
 ```
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-04-lab/data
 python download_data.py
 ```

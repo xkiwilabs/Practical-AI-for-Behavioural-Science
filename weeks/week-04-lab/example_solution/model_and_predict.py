@@ -7,7 +7,7 @@ Depression from Big Five personality and demographics. Generates all
 visualisations for the example solution.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-04-lab/example_solution
     python model_and_predict.py
 

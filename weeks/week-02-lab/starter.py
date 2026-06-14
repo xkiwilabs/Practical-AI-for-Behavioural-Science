@@ -11,7 +11,7 @@ How to use this file:
     2. Review and revise the plan until you're happy with it
     3. Have the AI edit THIS file (or create a new .py file) with the code
     4. Run from the terminal:
-         conda activate psyc4411-env
+         conda activate ai-behsci
          python starter.py
 
 Your AI assistant can edit this file directly, create new files alongside it,

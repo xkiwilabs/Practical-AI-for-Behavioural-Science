@@ -8,7 +8,7 @@ GitHub is where the course materials live and where you'll access weekly reading
 
 GitHub is a website for storing, sharing, and collaborating on code and documents. Think of it as Google Drive for code: files are stored online, anyone with access can view them, and changes are tracked over time.
 
-A **repository** (or "repo") is like a project folder. The PSYC4411 course repo contains all your weekly materials, organised into folders.
+A **repository** (or "repo") is like a project folder. The course repo contains all your weekly materials, organised into folders.
 
 You don't need to learn the command-line tool `git` for this course. Everything you need can be done through the GitHub website and VS Code.
 
@@ -53,7 +53,6 @@ The course repo is at: **xkiwilabs/Practical-AI-for-Behavioural-Science**
 | `weeks/week-01-lecture/` | Week 1 companion reading, readings list, slides |
 | `weeks/week-02-lab/` | Week 2 challenge brief, starter notebook, dataset |
 | `setup/` | Getting started guide, setup scripts |
-| `assessments/` | Assessment details: presentation, written assignment, viva |
 | `resources/` | This folder — guides and references |
 
 ### Reading files on GitHub

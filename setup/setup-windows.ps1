@@ -1,5 +1,5 @@
 # ============================================================
-# PSYC4411 Setup Script - Windows (PowerShell)
+# Setup Script - Windows (PowerShell)
 # ============================================================
 # This script creates a conda environment with all the Python
 # packages you need for the course, and registers it as a
@@ -39,7 +39,7 @@ $setupOK = $true
 
 Write-Host ""
 Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host "  PSYC4411 Environment Setup (Windows)"    -ForegroundColor Cyan
+Write-Host "  Environment Setup (Windows)"    -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -74,7 +74,7 @@ Write-Host ""
 
 # -- Step 2: Create (or recreate) the conda environment -----
 
-$envName = "psyc4411"
+$envName = "ai-behsci"
 $skipCreate = $false
 
 # Check if environment already exists
@@ -147,7 +147,7 @@ if ($setupOK -and (-not $skipCreate)) {
 
 if ($setupOK) {
     Write-Host "Step 3: Registering Jupyter kernel (so VS Code can find it)..."
-    conda run -n $envName python -m ipykernel install --user --name=$envName --display-name="PSYC4411" 2>&1
+    conda run -n $envName python -m ipykernel install --user --name=$envName --display-name="AI for Behavioural Science" 2>&1
     if (-not (Assert-ExitCode "kernel registration")) {
         $setupOK = $false
     }
@@ -191,7 +191,7 @@ if ($setupOK) {
     Write-Host "  conda activate $envName"
     Write-Host ""
     Write-Host "Next steps:"
-    Write-Host "  1. Open VS Code and run test-setup.ipynb (select the PSYC4411 kernel)"
+    Write-Host "  1. Open VS Code and run test-setup.ipynb (select the AI for Behavioural Science kernel)"
     Write-Host "  2. In the terminal, run:  conda activate $envName && python test-setup.py"
     Write-Host ""
 } else {

@@ -197,7 +197,7 @@ A CLI is a tool you run in the terminal instead of through a graphical window. T
 
 > **What is `npm`?** It stands for Node Package Manager — a tool for installing JavaScript/Node.js software. If you want to use these CLI tools, you'd need to install [Node.js](https://nodejs.org/) first (which includes `npm`). This is entirely optional for this course.
 
-You don't need any of these tools for PSYC4411. They're here for students who are curious or who already have paid accounts with these providers. See the [AI Tools guide](ai-tools-guide.md) for a full overview.
+You don't need any of these tools for this course. They're here for students who are curious or who already have paid accounts with these providers. See the [AI Tools guide](ai-tools-guide.md) for a full overview.
 
 ---
 

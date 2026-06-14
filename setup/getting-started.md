@@ -1,4 +1,4 @@
-# Getting Started — PSYC4411 Setup Guide
+# Getting Started Setup Guide
 
 **Please complete these steps before Week 2.** The first part of the Week 2 class will be dedicated to troubleshooting any issues, so don't worry if you get stuck. Bring your laptop and we'll sort it out together.
 
@@ -228,7 +228,7 @@ If your Student Developer Pack hasn't been approved yet, Copilot won't activate.
 ## Step 7: Run the Setup Script
 
 This is where the magic happens. We've written a script that automatically:
-- Creates a **conda environment** called `psyc4411` — a self-contained set of packages for this course
+- Creates a **conda environment** called `ai-behsci` — a self-contained set of packages for this course
 - Installs all the Python libraries you'll need (pandas for data, matplotlib for plotting, scikit-learn for machine learning, etc.)
 - Registers everything with VS Code/Jupyter so it all works together
 
@@ -266,7 +266,7 @@ Let's make sure everything works together. There are two ways to test: a noteboo
 
 1. Open VS Code and open the course repository folder (if it's not already open from Step 4, go to **File → Open Folder** and select `Practical-AI-for-Behavioural-Science`)
 2. Navigate to `setup/test-setup.ipynb` in the file explorer on the left and click to open it
-4. **Select the right kernel:** When the notebook opens, look at the top right corner of the notebook. You should see a kernel selector. Click it and choose **PSYC4411** from the list. If you don't see it, try selecting "Python Environments" and look for `psyc4411 (conda)`.
+4. **Select the right kernel:** When the notebook opens, look at the top right corner of the notebook. You should see a kernel selector. Click it and choose **AI for Behavioural Science** from the list. If you don't see it, try selecting "Python Environments" and look for `ai-behsci (conda)`.
 5. Click **Run All** (the double-play button at the top of the notebook) or run each cell one at a time with `Shift + Enter`
 6. If you see library version numbers and a scatter plot, followed by "Setup complete!", you're done with this test!
 
@@ -277,9 +277,9 @@ This test runs as a Python script in the terminal, which is good practice for ru
 1. Open a terminal (in VS Code: View → Terminal, or use the macOS Terminal / Windows PowerShell)
 2. Activate the course environment:
    ```
-   conda activate psyc4411
+   conda activate ai-behsci
    ```
-   You should see `(psyc4411)` appear at the start of your terminal prompt.
+   You should see `(ai-behsci)` appear at the start of your terminal prompt.
 3. Navigate to the setup folder (if you're not already there):
    ```
    cd path/to/Practical-AI-for-Behavioural-Science/setup
@@ -290,7 +290,7 @@ This test runs as a Python script in the terminal, which is good practice for ru
    ```
 5. If you see "All checks passed!", your setup is complete!
 
-**If the PSYC4411 kernel doesn't appear in VS Code:** Close VS Code completely, reopen it, and try again. Sometimes VS Code needs a restart to detect newly created environments.
+**If the AI for Behavioural Science kernel doesn't appear in VS Code:** Close VS Code completely, reopen it, and try again. Sometimes VS Code needs a restart to detect newly created environments.
 
 ---
 
@@ -455,18 +455,18 @@ If your computer has 16GB of RAM or less, local models won't run well and you'll
 | "conda not found" or "conda is not recognised" | Miniconda isn't installed or isn't in your PATH. Reinstall from [docs.anaconda.com/miniconda](https://docs.anaconda.com/miniconda/). On Windows, make sure to check "Add to PATH". On Mac, close and reopen Terminal after installing. |
 | Setup script fails with "permission denied" | **Mac:** Make sure you're using `bash setup-mac.sh` (not `./setup-mac.sh`). **Windows:** Run the ExecutionPolicy command from Step 7. |
 | `InvalidArchiveError` during setup | A downloaded package file is corrupted. Run `conda clean --packages --tarballs -y` then re-run the setup script. (The updated setup scripts do this automatically, but if you're seeing it in the output, running the clean command manually and retrying is the fix.) |
-| `EnvironmentLocationNotFound` errors | The `psyc4411` environment doesn't exist; it likely wasn't created successfully. Re-run the setup script. If it fails again, try `conda clean --all -y` first, then re-run the script. |
+| `EnvironmentLocationNotFound` errors | The `ai-behsci` environment doesn't exist; it likely wasn't created successfully. Re-run the setup script. If it fails again, try `conda clean --all -y` first, then re-run the script. |
 | Setup script said "SETUP FAILED" | Follow the remediation steps it printed. Usually: run `conda clean --packages --tarballs -y`, then re-run the setup script. If that doesn't work, try `conda clean --all -y` and re-run. |
 | Using Anaconda instead of Miniconda | That's completely fine. Anaconda includes everything Miniconda does. If you hit package errors, run `conda clean --packages --tarballs -y` before re-running setup. Anaconda's larger package cache is occasionally prone to corruption, and this clears it. |
-| VS Code doesn't show the PSYC4411 kernel | Close and reopen VS Code. If still missing, open a terminal and run: `conda run -n psyc4411 python -m ipykernel install --user --name=psyc4411 --display-name="PSYC4411"` |
+| VS Code doesn't show the AI for Behavioural Science kernel | Close and reopen VS Code. If still missing, open a terminal and run: `conda run -n ai-behsci python -m ipykernel install --user --name=ai-behsci --display-name="AI for Behavioural Science"` |
 | Packages fail to install (network error) | Check your internet connection. If on campus, try switching between WiFi and a personal hotspot. |
-| "ModuleNotFoundError" when running the test notebook | You're using the wrong Python environment. Make sure to select the **PSYC4411** kernel in the top-right of the notebook. |
+| "ModuleNotFoundError" when running the test notebook | You're using the wrong Python environment. Make sure to select the **AI for Behavioural Science** kernel in the top-right of the notebook. |
 | `conda activate` says "Run 'conda init' first" | Run `conda init` in your terminal, then close and reopen the terminal. This is a one-time setup that teaches your shell how to activate environments. |
 | Copilot says I don't have access | Your Student Developer Pack may still be processing. It can take a few days. Everything else will work without Copilot. |
 
 **Tip:** If you hit an error during setup, try pasting the full error message into **Copilot Chat**, **ChatGPT**, or **Claude**. AI assistants are great at diagnosing installation errors, package conflicts, and environment problems. Just say something like: *"I'm trying to set up Python for a university course and I got this error:"* and paste the error.
 
-**Still stuck?** Bring your laptop to the Week 2 class and we'll help you get sorted. You can also post a question in the iLearn discussion forum; chances are someone else hit the same issue.
+**Still stuck?** Bring your laptop to class and we'll help you get sorted. You can also ask in your course's discussion forum; chances are someone else hit the same issue.
 
 ---
 

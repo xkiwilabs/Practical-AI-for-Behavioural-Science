@@ -2,7 +2,7 @@
 
 > **Group Challenge:** Discover the hidden structure of mental distress using PCA and clustering. Are there meaningful subgroups in how people experience depression, anxiety, and stress — or are you imposing patterns on noise?
 
-**Note:** Monday 27 April is a public holiday — there is no class this week. Complete this lab **in your assigned groups** in your own time. Meet up (in person or online), work through the challenge together, and submit your work by the deadline below.
+This lab works well as group work — meet up (in person or online), work through the challenge together, and present what you find.
 
 ---
 
@@ -51,7 +51,7 @@ VS Code Copilot, ChatGPT, Claude, Gemini — use any combination. Mix and match.
 
 You may still have this data from Week 4. If not, download it:
 ```
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-08-lab/data
 python download_data.py
 ```
@@ -82,7 +82,7 @@ python download_data.py
 
 1. **Download the data** (if you don't have it from Week 4):
    ```
-   conda activate psyc4411-env
+   conda activate ai-behsci
    cd weeks/week-08-lab/data
    python download_data.py
    ```
@@ -132,8 +132,6 @@ Both contain functional data loading, cleaning, and scoring (cells/sections 1–
 3. **Best cluster solution** — how many clusters? Show the profiles (what does each cluster look like?).
 4. **Stability check** — did your clusters survive a different random seed? Report silhouette scores.
 5. **Methods paragraph** — show one sentence from your AI-drafted methods paragraph that you had to correct or improve. What did the AI get wrong?
-
-**Submit:** Email your group's work (zipped folder with notebook/script + slide) by **noon Monday Week 9** (4 May).
 
 ---
 

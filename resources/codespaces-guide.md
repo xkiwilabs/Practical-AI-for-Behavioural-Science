@@ -1,4 +1,4 @@
-# GitHub Codespaces Guide for PSYC4411
+# GitHub Codespaces Guide
 
 **TL;DR:** Click Code → Codespaces → Create codespace. Wait 2 minutes. Code in VS Code in your browser. Free, nothing to install.
 
@@ -49,11 +49,11 @@ GitHub is setting up a container with Python, conda, and all your course package
 ```
 Building dev container...
 Installing packages...
-Setting up psyc4411 environment...
+Setting up ai-behsci environment...
 Opening in VS Code...
 ```
 
-**What's happening behind the scenes?** The repo contains a `.devcontainer/devcontainer.json` file that tells GitHub exactly what to install and configure. You don't need to do anything; GitHub detects it automatically and uses it to set up your environment. It's like a recipe that says "install Python 3.12, create the psyc4411 conda environment, add these VS Code extensions," etc. All automatic.
+**What's happening behind the scenes?** The repo contains a `.devcontainer/devcontainer.json` file that tells GitHub exactly what to install and configure. You don't need to do anything; GitHub detects it automatically and uses it to set up your environment. It's like a recipe that says "install Python 3.12, create the ai-behsci conda environment, add these VS Code extensions," etc. All automatic.
 
 When it's done, **VS Code opens in your browser**. You're ready to go.
 
@@ -83,7 +83,7 @@ Yes. Absolutely. It handles:
 - Loading and processing datasets (~3,000 rows)
 - Training scikit-learn models (regression, classification, clustering, neural networks)
 - Creating plots and visualisations
-- Running all PSYC4411 labs without issues
+- Running all course labs without issues
 
 ### What if I accidentally pick 4-core and get charged?
 
@@ -113,7 +113,7 @@ When Codespaces opens, you'll see VS Code exactly as it appears on your computer
 | **Bottom panel** | Terminal — run commands (usually not needed) |
 | **Top bar** | Tabs for open files, search, extensions, etc. |
 
-**Jupyter kernel:** A dropdown in the top-right corner shows the Python environment. It should say **psyc4411**. If not, click it and select **psyc4411** from the list.
+**Jupyter kernel:** A dropdown in the top-right corner shows the Python environment. It should say **ai-behsci**. If not, click it and select **ai-behsci** from the list.
 
 ---
 
@@ -124,7 +124,7 @@ Everything works the same as local VS Code:
 ### Opening and running notebooks
 
 1. Click any `.ipynb` file in the sidebar
-2. Make sure the kernel (top-right) is set to **psyc4411**
+2. Make sure the kernel (top-right) is set to **ai-behsci**
 3. Click the **play ▶ button** next to a cell to run it
 
 ### Running Python scripts
@@ -325,16 +325,16 @@ You can still use free AI assistants in Codespaces. Just install them from the V
 If you see this error, the conda environment didn't build. Try restarting:
 
 1. Open the terminal (View → Terminal)
-2. Type: `conda activate psyc4411`
+2. Type: `conda activate ai-behsci`
 3. If that fails, type: `conda env create -f setup/environment.yml`
 
-### Jupyter kernel shows "Python 3.xx" instead of "psyc4411"
+### Jupyter kernel shows "Python 3.xx" instead of "ai-behsci"
 
-Click the kernel dropdown, then click **Select Another Kernel** → **psyc4411**.
+Click the kernel dropdown, then click **Select Another Kernel** → **ai-behsci**.
 
 ### Notebook cell won't run / takes forever
 
-- Click the kernel dropdown and select **psyc4411**
+- Click the kernel dropdown and select **ai-behsci**
 - Try restarting the kernel: press Ctrl+Shift+P, search "Restart Kernel"
 
 ### "I ran out of storage" message
@@ -375,7 +375,7 @@ You stay **well under** 120 hours. Even with other classes, you're unlikely to h
 - **Paid (if you exceed):** $0.18 per core-hour + $0.07 per GB/month extra storage
 - **You control it:** Can manually stop codespaces to save hours
 
-**Bottom line for PSYC4411 students:** It's free. Don't worry about cost.
+**Bottom line:** It's free. Don't worry about cost.
 
 ---
 

@@ -4,7 +4,7 @@ Download data for Week 8: PCA/UMAP & Clustering
 
 Run this script BEFORE class to download the datasets you'll need.
 
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-08-lab/data
     python download_data.py
 
@@ -89,7 +89,7 @@ def download_openpsychometrics():
 
 
 if __name__ == "__main__":
-    print("PSYC4411 Week 8 — Data Download")
+    print("Week 8 — Data Download")
     print("================================")
     print()
     print("This script downloads the datasets for Week 8's lab challenge.")

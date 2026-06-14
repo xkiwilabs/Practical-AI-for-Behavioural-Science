@@ -4,7 +4,7 @@ Download data for Week 6: Trees & Ensembles (Classification)
 
 Run this script BEFORE class to download the datasets you'll need.
 
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-06-lab/data
     python download_data.py
 
@@ -85,7 +85,7 @@ def download_boston_college():
 
 
 if __name__ == "__main__":
-    print("PSYC4411 Week 6 — Data Download")
+    print("Week 6 — Data Download")
     print("================================")
     print()
     print("This script downloads the datasets for Week 6's lab challenge.")

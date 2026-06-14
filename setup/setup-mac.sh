@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# PSYC4411 Setup Script — macOS / Linux
+# Setup Script — macOS / Linux
 # ============================================================
 # This script creates a conda environment with all the Python
 # packages you need for the course, and registers it as a
@@ -25,7 +25,7 @@ SETUP_OK=true
 
 echo ""
 echo "=========================================="
-echo "  PSYC4411 Environment Setup (macOS)"
+echo "  Environment Setup (macOS)"
 echo "=========================================="
 echo ""
 
@@ -56,7 +56,7 @@ echo ""
 
 # ── Step 2: Create (or recreate) the conda environment ───
 
-ENV_NAME="psyc4411"
+ENV_NAME="ai-behsci"
 SKIP_CREATE=false
 
 # Check if environment already exists
@@ -124,7 +124,7 @@ fi
 
 if [ "$SETUP_OK" = true ]; then
     echo "Step 3: Registering Jupyter kernel (so VS Code can find it)..."
-    if ! conda run -n "$ENV_NAME" python -m ipykernel install --user --name="$ENV_NAME" --display-name="PSYC4411"; then
+    if ! conda run -n "$ENV_NAME" python -m ipykernel install --user --name="$ENV_NAME" --display-name="AI for Behavioural Science"; then
         echo "ERROR: Kernel registration failed."
         SETUP_OK=false
     fi
@@ -168,7 +168,7 @@ if [ "$SETUP_OK" = true ]; then
     echo "  conda activate $ENV_NAME"
     echo ""
     echo "Next steps:"
-    echo "  1. Open VS Code and run test-setup.ipynb (select the PSYC4411 kernel)"
+    echo "  1. Open VS Code and run test-setup.ipynb (select the AI for Behavioural Science kernel)"
     echo "  2. In the terminal, run:  conda activate $ENV_NAME && python test-setup.py"
     echo ""
 else
