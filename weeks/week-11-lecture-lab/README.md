@@ -215,11 +215,11 @@ The caveats are the same as for text LLMs, only sharper. VLMs hallucinate confid
 - **"Open-source LLMs are a year behind."** Closer to three to six months on most benchmarks — and they run on a laptop (Llama, Mistral, Qwen). For research where you cannot send participant data to a third-party API, this is essential rather than nice-to-have.
 - **"Deep learning always replaces classical ML."** Almost always wrong in applied psych research. The case study above is typical: deep learning extracts features, classical ML uses them, and the interpretable end of the pipeline lives in the part you already know how to build.
 
-## Looking Ahead: Viva and Beyond
+## Looking Ahead: Course Review and Beyond
 
 Step back for a moment. You started this course with no coding and no ML background. Over eleven weeks you have built a complete supervised toolkit on tabular data (Weeks 1–6), an unsupervised toolkit on the same kinds of data (Weeks 7–8), a working neural network trained on real EEG signals (Weeks 9–10), and now a map of deep learning, LLMs, and the tools that are reshaping how psychological research gets done. That is a real curriculum.
 
-**Week 12 is the viva.** The viva definition pool and short-answer pool are released today in `weeks/week-12-viva-review/`. Questions are drawn from across all eleven weeks and focused on understanding rather than memorisation. **Week 13** is a discussion seminar on where the field is going and how to use these tools responsibly in your honours project and beyond.
+**Week 12 is the course review.** The concept definition pool and short-answer pool are released today in `weeks/week-12-review/`. Questions are drawn from across all eleven weeks and focused on understanding rather than memorisation. **Week 13** is a discussion seminar on where the field is going and how to use these tools responsibly in your honours project and beyond.
 
 For now: review the slides at your own pace, skim the suggested readings, and bring your questions to class.
 

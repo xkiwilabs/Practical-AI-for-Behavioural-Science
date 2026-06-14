@@ -17,7 +17,7 @@ You started this course having (for the most part) never written a line of code.
 
 ## Looking back
 
-The thirteen-week arc, in one breath: foundations and the ML mindset (W1) → exploring data and predicting with regression (W2–4) → classification, trees, and forests (W5–6) → finding structure with clustering and dimensionality reduction (W7–8) → neural networks (W9–10) → meaning in vectors with embeddings and LLMs (W11) → defending your work in the viva (W12).
+The thirteen-week arc, in one breath: foundations and the ML mindset (W1) → exploring data and predicting with regression (W2–4) → classification, trees, and forests (W5–6) → finding structure with clustering and dimensionality reduction (W7–8) → neural networks (W9–10) → meaning in vectors with embeddings and LLMs (W11) → consolidating everything in the course review (W12).
 
 The tools will keep changing. What lasts is the **LLM Problem-Solving Loop** — plan, generate, and above all *verify* — and the two crafts of prompt engineering and context engineering.
 

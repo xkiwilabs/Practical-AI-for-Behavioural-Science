@@ -1,6 +1,6 @@
 # Week 11 Readings: Deep Learning, LLMs, and Generative AI for Psychological Research
 
-> These readings support the Week 11 lecture. **All readings are optional this week** — the lecture and companion reading are self-contained, and you should be saving energy for the Week 12 viva. The suggested readings are the three I'd reach for first if you want to go deeper; the optional list goes further.
+> These readings support the Week 11 lecture. **All readings are optional this week** — the lecture and companion reading are self-contained, and you should be saving energy for the Week 12 course review. The suggested readings are the three I'd reach for first if you want to go deeper; the optional list goes further.
 
 ---
 
