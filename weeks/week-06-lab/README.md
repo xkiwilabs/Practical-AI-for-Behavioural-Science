@@ -91,7 +91,7 @@ VS Code Copilot, ChatGPT, Claude, Gemini — use any combination. Mix and match.
 
 1. **Download the data** (if you haven't already):
    ```
-   conda activate psyc4411-env
+   conda activate ai-behsci
    cd weeks/week-06-lab/data
    python download_data.py
    ```
@@ -147,8 +147,6 @@ Both contain functional data loading and merging (cells/sections 1–8). Your AI
 3. **Feature importance** — which features mattered most? Show a chart or list the top 5.
 4. **Ethical consideration** — one thing that could go wrong if this model were deployed for real.
 5. **One refactoring win** — how did refactoring improve your code? This could be better structure, clearer documentation, or code that's easier for someone else to follow.
-
-**Submit:** Email your group's work (zipped folder with notebook/script + slide) by **noon Monday Week 7** (31 March → submit by noon 7 April).
 
 ---
 

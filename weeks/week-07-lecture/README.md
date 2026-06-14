@@ -134,14 +134,12 @@ Next week, you'll apply PCA and clustering to the same DASS-42 dataset you used 
 
 **Data:** You may still have the dataset from Week 4. If not:
 ```
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-08-lab/data
 python download_data.py
 ```
 
 **New LLM skill — Documentation:** In Week 2 you learned prompting, in Week 4 you learned debugging, in Week 6 you learned refactoring. This week's skill is **documentation** — asking your AI assistant to help write clear, accurate descriptions of your analysis. In research, your analysis is only as good as your ability to explain it. The AI's draft is a starting point — you need to verify that every number, method name, and description matches what you actually did. Documentation that doesn't match the analysis is worse than no documentation at all.
-
-**Note:** The written assignment is due this week (5:00pm Monday 27 April). Check iLearn for details and the assessment brief.
 
 ---
 

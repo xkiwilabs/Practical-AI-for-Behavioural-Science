@@ -1,15 +1,15 @@
-# PSYC4411 Viva — Concept Reference
+# Course Review — Concept Reference
 
-This is your study reference for the viva. It has two parts:
+This is your review reference for the course. It has two parts:
 
-- **Part 1** lists the **40 testable concepts** for Section 1 — you will be asked to define **10** of these, drawn at random. Definitions are not shown here; practise giving each definition aloud in 20 seconds.
-- **Part 2** lists **additional course concepts** (method names, metrics, and tools used throughout the course). These are **not** asked in Section 1, but you should be comfortable using them when you talk about the methods you've learned. Definitions are provided as a reading reference.
+- **Part 1** lists **40 core concepts** to self-quiz on. Definitions are not shown here; practise giving each definition aloud in about 20 seconds to check you can explain it crisply.
+- **Part 2** lists **additional course concepts** (method names, metrics, and tools used throughout the course). Definitions are provided so you can use this as a reading reference and feel comfortable using these terms when you talk about the methods you've learned.
 
 ---
 
-# Part 1 — Testable Concept Pool (40 terms)
+# Part 1 — Core Concept List (40 terms)
 
-Section 1 of the viva will draw your 10 terms from this list. Grouped by the week of the course that introduced each concept.
+A good self-quiz: pick terms at random and explain each one aloud. Grouped by the week of the course that introduced each concept.
 
 ## Week 1 — ML in Psychological Science
 
@@ -88,7 +88,7 @@ Section 1 of the viva will draw your 10 terms from this list. Grouped by the wee
 
 # Part 2 — Additional Course Concepts (with definitions)
 
-These are method names, metrics, and tools used throughout the course. They will **not** be asked as Section 1 definitions, but you should be comfortable using them when you talk about the methods you've learned. Read them as a reading reference; you do not need to memorise the wording.
+These are method names, metrics, and tools used throughout the course. You should be comfortable using them when you talk about the methods you've learned. Read them as a reading reference; you do not need to memorise the wording.
 
 ## Regression & general modelling
 

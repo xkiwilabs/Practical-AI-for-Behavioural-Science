@@ -9,7 +9,7 @@ Run explore_data.py first to understand the data, then run this script
 to create the focused visualisation based on what the exploration revealed.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-02-lab/example_solution
     python explore_data.py              # Step 1: explore
     python visualise_key_variables.py   # Step 2: visualise

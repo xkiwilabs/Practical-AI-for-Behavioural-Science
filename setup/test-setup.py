@@ -1,9 +1,9 @@
 """
-PSYC4411 Setup Test — Python Script
+Setup Test — Python Script
 ====================================
 Run this from the terminal to check your environment is set up correctly:
 
-    conda activate psyc4411
+    conda activate ai-behsci
     python test-setup.py
 
 This does the same checks as test-setup.ipynb, but runs as a standalone
@@ -15,7 +15,7 @@ import sys
 def main():
     print()
     print("=" * 50)
-    print("  PSYC4411 Setup Test")
+    print("  Setup Test")
     print("=" * 50)
     print()
 
@@ -76,7 +76,7 @@ def main():
     if all_ok:
         print("=" * 50)
         print("  All checks passed! Your setup is ready")
-        print("  for PSYC4411. See you in Week 2!")
+        print("  for this course. See you in Week 2!")
         print("=" * 50)
     else:
         print("=" * 50)

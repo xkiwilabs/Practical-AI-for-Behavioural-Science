@@ -59,7 +59,7 @@ A reveal.js presentation slide with toggle buttons to switch between all outputs
 ## Running the Code
 
 ```bash
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-02-lab/example_solution
 
 # Script workflow

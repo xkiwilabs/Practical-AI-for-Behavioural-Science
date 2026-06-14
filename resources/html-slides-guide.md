@@ -1,6 +1,6 @@
 # HTML Slides Guide
 
-For your paper presentation in this course, you'll create a single HTML slide using <a href="https://revealjs.com" target="_blank">reveal.js</a> — the same framework used for the course lecture slides. This guide covers everything you need, from getting started to exporting your slide as a PDF.
+When you present your work in this course, you'll build a single HTML slide using <a href="https://revealjs.com" target="_blank">reveal.js</a> — the same framework used for the course lecture slides. This guide covers everything you need, from getting started to exporting your slide as a PDF.
 
 ---
 
@@ -107,7 +107,7 @@ If you're using VS Code and want auto-refresh (the slide updates every time you 
 
 ## Exporting to PDF
 
-For the formal Paper Presentation assessment, you need to submit a PDF version of your slide via iLearn (in addition to the emailed zip). Here's how to export:
+If you need a PDF version of your slide (for sharing or archiving), here's how to export one:
 
 ### Method 1: Browser Print (easiest)
 
@@ -131,53 +131,15 @@ For the formal Paper Presentation assessment, you need to submit a PDF version o
 
 ---
 
-## Submission
+## Sharing Your Slide
 
-### Step 1: Organise your files into a folder
-
-Create a folder containing everything your slide needs to work:
+To share your slide so it works on someone else's computer, keep everything it needs together in one folder:
 
 - Your HTML file
 - The `css/` folder (if you used the course template or a separate CSS file)
 - Any images you included in your slide
 
-**Folder naming:**
-
-- **Paper presentations (individual):** `Lastname_Firstname_WeekN` (e.g., `Smith_Jane_Week4`)
-- **Challenge lab presentations (group):** `GroupN_WeekN` (e.g., `Group3_Week2`)
-
-### Step 2: Zip the folder
-
-Right-click the folder → **Compress** (Mac) or **Send to → Compressed (zipped) folder** (Windows).
-
-**Always zip your folder** — MQ email will reject standalone HTML file attachments.
-
-### Step 3: Email the zip file
-
-Email the zip file to **michael.j.richardson@mq.edu.au**.
-
-**Paper presentations:**
-- Subject line: `PSYC4411 Presentation - Lastname Firstname - Week N` (e.g., `PSYC4411 Presentation - Smith Jane - Week 4`)
-- **Deadline:** 12pm (noon) on the Monday of your presentation week
-
-**Challenge lab presentations:**
-- Subject line: `PSYC4411 Challenge Lab - Group N - Week N` (e.g., `PSYC4411 Challenge Lab - Group 3 - Week 2`)
-- Only **one group member** needs to send the email
-- **Deadline:** 12pm (noon) on the Monday you present (the week after the challenge lab)
-
-### Step 4: Submit PDF via iLearn (paper presentations only)
-
-For the formal Paper Presentation assessment (Weeks 4, 6, 8, 10), you also need to submit a **PDF** via iLearn:
-
-1. Export your slide as a PDF (see Exporting to PDF above)
-2. Name it: `Lastname_Firstname_Presentation.pdf`
-3. Upload to the iLearn submission portal **before** your presentation session
-
-Challenge lab presentations do not require a PDF submission — just the emailed zip.
-
-### Testing before you send
-
-**Test before sending:** Email the zip to yourself first. Download it, unzip it, open the folder and double-click your HTML file — it should display in your browser exactly as you expect. If something looks wrong (missing styles, broken images), you're probably missing a file in the folder. Fix it, re-zip, and send.
+Zip that folder before sending it, then **test it**: download the zip somewhere else, unzip it, and double-click the HTML file — it should display in your browser exactly as you expect. If something looks wrong (missing styles, broken images), you're probably missing a file in the folder. Fix it, re-zip, and you're done.
 
 ---
 

@@ -1,6 +1,6 @@
 # Week 3: Additional Readings and Resources
 
-> **Note:** The required reading for this week is the [companion reading](README.md) (the `README.md` in this folder). The readings below are **optional** — they provide additional depth and are a great place to find papers for your presentation and written assignment.
+> **Note:** The required reading for this week is the [companion reading](README.md) (the `README.md` in this folder). The readings below are **optional** — they provide additional depth and good starting points for your own reading and projects.
 
 ## Suggested Readings
 

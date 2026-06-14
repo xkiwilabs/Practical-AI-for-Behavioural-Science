@@ -4,9 +4,9 @@
 
 Create a beautiful, multi-panel visualisation that explores the relationships between lifestyle factors (sleep, exercise, screen time) and depression in a synthetic psychology dataset. Use an LLM coding assistant to help write the Python code. You'll try **two different coding workflows** — Jupyter notebooks and Python scripts — to find which suits you best. **Success = a figure that could appear in a research presentation.**
 
-This is a group challenge. You'll work together during class and prepare a 1-slide, ~3-minute presentation for Week 3.
+This is a group challenge. You'll work together and prepare a short 1-slide, ~3-minute presentation to share with the class.
 
-> **Note:** This is practice for creating HTML slides and presenting your work. The formal Paper Presentation assessment (25% of your grade) starts in Week 4 and is about a research paper you choose, not a lab challenge. See [assessments/presentation.md](../../assessments/presentation.md) for details.
+> **Note:** This is good practice for creating HTML slides and presenting your work — a skill you'll reuse throughout the course.
 
 ## Background
 
@@ -142,7 +142,7 @@ For the second half of the lab, try creating a visualisation using Python script
 
 3. **RUN** — In the terminal:
    ```
-   conda activate psyc4411-env
+   conda activate ai-behsci
    python starter.py
    ```
 
@@ -181,11 +181,7 @@ Here are example prompts that demonstrate good prompt engineering. Notice how ea
 
 ## What to Present
 
-Prepare **1 HTML slide** for the start of Week 3 (~3 minutes per group). Build it using <a href="https://revealjs.com" target="_blank">reveal.js</a> with the help of any AI tool you like — a browser chatbot (ChatGPT, Gemini, Claude), VS Code with Copilot, or anything else. Most chatbots can generate the HTML file for you directly in the conversation. A <a href="../../resources/presentation-template/">starter template</a> and <a href="../../resources/html-slides-guide.md">step-by-step guide</a> are provided, but you can design it however you like.
-
-**Submitting your slide:** Put your HTML file, `css/` folder (if used), and any images into a folder named `GroupN_Week2` (e.g., `Group3_Week2`). Zip the folder and have **one group member** email it to **michael.j.richardson@mq.edu.au** with subject line `PSYC4411 Challenge Lab - Group N - Week 2`. **Deadline: 12pm (noon) Monday of Week 3.** No PDF needed for challenge lab presentations.
-
-**Tip:** Test before sending — email the zip to yourself first, download it, unzip it, and open the HTML file in your browser. If it displays as you expect, you're good to send.
+Prepare **1 HTML slide** (~3 minutes per group) to present to the class. Build it using <a href="https://revealjs.com" target="_blank">reveal.js</a> with the help of any AI tool you like — a browser chatbot (ChatGPT, Gemini, Claude), VS Code with Copilot, or anything else. Most chatbots can generate the HTML file for you directly in the conversation. A <a href="../../resources/presentation-template/">starter template</a> and <a href="../../resources/html-slides-guide.md">step-by-step guide</a> are provided, but you can design it however you like.
 
 Your slide should include:
 
@@ -271,7 +267,7 @@ If you haven't used the terminal before, here's the step-by-step:
 
 1. Open a terminal in VS Code (Terminal → New Terminal, or `` Ctrl+` ``)
 2. Make sure you're in the right folder: `cd weeks/week-02-lab`
-3. Activate your environment: `conda activate psyc4411-env`
+3. Activate your environment: `conda activate ai-behsci`
 4. Run the script: `python starter.py`
 5. If the script saves a figure, it will appear as a new file in your folder
 

@@ -52,7 +52,7 @@ VS Code Copilot, ChatGPT, Claude, Gemini: use any combination. Mix and match. Th
 
 Download the data:
 ```
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-10-lab/data
 python download_data.py
 ```
@@ -92,7 +92,7 @@ Feature column names follow the pattern `ChannelName_band` (e.g., `C3_alpha`, `C
 
 1. **Download the data:**
    ```
-   conda activate psyc4411-env
+   conda activate ai-behsci
    cd weeks/week-10-lab/data
    python download_data.py
    ```
@@ -142,8 +142,6 @@ Both contain functional data loading, exploration, and preparation (cells/sectio
 3. **Training diagnostics** — did the network overfit? Did you use dropout or early stopping?
 4. **Was it worth it?** — Honest comparison: how much did the neural network improve over the baseline? Was the added complexity (code length, debugging time, training time) justified?
 5. **One debugging story** — what went wrong during training and how did you fix it (with your AI's help)?
-
-**Submit:** Email your group's work (zipped folder with notebook/script + slide) by **noon Monday Week 11** (18 May).
 
 ---
 

@@ -21,7 +21,7 @@ The name "Jupyter" comes from the three programming languages it originally supp
 
 In VS Code, click any `.ipynb` file in the file explorer. The notebook opens in the editor area with cells displayed vertically.
 
-Make sure the kernel is set to **PSYC4411** — check the top-right corner of the notebook. If it shows something else, click it and select PSYC4411 from the list.
+Make sure the kernel is set to **AI for Behavioural Science** — check the top-right corner of the notebook. If it shows something else, click it and select AI for Behavioural Science from the list.
 
 ---
 
@@ -152,10 +152,10 @@ Make sure you have `import matplotlib.pyplot as plt` in your imports, and that y
 
 ### "ModuleNotFoundError: No module named 'seaborn'"
 
-The package isn't installed in your current environment. Make sure you're using the PSYC4411 kernel (check the top-right corner of the notebook). If the package is still missing, open the terminal and run:
+The package isn't installed in your current environment. Make sure you're using the AI for Behavioural Science kernel (check the top-right corner of the notebook). If the package is still missing, open the terminal and run:
 
 ```
-conda install -n psyc4411 seaborn
+conda install -n ai-behsci seaborn
 ```
 
 ---

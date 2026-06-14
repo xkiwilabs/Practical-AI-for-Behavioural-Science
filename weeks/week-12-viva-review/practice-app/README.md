@@ -1,9 +1,10 @@
-# Viva Practice App
+# Course Review Practice App
 
 A small practice tool that walks you through a **full timed run-through** of the
-viva — the same three sections, the same time limits — so the format feels
-familiar before the real thing. Nothing here is marked, and nothing is uploaded
-anywhere; it is purely for your own rehearsal.
+course review — three sections (concept definitions, short answers, and a study
+pitch), each with its own time limit — so you can test yourself under a little
+gentle time pressure. Nothing here is scored, and nothing is uploaded anywhere;
+it is purely for your own self-quizzing.
 
 ## How to run it
 
@@ -76,11 +77,10 @@ screen and watch the bar move when you speak.
 
 ## A reminder about Section 2
 
-The practice questions are the **9 released example questions**. Your real exam
-questions come from a separate set you don't see in advance — but they test the
-same kinds of reasoning, so practising on these genuinely prepares you. The goal
-is to get comfortable picking a sensible method and talking through it clearly in
-about a minute. You are **not** expected to give PhD-level detail — a clear,
-reasonable answer in your own words is exactly what we're after.
+The practice questions are **9 example research scenarios** spanning the major
+method families in the course. The goal is to get comfortable picking a sensible
+method and talking through it clearly in about a minute. You are **not** expected
+to give PhD-level detail — a clear, reasonable answer in your own words is exactly
+what this is for.
 
 *[Back to the Week 12 study guide](../README.md)*

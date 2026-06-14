@@ -81,7 +81,7 @@ Jupyter notebooks (`.ipynb` files) are the main format for lab challenges in thi
 
 - **Cells:** Notebooks are made up of cells — either code (Python) or Markdown (text). Click a cell to select it.
 - **Running a cell:** Click the play button (▶) next to a cell, or press Shift+Enter
-- **Kernel:** The "engine" that runs your code. Make sure it's set to the **PSYC4411** kernel (check the top-right corner of the notebook)
+- **Kernel:** The "engine" that runs your code. Make sure it's set to the **AI for Behavioural Science** kernel (check the top-right corner of the notebook)
 - **Adding a cell:** Hover between cells and click the **+ Code** or **+ Markdown** button
 - **Restarting the kernel:** If things get stuck, click the "Restart" button in the toolbar — this clears all variables and lets you start fresh
 
@@ -91,16 +91,16 @@ See the [Jupyter Notebooks guide](jupyter-guide.md) for more detail.
 
 ## Selecting the Right Python Environment
 
-After running the setup script, you'll have a conda environment called `psyc4411` with all the course packages installed. Conda environments are automatically detected by VS Code, so they should appear without extra configuration.
+After running the setup script, you'll have a conda environment called `ai-behsci` with all the course packages installed. Conda environments are automatically detected by VS Code, so they should appear without extra configuration.
 
 **To select it in VS Code:**
 
 1. Open any `.py` or `.ipynb` file
 2. Look at the bottom-right of the Status Bar — it shows the current Python interpreter
-3. Click it and select `psyc4411 (conda)` from the list
-4. For notebooks, you can also select the kernel from the top-right corner (look for **PSYC4411**)
+3. Click it and select `ai-behsci (conda)` from the list
+4. For notebooks, you can also select the kernel from the top-right corner (look for **AI for Behavioural Science**)
 
-If `psyc4411` doesn't appear, try closing and reopening VS Code. If it's still missing, you may need to rerun the setup script — see the [Getting Started guide](../setup/getting-started.md).
+If `ai-behsci` doesn't appear, try closing and reopening VS Code. If it's still missing, you may need to rerun the setup script — see the [Getting Started guide](../setup/getting-started.md).
 
 ---
 
@@ -135,13 +135,13 @@ For a full walkthrough of each feature (with examples for psychology students), 
 
 ## Troubleshooting
 
-**"No Python interpreter selected"** — Click the Python version in the Status Bar and select `psyc4411 (conda)`.
+**"No Python interpreter selected"** — Click the Python version in the Status Bar and select `ai-behsci (conda)`.
 
 **Terminal says "command not found: python"** — Try `python3` instead of `python`. On some systems, Python 3 is only available as `python3`.
 
 **Copilot not suggesting anything** — Make sure you're signed in (check the Copilot icon in the Status Bar). Also check that your Student Developer Pack has been approved.
 
-**Notebook cells won't run** — Check that the kernel is set to PSYC4411 (top-right of the notebook). If it says "No Kernel", click and select the PSYC4411 kernel.
+**Notebook cells won't run** — Check that the kernel is set to AI for Behavioural Science (top-right of the notebook). If it says "No Kernel", click and select the AI for Behavioural Science kernel.
 
 ---
 

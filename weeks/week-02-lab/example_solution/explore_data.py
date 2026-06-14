@@ -15,7 +15,7 @@ Run this BEFORE visualise_key_variables.py — the exploration informs
 which variables are worth visualising in detail.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-02-lab/example_solution
     python explore_data.py
 """

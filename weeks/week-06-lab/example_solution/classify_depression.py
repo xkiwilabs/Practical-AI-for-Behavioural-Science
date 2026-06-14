@@ -7,7 +7,7 @@ depression (PHQ-9 >= 5) from sleep, mood, personality, and demographics.
 Generates all visualisations for the example solution.
 
 Usage:
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-06-lab/example_solution
     python classify_depression.py
 

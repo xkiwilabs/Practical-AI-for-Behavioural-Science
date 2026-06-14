@@ -172,7 +172,7 @@ Next week, you'll build and train a neural network from scratch using **PyTorch*
 **Data:** Pre-extracted features from 109 participants' EEG recordings. Download before class:
 
 ```bash
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-10-lab/data
 python download_data.py
 ```

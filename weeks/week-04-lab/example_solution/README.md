@@ -41,7 +41,7 @@ The strongest predictor of depression was **Emotional Stability** (coefficient â
 ## Running the Code
 
 ```bash
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-04-lab/example_solution
 
 # Script workflow

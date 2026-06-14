@@ -4,7 +4,7 @@ Download data for Week 10: Neural Network Training
 
 Run this script BEFORE class to download the datasets you'll need.
 
-    conda activate psyc4411-env
+    conda activate ai-behsci
     cd weeks/week-10-lab/data
     python download_data.py
 
@@ -70,7 +70,7 @@ def download_eeg_features():
 
 
 if __name__ == "__main__":
-    print("PSYC4411 Week 10 — Data Download")
+    print("Week 10 — Data Download")
     print("=================================")
     print()
     print("This script downloads the datasets for Week 10's lab challenge.")

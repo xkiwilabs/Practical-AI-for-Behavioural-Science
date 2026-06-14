@@ -90,7 +90,7 @@ These AI tools are designed specifically for academic research.
 - **Website:** <a href="https://semanticscholar.org" target="_blank">semanticscholar.org</a>
 - **What it does:** AI-powered academic search engine. Helps you find relevant papers and understand citation networks.
 - **Free:** Yes
-- **Best for:** Finding papers for your presentation and written assignment, exploring who cites whom
+- **Best for:** Finding relevant papers and exploring who cites whom
 
 ### Elicit
 

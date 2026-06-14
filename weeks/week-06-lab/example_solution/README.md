@@ -42,7 +42,7 @@ The strongest predictors of elevated depression were **PANAS negative affect**, 
 ## Running the Code
 
 ```bash
-conda activate psyc4411-env
+conda activate ai-behsci
 cd weeks/week-06-lab/example_solution
 
 # Script workflow
