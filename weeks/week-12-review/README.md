@@ -7,8 +7,8 @@ You'll find these review materials alongside this README:
 - **[`concept-list.md`](concept-list.md)** — your **single review reference**. It has two parts:
   - **Part 1** lists **40 core concepts** to self-quiz on (try defining **10** at random). Definitions are not shown — practise giving them aloud in about 20 seconds each.
   - **Part 2** lists **additional course concepts** with definitions (method names, metrics, and tools used throughout the course — R², UMAP, cosine similarity, MediaPipe, etc.). You should be comfortable using these when you talk about the methods you've learned.
-- **[`viva-terms.csv`](viva-terms.csv)** — the same 40 terms in CSV form (terms only).
-- **[`short-answer-examples.md`](short-answer-examples.md)** / **[`viva-questions.csv`](viva-questions.csv)** — **9 example short-answer questions** for practice. The markdown shows each question with an example narrative response so you can calibrate length and structure; the CSV is the same questions for tools or apps. They span the major method families in the course, so working through them is a good way to test your reasoning about which method fits which scenario.
+- **[`review-terms.csv`](review-terms.csv)** — the same 40 terms in CSV form (terms only).
+- **[`short-answer-examples.md`](short-answer-examples.md)** / **[`review-questions.csv`](review-questions.csv)** — **9 example short-answer questions** for practice. The markdown shows each question with an example narrative response so you can calibrate length and structure; the CSV is the same questions for tools or apps. They span the major method families in the course, so working through them is a good way to test your reasoning about which method fits which scenario.
 - **[`practice-app/`](practice-app/)** — a **self-quiz tool** you open by double-clicking `index.html`. It runs a full **timed practice session** (all three sections, each with its own time limit) using random terms and example questions each run, and can optionally record your voice so you can play it back. No install needed. See its [README](practice-app/README.md).
 - **[`slides/`](slides/index.html)** — the Week 12 review slides (the three sections and how to use the practice app).
 
@@ -32,7 +32,7 @@ Everything here draws on **Weeks 1–11**. Week 12 (this week) is consolidation;
 
 ## Section 1: Definitions — how to practise
 
-Draw 10 terms from `viva-terms.csv`, one at a time. Give yourself about twenty seconds per term to think and answer. Self-check on **technical accuracy** and **conciseness** — accuracy matters most, but a clean, short answer is the real target: if you can say it crisply, you understand it.
+Draw 10 terms from `review-terms.csv`, one at a time. Give yourself about twenty seconds per term to think and answer. Self-check on **technical accuracy** and **conciseness** — accuracy matters most, but a clean, short answer is the real target: if you can say it crisply, you understand it.
 
 **Practice strategy:**
 

@@ -94,15 +94,15 @@ function fmt(s) { const m = Math.floor(s/60), x = s%60; return `${m}:${x<10?'0':
 // This run's draw — a balanced mix across difficulty without showing bands:
 // 4 Easy + 4 Medium + 2 Hard terms; 1 Easy + 1 Medium + 1 Hard questions.
 function drawTerms() {
-  const t = [...sample(byBand(VIVA_PRACTICE_DATA.terms,"E"),4),
-             ...sample(byBand(VIVA_PRACTICE_DATA.terms,"M"),4),
-             ...sample(byBand(VIVA_PRACTICE_DATA.terms,"H"),2)];
+  const t = [...sample(byBand(REVIEW_PRACTICE_DATA.terms,"E"),4),
+             ...sample(byBand(REVIEW_PRACTICE_DATA.terms,"M"),4),
+             ...sample(byBand(REVIEW_PRACTICE_DATA.terms,"H"),2)];
   return sample(t, t.length).map(x => x.term);
 }
 function drawQuestions() {
-  const q = [...sample(byBand(VIVA_PRACTICE_DATA.questions,"E"),1),
-             ...sample(byBand(VIVA_PRACTICE_DATA.questions,"M"),1),
-             ...sample(byBand(VIVA_PRACTICE_DATA.questions,"H"),1)];
+  const q = [...sample(byBand(REVIEW_PRACTICE_DATA.questions,"E"),1),
+             ...sample(byBand(REVIEW_PRACTICE_DATA.questions,"M"),1),
+             ...sample(byBand(REVIEW_PRACTICE_DATA.questions,"H"),1)];
   return sample(q, q.length);
 }
 
@@ -350,7 +350,7 @@ function done() {
   render(children);
 }
 
-if (typeof VIVA_PRACTICE_DATA === "undefined") {
+if (typeof REVIEW_PRACTICE_DATA === "undefined") {
   render([
     h("h1", {text:"Couldn't load the practice data"}),
     h("p", {class:"lead"}, ["Make sure ", h("code",{text:"practice-data.js"}),
